@@ -5,3 +5,4 @@ env/
 *.iws
 .idea/
 .env
+/db_init
