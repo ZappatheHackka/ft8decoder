@@ -6,3 +6,4 @@ env/
 .idea/
 .env
 db_init/l_amat/
+db_init/ft8.db
