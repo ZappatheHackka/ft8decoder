@@ -5,4 +5,4 @@ env/
 *.iws
 .idea/
 .env
-/db_init/l_amat
+db_init/l_amat/
