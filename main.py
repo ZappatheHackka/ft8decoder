@@ -5,7 +5,7 @@ PORT = 2237
 
 parser = WsjtxParser()
 
-parser.start(HOST, PORT)
+parser.listen(HOST, PORT, seconds=15)
 
 while True:
     print(data_motherload)

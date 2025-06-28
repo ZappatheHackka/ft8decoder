@@ -1,8 +1,7 @@
 import queue
 import socket
 import struct
-import threading
-from queue import Queue
+import time
 from dataclasses import dataclass
 
 data_motherload = []
@@ -26,12 +25,7 @@ class WsjtxParser:
     def __init__(self):
         self.packet_queue = queue.Queue()
 
-    # def start(self, host, port):
-    #     obj = WsjtxParser()
-    #     start_listening = threading.Thread(target=obj.parse, args=(host, port))
-    #     start_listening.start()
-
-    def parse(self, host, port):
+    def listen(self, host, port, seconds: int):
         udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             udp_socket.bind((host, port))
@@ -42,15 +36,18 @@ class WsjtxParser:
                 exit()
             if ans == "y":
                 print("Parsing packets...")
-                while True:
+                n = 0
+                while n < seconds:
                     data, addr = udp_socket.recvfrom(1024)
                     if len(data) >= 12:
-                        self.parse_packet(data=data)
+                        self.parse_packets(data=data)
+                        time.sleep(1)
+                        n += 1
         except socket.error as msg:
             print(f"Socket error: {msg}. Could not listen on {host}:{port}.")
 
 
-    def parse_packet(self, data):
+    def parse_packets(self, data):
         message_type = struct.unpack(">I", data[8:12])[0]
         match message_type:
             case 2:  # Message packets
