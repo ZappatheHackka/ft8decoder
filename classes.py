@@ -1,5 +1,8 @@
+import queue
 import socket
 import struct
+import threading
+from queue import Queue
 from dataclasses import dataclass
 
 data_motherload = []
@@ -20,8 +23,13 @@ class Packet:
 
 # Make class that does the UDP parsing
 class WsjtxParser:
-    def __init__(self, packet_list: list=None):
-        self.packet_list = packet_list if packet_list is not None else []
+    def __init__(self):
+        self.packet_queue = queue.Queue()
+
+    # def start(self, host, port):
+    #     obj = WsjtxParser()
+    #     start_listening = threading.Thread(target=obj.parse, args=(host, port))
+    #     start_listening.start()
 
     def parse(self, host, port):
         udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -56,6 +64,16 @@ class WsjtxParser:
                 parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
                                                    delta_time=time_delta, frequency=fq_offset, message=decoded_msg)
                 print(parsed_packet.message)
-                self.packet_list.append(parsed_packet)
+                self.translate_message(parsed_packet.message)
+                self.packet_queue.put(parsed_packet)
             case 1:  # Status packets
                 pass
+
+    def translate_message(self, message):
+        message = message.split()
+        if len(message) > 3:
+            print("Not CQ, skipping...")
+        else:
+            pass
+
+
