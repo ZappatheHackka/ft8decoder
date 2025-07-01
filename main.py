@@ -1,11 +1,9 @@
-from classes import WsjtxParser, data_motherload
+from classes import WsjtxParser
 
 HOST = '127.0.0.1'
 PORT = 2237
 
 parser = WsjtxParser()
 
-parser.listen(HOST, PORT, seconds=15)
+parser.start_listening(HOST, PORT)
 
-while True:
-    print(data_motherload)
