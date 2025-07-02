@@ -70,6 +70,7 @@ class WsjtxParser:
                 pass
 
     def start_grabbing(self, seconds: int):
+
         while True:
             time.sleep(seconds)
             print(f"Dumped data: {data_motherload}")
@@ -79,21 +80,50 @@ class WsjtxParser:
 
 # -----------------DATA PROCESSING-----------------------
 
+@dataclass
+class MessageTurn:
+    turn: int
+    message: str
+    translated_message: str
+    packet: Packet | str
 
+@dataclass
+class CQ:
+    pass
+
+# data is data_motherload
 class MessageProcessor:
     def order(self, data: list):
-        dict = {}
-        self.order_callsigns(self, dict, data)
+        initial_dict = {}
+        dict_of_callsigns = self.order_callsigns(data, initial_dict)
 
     def order_callsigns(self, data: list, dict: dict):
         for packet in data:
             message = packet.message.split()
+            if message[0] == "CQ":
+                self.handle_cq(packet)
             message_callsigns = []
             for i in message:
-                if len(i) == 6:
+                # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
+                if len(i) == 5:
                     message_callsigns.append(i)
             callsigns = sorted(message_callsigns)
             if dict[(callsigns[0], callsigns[1])]:
                 pass # continue here
             else:
-                dict[(callsigns[0], callsigns[1])] = message
+                convo_list = [MessageTurn(turn=1, message="", translated_message="", packet=""),
+                              MessageTurn(turn=2, message="", translated_message="", packet=""),
+                              MessageTurn(turn=3, message="", translated_message="", packet=""),
+                              MessageTurn(turn=4, message="", translated_message="", packet=""),
+                              MessageTurn(turn=5, message="", translated_message="", packet=""),]
+                dict[(callsigns[0], callsigns[1])] = convo_list
+                self.sort_message(packet, dict, callsigns, message_callsigns)
+        return dict
+
+    def sort_message(self, packet: Packet, dict: dict, callsigns: list, message_callsigns: list):
+        message = packet.message.split()
+
+    def handle_cq(self, packet: Packet):
+        pass
+# TODO track CQs separately from conversation turns
+
