@@ -89,15 +89,19 @@ class MessageTurn:
 
 @dataclass
 class CQ:
-    pass
+    message: str
+    packet: Packet
 
 # data is data_motherload
 class MessageProcessor:
-    def order(self, data: list):
-        initial_dict = {}
-        dict_of_callsigns = self.order_callsigns(data, initial_dict)
+    def __init__(self):
+        self.cqs = []
+        self.convo_dict = {}
 
-    def order_callsigns(self, data: list, dict: dict):
+    def order(self, data: list):
+        pass
+
+    def order_callsigns(self, data: list):
         for packet in data:
             message = packet.message.split()
             if message[0] == "CQ":
@@ -108,7 +112,7 @@ class MessageProcessor:
                 if len(i) == 5:
                     message_callsigns.append(i)
             callsigns = sorted(message_callsigns)
-            if dict[(callsigns[0], callsigns[1])]:
+            if self.convo_dict[(callsigns[0], callsigns[1])]:
                 pass # continue here
             else:
                 convo_list = [MessageTurn(turn=1, message="", translated_message="", packet=""),
@@ -116,14 +120,17 @@ class MessageProcessor:
                               MessageTurn(turn=3, message="", translated_message="", packet=""),
                               MessageTurn(turn=4, message="", translated_message="", packet=""),
                               MessageTurn(turn=5, message="", translated_message="", packet=""),]
-                dict[(callsigns[0], callsigns[1])] = convo_list
-                self.sort_message(packet, dict, callsigns, message_callsigns)
-        return dict
+                self.convo_dict[(callsigns[0], callsigns[1])] = convo_list
+                self.sort_message(packet, callsigns, message_callsigns)
 
-    def sort_message(self, packet: Packet, dict: dict, callsigns: list, message_callsigns: list):
+
+    def sort_message(self, packet: Packet, callsigns: list, message_callsigns: list):
         message = packet.message.split()
 
+    # TODO track CQs separately from conversation turns
     def handle_cq(self, packet: Packet):
-        pass
-# TODO track CQs separately from conversation turns
+        cq = CQ(packet=packet, message=packet.message)
+        self.cqs.append(cq)
+
+
 
