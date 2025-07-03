@@ -86,10 +86,13 @@ class MessageTurn:
     message: str
     translated_message: str
     packet: Packet | str
+    type: str
 
 @dataclass
 class CQ:
     message: str
+    translate_message: str
+    caller: str
     packet: Packet
 
 # data is data_motherload
@@ -104,32 +107,51 @@ class MessageProcessor:
     def order_callsigns(self, data: list):
         for packet in data:
             message = packet.message.split()
+            if len(message) > 3:
+                continue
             if message[0] == "CQ":
                 self.handle_cq(packet)
+                continue
             message_callsigns = []
-            for i in message:
-                # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
-                if len(i) == 5:
-                    message_callsigns.append(i)
+            # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
+            message_callsigns.append(message[0])
+            message_callsigns.append(message[1])
             callsigns = sorted(message_callsigns)
             if self.convo_dict[(callsigns[0], callsigns[1])]:
                 pass # continue here
             else:
-                convo_list = [MessageTurn(turn=1, message="", translated_message="", packet=""),
-                              MessageTurn(turn=2, message="", translated_message="", packet=""),
-                              MessageTurn(turn=3, message="", translated_message="", packet=""),
-                              MessageTurn(turn=4, message="", translated_message="", packet=""),
-                              MessageTurn(turn=5, message="", translated_message="", packet=""),]
+                convo_list = [MessageTurn(turn=1, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=2, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=3, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=4, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=5, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=6, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=7, message="", translated_message="", packet="", type=""),
+                              MessageTurn(turn=8, message="", translated_message="", packet="", type="")]
                 self.convo_dict[(callsigns[0], callsigns[1])] = convo_list
                 self.sort_message(packet, callsigns, message_callsigns)
 
-
     def sort_message(self, packet: Packet, callsigns: list, message_callsigns: list):
-        message = packet.message.split()
+        message = packet.message.split() # CQs are handled separately, only check for signal reports, protocols, etc
+        if self.is_signal_report(message):
+            first_callsign = message[0]
+            second_callsign = message[1]
+            cq_callers = [cq.caller for cq in self.cqs]
+            if first_callsign in cq_callers:
+                pass
+
+    def is_signal_report(self, message):
+        signal = message[-1]
+        if signal != "RRR" and signal != "R73" and signal != "73":
+            return True
+        return False
 
     # TODO track CQs separately from conversation turns
     def handle_cq(self, packet: Packet):
-        cq = CQ(packet=packet, message=packet.message)
+        caller = packet.message.split()[1]
+        grid = packet.message.split()[2]
+        translated = f"Station {caller} is calling for any response from grid {grid}."
+        cq = CQ(packet=packet, message=packet.message, caller=caller, translate_message=translated)
         self.cqs.append(cq)
 
 
