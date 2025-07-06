@@ -104,7 +104,7 @@ class MessageProcessor:
     def order(self, data: list):
         pass
 
-    def order_callsigns(self, data: list):
+    def check_callsigns(self, data: list):
         for packet in data:
             message = packet.message.split()
             if len(message) > 3:
@@ -129,16 +129,20 @@ class MessageProcessor:
                               MessageTurn(turn=7, message="", translated_message="", packet="", type=""),
                               MessageTurn(turn=8, message="", translated_message="", packet="", type="")]
                 self.convo_dict[(callsigns[0], callsigns[1])] = convo_list
-                self.sort_message(packet, callsigns, message_callsigns)
+                self.sort_message(packet, callsigns, new_convo=True)
 
-    def sort_message(self, packet: Packet, callsigns: list, message_callsigns: list):
-        message = packet.message.split() # CQs are handled separately, only check for signal reports, protocols, etc
-        if self.is_signal_report(message):
-            first_callsign = message[0]
-            second_callsign = message[1]
-            cq_callers = [cq.caller for cq in self.cqs]
-            if first_callsign in cq_callers:
+    # TODO REFACTOR SO MessageTurn() OBJECTS CREATED AS PACKETS RECEIVED--NOT PRE-DEFINED
+
+    # Handles new messages & retroactively places CQ call in list
+    def sort_message(self, packet: Packet, callsigns: list, new_convo: bool):
+        if new_convo:
+            message = packet.message.split() # CQs are handled separately, only check for signal reports, protocols, etc
+            if self.is_signal_report(message):
+                self.handle_signal_report(callsigns, packet, message, new_convo)
+            elif self.is_ack_reply(message):
                 pass
+        else:
+            pass # Continue here
 
     def is_signal_report(self, message):
         signal = message[-1]
@@ -146,7 +150,52 @@ class MessageProcessor:
             return True
         return False
 
-    # TODO track CQs separately from conversation turns
+    def is_ack_reply(self, message):
+        code = str(message[-1])
+        if code == "RRR" or code == "R73" or "-" in code.split():
+            return True
+        return False
+
+
+    def handle_signal_report(self, callsigns: list, packet: Packet, message: list, new_convo: bool):
+        first_callsign = message[0]
+        second_callsign = message[1]
+        cq_callers = [cq.caller for cq in self.cqs]
+        if first_callsign in cq_callers:
+            translated_message = f"{second_callsign} sends signal report of {message[2]} to {first_callsign}."
+
+            # Putting this as the second signal report--assuming the CQ caller sends report first
+            m_type = "Signal Report"
+            self.convo_dict[(callsigns[0], callsigns[1])][3].translated_message = translated_message
+            self.convo_dict[(callsigns[0], callsigns[1])][3].type = m_type
+            self.convo_dict[(callsigns[0], callsigns[1])][3].packet = packet
+            self.convo_dict[(callsigns[0], callsigns[1])][3].message = message
+            print("Updated convo_dict with signal report.")
+
+            # Updating convo dict to add initial CQ
+            if new_convo:
+                self.add_cq(first_callsign, callsigns)
+
+        elif second_callsign in cq_callers:
+            translated_message = f"{first_callsign} sends signal report of {message[2]} to {second_callsign}."
+            m_type = "Signal Report"
+            self.convo_dict[(callsigns[0], callsigns[1])][3].translated_message = translated_message
+            self.convo_dict[(callsigns[0], callsigns[1])][3].type = m_type
+            self.convo_dict[(callsigns[0], callsigns[1])][3].packet = packet
+            self.convo_dict[(callsigns[0], callsigns[1])][3].message = message
+            print("Updated convo_dict with signal report.")
+
+            # Updating convo dict to add initial CQ
+            if new_convo:
+                self.add_cq(second_callsign, callsigns)
+
+        else:
+            print(f"Neither {first_callsign} or {second_callsign} were found in the CQ call list. Continuing...")
+
+    def handle_ack_reply(self, callsigns: list, packet: Packet, message: list):
+        pass
+
+    # TODO track CQs separately from conversation turns [DONE]
     def handle_cq(self, packet: Packet):
         caller = packet.message.split()[1]
         grid = packet.message.split()[2]
@@ -154,5 +203,17 @@ class MessageProcessor:
         cq = CQ(packet=packet, message=packet.message, caller=caller, translate_message=translated)
         self.cqs.append(cq)
 
+    def add_cq(self, callsign: str, callsigns: list):
+        this_cq = None
+        for cq in self.cqs:
+            if cq.caller == callsign:
+                this_cq = cq
+                break
 
+        self.convo_dict[(callsigns[0], callsigns[1])][0].message = this_cq.message
+        self.convo_dict[(callsigns[0], callsigns[1])][0].translated_message = this_cq.translated_message
+        self.convo_dict[(callsigns[0], callsigns[1])][0].type = "CQ Call"
+        self.convo_dict[(callsigns[0], callsigns[1])][3].packet = this_cq.packet
+        print("Updated convo_dict with initial CQ call.")
 
+# -------------------ERRORS--------------------------
