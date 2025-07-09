@@ -70,7 +70,6 @@ class WsjtxParser:
                 pass
 
     def start_grabbing(self, seconds: int):
-
         while True:
             time.sleep(seconds)
             print(f"Dumped data: {data_motherload}")
@@ -131,11 +130,14 @@ class MessageProcessor:
         if new_convo:
             # TODO Reorder checking order, place CQ updater in first func
             self.add_cq(callsigns=callsigns)
-        message = packet.message.split() # CQs are handled separately, only check for signal reports, protocols, etc
-        if self.is_signal_report(message):
-            self.handle_signal_report(callsigns, packet, message, new_convo)
-        elif self.is_ack_reply(message):
+        message = packet.message.split()
+        if self.is_ack_reply(message):
             self.handle_ack_reply(callsigns, packet, message)
+        elif self.is_grid_square(message):
+            self.handle_grid_square(message, packet, callsigns)
+        elif self.is_signal_report(message):
+            self.handle_signal_report(callsigns, packet, message)
+
 
     # TODO make logic more robust- check for int(), place after Grid & Ack checks
     def is_signal_report(self, message):
@@ -148,48 +150,29 @@ class MessageProcessor:
             return False
         return False
 
+    def handle_signal_report(self, callsigns: list, packet: Packet, message: list):
+        first_callsign = message[0]
+        second_callsign = message[1]
+        if len(message[2]) > 3:
+            nums = message[2][1:]
+            translated_message = (f"{second_callsign} says Roger and reports a signal report of {nums} "
+                                  f"to {first_callsign}.")
+        else:
+            translated_message = f"{second_callsign} sends signal report of {message[2]} to {first_callsign}."
+
+        # Putting this as the second signal report--assuming the CQ caller sends report first
+        m_type = "Signal Report"
+        turn_obj = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])]) + 1),
+                               message=packet.message, translated_message=translated_message, packet=packet,
+                               type=m_type)
+        self.convo_dict[(callsigns[0], callsigns[1])].append(turn_obj)
+        print("Updated convo_dict with signal report.")
+
     def is_ack_reply(self, message):
         code = str(message[-1])
         if code == "RRR" or code == "RR73" or code == "73":
             return True
         return False
-
-    def handle_signal_report(self, callsigns: list, packet: Packet, message: list, new_convo: bool):
-        first_callsign = message[0]
-        second_callsign = message[1]
-        cq_callers = [cq.caller for cq in self.cqs]
-        if first_callsign in cq_callers:
-            if len(message[2]) > 3:
-                nums = message[2][1:]
-                translated_message = (f"{second_callsign} says Roger and reports a signal report of {nums} "
-                                      f"to {first_callsign}.")
-            else:
-                translated_message = f"{second_callsign} sends signal report of {message[2]} to {first_callsign}."
-
-            # Putting this as the second signal report--assuming the CQ caller sends report first
-            m_type = "Signal Report"
-            turn_obj = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])]) + 1),
-                                   message=packet.message, translated_message=translated_message, packet=packet,
-                                   type=m_type)
-            self.convo_dict[(callsigns[0], callsigns[1])].append(turn_obj)
-            print("Updated convo_dict with signal report.")
-
-        elif second_callsign in cq_callers:
-            if len(message[2]) > 3:
-                nums = message[2][1:]
-                translated_message = (f"{first_callsign} says Roger and reports a signal report of {nums} "
-                                      f"to {second_callsign}.")
-            else:
-                translated_message = f"{first_callsign} sends signal report of {message[2]} to {second_callsign}."
-            m_type = "Signal Report"
-            turn_obj = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])]) + 1),
-                                   message=packet.message, translated_message=translated_message, packet=packet,
-                                   type=m_type)
-            self.convo_dict[(callsigns[0], callsigns[1])].append(turn_obj)
-            print("Updated convo_dict with signal report.")
-
-        else:
-            print(f"Neither {first_callsign} or {second_callsign} were found in the CQ call list. Continuing...")
 
     def handle_ack_reply(self, callsigns: list, packet: Packet, message: list):
         ack = message[-1]
@@ -211,6 +194,34 @@ class MessageProcessor:
                                      translated_message=translated_message, packet=packet, type="RRR")
             self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             self.convo_dict[(callsigns[0], callsigns[1])]["completed"] = True
+
+    def is_grid_square(self, message):
+        code = str(message[-1])
+        if len(code)  == 4:
+            if code[0].isalpha() and code[0].isupper():
+                if code[1].isalpha() and code[1].isupper():
+                    if code[2].isnumeric():
+                        if code[3].isnumeric():
+                            return True
+                        else:
+                            return False
+                    else:
+                        return False
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
+
+    def handle_grid_square(self, callsigns: list, packet: Packet, message: list):
+        grid_square = message[-1]
+        translated_message = f"{message[1]} sends a grid square location of {grid_square} to {message[0]}."
+        convo_turn = MessageTurn(turn=((len(self.convo_dict[(callsigns[0], callsigns[1])])) + 1),
+                                 message=packet.message, translated_message=translated_message, packet=packet,
+                                 type="Grid Square Report")
+        self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+
     # TODO track CQs separately from conversation turns [DONE]
     def handle_cq(self, packet: Packet):
         caller = packet.message.split()[1]
