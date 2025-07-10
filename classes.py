@@ -90,7 +90,7 @@ class MessageTurn:
 @dataclass
 class CQ:
     message: str
-    translate_message: str
+    translated_message: str
     caller: str
     packet: Packet
 
@@ -103,11 +103,14 @@ class MessageProcessor:
     def order(self, data: list):
         pass
 
-    # TODO Write tests for this- create a list of sample FT8 contacts and run it through
+    # TODO Write tests for this- create a list of sample FT8 contacts and run it through [DONE]
     def check_callsigns(self, data: list):
         for packet in data:
             message = packet.message.split()
             if len(message) > 3:
+                continue
+            # TODO Handle messages w/ >3 words (dx etc)
+            if len(message) < 3:
                 continue
             if message[0] == "CQ":
                 self.handle_cq(packet)
@@ -117,8 +120,8 @@ class MessageProcessor:
             message_callsigns.append(message[0])
             message_callsigns.append(message[1])
             callsigns = sorted(message_callsigns)
-            if self.convo_dict[(callsigns[0], callsigns[1])]:
-                pass # continue here
+            if (callsigns[0], callsigns[1]) in self.convo_dict:
+                self.sort_message(packet, callsigns, new_convo=False)
             else:
                 self.convo_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
                 self.sort_message(packet, callsigns, new_convo=True)
@@ -128,23 +131,27 @@ class MessageProcessor:
     # Handles new messages & retroactively places CQ call in list
     def sort_message(self, packet: Packet, callsigns: list, new_convo: bool):
         if new_convo:
-            # TODO Reorder checking order, place CQ updater in first func
+            # TODO Reorder checking order, place CQ updater in first func [DONE]
             self.add_cq(callsigns=callsigns)
         message = packet.message.split()
+        print(message)
         if self.is_ack_reply(message):
             self.handle_ack_reply(callsigns, packet, message)
         elif self.is_grid_square(message):
-            self.handle_grid_square(message, packet, callsigns)
+            self.handle_grid_square(callsigns, packet, message)
         elif self.is_signal_report(message):
             self.handle_signal_report(callsigns, packet, message)
 
+    # TODO Handle messages w/ <2 words
+    def handle_short_msg(self, packet: Packet, message: str):
+        pass
 
-    # TODO make logic more robust- check for int(), place after Grid & Ack checks
+    # TODO make logic more robust- check for int(), place after Grid & Ack checks [DONE]
     def is_signal_report(self, message):
         signal = message[-1]
         if len(signal) > 2:
             if signal != "RR73" and signal != "RRR":
-                if int(signal[2:]):
+                if int(signal[2:]) or signal[2:] == '00':
                     return True
                 return False
             return False
@@ -162,14 +169,14 @@ class MessageProcessor:
 
         # Putting this as the second signal report--assuming the CQ caller sends report first
         m_type = "Signal Report"
-        turn_obj = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])]) + 1),
+        turn_obj = MessageTurn(turn=len(self.convo_dict[(callsigns[0], callsigns[1])]),
                                message=packet.message, translated_message=translated_message, packet=packet,
                                type=m_type)
         self.convo_dict[(callsigns[0], callsigns[1])].append(turn_obj)
         print("Updated convo_dict with signal report.")
 
     def is_ack_reply(self, message):
-        code = str(message[-1])
+        code = message[-1]
         if code == "RRR" or code == "RR73" or code == "73":
             return True
         return False
@@ -181,19 +188,22 @@ class MessageProcessor:
             convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])), message=packet.message,
                                      translated_message=translated_message, packet=packet, type="RRR")
             self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+            print("Updated convo_dict with RRR reply.")
         elif ack == "RR73":
-            translated_message = (f"{message[1]} sends a Roger Roger Roger to {message[0]} and says goodbye, "
+            translated_message = (f"{message[1]} sends a Roger Roger to {message[0]} and says goodbye, "
                                   f"concluding the connection.")
             convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])), message=packet.message,
-                                     translated_message=translated_message, packet=packet, type="RRR")
+                                     translated_message=translated_message, packet=packet, type="RR & Goodbye")
             self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
-            self.convo_dict[(callsigns[0], callsigns[1])]["completed"] = True
+            self.convo_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
+            print("Updated convo_dict with RR73 reply.")
         elif ack == "73":
             translated_message = f"{message[1]} sends their well wishes to {message[0]}, concluding the connection."
             convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])), message=packet.message,
-                                     translated_message=translated_message, packet=packet, type="RRR")
+                                     translated_message=translated_message, packet=packet, type="Goodbye")
             self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
-            self.convo_dict[(callsigns[0], callsigns[1])]["completed"] = True
+            self.convo_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
+            print("Updated convo_dict with 73 reply.")
 
     def is_grid_square(self, message):
         code = str(message[-1])
@@ -217,17 +227,18 @@ class MessageProcessor:
     def handle_grid_square(self, callsigns: list, packet: Packet, message: list):
         grid_square = message[-1]
         translated_message = f"{message[1]} sends a grid square location of {grid_square} to {message[0]}."
-        convo_turn = MessageTurn(turn=((len(self.convo_dict[(callsigns[0], callsigns[1])])) + 1),
+        convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])),
                                  message=packet.message, translated_message=translated_message, packet=packet,
                                  type="Grid Square Report")
         self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+        print("Updated convo_dict with grid square report.")
 
     # TODO track CQs separately from conversation turns [DONE]
     def handle_cq(self, packet: Packet):
         caller = packet.message.split()[1]
         grid = packet.message.split()[2]
         translated = f"Station {caller} is calling for any response from grid {grid}."
-        cq = CQ(packet=packet, message=packet.message, caller=caller, translate_message=translated)
+        cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
         self.cqs.append(cq)
 
     # TODO add error handling if None
@@ -239,7 +250,7 @@ class MessageProcessor:
                     this_cq = cq
                     cq_turn = MessageTurn(turn=1, message=this_cq.message, translated_message=this_cq.translated_message,
                                   packet=this_cq.packet, type="CQ Call.")
-                    self.convo_dict[(callsigns[0], callsigns[1])].insert(0, cq_turn)
+                    self.convo_dict[(callsigns[0], callsigns[1])].insert(1, cq_turn)
                     print("Updated convo_dict with initial CQ call.")
                     break
                 else:
