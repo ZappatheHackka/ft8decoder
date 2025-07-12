@@ -5,8 +5,7 @@ import struct
 from threading import Thread
 from dataclasses import dataclass
 
-data_motherload = []
-
+# TODO write create_message() func on MessageProcessor that creates MessageTurn objects and stores them appropriately.
 # ---------------------DATA GRABBING---------------------------
 
 @dataclass
@@ -70,11 +69,12 @@ class WsjtxParser:
                 pass
 
     def start_grabbing(self, seconds: int):
+        processor = MessageProcessor()
         while True:
             time.sleep(seconds)
-            print(f"Dumped data: {data_motherload}")
+            print(f"Dumped data: {processor.data_motherload}")
             while not self.packet_queue.empty():
-                data_motherload.append(self.packet_queue.get_nowait())
+                processor.data_motherload.append(self.packet_queue.get_nowait())
 
 
 # -----------------DATA PROCESSING-----------------------
@@ -94,10 +94,12 @@ class CQ:
     caller: str
     packet: Packet
 
-# data is data_motherload
+
 class MessageProcessor:
     def __init__(self):
         self.cqs = []
+        self.data_motherload = []
+        self.misc_comms = {}
         self.convo_dict = {}
 
     def order(self, data: list):
@@ -108,17 +110,15 @@ class MessageProcessor:
         for packet in data:
             message = packet.message.split()
             if len(message) > 3:
-                continue
+                self.handle_longer_msg(packet=packet, message=message)
             # TODO Handle messages w/ >3 words (dx etc)
-            if len(message) < 3:
-                continue
+            if 1 < len(message) < 3:
+                self.handle_short_msg(packet=packet, message=message)
             if message[0] == "CQ":
                 self.handle_cq(packet)
                 continue
-            message_callsigns = []
+            message_callsigns = [message[0], message[1]]
             # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
-            message_callsigns.append(message[0])
-            message_callsigns.append(message[1])
             callsigns = sorted(message_callsigns)
             if (callsigns[0], callsigns[1]) in self.convo_dict:
                 self.sort_message(packet, callsigns, new_convo=False)
@@ -134,7 +134,6 @@ class MessageProcessor:
             # TODO Reorder checking order, place CQ updater in first func [DONE]
             self.add_cq(callsigns=callsigns)
         message = packet.message.split()
-        print(message)
         if self.is_ack_reply(message):
             self.handle_ack_reply(callsigns, packet, message)
         elif self.is_grid_square(message):
@@ -142,9 +141,79 @@ class MessageProcessor:
         elif self.is_signal_report(message):
             self.handle_signal_report(callsigns, packet, message)
 
-    # TODO Handle messages w/ <2 words
-    def handle_short_msg(self, packet: Packet, message: str):
-        pass
+    # TODO Handle messages w/ <=2 words [DONE]
+    def handle_short_msg(self, packet: Packet, message: list):
+        second_part = message[1]
+        if self.is_grid_square(message):
+            convo_turn = MessageTurn(turn=0, message="".join(message), translated_message=f"{message[0]} "
+                        f"announces their position at {second_part}.", packet=packet, type="Grid Square announcement.")
+            keys = sorted(message)
+            if (keys[0], keys[1]) in self.misc_comms:
+                self.misc_comms[(keys[0], keys[1])].append(convo_turn)
+            else:
+                self.misc_comms[(keys[0], keys[1])] = [convo_turn]
+        elif second_part == "73":
+            convo_turn = MessageTurn(turn=0, message="".join(message),
+                                     translated_message=f"{message[0]} says goodbye.",
+                                     packet=packet, type="73 sign off.")
+            keys = sorted(message)
+            # TODO write search func that can check main list for potential matches--where is the message 73ing to?
+            if (keys[0], keys[1]) in self.misc_comms:
+                self.misc_comms[(keys[0], keys[1])].append(convo_turn)
+            else:
+                self.misc_comms[(keys[0], keys[1])] = [convo_turn]
+        elif second_part == "RR73":
+            convo_turn = MessageTurn(turn=0, message="".join(message),
+                                     translated_message=f"{message[0]} says Roger Roger and signs off.",
+                                     packet=packet, type="RR73")
+            keys = sorted(message)
+            if (keys[0], keys[1]) in self.misc_comms:
+                self.misc_comms[(keys[0], keys[1])].append(convo_turn)
+            else:
+                self.misc_comms[(keys[0], keys[1])] = [convo_turn]
+        # Just two callsigns
+        elif "/QRP" in message:
+            if "/QRP" in message[0]:
+                keys = sorted(message)
+                if (keys[0], keys[1]) in self.convo_dict:
+                    convo_turn = MessageTurn(turn=len(self.convo_dict[(keys[0], keys[1])]), message="".join(message),
+                                             translated_message=f"{message[1]} pings low power {message[0]}.",
+                                             packet=packet, type="Two Callsigns")
+                    self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                else:
+                    convo_turn = MessageTurn(turn=0, message="".join(message),
+                                             translated_message=f"{message[1]} pings low power {message[0]}.",
+                                             packet=packet, type="Two Callsigns")
+                    self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+            else:
+                keys = sorted(message)
+                if (keys[0], keys[1]) in self.convo_dict:
+                    convo_turn = MessageTurn(turn=len(self.convo_dict[(keys[0], keys[1])]), message="".join(message),
+                                             translated_message=f"{message[1]} pings {message[0]} at low power.",
+                                             packet=packet, type="Two Callsigns")
+                    self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                else:
+                    convo_turn = MessageTurn(turn=0, message="".join(message),
+                                             translated_message=f"{message[1]} pings {message[0]} at low power.",
+                                             packet=packet, type="Two Callsigns")
+                    self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+        else:
+            keys = sorted(message)
+            if (keys[0], keys[1]) in self.convo_dict:
+                convo_turn = MessageTurn(turn=len(self.convo_dict[(keys[0], keys[1])]), message="".join(message),
+                                         translated_message=f"{message[1]} pings {message[0]}.", packet=packet,
+                                         type="Two Callsigns.")
+                self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+            else:
+                convo_turn = MessageTurn(turn=0, message="".join(message), translated_message=f"{message[1]} pings "
+                                            f"{message[0]}.", packet=packet, type="Two Callsigns.")
+                self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+
+    def handle_longer_msg(self, packet: Packet, message: list):
+        code = message[1]
+        geo_list = ["NA", "EU", "AS", "AF", "SA", "OC", "UK", "JA", 'VK', 'ZL', 'UA', 'HL', 'BV', 'W', 'VE', 'K']
+        if code in geo_list:
+            convo_turn = MessageTurn(turn=0, message="".join(message),)
 
     # TODO make logic more robust- check for int(), place after Grid & Ack checks [DONE]
     def is_signal_report(self, message):
@@ -243,7 +312,6 @@ class MessageProcessor:
 
     # TODO add error handling if None
     def add_cq(self, callsigns: list):
-        this_cq = None
         for callsign in callsigns:
             for cq in self.cqs:
                 if cq.caller == callsign:
@@ -255,5 +323,3 @@ class MessageProcessor:
                     break
                 else:
                     continue
-
-# -------------------ERRORS--------------------------
