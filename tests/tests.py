@@ -15,3 +15,5 @@ for pack in packet_list:
 processor = MessageProcessor()
 processor.check_callsigns(packet_list)
 print(processor.convo_dict)
+print(processor.cqs)
+print(processor.misc_comms)

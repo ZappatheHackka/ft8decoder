@@ -1,3 +1,4 @@
+import json
 import queue
 import socket
 import time
@@ -6,7 +7,8 @@ from threading import Thread
 from dataclasses import dataclass
 
 # TODO write create_message() func on MessageProcessor that creates MessageTurn objects and stores them appropriately.
-# ---------------------DATA GRABBING---------------------------
+
+# -----------------DATA PROCESSING-----------------------
 
 @dataclass
 class Packet:
@@ -17,67 +19,6 @@ class Packet:
     schema: int
     program: str
     packet_type: int
-
-class WsjtxParser:
-    def __init__(self):
-        self.packet_queue = queue.Queue()
-
-    def start_listening(self, host, port):
-        listen_thread = Thread(target=self.listen, args=(host, port))
-        listen_thread.start()
-
-    def listen(self, host, port):
-        udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        try:
-            udp_socket.bind((host, port))
-            print(f"Listening on {host}:{port}...")
-            ans = input("Begin packet parsing? (Y/n)\n").lower()
-            if ans == "n":
-                print("Quitting...")
-                exit()
-            if ans == "y":
-                print("Parsing packets...")
-                grabbing_thread = Thread(target=self.start_grabbing, args=(30,))
-                grabbing_thread.start()
-                while True:
-                    udp_socket.settimeout(1.0)
-                    try:
-                        data, addr = udp_socket.recvfrom(1024)
-                        if len(data) >= 12:
-                            self.parse_packets(data=data)
-                    except socket.timeout:
-                        print("Waiting for message...")
-        except socket.error as msg:
-            print(f"Socket error: {msg}. Could not listen on {host}:{port}.")
-
-    def parse_packets(self, data):
-        message_type = struct.unpack(">I", data[8:12])[0]
-        match message_type:
-            case 2:  # Message packets
-                schema = struct.unpack('>I', data[4:8])[0]
-                program = struct.unpack('>6s', data[16:22])[0].decode('utf-8')
-                snr = struct.unpack(">i", data[27:31])[0]
-                time_delta = struct.unpack(">d", data[31:39])[0]
-                fq_offset = struct.unpack('>i', data[39:43])[0]
-                msg = data[52:-2]
-                decoded_msg = msg.decode('utf-8')
-                parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
-                                                   delta_time=time_delta, frequency=fq_offset, message=decoded_msg)
-                print(parsed_packet.message)
-                self.packet_queue.put(parsed_packet)
-            case 1:  # Status packets
-                pass
-
-    def start_grabbing(self, seconds: int):
-        processor = MessageProcessor()
-        while True:
-            time.sleep(seconds)
-            print(f"Dumped data: {processor.data_motherload}")
-            while not self.packet_queue.empty():
-                processor.data_motherload.append(self.packet_queue.get_nowait())
-
-
-# -----------------DATA PROCESSING-----------------------
 
 @dataclass
 class MessageTurn:
@@ -94,13 +35,40 @@ class CQ:
     caller: str
     packet: Packet
 
-
+# TODO store self.cqs, convo_dict, and misc_comms in either a list, or create an attr. that concatenates them all together
 class MessageProcessor:
     def __init__(self):
         self.cqs = []
         self.data_motherload = []
         self.misc_comms = {}
         self.convo_dict = {}
+        self.translation_templates = {    # Cleaner for catching rare / niche message types than endless conditionals.
+            "DX": "{sender} is calling long-distance stations from grid {grid}.",
+            "POTA": "Parks on the Air participant {sender} is calling from grid {grid}.",
+            "SOTA": "Summits on the Air participant {sender} is calling from grid {grid}.",
+            "TEST": "{sender} is making a contest call from grid {grid}.",
+            "NA": "{sender} is calling North America from grid {grid}.",
+            "EU": "{sender} is calling Europe from grid {grid}.",
+            "SA": "{sender} is calling South America from grid {grid}.",
+            "AS": "{sender} is calling Asia from grid {grid}.",
+            "AF": "{sender} is calling Africa from grid {grid}.",
+            "OC": "{sender} is calling Oceania from grid {grid}.",
+            "JA": "{sender} is calling Japan from grid {grid}.",
+            "HL": "{sender} is calling South Korea from grid {grid}.",
+            "VK": "{sender} is calling Australia from grid {grid}.",
+            "UA": "{sender} is calling Russia from grid {grid}.",
+            "BV": "{sender} is calling Taiwan from grid {grid}.",
+            "VOTA": "Volunteers On The Air participant {sender} is calling from grid {grid}.",
+            "ZL": "{sender} is calling New Zealand from grid {grid}.",
+            "CN": "{sender} is calling China from grid {grid}.",
+            "BY": "{sender} is calling China from grid {grid}.",
+            "WFD": "{sender} is operating in Winter Field Day from grid {grid}.",
+            "FD": "{sender} is operating in Field Day from grid {grid}.",
+            "SKCC": "{sender} is calling SKCC (Straight Key Century Club) members from grid {grid}.",
+            "NAQP": "{sender} is participating in the North American QSO Party from grid {grid}.",
+            "ARRL": "{sender} is participating in an ARRL event from grid {grid}.",
+            "CQWW": "{sender} is participating in CQ World Wide from grid {grid}.",
+        }
 
     def order(self, data: list):
         pass
@@ -109,14 +77,16 @@ class MessageProcessor:
     def check_callsigns(self, data: list):
         for packet in data:
             message = packet.message.split()
-            if len(message) > 3:
-                self.handle_longer_msg(packet=packet, message=message)
-            # TODO Handle messages w/ >3 words (dx etc)
-            if 1 < len(message) < 3:
-                self.handle_short_msg(packet=packet, message=message)
             if message[0] == "CQ":
                 self.handle_cq(packet)
                 continue
+            if len(message) == 2:
+                self.handle_short_msg(packet=packet, message=message)
+                continue
+            if len(message) > 3:
+                self.handle_longer_msg(packet=packet, message=message)
+                continue
+            # TODO Handle messages w/ >3 words (dx etc)
             message_callsigns = [message[0], message[1]]
             # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
             callsigns = sorted(message_callsigns)
@@ -172,7 +142,7 @@ class MessageProcessor:
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
         # Just two callsigns
-        elif "/QRP" in message:
+        elif "/QRP" in "".join(message):
             if "/QRP" in message[0]:
                 keys = sorted(message)
                 if (keys[0], keys[1]) in self.convo_dict:
@@ -211,12 +181,16 @@ class MessageProcessor:
 
     def handle_longer_msg(self, packet: Packet, message: list):
         code = message[1]
-        geo_list = ["NA", "EU", "AS", "AF", "SA", "OC", "UK", "JA", 'VK', 'ZL', 'UA', 'HL', 'BV', 'W', 'VE', 'K']
-        if code in geo_list:
-            convo_turn = MessageTurn(turn=0, message="".join(message),)
+        callsign = message[2]
+        grid = message[3]
+        if code in self.translation_templates:  # Only called for four part CQs
+            translated_message = self.translation_templates[code].format(sender=callsign, grid=grid)
+            convo_turn = CQ(message=" ".join(message), translated_message=translated_message, caller=callsign,
+                            packet=packet)
+            self.cqs.append(convo_turn)
 
     # TODO make logic more robust- check for int(), place after Grid & Ack checks [DONE]
-    def is_signal_report(self, message):
+    def is_signal_report(self, message: list):
         signal = message[-1]
         if len(signal) > 2:
             if signal != "RR73" and signal != "RRR":
@@ -304,13 +278,16 @@ class MessageProcessor:
 
     # TODO track CQs separately from conversation turns [DONE]
     def handle_cq(self, packet: Packet):
-        caller = packet.message.split()[1]
-        grid = packet.message.split()[2]
-        translated = f"Station {caller} is calling for any response from grid {grid}."
-        cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
-        self.cqs.append(cq)
+        split_message = packet.message.split()
+        if len(split_message) == 4:
+            self.handle_longer_msg(packet=packet, message=split_message)
+        else:
+            caller = packet.message.split()[1]
+            grid = packet.message.split()[2]
+            translated = f"Station {caller} is calling for any response from grid {grid}."
+            cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
+            self.cqs.append(cq)
 
-    # TODO add error handling if None
     def add_cq(self, callsigns: list):
         for callsign in callsigns:
             for cq in self.cqs:
@@ -319,7 +296,74 @@ class MessageProcessor:
                     cq_turn = MessageTurn(turn=1, message=this_cq.message, translated_message=this_cq.translated_message,
                                   packet=this_cq.packet, type="CQ Call.")
                     self.convo_dict[(callsigns[0], callsigns[1])].insert(1, cq_turn)
+                    self.cqs.remove(cq)
                     print("Updated convo_dict with initial CQ call.")
                     break
                 else:
                     continue
+
+# ---------------------DATA EXPORTING--------------------------
+    def to_json(self):
+        with open("ft8_data.json", "a") as json_file:
+            for pair in self.convo_dict:
+                data = json.dumps(pair, indent=4)
+                json_file.write(data)
+
+# ---------------------DATA GRABBING---------------------------
+
+class WsjtxParser:
+    def __init__(self):
+        self.packet_queue = queue.Queue()
+
+    def start_listening(self, host, port, processor: MessageProcessor):
+        listen_thread = Thread(target=self.listen, args=(host, port, processor))
+        listen_thread.start()
+
+    def listen(self, host, port, processor: MessageProcessor):
+        udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        try:
+            udp_socket.bind((host, port))
+            print(f"Listening on {host}:{port}...")
+            ans = input("Begin packet parsing? (Y/n)\n").lower()
+            if ans == "n":
+                print("Quitting...")
+                exit()
+            if ans == "y":
+                print("Parsing packets...")
+                grabbing_thread = Thread(target=self.start_grabbing, args=(30, processor))
+                grabbing_thread.start()
+                while True:
+                    udp_socket.settimeout(1.0)
+                    try:
+                        data, addr = udp_socket.recvfrom(1024)
+                        if len(data) >= 12:
+                            self.parse_packets(data=data)
+                    except socket.timeout:
+                        print("Waiting for message...")
+        except socket.error as msg:
+            print(f"Socket error: {msg}. Could not listen on {host}:{port}.")
+
+    def parse_packets(self, data):
+        message_type = struct.unpack(">I", data[8:12])[0]
+        match message_type:
+            case 2:  # Message packets
+                schema = struct.unpack('>I', data[4:8])[0]
+                program = struct.unpack('>6s', data[16:22])[0].decode('utf-8')
+                snr = struct.unpack(">i", data[27:31])[0]
+                time_delta = struct.unpack(">d", data[31:39])[0]
+                fq_offset = struct.unpack('>i', data[39:43])[0]
+                msg = data[52:-2]
+                decoded_msg = msg.decode('utf-8')
+                parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
+                                                   delta_time=time_delta, frequency=fq_offset, message=decoded_msg)
+                print(parsed_packet.message)
+                self.packet_queue.put(parsed_packet)
+            case 1:  # Status packets
+                pass
+
+    def start_grabbing(self, seconds: int, processor: MessageProcessor):
+        while True:
+            time.sleep(seconds)
+            print(f"Dumped data: {processor.data_motherload}")
+            while not self.packet_queue.empty():
+                processor.data_motherload.append(self.packet_queue.get_nowait())
