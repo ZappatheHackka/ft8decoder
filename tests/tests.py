@@ -13,7 +13,8 @@ for pack in packet_list:
     print(pack.message)
 
 processor = MessageProcessor()
-processor.check_callsigns(packet_list)
+processor.organize_messages(packet_list, 0)
 print(processor.convo_dict)
 print(processor.cqs)
 print(processor.misc_comms)
+processor.to_json()

@@ -4,7 +4,7 @@ import socket
 import time
 import struct
 from threading import Thread
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 
 # TODO write create_message() func on MessageProcessor that creates MessageTurn objects and stores them appropriately.
 
@@ -70,31 +70,43 @@ class MessageProcessor:
             "CQWW": "{sender} is participating in CQ World Wide from grid {grid}.",
         }
 
-    def order(self, data: list):
-        pass
+    def order(self, seconds: int):
+        thread = Thread(target=self.organize_messages, args=(seconds,))
+        thread.start()
 
     # TODO Write tests for this- create a list of sample FT8 contacts and run it through [DONE]
-    def check_callsigns(self, data: list):
-        for packet in data:
-            message = packet.message.split()
-            if message[0] == "CQ":
-                self.handle_cq(packet)
-                continue
-            if len(message) == 2:
-                self.handle_short_msg(packet=packet, message=message)
-                continue
-            if len(message) > 3:
-                self.handle_longer_msg(packet=packet, message=message)
-                continue
-            # TODO Handle messages w/ >3 words (dx etc)
-            message_callsigns = [message[0], message[1]]
-            # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
-            callsigns = sorted(message_callsigns)
-            if (callsigns[0], callsigns[1]) in self.convo_dict:
-                self.sort_message(packet, callsigns, new_convo=False)
+    def organize_messages(self, seconds: int):
+        while True:
+            time.sleep(seconds)
+
+            packets_to_process = self.data_motherload.copy()
+            self.data_motherload.clear()
+            print(f"Processing {len(packets_to_process)} packets...")
+
+            if packets_to_process:
+                for packet in packets_to_process:
+                    message = packet.message.split()
+                    if message[0] == "CQ":
+                        self.handle_cq(packet)
+                        continue
+                    if len(message) == 2:
+                        self.handle_short_msg(packet=packet, message=message)
+                        continue
+                    if len(message) > 3:
+                        self.handle_longer_msg(packet=packet, message=message)
+                        continue
+                    # TODO Handle messages w/ >3 words (dx etc)
+                    message_callsigns = [message[0], message[1]]
+                    # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
+                    callsigns = sorted(message_callsigns)
+                    if (callsigns[0], callsigns[1]) in self.convo_dict:
+                        self.sort_message(packet, callsigns, new_convo=False)
+                    else:
+                        self.convo_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
+                        self.sort_message(packet, callsigns, new_convo=True)
+                    print(f"Processed {len(packets_to_process)} packets!")
             else:
-                self.convo_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
-                self.sort_message(packet, callsigns, new_convo=True)
+                print(f"No packets found! Waiting {seconds} more seconds...")
 
     # TODO REFACTOR SO MessageTurn() OBJECTS CREATED AS PACKETS RECEIVED--NOT PRE-DEFINED [DONE]
 
@@ -120,8 +132,10 @@ class MessageProcessor:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
+                print("Message added to misc_comms list!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
+                print("Message added to misc_comms list!")
         elif second_part == "73":
             convo_turn = MessageTurn(turn=0, message="".join(message),
                                      translated_message=f"{message[0]} says goodbye.",
@@ -130,8 +144,10 @@ class MessageProcessor:
             # TODO write search func that can check main list for potential matches--where is the message 73ing to?
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
+                print("Message added to misc_comms list!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
+                print("Message added to misc_comms list!")
         elif second_part == "RR73":
             convo_turn = MessageTurn(turn=0, message="".join(message),
                                      translated_message=f"{message[0]} says Roger Roger and signs off.",
@@ -139,8 +155,10 @@ class MessageProcessor:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
+                print("Message added to misc_comms list!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
+                print("Message added to misc_comms list!")
         # Just two callsigns
         elif "/QRP" in "".join(message):
             if "/QRP" in message[0]:
@@ -174,10 +192,12 @@ class MessageProcessor:
                                          translated_message=f"{message[1]} pings {message[0]}.", packet=packet,
                                          type="Two Callsigns.")
                 self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                print("Message added to convo_dict!")
             else:
                 convo_turn = MessageTurn(turn=0, message="".join(message), translated_message=f"{message[1]} pings "
                                             f"{message[0]}.", packet=packet, type="Two Callsigns.")
                 self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+                print("Message added to convo_dict!")
 
     def handle_longer_msg(self, packet: Packet, message: list):
         code = message[1]
@@ -188,6 +208,7 @@ class MessageProcessor:
             convo_turn = CQ(message=" ".join(message), translated_message=translated_message, caller=callsign,
                             packet=packet)
             self.cqs.append(convo_turn)
+            print("Longer message add to convo_dict")
 
     # TODO make logic more robust- check for int(), place after Grid & Ack checks [DONE]
     def is_signal_report(self, message: list):
@@ -281,12 +302,24 @@ class MessageProcessor:
         split_message = packet.message.split()
         if len(split_message) == 4:
             self.handle_longer_msg(packet=packet, message=split_message)
-        else:
+        elif len(split_message) == 3:
             caller = packet.message.split()[1]
+            print(packet.message)
             grid = packet.message.split()[2]
             translated = f"Station {caller} is calling for any response from grid {grid}."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
+            print("CQ added to convo_dict")
+        elif len(split_message) == 2:
+            caller = packet.message.split()[1]
+            translated = f"Station {caller} is calling for any response."
+            cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
+            self.cqs.append(cq)
+            print("CQ added to convo_dict")
+        else:
+            cq = CQ(packet=packet, message=packet.message, caller=packet.message, translated_message="Unconfigured")
+            self.cqs.append(cq)
+            print("CQ added to convo_dict")
 
     def add_cq(self, callsigns: list):
         for callsign in callsigns:
@@ -303,11 +336,21 @@ class MessageProcessor:
                     continue
 
 # ---------------------DATA EXPORTING--------------------------
-    def to_json(self):
+    def to_json(self):  #TODO make this export ALL data (cq turns, misc_comms) not just convo turns-make methods for each and one overall method
         with open("ft8_data.json", "a") as json_file:
-            for pair in self.convo_dict:
-                data = json.dumps(pair, indent=4)
-                json_file.write(data)
+            json_dict = {}
+            for k, v in self.convo_dict.items():
+                key_str = str(k)  # Convert tuple key to string
+                json_dict[key_str] = []
+
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict[key_str].append(asdict(item))
+                    else:
+                        json_dict[key_str].append(item)  # For the {"completed": False} dict
+
+            data = json.dumps(json_dict, indent=4)
+            json_file.write(data)
 
 # ---------------------DATA GRABBING---------------------------
 
@@ -316,30 +359,30 @@ class WsjtxParser:
         self.packet_queue = queue.Queue()
 
     def start_listening(self, host, port, processor: MessageProcessor):
-        listen_thread = Thread(target=self.listen, args=(host, port, processor))
-        listen_thread.start()
+        print(f"Listening on {host}:{port}...")
+        ans = input("Begin packet parsing? (Y/n)\n").lower()
+        if ans == "n":
+            print("Quitting...")
+            exit()
+        if ans == "y":
+            listen_thread = Thread(target=self.listen, args=(host, port, processor))
+            listen_thread.start()
 
     def listen(self, host, port, processor: MessageProcessor):
         udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             udp_socket.bind((host, port))
-            print(f"Listening on {host}:{port}...")
-            ans = input("Begin packet parsing? (Y/n)\n").lower()
-            if ans == "n":
-                print("Quitting...")
-                exit()
-            if ans == "y":
-                print("Parsing packets...")
-                grabbing_thread = Thread(target=self.start_grabbing, args=(30, processor))
-                grabbing_thread.start()
-                while True:
-                    udp_socket.settimeout(1.0)
-                    try:
-                        data, addr = udp_socket.recvfrom(1024)
-                        if len(data) >= 12:
-                            self.parse_packets(data=data)
-                    except socket.timeout:
-                        print("Waiting for message...")
+            print("Parsing packets...")
+            grabbing_thread = Thread(target=self.start_grabbing, args=(processor,))
+            grabbing_thread.start()
+            while True:
+                udp_socket.settimeout(1.0)
+                try:
+                    data, addr = udp_socket.recvfrom(1024)
+                    if len(data) >= 12:
+                        self.parse_packets(data=data)
+                except socket.timeout:
+                    print("Waiting for message...")
         except socket.error as msg:
             print(f"Socket error: {msg}. Could not listen on {host}:{port}.")
 
@@ -361,9 +404,10 @@ class WsjtxParser:
             case 1:  # Status packets
                 pass
 
-    def start_grabbing(self, seconds: int, processor: MessageProcessor):
+    def start_grabbing(self, processor: MessageProcessor):
         while True:
-            time.sleep(seconds)
-            print(f"Dumped data: {processor.data_motherload}")
-            while not self.packet_queue.empty():
-                processor.data_motherload.append(self.packet_queue.get_nowait())
+            try:
+                packet = self.packet_queue.get(timeout=1)  # Block for 1 second max
+                processor.data_motherload.append(packet)
+            except queue.Empty:
+                continue
