@@ -1,41 +1,9 @@
-import json
-import queue
-import socket
-import time
-import struct
 from threading import Thread
-from dataclasses import dataclass, asdict
+import time
+from core import *
+from dataclasses import asdict
+import json
 
-# TODO write create_message() func on MessageProcessor that creates MessageTurn objects and stores them appropriately.
-
-# -----------------DATA PROCESSING-----------------------
-
-@dataclass
-class Packet:
-    snr: int #
-    delta_time: float
-    frequency: int
-    message: str
-    schema: int
-    program: str
-    packet_type: int
-
-@dataclass
-class MessageTurn:
-    turn: int
-    message: str
-    translated_message: str
-    packet: Packet | str
-    type: str
-
-@dataclass
-class CQ:
-    message: str
-    translated_message: str
-    caller: str
-    packet: Packet
-
-# TODO store self.cqs, convo_dict, and misc_comms in either a list, or create an attr. that concatenates them all together [DONE]
 class MessageProcessor:
     def __init__(self):
         self.cqs = []
@@ -354,90 +322,18 @@ class MessageProcessor:
 
     def all_to_json(self):  #TODO make this export ALL data (cq turns, misc_comms) not just convo turns-make methods for each and one overall method
         with open("ft8_data.json", "a") as json_file:
-            json_dict = {}
-            for k, v in self.convo_dict.items():
-                key_str = str(k)
-                json_dict[key_str] = []
+            for dict in self.master_data:
+                json_dict = {}
+                for k, v in dict.items():
+                    key_str = str(k)
+                    json_dict[key_str] = []
 
-                for item in v:
-                    if isinstance(item, MessageTurn):
-                        json_dict[key_str].append(asdict(item))
-                    else:
-                        json_dict[key_str].append(item)  # For the {"completed": False} dict
+                    for item in v:
+                        if isinstance(item, MessageTurn):
+                            json_dict[key_str].append(asdict(item))
+                        else:
+                            json_dict[key_str].append(item)  # For the {"completed": False} dict
 
-            data = json.dumps(json_dict, indent=4)
-            json_file.write(data)
-            json_file.write("\n\n\n\n\n")
-
-            for k, v in self.misc_comms.items():
-                key_str = str(k)
-                json_dict[key_str] = []
-
-                for item in v:
-                    if isinstance(item, MessageTurn):
-                        json_dict[key_str].append(asdict(item))
-                    else:
-                        json_dict[key_str].append(item)
-
-            data = json.dumps(json_dict, indent=4)
-            json_file.write(data)
-
-# ---------------------DATA GRABBING---------------------------
-
-class WsjtxParser:
-    def __init__(self):
-        self.packet_queue = queue.Queue()
-
-    def start_listening(self, host, port, processor: MessageProcessor):
-        print(f"Listening on {host}:{port}...")
-        ans = input("Begin packet parsing? (Y/n)\n").lower()
-        if ans == "n":
-            print("Quitting...")
-            exit()
-        if ans == "y":
-            listen_thread = Thread(target=self.listen, args=(host, port, processor))
-            listen_thread.start()
-
-    def listen(self, host, port, processor: MessageProcessor):
-        udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        try:
-            udp_socket.bind((host, port))
-            print("Parsing packets...")
-            grabbing_thread = Thread(target=self.start_grabbing, args=(processor,))
-            grabbing_thread.start()
-            while True:
-                udp_socket.settimeout(1.0)
-                try:
-                    data, addr = udp_socket.recvfrom(1024)
-                    if len(data) >= 12:
-                        self.parse_packets(data=data)
-                except socket.timeout:
-                    print("Waiting for message...")
-        except socket.error as msg:
-            print(f"Socket error: {msg}. Could not listen on {host}:{port}.")
-
-    def parse_packets(self, data):
-        message_type = struct.unpack(">I", data[8:12])[0]
-        match message_type:
-            case 2:  # Message packets
-                schema = struct.unpack('>I', data[4:8])[0]
-                program = struct.unpack('>6s', data[16:22])[0].decode('utf-8')
-                snr = struct.unpack(">i", data[27:31])[0]
-                time_delta = struct.unpack(">d", data[31:39])[0]
-                fq_offset = struct.unpack('>i', data[39:43])[0]
-                msg = data[52:-2]
-                decoded_msg = msg.decode('utf-8')
-                parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
-                                                   delta_time=time_delta, frequency=fq_offset, message=decoded_msg)
-                print(parsed_packet.message)
-                self.packet_queue.put(parsed_packet)
-            case 1:  # Status packets
-                pass
-
-    def start_grabbing(self, processor: MessageProcessor):
-        while True:
-            try:
-                packet = self.packet_queue.get(timeout=1)  # Block for 1 second max
-                processor.data_motherload.append(packet)
-            except queue.Empty:
-                continue
+                    data = json.dumps(json_dict, indent=4)
+                    json_file.write(data)
+                    json_file.write("\n\n\n\n")
