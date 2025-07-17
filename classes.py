@@ -221,6 +221,9 @@ class MessageProcessor:
                 if 'RR' in signal:
                     if int(signal[2:]) or signal[2:] == '00':
                         return True
+                elif 'R' in signal:
+                    if int(signal[2:]) or signal[2:] == '00':
+                        return True
                 else:
                     if int(signal[1:]) or signal[1:] == '00':
                         return True
@@ -352,34 +355,47 @@ class MessageProcessor:
     def misc_to_json(self):
         pass
 
-    def all_to_json(self):  #TODO make this export ALL data (cq turns, misc_comms) not just convo turns-make methods for each and one overall method
-        with open("ft8_data.json", "a") as json_file:
-            json_dict = {}
+    def to_json(self):  #TODO make this export ALL data (cq turns, misc_comms) not just convo turns-make methods for each and one overall method
+        with open("ft8_data.json", "w") as json_file:
+            json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
+
             for k, v in self.convo_dict.items():
                 key_str = str(k)
-                json_dict[key_str] = []
+                json_dict["COMMS"][0][key_str] = []
 
                 for item in v:
                     if isinstance(item, MessageTurn):
-                        json_dict[key_str].append(asdict(item))
+                        json_dict["COMMS"][0][key_str].append(asdict(item))
                     else:
-                        json_dict[key_str].append(item)  # For the {"completed": False} dict
+                        json_dict["COMMS"][0][key_str].append(item)
 
-            data = json.dumps(json_dict, indent=4)
-            json_file.write(data)
-            json_file.write("\n\n\n\n\n")
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+
+            for i, cq in enumerate(self.cqs):
+                while len(json_dict["CQS"]) <= i:
+                    json_dict["CQS"].append({})
+
+                if isinstance(cq, CQ):
+                    json_dict["CQS"][i] = asdict(cq)
+                else:
+                    json_dict["CQS"][i] = cq
 
             for k, v in self.misc_comms.items():
                 key_str = str(k)
-                json_dict[key_str] = []
+                json_dict["MISC. COMMS"][0][key_str] = []
 
                 for item in v:
                     if isinstance(item, MessageTurn):
-                        json_dict[key_str].append(asdict(item))
+                        json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
                     else:
-                        json_dict[key_str].append(item)
+                        json_dict["MISC. COMMS"][0][key_str].append(item)
 
-            data = json.dumps(json_dict, indent=4)
+            data = json.dumps(json_dict, indent=2)
             json_file.write(data)
 
 # ---------------------DATA GRABBING---------------------------

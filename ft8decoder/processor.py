@@ -43,7 +43,6 @@ class MessageProcessor:
         thread = Thread(target=self.organize_messages, args=(seconds,))
         thread.start()
 
-    # TODO Write tests for this- create a list of sample FT8 contacts and run it through [DONE]
     def organize_messages(self, seconds: int):
         while True:
             time.sleep(seconds)
@@ -77,8 +76,6 @@ class MessageProcessor:
             else:
                 print(f"No packets found! Waiting {seconds} more seconds...")
 
-    # TODO REFACTOR SO MessageTurn() OBJECTS CREATED AS PACKETS RECEIVED--NOT PRE-DEFINED [DONE]
-
     # Handles new messages & retroactively places CQ call in list
     def sort_message(self, packet: Packet, callsigns: list, new_convo: bool):
         if new_convo:
@@ -94,7 +91,6 @@ class MessageProcessor:
         else:
             print(f"Could not parse packet:", packet)
 
-    # TODO Handle messages w/ <=2 words [DONE]
     def handle_short_msg(self, packet: Packet, message: list):
         second_part = message[1]
         if self.is_grid_square(message):
@@ -181,13 +177,15 @@ class MessageProcessor:
             self.cqs.append(convo_turn)
             print("Longer message add to convo_dict")
 
-    # TODO make logic more robust- check for int(), place after Grid & Ack checks [DONE]
     def is_signal_report(self, message: list):
         signal = message[-1]
         if len(signal) > 2:  # > 2 to return False for 73s
             if signal != "RR73" and signal != "RRR":
                 if 'RR' in signal:
                     if int(signal[2:]) or signal[2:] == '00':
+                        return True
+                elif 'R' in signal:
+                    if int(signal[1:]) or signal[1:] == '00':
                         return True
                 else:
                     if int(signal[1:]) or signal[1:] == '00':
@@ -272,7 +270,6 @@ class MessageProcessor:
         self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
         print("Updated convo_dict with grid square report.")
 
-    # TODO track CQs separately from conversation turns [DONE]
     def handle_cq(self, packet: Packet):
         split_message = packet.message.split()
         if len(split_message) == 4:
@@ -312,7 +309,27 @@ class MessageProcessor:
 
 # ---------------------DATA EXPORTING--------------------------
     def comms_to_json(self):
-        pass
+        with open("ft8_comms.json", "w") as json_file:
+            json_dict = {"COMMS": [{}]}
+
+            for k, v in self.convo_dict.items():
+                key_str = str(k)
+                json_dict["COMMS"][0][key_str] = []
+
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict["COMMS"][0][key_str].append(asdict(item))
+                    else:
+                        json_dict["COMMS"][0][key_str].append(item)
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+
+            json_file.write(json.dumps(json_dict))
 
     def cqs_to_json(self):
         pass
@@ -320,20 +337,45 @@ class MessageProcessor:
     def misc_to_json(self):
         pass
 
-    def all_to_json(self):  #TODO make this export ALL data (cq turns, misc_comms) not just convo turns-make methods for each and one overall method
-        with open("ft8_data.json", "a") as json_file:
-            for dict in self.master_data:
-                json_dict = {}
-                for k, v in dict.items():
-                    key_str = str(k)
-                    json_dict[key_str] = []
+    def to_json(self):
+        with open("ft8_data.json", "w") as json_file:
+            json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
 
-                    for item in v:
-                        if isinstance(item, MessageTurn):
-                            json_dict[key_str].append(asdict(item))
-                        else:
-                            json_dict[key_str].append(item)  # For the {"completed": False} dict
+            for k, v in self.convo_dict.items():
+                key_str = str(k)
+                json_dict["COMMS"][0][key_str] = []
 
-                    data = json.dumps(json_dict, indent=4)
-                    json_file.write(data)
-                    json_file.write("\n\n\n\n")
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict["COMMS"][0][key_str].append(asdict(item))
+                    else:
+                        json_dict["COMMS"][0][key_str].append(item)
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+
+            for i, cq in enumerate(self.cqs):
+                while len(json_dict["CQS"]) <= i:
+                    json_dict["CQS"].append({})
+
+                if isinstance(cq, CQ):
+                    json_dict["CQS"][i] = asdict(cq)
+                else:
+                    json_dict["CQS"][i] = cq
+
+            for k, v in self.misc_comms.items():
+                key_str = str(k)
+                json_dict["MISC. COMMS"][0][key_str] = []
+
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
+                    else:
+                        json_dict["MISC. COMMS"][0][key_str].append(item)
+
+            data = json.dumps(json_dict, indent=2)
+            json_file.write(data)
