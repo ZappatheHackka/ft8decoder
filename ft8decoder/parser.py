@@ -2,8 +2,8 @@ import socket
 import queue
 import struct
 from threading import Thread
-from processor import MessageProcessor
-from core import Packet
+from ft8decoder.processor import MessageProcessor
+from ft8decoder.core import Packet
 
 class WsjtxParser:
     def __init__(self):

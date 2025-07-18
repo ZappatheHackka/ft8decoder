@@ -1,6 +1,6 @@
 from threading import Thread
 import time
-from core import *
+from ft8decoder.core import *
 from dataclasses import asdict
 import json
 
@@ -332,10 +332,47 @@ class MessageProcessor:
             json_file.write(json.dumps(json_dict))
 
     def cqs_to_json(self):
-        pass
+        with open("ft8_cqs.json", "w") as json_file:
+            json_dict = {"CQS": []}
+            for i, cq in enumerate(self.cqs):
+                while len(json_dict["CQS"]) <= i:
+                    json_dict["CQS"].append({})
+
+                if isinstance(cq, CQ):
+                    json_dict["CQS"][i] = asdict(cq)
+                else:
+                    json_dict["CQS"][i] = cq
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+
+            json_file.write(json.dumps(json_dict))
 
     def misc_to_json(self):
-        pass
+        with open("ft8_misc.json", "w") as json_file:
+            json_dict = {"MISC": []}
+
+            for k, v in self.misc_comms.items():
+                key_str = str(k)
+                json_dict["MISC. COMMS"][0][key_str] = []
+
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
+                    else:
+                        json_dict["MISC. COMMS"][0][key_str].append(item)
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+            json_file.write(json.dumps(json_dict))
 
     def to_json(self):
         with open("ft8_data.json", "w") as json_file:
@@ -350,13 +387,6 @@ class MessageProcessor:
                         json_dict["COMMS"][0][key_str].append(asdict(item))
                     else:
                         json_dict["COMMS"][0][key_str].append(item)
-
-            for k, v in json_dict.items():
-                for i, field in enumerate(v):
-                    if isinstance(field, Packet):
-                        while len(json_dict[k]) <= i + 1:
-                            json_dict[k].append({})
-                        json_dict[k][i + 1]["packet"] = asdict(field)
 
             for i, cq in enumerate(self.cqs):
                 while len(json_dict["CQS"]) <= i:
@@ -376,6 +406,13 @@ class MessageProcessor:
                         json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
                     else:
                         json_dict["MISC. COMMS"][0][key_str].append(item)
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
 
             data = json.dumps(json_dict, indent=2)
             json_file.write(data)
