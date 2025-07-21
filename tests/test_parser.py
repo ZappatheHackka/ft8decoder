@@ -41,7 +41,3 @@ def test_packet_parsing_RR73():
     assert packet.delta_time == 0.5
     assert packet.frequency == 950
 
-
-test_packet_parsing_cq()
-test_packet_parsing_grid()
-test_packet_parsing_RR73()

@@ -46,7 +46,6 @@ class MessageProcessor:
     def organize_messages(self, seconds: int):
         while True:
             time.sleep(seconds)
-
             packets_to_process = self.data_motherload.copy()
             self.data_motherload.clear()
             print(f"Processing {len(packets_to_process)} packets...")
@@ -89,7 +88,8 @@ class MessageProcessor:
         elif self.is_signal_report(message):
             self.handle_signal_report(callsigns, packet, message)
         else:
-            print(f"Could not parse packet:", packet)
+            print(f"Could not parse packet:", packet, "\nAdding to misc_comms.")
+            self.misc_comms[(message[0], message[1])] = packet
 
     def handle_short_msg(self, packet: Packet, message: list):
         second_part = message[1]
@@ -182,14 +182,23 @@ class MessageProcessor:
         if len(signal) > 2:  # > 2 to return False for 73s
             if signal != "RR73" and signal != "RRR":
                 if 'RR' in signal:
-                    if int(signal[2:]) or signal[2:] == '00':
-                        return True
+                    try:
+                        if int(signal[2:]) or signal[2:] == '00':
+                            return True
+                    except ValueError:
+                        return False
                 elif 'R' in signal:
-                    if int(signal[1:]) or signal[1:] == '00':
-                        return True
+                    try:
+                        if int(signal[2:]) or signal[2:] == '00':
+                            return True
+                    except ValueError:
+                        return False
                 else:
-                    if int(signal[1:]) or signal[1:] == '00':
-                        return True
+                    try:
+                        if int(signal[1:]) or signal[1:] == '00':
+                            return True
+                    except ValueError:
+                        return False
                 return False
             return False
         return False
@@ -202,7 +211,7 @@ class MessageProcessor:
             translated_message = (f"{second_callsign} says Roger and reports a signal report of {nums} "
                                   f"to {first_callsign}.")
         else:
-            translated_message = f"{second_callsign} sends signal report of {message[2]} to {first_callsign}."
+            translated_message = f"{second_callsign} sends a signal report of {message[2]} to {first_callsign}."
 
         # Putting this as the second signal report--assuming the CQ caller sends report first
         m_type = "Signal Report"
