@@ -6,8 +6,33 @@ from ft8decoder.processor import MessageProcessor
 from ft8decoder.core import Packet
 
 class WsjtxParser:
-    def __init__(self):
+    def __init__(self, dial_frequency: float):
         self.packet_queue = queue.Queue()
+        self.dial_frequency = dial_frequency
+
+    def frequency_handle(self, fq_offset: float):
+        offset_mhz = fq_offset / 1_000_000
+        frequency = self.dial_frequency + offset_mhz
+        return frequency
+
+    def determine_band(self, frequency: float):
+        band_center_freqs = {
+            "160m": 1.840,
+            "80m": 3.573,
+            "40m": 7.074,
+            "30m": 10.136,
+            "20m": 14.074,
+            "17m": 18.100,
+            "15m": 21.074,
+            "12m": 24.915,
+            "10m": 28.074,
+            "6m": 50.313,
+            "2m": 144.174
+        }
+        for band, freq in band_center_freqs.items():
+            if abs(freq - frequency) < 0.015:
+                return band
+        return "Unknown"
 
     def start_listening(self, host, port, processor: MessageProcessor):
         print(f"Listening on {host}:{port}...")
@@ -48,8 +73,10 @@ class WsjtxParser:
                 fq_offset = struct.unpack('>i', data[39:43])[0]
                 msg = data[52:-2]
                 decoded_msg = msg.decode('utf-8')
+                frequency = self.frequency_handle(fq_offset)
                 parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
-                                                   delta_time=time_delta, frequency=fq_offset, message=decoded_msg)
+                                       delta_time=time_delta, frequency_offset=fq_offset, frequency=frequency,
+                                       band=self.determine_band(frequency), message=decoded_msg)
                 print(parsed_packet.message)
                 self.packet_queue.put(parsed_packet)
             case 1:  # Status packets

@@ -4,7 +4,9 @@ from dataclasses import dataclass
 class Packet:
     snr: int
     delta_time: float
-    frequency: int
+    frequency_offset: int
+    frequency: float
+    band: str
     message: str
     schema: int
     program: str

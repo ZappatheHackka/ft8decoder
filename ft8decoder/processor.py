@@ -88,7 +88,7 @@ class MessageProcessor:
         elif self.is_signal_report(message):
             self.handle_signal_report(callsigns, packet, message)
         else:
-            print(f"Could not parse packet:", packet, "\nAdding to misc_comms.")
+            print("Could not parse packet:", packet, "\nAdding to misc_comms.")
             self.misc_comms[(message[0], message[1])] = packet
 
     def handle_short_msg(self, packet: Packet, message: list):
@@ -99,10 +99,10 @@ class MessageProcessor:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
-                print("Message added to misc_comms list!")
+                print("Updated misc_comms list with message!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
-                print("Message added to misc_comms list!")
+                print("Updated misc_comms list with message!")
         elif second_part == "73":
             convo_turn = MessageTurn(turn=0, message="".join(message),
                                      translated_message=f"{message[0]} says goodbye.",
@@ -111,10 +111,10 @@ class MessageProcessor:
             # TODO write search func that can check main list for potential matches--where is the message 73ing to?
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
-                print("Message added to misc_comms list!")
+                print("Updated misc_comms list with message!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
-                print("Message added to misc_comms list!")
+                print("Updated misc_comms list with message!")
         elif second_part == "RR73":
             convo_turn = MessageTurn(turn=0, message="".join(message),
                                      translated_message=f"{message[0]} says Roger Roger and signs off.",
@@ -122,10 +122,10 @@ class MessageProcessor:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
-                print("Message added to misc_comms list!")
+                print("Updated misc_comms list with message!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
-                print("Message added to misc_comms list!")
+                print("Updated misc_comms list with message!")
         # Just two callsigns
         elif "/QRP" in "".join(message):
             if "/QRP" in message[0]:
@@ -135,11 +135,13 @@ class MessageProcessor:
                                              translated_message=f"{message[1]} pings low power {message[0]}.",
                                              packet=packet, type="Two Callsigns")
                     self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                    print("Updated convo_dict with message!")
                 else:
                     convo_turn = MessageTurn(turn=0, message="".join(message),
                                              translated_message=f"{message[1]} pings low power {message[0]}.",
                                              packet=packet, type="Two Callsigns")
                     self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+                    print("Updated convo_dict with message!")
             else:
                 keys = sorted(message)
                 if (keys[0], keys[1]) in self.convo_dict:
@@ -147,11 +149,13 @@ class MessageProcessor:
                                              translated_message=f"{message[1]} pings {message[0]} at low power.",
                                              packet=packet, type="Two Callsigns")
                     self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                    print("Updated convo_dict with message!")
                 else:
                     convo_turn = MessageTurn(turn=0, message="".join(message),
                                              translated_message=f"{message[1]} pings {message[0]} at low power.",
                                              packet=packet, type="Two Callsigns")
                     self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+                    print("Updated convo_dict with message!")
         else:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.convo_dict:
@@ -159,12 +163,12 @@ class MessageProcessor:
                                          translated_message=f"{message[1]} pings {message[0]}.", packet=packet,
                                          type="Two Callsigns.")
                 self.convo_dict[(keys[0], keys[1])].append(convo_turn)
-                print("Message added to convo_dict!")
+                print("Updated convo_dict with message!")
             else:
                 convo_turn = MessageTurn(turn=0, message="".join(message), translated_message=f"{message[1]} pings "
                                             f"{message[0]}.", packet=packet, type="Two Callsigns.")
                 self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
-                print("Message added to convo_dict!")
+                print("Updated convo_dict with message!")
 
     def handle_longer_msg(self, packet: Packet, message: list):
         code = message[1]
@@ -175,7 +179,7 @@ class MessageProcessor:
             convo_turn = CQ(message=" ".join(message), translated_message=translated_message, caller=callsign,
                             packet=packet)
             self.cqs.append(convo_turn)
-            print("Longer message add to convo_dict")
+            print("Updated convo_dict with longer message!")
 
     def is_signal_report(self, message: list):
         signal = message[-1]
@@ -290,17 +294,17 @@ class MessageProcessor:
             translated = f"Station {caller} is calling for any response from grid {grid}."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
-            print("CQ added to convo_dict")
+            print("Updated convo_dict with CQ.")
         elif len(split_message) == 2:
             caller = packet.message.split()[1]
             translated = f"Station {caller} is calling for any response."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
-            print("CQ added to convo_dict")
+            print("Updated convo_dict with CQ.")
         else:
             cq = CQ(packet=packet, message=packet.message, caller=packet.message, translated_message="Unconfigured")
             self.cqs.append(cq)
-            print("CQ added to convo_dict")
+            print("Updated convo_dict with CQ.")
 
     def add_cq(self, callsigns: list):
         for callsign in callsigns:
@@ -383,8 +387,13 @@ class MessageProcessor:
                         json_dict[k][i + 1]["packet"] = asdict(field)
             json_file.write(json.dumps(json_dict))
 
-    def to_json(self):
-        with open("ft8_data.json", "w") as json_file:
+    def to_json(self, filename: str):
+        if filename.endswith(".json"):
+            out_filename = filename
+        else:
+            out_filename = f"{filename}.json"
+
+        with open(out_filename, "w") as json_file:
             json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
 
             for k, v in self.convo_dict.items():
