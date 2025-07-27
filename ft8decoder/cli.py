@@ -10,12 +10,16 @@ def main():
     subparsers = parser.add_subparsers(dest="command", required=True, help="Available commands")
 
     listen_parser = subparsers.add_parser("listen", help="Listen and process FT8 packets")
-    listen_parser.add_argument('--host', default='127.0.0.1', type=str, required=True, help='Host to bind to.')
-    listen_parser.add_argument('--port', default=2237, type=int, required=True, help='Port to bind to.')
-    listen_parser.add_argument('--dial', default=14.074000, type=float, required=True, help='WSJT-X dial frequency.')
-    listen_parser.add_argument('--interval', default=5, type=int, required=True, help='Interval in seconds between.')
-    listen_parser.add_argument('--duration', default=120, type=int, required=True, help='Listening duration before data exporting.')
-    listen_parser.add_argument('--export', default='ft8_data.json', type=str, required=True, help='File containing all parsed & ordered FT8 data.')
+    listen_parser.add_argument('--host', default='127.0.0.1', type=str, help='Host to bind to.')
+    listen_parser.add_argument('--port', default=2237, type=int, help='Port to bind to.')
+    listen_parser.add_argument('--dial', default=14.074000, type=float, help='WSJT-X dial frequency.')
+    listen_parser.add_argument('--interval', default=5, type=int, help='Interval in seconds between.')
+    listen_parser.add_argument('--duration', default=120, type=int, help='Listening duration before data exporting.')
+    listen_parser.add_argument('--export-all', type=str, help='Export all captured FT8 data to a json file.')
+    listen_parser.add_argument('--export-comms', type=str, help='Export only FT8 convo data to a json file.')
+    listen_parser.add_argument('--export-cqs', type=str, help='Export only unanswered CQ data to a json file.')
+    listen_parser.add_argument('--export-misc', type=str, help='Export only miscellaneous data to a json file.')
+
 
     args = parser.parse_args()
 
@@ -28,9 +32,18 @@ def main():
 
         time.sleep(args.duration)
         print(f"Listened for {args.duration} seconds.\nAll captured packets:\n{processor.master_data}")
-        if args.export:
-            print(f"Exporting data to {args.export}.")
-            processor.to_json(filename=args.export)
+        if args.export_all:
+            print(f"Exporting all FT8 data to {args.export_all}.")
+            processor.to_json(filename=args.export_all)
+        elif args.export_comms:
+            print(f"Exporting all FT8 conversation data to {args.export_comms}.")
+            processor.comms_to_json(filename=args.export_comms)
+        elif args.export_cqs:
+            print(f"Exporting all unanswered FT8 CQ data to {args.export_cqs}.")
+            processor.cqs_to_json(filename=args.export_cqs)
+        elif args.export_misc:
+            print(f"Exporting all miscellaneous data to {args.export_misc}.")
+            processor.misc_to_json(args.export_misc)
 
 
 if __name__ == "__main__":

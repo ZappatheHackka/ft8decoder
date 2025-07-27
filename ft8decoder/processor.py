@@ -321,8 +321,13 @@ class MessageProcessor:
                     continue
 
 # ---------------------DATA EXPORTING--------------------------
-    def comms_to_json(self):
-        with open("ft8_comms.json", "w") as json_file:
+    def comms_to_json(self, filename: str):
+        if filename.endswith(".json"):
+            out_filename = filename
+        else:
+            out_filename = f"{filename}.json"
+
+        with open(out_filename, "w") as json_file:
             json_dict = {"COMMS": [{}]}
 
             for k, v in self.convo_dict.items():
@@ -344,8 +349,13 @@ class MessageProcessor:
 
             json_file.write(json.dumps(json_dict))
 
-    def cqs_to_json(self):
-        with open("ft8_cqs.json", "w") as json_file:
+    def cqs_to_json(self, filename: str):
+        if filename.endswith(".json"):
+            out_filename = filename
+        else:
+            out_filename = f"{filename}.json"
+
+        with open(out_filename, "w") as json_file:
             json_dict = {"CQS": []}
             for i, cq in enumerate(self.cqs):
                 while len(json_dict["CQS"]) <= i:
@@ -365,8 +375,13 @@ class MessageProcessor:
 
             json_file.write(json.dumps(json_dict))
 
-    def misc_to_json(self):
-        with open("ft8_misc.json", "w") as json_file:
+    def misc_to_json(self, filename: str):
+        if filename.endswith(".json"):
+            out_filename = filename
+        else:
+            out_filename = f"{filename}.json"
+
+        with open(out_filename, "w") as json_file:
             json_dict = {"MISC": []}
 
             for k, v in self.misc_comms.items():
