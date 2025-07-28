@@ -1,5 +1,4 @@
 from ft8decoder import MessageProcessor, Packet, MessageTurn, CQ
-import tempfile, os, json
 # IDENTIFYING MESSAGES
 
 def test_is_grid_square():
@@ -38,7 +37,7 @@ def test_is_ack_reply():
 # HANDLING MESSAGES
 
 def test_handle_signal_report():
-    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency=950, message='W1AW K9XYZ -10',
+    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, frequency=14.07495, band="20m", message='W1AW K9XYZ -10',
                               program='WSJT-X', schema=2, packet_type=2)
     test_message_list = ['W1AW', 'K9XYZ', '-10']
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
@@ -53,8 +52,8 @@ def test_handle_signal_report():
     assert processor.convo_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
 
 def test_handle_ack_reply():
-    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency=950, message='W1AW K9XYZ RR73',
-                              program='WSJT-X', schema=2, packet_type=2)
+    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ RR73',
+                              program='WSJT-X', schema=2, packet_type=2, band="20m", frequency=14.07495)
     test_message_list = ['W1AW', 'K9XYZ', 'RR73']
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
 
@@ -70,8 +69,8 @@ def test_handle_ack_reply():
     assert processor.convo_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
 
 def test_handle_grid_square():
-    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency=950, message='W1AW K9XYZ EN87',
-                              program='WSJT-X', schema=2, packet_type=2)
+    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ EN87',
+                              program='WSJT-X', schema=2, packet_type=2, frequency=14.07495, band="20m")
     test_message_list = ['W1AW', 'K9XYZ', 'EN87']
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
 
@@ -87,8 +86,8 @@ def test_handle_grid_square():
     assert processor.convo_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
 
 def test_handle_cq():
-    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency=950, message='CQ K9XYZ EN87',
-                              program='WSJT-X', schema=2, packet_type=2)
+    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='CQ K9XYZ EN87',
+                              program='WSJT-X', schema=2, packet_type=2, band="20m", frequency=14.07495)
 
     expected_result = [CQ(message='CQ K9XYZ EN87',
                           translated_message="Station K9XYZ is calling for any response from grid EN87.",
@@ -99,8 +98,8 @@ def test_handle_cq():
     assert processor.cqs == expected_result
 
 def test_handle_longer_message():
-    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency=950, message="CQ POTA N0PAT EM18",
-                              program='WSJT-X', schema=2, packet_type=2)
+    test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message="CQ POTA N0PAT EM18",
+                              program='WSJT-X', schema=2, packet_type=2, frequency=14.07495, band="20m")
     test_message = ['CQ', 'POTA', 'N0PAT', 'EM18']
     expected_result = [CQ(message='CQ POTA N0PAT EM18',
                           translated_message="Parks on the Air participant N0PAT is calling from grid EM18.",
@@ -114,8 +113,8 @@ def test_handle_longer_message():
 # MESSAGE SORTING ALGO
 
 def test_message_sort():
-    test_data_packet1 = Packet(snr=-20, delta_time=0.5, frequency=950, message='W1AW K9XYZ EN87',
-                              program='WSJT-X', schema=2, packet_type=2)
+    test_data_packet1 = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ EN87',
+                              program='WSJT-X', schema=2, packet_type=2, frequency=14.07495, band="20m")
     test_callsigns1 = sorted(['W1AW', 'K9XYZ'])
     test_message_list = ['W1AW', 'K9XYZ', 'EN87']
     expected_result1 = [MessageTurn(turn=0, message='W1AW K9XYZ EN87', translated_message=f"{test_message_list[1]} "
@@ -129,8 +128,8 @@ def test_message_sort():
 
     assert processor.convo_dict[(test_callsigns1[0], test_callsigns1[1])] == expected_result1
 
-    test_data_packet2 = Packet(snr=-20, delta_time=0.5, frequency=950, message='W1AW K9XYZ -10',
-                              program='WSJT-X', schema=2, packet_type=2)
+    test_data_packet2 = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ -10',
+                              program='WSJT-X', schema=2, packet_type=2, band="20m", frequency=14.07495)
     test_message_list2 = ['W1AW', 'K9XYZ', '-10']
     test_callsigns2 = sorted(['W1AW', 'K9XYZ'])
 
@@ -143,3 +142,18 @@ def test_message_sort():
                         packet=test_data_packet2, type="Signal Report")]
 
     assert processor.convo_dict[(test_callsigns2[0], test_callsigns2[1])] == expected_result2
+
+def test_square_resolve():
+    test_data = ['DN50', 'FK68', 'KN22', 'CN89', 'EM62', 'EN58']
+    expected_result = [{'Grid Square': 'DN50', 'Latitude': '40.5', 'Longitude': '-109.0', 'Map URL': 'https://www.google.com/maps?q=40.5,-109.0'},
+                        {'Grid Square': 'FK68', 'Latitude': '18.5', 'Longitude': '-67.0', 'Map URL': 'https://www.google.com/maps?q=18.5,-67.0'},
+                        {'Grid Square': 'KN22', 'Latitude': '42.5', 'Longitude': '25.0', 'Map URL': 'https://www.google.com/maps?q=42.5,25.0'},
+                        {'Grid Square': 'CN89', 'Latitude': '49.5', 'Longitude': '-123.0', 'Map URL': 'https://www.google.com/maps?q=49.5,-123.0'},
+                        {'Grid Square': 'EM62', 'Latitude': '32.5', 'Longitude': '-87.0', 'Map URL': 'https://www.google.com/maps?q=32.5,-87.0'},
+                        {'Grid Square': 'EN58', 'Latitude': '48.5', 'Longitude': '-89.0', 'Map URL': 'https://www.google.com/maps?q=48.5,-89.0'}]
+
+    result_list = []
+    p = MessageProcessor()
+    for i in test_data:
+        result_list.append(p.resolve_grid_square(i))
+    assert result_list == expected_result

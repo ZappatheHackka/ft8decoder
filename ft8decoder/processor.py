@@ -1,4 +1,5 @@
 from threading import Thread
+import maidenhead as mh
 import time
 from ft8decoder.core import *
 from dataclasses import asdict
@@ -7,6 +8,7 @@ import json
 class MessageProcessor:
     def __init__(self):
         self.cqs = []
+        self.grid_square_cache = []
         self.data_motherload = []
         self.misc_comms = {}
         self.convo_dict = {}
@@ -178,6 +180,8 @@ class MessageProcessor:
             translated_message = self.translation_templates[code].format(sender=callsign, grid=grid)
             convo_turn = CQ(message=" ".join(message), translated_message=translated_message, caller=callsign,
                             packet=packet)
+            if {callsign: grid} not in self.grid_square_cache:
+                self.grid_square_cache.append({callsign: grid})
             self.cqs.append(convo_turn)
             print("Updated convo_dict with longer message!")
 
@@ -256,12 +260,15 @@ class MessageProcessor:
             print("Updated convo_dict with 73 reply.")
 
     def is_grid_square(self, message):
-        code = str(message[-1])
-        if len(code)  == 4:
-            if code[0].isalpha() and code[0].isupper():
-                if code[1].isalpha() and code[1].isupper():
-                    if code[2].isnumeric():
-                        if code[3].isnumeric():
+        square = str(message[-1])
+        callsign = str(message[1])
+        if len(square)  == 4:
+            if square[0].isalpha() and square[0].isupper():
+                if square[1].isalpha() and square[1].isupper():
+                    if square[2].isnumeric():
+                        if square[3].isnumeric():
+                            if {callsign: square} not in self.grid_square_cache:
+                                self.grid_square_cache.append({callsign: square})
                             return True
                         else:
                             return False
@@ -291,6 +298,8 @@ class MessageProcessor:
             caller = packet.message.split()[1]
             print(packet.message)
             grid = packet.message.split()[2]
+            if {caller: grid} not in self.grid_square_cache:
+                self.grid_square_cache.append({caller: grid})
             translated = f"Station {caller} is calling for any response from grid {grid}."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
@@ -320,6 +329,19 @@ class MessageProcessor:
                 else:
                     continue
 
+    # Given grid square, returns Lat/Lon
+    def resolve_grid_square(self, grid_square):
+        coords = mh.to_location(grid_square, center=True)
+        return {
+            "Grid Square": grid_square,
+            "Latitude": str(coords[0]),
+            "Longitude": str(coords[1]),
+            "Map URL": f"https://www.google.com/maps?q={str(coords[0])},{str(coords[1])}"
+        }
+
+    # Queries sqlite table of all callsigns registered by the FCC (US Only!)
+    def fcc_lookup(self, grid_square):
+        pass
 # ---------------------DATA EXPORTING--------------------------
     def comms_to_json(self, filename: str):
         if filename.endswith(".json"):

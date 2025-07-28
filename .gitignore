@@ -9,3 +9,6 @@ db_init/l_amat/
 db_init/ft8.db
 classes.py
 /ft8decoder.egg-info
+/tests/data.txt
+/tests/tests.py
+main.py
