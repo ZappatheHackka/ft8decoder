@@ -1,5 +1,6 @@
 from threading import Thread
 import maidenhead as mh
+import folium
 import time
 from ft8decoder.core import *
 from dataclasses import asdict
@@ -8,6 +9,7 @@ import json
 class MessageProcessor:
     def __init__(self):
         self.cqs = []
+        self.qso_coords = []
         self.grid_square_cache = []
         self.data_motherload = []
         self.misc_comms = {}
@@ -471,3 +473,13 @@ class MessageProcessor:
 
             data = json.dumps(json_dict, indent=2)
             json_file.write(data)
+
+    def gather_coords(self):
+        for key in self.convo_dict:
+            if key[0] in self.grid_square_cache and key[1] in self.grid_square_cache:
+                first_coords = self.resolve_grid_square(self.grid_square_cache[key[0]])
+                second_coords = self.resolve_grid_square(self.grid_square_cache[key[1]])
+                coord_tuple = ((first_coords["Latitude"], first_coords["Longitude"]), (second_coords["Latitude"], second_coords["Longitude"]))
+                self.qso_coords.append(coord_tuple)
+            else:
+                continue
