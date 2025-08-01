@@ -10,10 +10,11 @@ class MessageProcessor:
     def __init__(self):
         self.cqs = []
         self.qso_coords = []
-        self.grid_square_cache = []
+        self.cq_coords = []
+        self.qso_grid_square_cache = {}
         self.data_motherload = []
         self.misc_comms = {}
-        self.convo_dict = {}
+        self.qso_dict = {}
         self.translation_templates = {    # Cleaner for catching rare / niche message types than endless conditionals.
             "DX": "{sender} is calling long-distance stations from grid {grid}.",
             "POTA": "Parks on the Air participant {sender} is calling from grid {grid}.",
@@ -41,9 +42,9 @@ class MessageProcessor:
             "ARRL": "{sender} is participating in an ARRL event from grid {grid}.",
             "CQWW": "{sender} is participating in CQ World Wide from grid {grid}.",
         }
-        self.master_data = [{"Successfull Comms": self.convo_dict}, {"CQs": self.cqs}, {'Misc. Comms': self.misc_comms}]
+        self.master_data = [{"Successfull Comms": self.qso_dict}, {"CQs": self.cqs}, {'Misc. Comms': self.misc_comms}]
 
-    def order(self, seconds: int):
+    def start(self, seconds=5):
         thread = Thread(target=self.organize_messages, args=(seconds,))
         thread.start()
 
@@ -70,12 +71,12 @@ class MessageProcessor:
                     message_callsigns = [message[0], message[1]]
                     # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
                     callsigns = sorted(message_callsigns)
-                    if (callsigns[0], callsigns[1]) in self.convo_dict:
+                    if (callsigns[0], callsigns[1]) in self.qso_dict:
                         self.sort_message(packet, callsigns, new_convo=False)
                     else:
-                        self.convo_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
+                        self.qso_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
                         self.sort_message(packet, callsigns, new_convo=True)
-                    print(f"Processed {len(packets_to_process)} packets!")
+                print(f"Processed {len(packets_to_process)} packets!")
             else:
                 print(f"No packets found! Waiting {seconds} more seconds...")
 
@@ -134,44 +135,44 @@ class MessageProcessor:
         elif "/QRP" in "".join(message):
             if "/QRP" in message[0]:
                 keys = sorted(message)
-                if (keys[0], keys[1]) in self.convo_dict:
-                    convo_turn = MessageTurn(turn=len(self.convo_dict[(keys[0], keys[1])]), message="".join(message),
+                if (keys[0], keys[1]) in self.qso_dict:
+                    convo_turn = MessageTurn(turn=len(self.qso_dict[(keys[0], keys[1])]), message="".join(message),
                                              translated_message=f"{message[1]} pings low power {message[0]}.",
                                              packet=packet, type="Two Callsigns")
-                    self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                    self.qso_dict[(keys[0], keys[1])].append(convo_turn)
                     print("Updated convo_dict with message!")
                 else:
                     convo_turn = MessageTurn(turn=0, message="".join(message),
                                              translated_message=f"{message[1]} pings low power {message[0]}.",
                                              packet=packet, type="Two Callsigns")
-                    self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+                    self.qso_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
                     print("Updated convo_dict with message!")
             else:
                 keys = sorted(message)
-                if (keys[0], keys[1]) in self.convo_dict:
-                    convo_turn = MessageTurn(turn=len(self.convo_dict[(keys[0], keys[1])]), message="".join(message),
+                if (keys[0], keys[1]) in self.qso_dict:
+                    convo_turn = MessageTurn(turn=len(self.qso_dict[(keys[0], keys[1])]), message="".join(message),
                                              translated_message=f"{message[1]} pings {message[0]} at low power.",
                                              packet=packet, type="Two Callsigns")
-                    self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                    self.qso_dict[(keys[0], keys[1])].append(convo_turn)
                     print("Updated convo_dict with message!")
                 else:
                     convo_turn = MessageTurn(turn=0, message="".join(message),
                                              translated_message=f"{message[1]} pings {message[0]} at low power.",
                                              packet=packet, type="Two Callsigns")
-                    self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+                    self.qso_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
                     print("Updated convo_dict with message!")
         else:
             keys = sorted(message)
-            if (keys[0], keys[1]) in self.convo_dict:
-                convo_turn = MessageTurn(turn=len(self.convo_dict[(keys[0], keys[1])]), message="".join(message),
+            if (keys[0], keys[1]) in self.qso_dict:
+                convo_turn = MessageTurn(turn=len(self.qso_dict[(keys[0], keys[1])]), message="".join(message),
                                          translated_message=f"{message[1]} pings {message[0]}.", packet=packet,
                                          type="Two Callsigns.")
-                self.convo_dict[(keys[0], keys[1])].append(convo_turn)
+                self.qso_dict[(keys[0], keys[1])].append(convo_turn)
                 print("Updated convo_dict with message!")
             else:
                 convo_turn = MessageTurn(turn=0, message="".join(message), translated_message=f"{message[1]} pings "
                                             f"{message[0]}.", packet=packet, type="Two Callsigns.")
-                self.convo_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
+                self.qso_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
                 print("Updated convo_dict with message!")
 
     def handle_longer_msg(self, packet: Packet, message: list):
@@ -182,8 +183,8 @@ class MessageProcessor:
             translated_message = self.translation_templates[code].format(sender=callsign, grid=grid)
             convo_turn = CQ(message=" ".join(message), translated_message=translated_message, caller=callsign,
                             packet=packet)
-            if {callsign: grid} not in self.grid_square_cache:
-                self.grid_square_cache.append({callsign: grid})
+            if {callsign: grid} not in self.qso_grid_square_cache:
+                self.qso_grid_square_cache[callsign] = grid
             self.cqs.append(convo_turn)
             print("Updated convo_dict with longer message!")
 
@@ -225,10 +226,10 @@ class MessageProcessor:
 
         # Putting this as the second signal report--assuming the CQ caller sends report first
         m_type = "Signal Report"
-        turn_obj = MessageTurn(turn=len(self.convo_dict[(callsigns[0], callsigns[1])]),
+        turn_obj = MessageTurn(turn=len(self.qso_dict[(callsigns[0], callsigns[1])]),
                                message=packet.message, translated_message=translated_message, packet=packet,
                                type=m_type)
-        self.convo_dict[(callsigns[0], callsigns[1])].append(turn_obj)
+        self.qso_dict[(callsigns[0], callsigns[1])].append(turn_obj)
         print("Updated convo_dict with signal report.")
 
     def is_ack_reply(self, message):
@@ -241,24 +242,24 @@ class MessageProcessor:
         ack = message[-1]
         if ack == "RRR":
             translated_message = f"{message[1]} sends a Roger Roger Roger to {message[0]}."
-            convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])), message=packet.message,
+            convo_turn = MessageTurn(turn=(len(self.qso_dict[(callsigns[0], callsigns[1])])), message=packet.message,
                                      translated_message=translated_message, packet=packet, type="RRR")
-            self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+            self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             print("Updated convo_dict with RRR reply.")
         elif ack == "RR73":
             translated_message = (f"{message[1]} sends a Roger Roger to {message[0]} and says goodbye, "
                                   f"concluding the connection.")
-            convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])), message=packet.message,
+            convo_turn = MessageTurn(turn=(len(self.qso_dict[(callsigns[0], callsigns[1])])), message=packet.message,
                                      translated_message=translated_message, packet=packet, type="RR & Goodbye")
-            self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
-            self.convo_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
+            self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+            self.qso_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
             print("Updated convo_dict with RR73 reply.")
         elif ack == "73":
             translated_message = f"{message[1]} sends their well wishes to {message[0]}, concluding the connection."
-            convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])), message=packet.message,
+            convo_turn = MessageTurn(turn=(len(self.qso_dict[(callsigns[0], callsigns[1])])), message=packet.message,
                                      translated_message=translated_message, packet=packet, type="Goodbye")
-            self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
-            self.convo_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
+            self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+            self.qso_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
             print("Updated convo_dict with 73 reply.")
 
     def is_grid_square(self, message):
@@ -269,8 +270,8 @@ class MessageProcessor:
                 if square[1].isalpha() and square[1].isupper():
                     if square[2].isnumeric():
                         if square[3].isnumeric():
-                            if {callsign: square} not in self.grid_square_cache:
-                                self.grid_square_cache.append({callsign: square})
+                            if (callsign, square) not in self.qso_grid_square_cache:
+                                self.qso_grid_square_cache[callsign] = square
                             return True
                         else:
                             return False
@@ -286,10 +287,10 @@ class MessageProcessor:
     def handle_grid_square(self, callsigns: list, packet: Packet, message: list):
         grid_square = message[-1]
         translated_message = f"{message[1]} sends a grid square location of {grid_square} to {message[0]}."
-        convo_turn = MessageTurn(turn=(len(self.convo_dict[(callsigns[0], callsigns[1])])),
+        convo_turn = MessageTurn(turn=(len(self.qso_dict[(callsigns[0], callsigns[1])])),
                                  message=packet.message, translated_message=translated_message, packet=packet,
                                  type="Grid Square Report")
-        self.convo_dict[(callsigns[0], callsigns[1])].append(convo_turn)
+        self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
         print("Updated convo_dict with grid square report.")
 
     def handle_cq(self, packet: Packet):
@@ -298,10 +299,9 @@ class MessageProcessor:
             self.handle_longer_msg(packet=packet, message=split_message)
         elif len(split_message) == 3:
             caller = packet.message.split()[1]
-            print(packet.message)
             grid = packet.message.split()[2]
-            if {caller: grid} not in self.grid_square_cache:
-                self.grid_square_cache.append({caller: grid})
+            if (caller, grid) not in self.qso_grid_square_cache.items():
+                self.qso_grid_square_cache[caller] = grid
             translated = f"Station {caller} is calling for any response from grid {grid}."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
@@ -324,7 +324,7 @@ class MessageProcessor:
                     this_cq = cq
                     cq_turn = MessageTurn(turn=1, message=this_cq.message, translated_message=this_cq.translated_message,
                                   packet=this_cq.packet, type="CQ Call.")
-                    self.convo_dict[(callsigns[0], callsigns[1])].insert(1, cq_turn)
+                    self.qso_dict[(callsigns[0], callsigns[1])].insert(1, cq_turn)
                     self.cqs.remove(cq)
                     print("Updated convo_dict with initial CQ call.")
                     break
@@ -341,9 +341,6 @@ class MessageProcessor:
             "Map URL": f"https://www.google.com/maps?q={str(coords[0])},{str(coords[1])}"
         }
 
-    # Queries sqlite table of all callsigns registered by the FCC (US Only!)
-    def fcc_lookup(self, grid_square):
-        pass
 # ---------------------DATA EXPORTING--------------------------
     def comms_to_json(self, filename: str):
         if filename.endswith(".json"):
@@ -354,7 +351,7 @@ class MessageProcessor:
         with open(out_filename, "w") as json_file:
             json_dict = {"COMMS": [{}]}
 
-            for k, v in self.convo_dict.items():
+            for k, v in self.qso_dict.items():
                 key_str = str(k)
                 json_dict["COMMS"][0][key_str] = []
 
@@ -435,7 +432,7 @@ class MessageProcessor:
         with open(out_filename, "w") as json_file:
             json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
 
-            for k, v in self.convo_dict.items():
+            for k, v in self.qso_dict.items():
                 key_str = str(k)
                 json_dict["COMMS"][0][key_str] = []
 
@@ -474,12 +471,50 @@ class MessageProcessor:
             data = json.dumps(json_dict, indent=2)
             json_file.write(data)
 
+# -------------MAPPING-------------
+
     def gather_coords(self):
-        for key in self.convo_dict:
-            if key[0] in self.grid_square_cache and key[1] in self.grid_square_cache:
-                first_coords = self.resolve_grid_square(self.grid_square_cache[key[0]])
-                second_coords = self.resolve_grid_square(self.grid_square_cache[key[1]])
-                coord_tuple = ((first_coords["Latitude"], first_coords["Longitude"]), (second_coords["Latitude"], second_coords["Longitude"]))
+        for key in self.qso_dict:
+            if key[0] in self.qso_grid_square_cache and key[1] in self.qso_grid_square_cache:
+                first_coords = self.resolve_grid_square(self.qso_grid_square_cache[key[0]])
+                second_coords = self.resolve_grid_square(self.qso_grid_square_cache[key[1]])
+                coord_tuple = ((key[0], first_coords["Latitude"], first_coords["Longitude"]),
+                               (key[1], second_coords["Latitude"], second_coords["Longitude"]))
                 self.qso_coords.append(coord_tuple)
             else:
                 continue
+
+    def to_map(self, filename: str):
+        self.gather_coords()
+
+        cumulative_lat = 0
+        cumulative_lon = 0
+        total_len = len(self.qso_coords)
+        for tuple in self.qso_coords:
+            cumulative_lat += float(tuple[0][1]) + float(tuple[1][1])
+            cumulative_lon += float(tuple[0][2]) + float(tuple[1][2])
+
+        mean_lat = round(cumulative_lat/total_len, 2)
+        mean_lon = round(cumulative_lon/total_len, 2)
+
+        m = folium.Map(location=(mean_lat, mean_lon), zoom_start=10)
+
+        for coords in self.qso_coords:
+            folium.Marker(
+                location=[coords[0][1], coords[0][2]],
+                tooltip="QSO Participant",
+                popup=coords[0][0],
+                icon=folium.Icon(icon='radio', prefix='fa', color='green')
+            ).add_to(m)
+
+            folium.Marker(
+                location=[coords[1][1], coords[1][2]],
+                tooltip="QSO Participant",
+                popup=coords[1][0],
+                icon=folium.Icon(icon='radio', prefix='fa', color='green')
+            ).add_to(m)
+
+        m.save(f"{filename}.html")
+
+
+

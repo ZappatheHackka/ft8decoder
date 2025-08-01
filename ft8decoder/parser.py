@@ -77,7 +77,6 @@ class WsjtxParser:
                 parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
                                        delta_time=time_delta, frequency_offset=fq_offset, frequency=frequency,
                                        band=self.determine_band(frequency), message=decoded_msg)
-                print(parsed_packet.message)
                 self.packet_queue.put(parsed_packet)
             case 1:  # Status packets
                 pass
