@@ -11,7 +11,7 @@ class MessageProcessor:
         self.cqs = []
         self.qso_coords = []
         self.cq_coords = []
-        self.qso_grid_square_cache = {}
+        self.grid_square_cache = {}
         self.data_motherload = []
         self.misc_comms = {}
         self.qso_dict = {}
@@ -183,8 +183,8 @@ class MessageProcessor:
             translated_message = self.translation_templates[code].format(sender=callsign, grid=grid)
             convo_turn = CQ(message=" ".join(message), translated_message=translated_message, caller=callsign,
                             packet=packet)
-            if {callsign: grid} not in self.qso_grid_square_cache:
-                self.qso_grid_square_cache[callsign] = grid
+            if (callsign, grid) not in self.grid_square_cache:
+                self.grid_square_cache[callsign] = grid
             self.cqs.append(convo_turn)
             print("Updated convo_dict with longer message!")
 
@@ -270,8 +270,8 @@ class MessageProcessor:
                 if square[1].isalpha() and square[1].isupper():
                     if square[2].isnumeric():
                         if square[3].isnumeric():
-                            if (callsign, square) not in self.qso_grid_square_cache:
-                                self.qso_grid_square_cache[callsign] = square
+                            if (callsign, square) not in self.grid_square_cache:
+                                self.grid_square_cache[callsign] = square
                             return True
                         else:
                             return False
@@ -300,8 +300,8 @@ class MessageProcessor:
         elif len(split_message) == 3:
             caller = packet.message.split()[1]
             grid = packet.message.split()[2]
-            if (caller, grid) not in self.qso_grid_square_cache.items():
-                self.qso_grid_square_cache[caller] = grid
+            if (caller, grid) not in self.grid_square_cache.items():
+                self.grid_square_cache[caller] = grid
             translated = f"Station {caller} is calling for any response from grid {grid}."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
@@ -474,30 +474,48 @@ class MessageProcessor:
 # -------------MAPPING-------------
 
     def gather_coords(self):
-        for key in self.qso_dict:
-            if key[0] in self.qso_grid_square_cache and key[1] in self.qso_grid_square_cache:
-                first_coords = self.resolve_grid_square(self.qso_grid_square_cache[key[0]])
-                second_coords = self.resolve_grid_square(self.qso_grid_square_cache[key[1]])
+        for key in self.qso_dict: # Gathering QSO coords
+            if key[0].strip() in self.grid_square_cache and key[1].strip() in self.grid_square_cache:
+                first_coords = self.resolve_grid_square(self.grid_square_cache[key[0]])
+                second_coords = self.resolve_grid_square(self.grid_square_cache[key[1]])
                 coord_tuple = ((key[0], first_coords["Latitude"], first_coords["Longitude"]),
                                (key[1], second_coords["Latitude"], second_coords["Longitude"]))
                 self.qso_coords.append(coord_tuple)
+                print("success with:", key[0], key[1])
+                print(self.qso_coords)
             else:
-                continue
+                print('Failure')
+
+        for cq in self.cqs: # Gathering CQ coords
+            callsign = cq.message.split()[1]
+            if callsign in self.grid_square_cache:
+                cq_coords = self.resolve_grid_square(self.grid_square_cache[callsign])
+                cq_tuple = (cq.message, cq_coords["Latitude"], cq_coords["Longitude"])
+                self.cq_coords.append(cq_tuple)
+            else:
+                print("not added:", callsign, self.grid_square_cache)
+
 
     def to_map(self, filename: str):
         self.gather_coords()
 
-        cumulative_lat = 0
-        cumulative_lon = 0
-        total_len = len(self.qso_coords)
-        for tuple in self.qso_coords:
-            cumulative_lat += float(tuple[0][1]) + float(tuple[1][1])
-            cumulative_lon += float(tuple[0][2]) + float(tuple[1][2])
+        if len(self.qso_coords) > 3:
+            cumulative_lat = 0
+            cumulative_lon = 0
+            total_len = len(self.qso_coords)
+            for tuple in self.qso_coords:
+                cumulative_lat += float(tuple[0][1]) + float(tuple[1][1])
+                cumulative_lon += float(tuple[0][2]) + float(tuple[1][2])
 
-        mean_lat = round(cumulative_lat/total_len, 2)
-        mean_lon = round(cumulative_lon/total_len, 2)
+            mean_lat = round(cumulative_lat/total_len, 2)
+            mean_lon = round(cumulative_lon/total_len, 2)
 
-        m = folium.Map(location=(mean_lat, mean_lon), zoom_start=10)
+            m = folium.Map(location=(mean_lat, mean_lon), zoom_start=2)
+        else:
+            m = folium.Map(location=(0, 0), zoom_start=2)
+
+        qsos = folium.FeatureGroup("QSOs").add_to(m)
+        cqs = folium.FeatureGroup("CQS").add_to(m)
 
         for coords in self.qso_coords:
             folium.Marker(
@@ -505,15 +523,24 @@ class MessageProcessor:
                 tooltip="QSO Participant",
                 popup=coords[0][0],
                 icon=folium.Icon(icon='radio', prefix='fa', color='green')
-            ).add_to(m)
+            ).add_to(qsos)
 
             folium.Marker(
                 location=[coords[1][1], coords[1][2]],
                 tooltip="QSO Participant",
                 popup=coords[1][0],
                 icon=folium.Icon(icon='radio', prefix='fa', color='green')
-            ).add_to(m)
+            ).add_to(qsos)
 
+        for cq in self.cq_coords:
+            folium.Marker(
+                location=[cq[1], cq[2]],
+                tooltip="Unanswered CQ call",
+                popup=cq[0],
+                icon=folium.Icon(icon='radio', prefix='fa', color='red')
+            ).add_to(cqs)
+
+        folium.LayerControl().add_to(m)
         m.save(f"{filename}.html")
 
 
