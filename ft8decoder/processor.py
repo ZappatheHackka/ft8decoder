@@ -487,14 +487,23 @@ class MessageProcessor:
                 print('Failure')
 
         for cq in self.cqs: # Gathering CQ coords
-            callsign = cq.message.split()[1]
-            if callsign in self.grid_square_cache:
-                cq_coords = self.resolve_grid_square(self.grid_square_cache[callsign])
-                cq_tuple = (cq.message, cq_coords["Latitude"], cq_coords["Longitude"])
-                self.cq_coords.append(cq_tuple)
+            split_message = cq.message.split()
+            if len(split_message) < 4:
+                callsign = split_message[1]
+                if callsign in self.grid_square_cache:
+                    cq_coords = self.resolve_grid_square(self.grid_square_cache[callsign])
+                    cq_tuple = (cq.message, cq_coords["Latitude"], cq_coords["Longitude"])
+                    self.cq_coords.append(cq_tuple)
+                else:
+                    print("not added:", callsign, split_message, self.grid_square_cache)
             else:
-                print("not added:", callsign, self.grid_square_cache)
-
+                callsign = split_message[2]
+                if callsign in self.grid_square_cache:
+                    cq_coords = self.resolve_grid_square(self.grid_square_cache[callsign])
+                    cq_tuple = (cq.message, cq_coords["Latitude"], cq_coords["Longitude"])
+                    self.cq_coords.append(cq_tuple)
+                else:
+                    print("not added:", callsign, split_message, self.grid_square_cache)
 
     def to_map(self, filename: str):
         self.gather_coords()
@@ -524,6 +533,7 @@ class MessageProcessor:
                 popup=coords[0][0],
                 icon=folium.Icon(icon='radio', prefix='fa', color='green')
             ).add_to(qsos)
+            point1 = (float(coords[0][1]), float(coords[0][2]))
 
             folium.Marker(
                 location=[coords[1][1], coords[1][2]],
@@ -531,17 +541,28 @@ class MessageProcessor:
                 popup=coords[1][0],
                 icon=folium.Icon(icon='radio', prefix='fa', color='green')
             ).add_to(qsos)
+            point2 = (float(coords[1][1]), float(coords[1][2]))
 
-        for cq in self.cq_coords:
-            folium.Marker(
-                location=[cq[1], cq[2]],
-                tooltip="Unanswered CQ call",
-                popup=cq[0],
-                icon=folium.Icon(icon='radio', prefix='fa', color='red')
-            ).add_to(cqs)
+            qso_key = sorted([coords[0][0], coords[1][0]])
+            line = folium.PolyLine(locations=[point1, point2], color='blue', weight=3, opacity=.55,
+                                   tooltip=f"QSO between {coords[0][0]} and {coords[1][0]}",
+                                   popup=self.qso_dict[(qso_key[0], qso_key[1])])
+            line.add_to(m)
+
+            for cq in self.cq_coords:
+                callsign = "".join(cq[0])
+                if any(tup[0][0] == callsign or tup[1][0] == callsign for tup in self.cq_coords):
+                    continue
+                folium.Marker(
+                    location=[cq[1], cq[2]],
+                    tooltip="Unanswered CQ call",
+                    popup=callsign,
+                    icon=folium.Icon(icon='radio', prefix='fa', color='red')
+                ).add_to(cqs)
 
         folium.LayerControl().add_to(m)
         m.save(f"{filename}.html")
 
+# TODO remove CQs when answered
 
 
