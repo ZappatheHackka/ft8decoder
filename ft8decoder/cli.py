@@ -19,6 +19,7 @@ def main():
     listen_parser.add_argument('--export-comms', type=str, help='Export only FT8 convo data to a json file.')
     listen_parser.add_argument('--export-cqs', type=str, help='Export only unanswered CQ data to a json file.')
     listen_parser.add_argument('--export-misc', type=str, help='Export only miscellaneous data to a json file.')
+    listen_parser.add_argument('--to-map', type=str, help='Create a dynamic world map that plots all QSOs and CQs with grid squares.')
 
 
     args = parser.parse_args()
@@ -28,7 +29,7 @@ def main():
         processor = MessageProcessor()
 
         parser.start_listening(host=args.host, port=args.port, processor=processor)
-        processor.order(seconds=args.interval)
+        processor.start(seconds=args.interval)
 
         time.sleep(args.duration)
         print(f"Listened for {args.duration} seconds.\nAll captured packets:\n{processor.master_data}")
@@ -44,6 +45,9 @@ def main():
         elif args.export_misc:
             print(f"Exporting all miscellaneous data to {args.export_misc}.")
             processor.misc_to_json(args.export_misc)
+        if args.to_map:
+            print(f"Creating dynamic world map titled {args.to_map}.html.")
+            processor.to_map(filename=args.to_map)
 
 
 if __name__ == "__main__":

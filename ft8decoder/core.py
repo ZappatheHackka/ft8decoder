@@ -10,6 +10,7 @@ class Packet:
     message: str
     schema: int
     program: str
+    time_captured: str
     packet_type: int
 
 @dataclass

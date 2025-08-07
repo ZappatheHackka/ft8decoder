@@ -1,4 +1,5 @@
 from threading import Thread
+import logging
 import maidenhead as mh
 import folium
 import time
@@ -7,7 +8,17 @@ from dataclasses import asdict
 import json
 
 class MessageProcessor:
-    def __init__(self):
+    def __init__(self, log_level=logging.INFO):
+
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(log_level)
+
+        if not self.logger.handlers:
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+
         self.cqs = []
         self.qso_coords = []
         self.cq_coords = []
@@ -47,38 +58,43 @@ class MessageProcessor:
     def start(self, seconds=5):
         thread = Thread(target=self.organize_messages, args=(seconds,))
         thread.start()
+        self.logger.info(f"Message processor started with {seconds}s intervals")
 
     def organize_messages(self, seconds: int):
         while True:
             time.sleep(seconds)
             packets_to_process = self.data_motherload.copy()
             self.data_motherload.clear()
-            print(f"Processing {len(packets_to_process)} packets...")
 
             if packets_to_process:
+                self.logger.info(f"Processing {len(packets_to_process)} packets...")
                 for packet in packets_to_process:
-                    message = packet.message.split()
-                    if message[0] == "CQ":
-                        self.handle_cq(packet)
+                    try:
+                        message = packet.message.split()
+                        if message[0] == "CQ":
+                            self.handle_cq(packet)
+                            continue
+                        if len(message) == 2:
+                            self.handle_short_msg(packet=packet, message=message)
+                            continue
+                        if len(message) > 3:
+                            self.handle_longer_msg(packet=packet, message=message)
+                            continue
+                        # TODO Handle messages w/ >3 words (dx etc)
+                        message_callsigns = [message[0], message[1]]
+                        # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
+                        callsigns = sorted(message_callsigns)
+                        if (callsigns[0], callsigns[1]) in self.qso_dict:
+                            self.sort_message(packet, callsigns, new_convo=False)
+                        else:
+                            self.qso_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
+                            self.sort_message(packet, callsigns, new_convo=True)
+                    except Exception as e:
+                        self.logger.error(f"Error processing packet {packet.message}: {e}")
                         continue
-                    if len(message) == 2:
-                        self.handle_short_msg(packet=packet, message=message)
-                        continue
-                    if len(message) > 3:
-                        self.handle_longer_msg(packet=packet, message=message)
-                        continue
-                    # TODO Handle messages w/ >3 words (dx etc)
-                    message_callsigns = [message[0], message[1]]
-                    # TODO: Add more robust parsing to catch callsigns of all shapes and sizes
-                    callsigns = sorted(message_callsigns)
-                    if (callsigns[0], callsigns[1]) in self.qso_dict:
-                        self.sort_message(packet, callsigns, new_convo=False)
-                    else:
-                        self.qso_dict[(callsigns[0], callsigns[1])] = [{"completed": False}]
-                        self.sort_message(packet, callsigns, new_convo=True)
-                print(f"Processed {len(packets_to_process)} packets!")
+                self.logger.info(f"Processed {len(packets_to_process)} packets successfully")
             else:
-                print(f"No packets found! Waiting {seconds} more seconds...")
+                self.logger.info(f"No packets found, waiting {seconds} more seconds...")
 
     # Handles new messages & retroactively places CQ call in list
     def sort_message(self, packet: Packet, callsigns: list, new_convo: bool):
@@ -93,7 +109,7 @@ class MessageProcessor:
         elif self.is_signal_report(message):
             self.handle_signal_report(callsigns, packet, message)
         else:
-            print("Could not parse packet:", packet, "\nAdding to misc_comms.")
+            self.logger.info(f"Could not parse packet: {packet.message}, adding to misc_comms")
             self.misc_comms[(message[0], message[1])] = packet
 
     def handle_short_msg(self, packet: Packet, message: list):
@@ -104,10 +120,10 @@ class MessageProcessor:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
-                print("Updated misc_comms list with message!")
+                self.logger.debug("Updated misc_comms list with message!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
-                print("Updated misc_comms list with message!")
+                self.logger.debug("Updated misc_comms list with message!")
         elif second_part == "73":
             convo_turn = MessageTurn(turn=0, message="".join(message),
                                      translated_message=f"{message[0]} says goodbye.",
@@ -116,10 +132,10 @@ class MessageProcessor:
             # TODO write search func that can check main list for potential matches--where is the message 73ing to?
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
-                print("Updated misc_comms list with message!")
+                self.logger.debug("Updated misc_comms list with message!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
-                print("Updated misc_comms list with message!")
+                self.logger.debug("Updated misc_comms list with message!")
         elif second_part == "RR73":
             convo_turn = MessageTurn(turn=0, message="".join(message),
                                      translated_message=f"{message[0]} says Roger Roger and signs off.",
@@ -127,10 +143,10 @@ class MessageProcessor:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
-                print("Updated misc_comms list with message!")
+                self.logger.debug("Updated misc_comms list with message!")
             else:
                 self.misc_comms[(keys[0], keys[1])] = [convo_turn]
-                print("Updated misc_comms list with message!")
+                self.logger.debug("Updated misc_comms list with message!")
         # Just two callsigns
         elif "/QRP" in "".join(message):
             if "/QRP" in message[0]:
@@ -140,13 +156,13 @@ class MessageProcessor:
                                              translated_message=f"{message[1]} pings low power {message[0]}.",
                                              packet=packet, type="Two Callsigns")
                     self.qso_dict[(keys[0], keys[1])].append(convo_turn)
-                    print("Updated convo_dict with message!")
+                    self.logger.debug("Updated qso_dict with message!")
                 else:
                     convo_turn = MessageTurn(turn=0, message="".join(message),
                                              translated_message=f"{message[1]} pings low power {message[0]}.",
                                              packet=packet, type="Two Callsigns")
                     self.qso_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
-                    print("Updated convo_dict with message!")
+                    self.logger.debug("Updated qso_dict with message!")
             else:
                 keys = sorted(message)
                 if (keys[0], keys[1]) in self.qso_dict:
@@ -154,13 +170,13 @@ class MessageProcessor:
                                              translated_message=f"{message[1]} pings {message[0]} at low power.",
                                              packet=packet, type="Two Callsigns")
                     self.qso_dict[(keys[0], keys[1])].append(convo_turn)
-                    print("Updated convo_dict with message!")
+                    self.logger.debug("Updated qso_dict with message!")
                 else:
                     convo_turn = MessageTurn(turn=0, message="".join(message),
                                              translated_message=f"{message[1]} pings {message[0]} at low power.",
                                              packet=packet, type="Two Callsigns")
                     self.qso_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
-                    print("Updated convo_dict with message!")
+                    self.logger.debug("Updated qso_dict with message!")
         else:
             keys = sorted(message)
             if (keys[0], keys[1]) in self.qso_dict:
@@ -168,12 +184,12 @@ class MessageProcessor:
                                          translated_message=f"{message[1]} pings {message[0]}.", packet=packet,
                                          type="Two Callsigns.")
                 self.qso_dict[(keys[0], keys[1])].append(convo_turn)
-                print("Updated convo_dict with message!")
+                self.logger.debug("Updated qso_dict with message!")
             else:
                 convo_turn = MessageTurn(turn=0, message="".join(message), translated_message=f"{message[1]} pings "
                                             f"{message[0]}.", packet=packet, type="Two Callsigns.")
                 self.qso_dict[(keys[0], keys[1])] = [{"completed": False}, convo_turn]
-                print("Updated convo_dict with message!")
+                self.logger.debug("Updated qso_dict with message!")
 
     def handle_longer_msg(self, packet: Packet, message: list):
         code = message[1]
@@ -186,7 +202,7 @@ class MessageProcessor:
             if (callsign, grid) not in self.grid_square_cache:
                 self.grid_square_cache[callsign] = grid
             self.cqs.append(convo_turn)
-            print("Updated convo_dict with longer message!")
+            self.logger.debug("Updated qso_dict with longer message!")
 
     def is_signal_report(self, message: list):
         signal = message[-1]
@@ -230,13 +246,14 @@ class MessageProcessor:
                                message=packet.message, translated_message=translated_message, packet=packet,
                                type=m_type)
         self.qso_dict[(callsigns[0], callsigns[1])].append(turn_obj)
-        print("Updated convo_dict with signal report.")
+        self.logger.debug("Updated qso_dict with signal report.")
 
     def is_ack_reply(self, message):
         code = message[-1]
         if code == "RRR" or code == "RR73" or code == "73":
             return True
-        return False
+        else:
+            return False
 
     def handle_ack_reply(self, callsigns: list, packet: Packet, message: list):
         ack = message[-1]
@@ -245,7 +262,7 @@ class MessageProcessor:
             convo_turn = MessageTurn(turn=(len(self.qso_dict[(callsigns[0], callsigns[1])])), message=packet.message,
                                      translated_message=translated_message, packet=packet, type="RRR")
             self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
-            print("Updated convo_dict with RRR reply.")
+            self.logger.debug("Updated qso_dict with RRR reply.")
         elif ack == "RR73":
             translated_message = (f"{message[1]} sends a Roger Roger to {message[0]} and says goodbye, "
                                   f"concluding the connection.")
@@ -253,14 +270,14 @@ class MessageProcessor:
                                      translated_message=translated_message, packet=packet, type="RR & Goodbye")
             self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             self.qso_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
-            print("Updated convo_dict with RR73 reply.")
+            self.logger.debug("Updated qso_dict with RR73 reply.")
         elif ack == "73":
             translated_message = f"{message[1]} sends their well wishes to {message[0]}, concluding the connection."
             convo_turn = MessageTurn(turn=(len(self.qso_dict[(callsigns[0], callsigns[1])])), message=packet.message,
                                      translated_message=translated_message, packet=packet, type="Goodbye")
             self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             self.qso_dict[(callsigns[0], callsigns[1])][0]["completed"] = True
-            print("Updated convo_dict with 73 reply.")
+            self.logger.debug("Updated qso_dict with 73 reply.")
 
     def is_grid_square(self, message):
         square = str(message[-1])
@@ -291,7 +308,7 @@ class MessageProcessor:
                                  message=packet.message, translated_message=translated_message, packet=packet,
                                  type="Grid Square Report")
         self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
-        print("Updated convo_dict with grid square report.")
+        self.logger.debug("Updated qso_dict with grid square report.")
 
     def handle_cq(self, packet: Packet):
         split_message = packet.message.split()
@@ -305,17 +322,17 @@ class MessageProcessor:
             translated = f"Station {caller} is calling for any response from grid {grid}."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
-            print("Updated convo_dict with CQ.")
+            self.logger.debug("Updated qso_dict with CQ.")
         elif len(split_message) == 2:
             caller = packet.message.split()[1]
             translated = f"Station {caller} is calling for any response."
             cq = CQ(packet=packet, message=packet.message, caller=caller, translated_message=translated)
             self.cqs.append(cq)
-            print("Updated convo_dict with CQ.")
+            self.logger.debug("Updated qso_dict with CQ.")
         else:
             cq = CQ(packet=packet, message=packet.message, caller=packet.message, translated_message="Unconfigured")
             self.cqs.append(cq)
-            print("Updated convo_dict with CQ.")
+            self.logger.debug("Updated qso_dict with CQ.")
 
     def add_cq(self, callsigns: list):
         for callsign in callsigns:
@@ -326,20 +343,24 @@ class MessageProcessor:
                                   packet=this_cq.packet, type="CQ Call.")
                     self.qso_dict[(callsigns[0], callsigns[1])].insert(1, cq_turn)
                     self.cqs.remove(cq)
-                    print("Updated convo_dict with initial CQ call.")
+                    self.logger.debug("Updated qso_dict with initial CQ call.")
                     break
                 else:
                     continue
 
     # Given grid square, returns Lat/Lon
     def resolve_grid_square(self, grid_square):
-        coords = mh.to_location(grid_square, center=True)
-        return {
-            "Grid Square": grid_square,
-            "Latitude": str(coords[0]),
-            "Longitude": str(coords[1]),
-            "Map URL": f"https://www.google.com/maps?q={str(coords[0])},{str(coords[1])}"
-        }
+        try:
+            coords = mh.to_location(grid_square, center=True)
+            return {
+                "Grid Square": grid_square,
+                "Latitude": str(coords[0]),
+                "Longitude": str(coords[1]),
+                "Map URL": f"https://www.google.com/maps?q={str(coords[0])},{str(coords[1])}"
+            }
+        except Exception as e:
+            self.logger.warning(f"Failed to resolve grid square {grid_square}: {e}")
+            return None
 
 # ---------------------DATA EXPORTING--------------------------
     def comms_to_json(self, filename: str):
@@ -348,53 +369,64 @@ class MessageProcessor:
         else:
             out_filename = f"{filename}.json"
 
-        with open(out_filename, "w") as json_file:
-            json_dict = {"COMMS": [{}]}
+        try:
+            with open(out_filename, "w") as json_file:
+                json_dict = {"COMMS": [{}]}
 
-            for k, v in self.qso_dict.items():
-                key_str = str(k)
-                json_dict["COMMS"][0][key_str] = []
+                for k, v in self.qso_dict.items():
+                    key_str = str(k)
+                    json_dict["COMMS"][0][key_str] = []
 
-                for item in v:
-                    if isinstance(item, MessageTurn):
-                        json_dict["COMMS"][0][key_str].append(asdict(item))
-                    else:
-                        json_dict["COMMS"][0][key_str].append(item)
+                    for item in v:
+                        if isinstance(item, MessageTurn):
+                            json_dict["COMMS"][0][key_str].append(asdict(item))
+                        else:
+                            json_dict["COMMS"][0][key_str].append(item)
 
-            for k, v in json_dict.items():
-                for i, field in enumerate(v):
-                    if isinstance(field, Packet):
-                        while len(json_dict[k]) <= i + 1:
-                            json_dict[k].append({})
-                        json_dict[k][i + 1]["packet"] = asdict(field)
+                for k, v in json_dict.items():
+                    for i, field in enumerate(v):
+                        if isinstance(field, Packet):
+                            while len(json_dict[k]) <= i + 1:
+                                json_dict[k].append({})
+                            json_dict[k][i + 1]["packet"] = asdict(field)
 
-            json_file.write(json.dumps(json_dict))
+                json_file.write(json.dumps(json_dict))
+                self.logger.debug(f"QSOs exported to {out_filename}")
+
+        except (IOError, OSError) as e:
+            self.logger.error(f"Failed to write QSOs to {out_filename}: {e}")
+            raise
 
     def cqs_to_json(self, filename: str):
         if filename.endswith(".json"):
             out_filename = filename
         else:
             out_filename = f"{filename}.json"
+        try:
+            with open(out_filename, "w") as json_file:
+                json_dict = {"CQS": []}
+                for i, cq in enumerate(self.cqs):
+                    while len(json_dict["CQS"]) <= i:
+                        json_dict["CQS"].append({})
 
-        with open(out_filename, "w") as json_file:
-            json_dict = {"CQS": []}
-            for i, cq in enumerate(self.cqs):
-                while len(json_dict["CQS"]) <= i:
-                    json_dict["CQS"].append({})
+                    if isinstance(cq, CQ):
+                        json_dict["CQS"][i] = asdict(cq)
+                    else:
+                        json_dict["CQS"][i] = cq
 
-                if isinstance(cq, CQ):
-                    json_dict["CQS"][i] = asdict(cq)
-                else:
-                    json_dict["CQS"][i] = cq
+                for k, v in json_dict.items():
+                    for i, field in enumerate(v):
+                        if isinstance(field, Packet):
+                            while len(json_dict[k]) <= i + 1:
+                                json_dict[k].append({})
+                            json_dict[k][i + 1]["packet"] = asdict(field)
 
-            for k, v in json_dict.items():
-                for i, field in enumerate(v):
-                    if isinstance(field, Packet):
-                        while len(json_dict[k]) <= i + 1:
-                            json_dict[k].append({})
-                        json_dict[k][i + 1]["packet"] = asdict(field)
+                json_file.write(json.dumps(json_dict))
+                self.logger.debug(f"CQs exported to {out_filename}")
 
-            json_file.write(json.dumps(json_dict))
+        except (IOError, OSError) as e:
+            self.logger.error(f"Failed to write CQs to {out_filename}: {e}")
+            raise
 
     def misc_to_json(self, filename: str):
         if filename.endswith(".json"):
@@ -402,26 +434,32 @@ class MessageProcessor:
         else:
             out_filename = f"{filename}.json"
 
-        with open(out_filename, "w") as json_file:
-            json_dict = {"MISC": []}
+        try:
+            with open(out_filename, "w") as json_file:
+                json_dict = {"MISC": []}
 
-            for k, v in self.misc_comms.items():
-                key_str = str(k)
-                json_dict["MISC. COMMS"][0][key_str] = []
+                for k, v in self.misc_comms.items():
+                    key_str = str(k)
+                    json_dict["MISC. COMMS"][0][key_str] = []
 
-                for item in v:
-                    if isinstance(item, MessageTurn):
-                        json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
-                    else:
-                        json_dict["MISC. COMMS"][0][key_str].append(item)
+                    for item in v:
+                        if isinstance(item, MessageTurn):
+                            json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
+                        else:
+                            json_dict["MISC. COMMS"][0][key_str].append(item)
 
-            for k, v in json_dict.items():
-                for i, field in enumerate(v):
-                    if isinstance(field, Packet):
-                        while len(json_dict[k]) <= i + 1:
-                            json_dict[k].append({})
-                        json_dict[k][i + 1]["packet"] = asdict(field)
-            json_file.write(json.dumps(json_dict))
+                for k, v in json_dict.items():
+                    for i, field in enumerate(v):
+                        if isinstance(field, Packet):
+                            while len(json_dict[k]) <= i + 1:
+                                json_dict[k].append({})
+                            json_dict[k][i + 1]["packet"] = asdict(field)
+                json_file.write(json.dumps(json_dict))
+                self.logger.debug(f"misc messages exported to {out_filename}")
+
+        except (IOError, OSError) as e:
+            self.logger.error(f"Failed to write misc messages to {out_filename}: {e}")
+            raise
 
     def to_json(self, filename: str):
         if filename.endswith(".json"):
@@ -429,139 +467,172 @@ class MessageProcessor:
         else:
             out_filename = f"{filename}.json"
 
-        with open(out_filename, "w") as json_file:
-            json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
+        try:
+            with open(out_filename, "w") as json_file:
+                json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
 
-            for k, v in self.qso_dict.items():
-                key_str = str(k)
-                json_dict["COMMS"][0][key_str] = []
+                for k, v in self.qso_dict.items():
+                    key_str = str(k)
+                    json_dict["COMMS"][0][key_str] = []
 
-                for item in v:
-                    if isinstance(item, MessageTurn):
-                        json_dict["COMMS"][0][key_str].append(asdict(item))
+                    for item in v:
+                        if isinstance(item, MessageTurn):
+                            json_dict["COMMS"][0][key_str].append(asdict(item))
+                        else:
+                            json_dict["COMMS"][0][key_str].append(item)
+
+                for i, cq in enumerate(self.cqs):
+                    while len(json_dict["CQS"]) <= i:
+                        json_dict["CQS"].append({})
+
+                    if isinstance(cq, CQ):
+                        json_dict["CQS"][i] = asdict(cq)
                     else:
-                        json_dict["COMMS"][0][key_str].append(item)
+                        json_dict["CQS"][i] = cq
 
-            for i, cq in enumerate(self.cqs):
-                while len(json_dict["CQS"]) <= i:
-                    json_dict["CQS"].append({})
+                for k, v in self.misc_comms.items():
+                    key_str = str(k)
+                    json_dict["MISC. COMMS"][0][key_str] = []
 
-                if isinstance(cq, CQ):
-                    json_dict["CQS"][i] = asdict(cq)
-                else:
-                    json_dict["CQS"][i] = cq
+                    for item in v:
+                        if isinstance(item, MessageTurn):
+                            json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
+                        else:
+                            json_dict["MISC. COMMS"][0][key_str].append(item)
 
-            for k, v in self.misc_comms.items():
-                key_str = str(k)
-                json_dict["MISC. COMMS"][0][key_str] = []
+                for k, v in json_dict.items():
+                    for i, field in enumerate(v):
+                        if isinstance(field, Packet):
+                            while len(json_dict[k]) <= i + 1:
+                                json_dict[k].append({})
+                            json_dict[k][i + 1]["packet"] = asdict(field)
 
-                for item in v:
-                    if isinstance(item, MessageTurn):
-                        json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
-                    else:
-                        json_dict["MISC. COMMS"][0][key_str].append(item)
-
-            for k, v in json_dict.items():
-                for i, field in enumerate(v):
-                    if isinstance(field, Packet):
-                        while len(json_dict[k]) <= i + 1:
-                            json_dict[k].append({})
-                        json_dict[k][i + 1]["packet"] = asdict(field)
-
-            data = json.dumps(json_dict, indent=2)
-            json_file.write(data)
+                data = json.dumps(json_dict, indent=2)
+                json_file.write(data)
+                self.logger.debug(f"All messages exported to {out_filename}")
+        except (IOError, OSError) as e:
+            self.logger.error(f"Failed to write all messages to {out_filename}: {e}")
+            raise
 
 # -------------MAPPING-------------
 
     def gather_coords(self):
         for key in self.qso_dict: # Gathering QSO coords
             if key[0].strip() in self.grid_square_cache and key[1].strip() in self.grid_square_cache:
+                if len(self.qso_dict[(key[0], key[1])]) > 2:
+                    time_captured = self.qso_dict[(key[0], key[1])][2].packet.time_captured
+                else:
+                    time_captured = self.qso_dict[(key[0], key[1])][1].packet.time_captured
                 first_coords = self.resolve_grid_square(self.grid_square_cache[key[0]])
                 second_coords = self.resolve_grid_square(self.grid_square_cache[key[1]])
-                coord_tuple = ((key[0], first_coords["Latitude"], first_coords["Longitude"]),
-                               (key[1], second_coords["Latitude"], second_coords["Longitude"]))
-                self.qso_coords.append(coord_tuple)
-                print("success with:", key[0], key[1])
-                print(self.qso_coords)
+
+                if first_coords and second_coords:
+                    coord_tuple = ((key[0], first_coords["Latitude"], first_coords["Longitude"]),
+                                   (key[1], second_coords["Latitude"], second_coords["Longitude"]),
+                                   (time_captured,))
+                    self.qso_coords.append(coord_tuple)
+                    self.logger.debug(f"Added coordinates for QSO between {key[0]} and {key[1]}")
+                else:
+                    self.logger.warning(f"Failed to resolve coordinates for QSO between {key[0]} and {key[1]}")
             else:
-                print('Failure')
+                self.logger.debug(f"Missing grid squares for QSO between {key[0]} and {key[1]}")
 
         for cq in self.cqs: # Gathering CQ coords
             split_message = cq.message.split()
+            time_captured = cq.packet.time_captured
             if len(split_message) < 4:
                 callsign = split_message[1]
                 if callsign in self.grid_square_cache:
                     cq_coords = self.resolve_grid_square(self.grid_square_cache[callsign])
-                    cq_tuple = (cq.message, cq_coords["Latitude"], cq_coords["Longitude"])
-                    self.cq_coords.append(cq_tuple)
+                    if cq_coords:
+                        cq_tuple = (cq.message, time_captured, cq_coords["Latitude"], cq_coords["Longitude"])
+                        self.cq_coords.append(cq_tuple)
+                        self.logger.debug(f"Added coordinates for CQ from {callsign}")
                 else:
-                    print("not added:", callsign, split_message, self.grid_square_cache)
+                    self.logger.warning(f"Failed to resolve grid square for CQ from {callsign}")
             else:
                 callsign = split_message[2]
                 if callsign in self.grid_square_cache:
                     cq_coords = self.resolve_grid_square(self.grid_square_cache[callsign])
-                    cq_tuple = (cq.message, cq_coords["Latitude"], cq_coords["Longitude"])
-                    self.cq_coords.append(cq_tuple)
+                    if cq_coords:
+                        cq_tuple = (cq.message, time_captured, cq_coords["Latitude"], cq_coords["Longitude"])
+                        self.cq_coords.append(cq_tuple)
+                        self.logger.debug(f"Added coordinates for CQ from {callsign}")
                 else:
-                    print("not added:", callsign, split_message, self.grid_square_cache)
+                    self.logger.warning(f"Failed to resolve grid square for CQ from {callsign}")
 
     def to_map(self, filename: str):
-        self.gather_coords()
+        try:
+            self.gather_coords()
 
-        if len(self.qso_coords) > 3:
-            cumulative_lat = 0
-            cumulative_lon = 0
-            total_len = len(self.qso_coords)
-            for tuple in self.qso_coords:
-                cumulative_lat += float(tuple[0][1]) + float(tuple[1][1])
-                cumulative_lon += float(tuple[0][2]) + float(tuple[1][2])
+            if len(self.qso_coords) > 3:
+                cumulative_lat = 0
+                cumulative_lon = 0
+                total_len = len(self.qso_coords)
+                for tuple in self.qso_coords:
+                    cumulative_lat += float(tuple[0][1]) + float(tuple[1][1])
+                    cumulative_lon += float(tuple[0][2]) + float(tuple[1][2])
 
-            mean_lat = round(cumulative_lat/total_len, 2)
-            mean_lon = round(cumulative_lon/total_len, 2)
+                mean_lat = round(cumulative_lat/total_len, 2)
+                mean_lon = round(cumulative_lon/total_len, 2)
 
-            m = folium.Map(location=(mean_lat, mean_lon), zoom_start=2)
-        else:
-            m = folium.Map(location=(0, 0), zoom_start=2)
+                m = folium.Map(location=(mean_lat, mean_lon), zoom_start=2)
+                self.logger.info(f"Created map centered at {mean_lat}, {mean_lon}")
+            else:
+                m = folium.Map(location=(0, 0), zoom_start=2)
+                self.logger.info("Created map with default center (insufficient QSO data for centering)")
 
-        qsos = folium.FeatureGroup("QSOs").add_to(m)
-        cqs = folium.FeatureGroup("CQS").add_to(m)
+            cqs = folium.FeatureGroup("CQs").add_to(m)
+            qsos = folium.FeatureGroup("QSOs").add_to(m)
 
-        for coords in self.qso_coords:
-            folium.Marker(
-                location=[coords[0][1], coords[0][2]],
-                tooltip="QSO Participant",
-                popup=coords[0][0],
-                icon=folium.Icon(icon='radio', prefix='fa', color='green')
-            ).add_to(qsos)
-            point1 = (float(coords[0][1]), float(coords[0][2]))
-
-            folium.Marker(
-                location=[coords[1][1], coords[1][2]],
-                tooltip="QSO Participant",
-                popup=coords[1][0],
-                icon=folium.Icon(icon='radio', prefix='fa', color='green')
-            ).add_to(qsos)
-            point2 = (float(coords[1][1]), float(coords[1][2]))
-
-            qso_key = sorted([coords[0][0], coords[1][0]])
-            line = folium.PolyLine(locations=[point1, point2], color='blue', weight=3, opacity=.55,
-                                   tooltip=f"QSO between {coords[0][0]} and {coords[1][0]}",
-                                   popup=self.qso_dict[(qso_key[0], qso_key[1])])
-            line.add_to(m)
-
-            for cq in self.cq_coords:
-                callsign = "".join(cq[0])
-                if any(tup[0][0] == callsign or tup[1][0] == callsign for tup in self.cq_coords):
-                    continue
+            for coords in self.qso_coords:
                 folium.Marker(
-                    location=[cq[1], cq[2]],
-                    tooltip="Unanswered CQ call",
-                    popup=callsign,
-                    icon=folium.Icon(icon='radio', prefix='fa', color='red')
-                ).add_to(cqs)
+                    location=[coords[0][1], coords[0][2]],
+                    tooltip="QSO Participant",
+                    popup=coords[0][0],
+                    icon=folium.Icon(icon='radio', prefix='fa', color='green')
+                ).add_to(qsos)
+                point1 = (float(coords[0][1]), float(coords[0][2]))
 
-        folium.LayerControl().add_to(m)
-        m.save(f"{filename}.html")
+                folium.Marker(
+                    location=[coords[1][1], coords[1][2]],
+                    tooltip="QSO Participant",
+                    popup=coords[1][0],
+                    icon=folium.Icon(icon='radio', prefix='fa', color='green')
+                ).add_to(qsos)
+                point2 = (float(coords[1][1]), float(coords[1][2]))
+
+                line = folium.PolyLine(locations=[point1, point2], color='blue', weight=3, opacity=.55,
+                                       tooltip=f"QSO between {coords[0][0]} and {coords[1][0]}",
+                                       popup=f"Contact began at {coords[2]}.")
+                line.add_to(m)
+
+                qso_callsigns = []
+                for coords in self.qso_coords:
+                    qso_callsigns.append(str(coords[0][0]))
+                    qso_callsigns.append(str(coords[1][0]))
+
+                for cq in self.cq_coords:
+                    callsign = "".join(cq[0])
+                    if callsign in qso_callsigns:
+                        pass
+                    else:
+                        time_captured = cq[1]
+                        folium.Marker(
+                            location=[cq[2], cq[3]],
+                            tooltip="Unanswered CQ call",
+                            popup=f"{callsign}, {time_captured}",
+                            icon=folium.Icon(icon='radio', prefix='fa', color='red')
+                        ).add_to(cqs)
+
+            folium.LayerControl().add_to(m)
+            m.save(f"{filename}.html")
+            self.logger.info(f"Map saved as {filename}.html with {len(self.qso_coords)} QSOs"
+                             f" and {len(self.cq_coords)} CQs")
+
+        except Exception as e:
+            self.logger.error(f"Failed to create map {filename}.html: {e}")
+            raise
 
 # TODO remove CQs when answered
 
