@@ -561,7 +561,7 @@ class MessageProcessor:
                 else:
                     self.logger.warning(f"Failed to resolve grid square for CQ from {callsign}")
 
-    def to_map(self, filename: str):
+    def to_map(self, filename: str, all_cqs: bool = True):
         try:
             self.gather_coords()
 
@@ -614,8 +614,9 @@ class MessageProcessor:
 
                 for cq in self.cq_coords:
                     callsign = "".join(cq[0])
-                    if callsign in qso_callsigns:
-                        pass
+                    if not all_cqs:
+                        if callsign in qso_callsigns:
+                            continue
                     else:
                         time_captured = cq[1]
                         folium.Marker(

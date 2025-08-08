@@ -1,0 +1,3120 @@
+{
+  "COMMS": [
+    {
+      "('N5YHF', 'WB7SRC')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "N5YHF WB7SRC R+05",
+          "translated_message": "WB7SRC says Roger and reports a signal report of +05 to N5YHF.",
+          "packet": {
+            "snr": -7,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 933,
+            "frequency": 14.074933,
+            "band": "20m",
+            "message": "N5YHF WB7SRC R+05",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.935022",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "N5YHF WB7SRC 73",
+          "translated_message": "WB7SRC sends their well wishes to N5YHF, concluding the connection.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 933,
+            "frequency": 14.074933,
+            "band": "20m",
+            "message": "N5YHF WB7SRC 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.910215",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('KB0SDY', 'KO4VYT')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "KB0SDY KO4VYT -02",
+          "translated_message": "KO4VYT sends a signal report of -02 to KB0SDY.",
+          "packet": {
+            "snr": -7,
+            "delta_time": 0.5,
+            "frequency_offset": 482,
+            "frequency": 14.074482,
+            "band": "20m",
+            "message": "KB0SDY KO4VYT -02",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.941710",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "KB0SDY KO4VYT RR73",
+          "translated_message": "KO4VYT sends a Roger Roger to KB0SDY and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -17,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 482,
+            "frequency": 14.074482,
+            "band": "20m",
+            "message": "KB0SDY KO4VYT RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.929655",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('VE4ZIM', 'WM9E')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "WM9E VE4ZIM -18",
+          "translated_message": "VE4ZIM sends a signal report of -18 to WM9E.",
+          "packet": {
+            "snr": -1,
+            "delta_time": 0.5,
+            "frequency_offset": 973,
+            "frequency": 14.074973,
+            "band": "20m",
+            "message": "WM9E VE4ZIM -18",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.948852",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "WM9E VE4ZIM -18",
+          "translated_message": "VE4ZIM sends a signal report of -18 to WM9E.",
+          "packet": {
+            "snr": -4,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 973,
+            "frequency": 14.074973,
+            "band": "20m",
+            "message": "WM9E VE4ZIM -18",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.946216",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "WM9E VE4ZIM -18",
+          "translated_message": "VE4ZIM sends a signal report of -18 to WM9E.",
+          "packet": {
+            "snr": 2,
+            "delta_time": 0.5,
+            "frequency_offset": 973,
+            "frequency": 14.074973,
+            "band": "20m",
+            "message": "WM9E VE4ZIM -18",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.935940",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KF5WCP', 'NO4ON')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "NO4ON KF5WCP EM25",
+          "translated_message": "KF5WCP sends a grid square location of EM25 to NO4ON.",
+          "packet": {
+            "snr": 4,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 710,
+            "frequency": 14.07471,
+            "band": "20m",
+            "message": "NO4ON KF5WCP EM25",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.955669",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KK4TCE', 'N3DAW')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KK4TCE N3DAW FN31",
+          "translated_message": "N3DAW sends a grid square location of FN31 to KK4TCE.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 0.5,
+            "frequency_offset": 615,
+            "frequency": 14.074615,
+            "band": "20m",
+            "message": "KK4TCE N3DAW FN31",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.969064",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KK4TCE N3DAW R-06",
+          "translated_message": "N3DAW says Roger and reports a signal report of -06 to KK4TCE.",
+          "packet": {
+            "snr": -14,
+            "delta_time": 0.5,
+            "frequency_offset": 616,
+            "frequency": 14.074616,
+            "band": "20m",
+            "message": "KK4TCE N3DAW R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.952794",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "KK4TCE N3DAW R-06",
+          "translated_message": "N3DAW says Roger and reports a signal report of -06 to KK4TCE.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 0.5,
+            "frequency_offset": 615,
+            "frequency": 14.074615,
+            "band": "20m",
+            "message": "KK4TCE N3DAW R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.947194",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "KK4TCE N3DAW R-06",
+          "translated_message": "N3DAW says Roger and reports a signal report of -06 to KK4TCE.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 0.5,
+            "frequency_offset": 616,
+            "frequency": 14.074616,
+            "band": "20m",
+            "message": "KK4TCE N3DAW R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.941946",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 5,
+          "message": "KK4TCE N3DAW R-06",
+          "translated_message": "N3DAW says Roger and reports a signal report of -06 to KK4TCE.",
+          "packet": {
+            "snr": -18,
+            "delta_time": 0.5,
+            "frequency_offset": 615,
+            "frequency": 14.074615,
+            "band": "20m",
+            "message": "KK4TCE N3DAW R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.933015",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KM4IY', 'N5YHF')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N5YHF KM4IY R-06",
+          "translated_message": "KM4IY says Roger and reports a signal report of -06 to N5YHF.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 0.5,
+            "frequency_offset": 280,
+            "frequency": 14.07428,
+            "band": "20m",
+            "message": "N5YHF KM4IY R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.975454",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "N5YHF KM4IY R-06",
+          "translated_message": "KM4IY says Roger and reports a signal report of -06 to N5YHF.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.5,
+            "frequency_offset": 280,
+            "frequency": 14.07428,
+            "band": "20m",
+            "message": "N5YHF KM4IY R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:14.821660",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "N5YHF KM4IY R-06",
+          "translated_message": "KM4IY says Roger and reports a signal report of -06 to N5YHF.",
+          "packet": {
+            "snr": 4,
+            "delta_time": 0.5,
+            "frequency_offset": 303,
+            "frequency": 14.074303,
+            "band": "20m",
+            "message": "N5YHF KM4IY R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.915177",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "N5YHF KM4IY R-06",
+          "translated_message": "KM4IY says Roger and reports a signal report of -06 to N5YHF.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.5,
+            "frequency_offset": 303,
+            "frequency": 14.074303,
+            "band": "20m",
+            "message": "N5YHF KM4IY R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.921085",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 5,
+          "message": "N5YHF KM4IY R-06",
+          "translated_message": "KM4IY says Roger and reports a signal report of -06 to N5YHF.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.5,
+            "frequency_offset": 304,
+            "frequency": 14.074304,
+            "band": "20m",
+            "message": "N5YHF KM4IY R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.946978",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 6,
+          "message": "N5YHF KM4IY R-06",
+          "translated_message": "KM4IY says Roger and reports a signal report of -06 to N5YHF.",
+          "packet": {
+            "snr": 2,
+            "delta_time": 0.5,
+            "frequency_offset": 303,
+            "frequency": 14.074303,
+            "band": "20m",
+            "message": "N5YHF KM4IY R-06",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:11.937963",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('JG5VFK', 'WB5BI')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "JG5VFK WB5BI EM34",
+          "translated_message": "WB5BI sends a grid square location of EM34 to JG5VFK.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.5,
+            "frequency_offset": 1268,
+            "frequency": 14.075268,
+            "band": "20m",
+            "message": "JG5VFK WB5BI EM34",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:41.991782",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "JG5VFK WB5BI EM34",
+          "translated_message": "WB5BI sends a grid square location of EM34 to JG5VFK.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 0.5,
+            "frequency_offset": 1269,
+            "frequency": 14.075269,
+            "band": "20m",
+            "message": "JG5VFK WB5BI EM34",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.923640",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "JG5VFK WB5BI R-12",
+          "translated_message": "WB5BI says Roger and reports a signal report of -12 to JG5VFK.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.5,
+            "frequency_offset": 1268,
+            "frequency": 14.075268,
+            "band": "20m",
+            "message": "JG5VFK WB5BI R-12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:42.012755",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "JG5VFK WB5BI 73",
+          "translated_message": "WB5BI sends their well wishes to JG5VFK, concluding the connection.",
+          "packet": {
+            "snr": -3,
+            "delta_time": 0.5,
+            "frequency_offset": 1269,
+            "frequency": 14.075269,
+            "band": "20m",
+            "message": "JG5VFK WB5BI 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.927785",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('DS5USH', 'KG5IC')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "DS5USH KG5IC EM28",
+          "translated_message": "KG5IC sends a grid square location of EM28 to DS5USH.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.5,
+            "frequency_offset": 1034,
+            "frequency": 14.075034,
+            "band": "20m",
+            "message": "DS5USH KG5IC EM28",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:42.056876",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "DS5USH KG5IC EM28",
+          "translated_message": "KG5IC sends a grid square location of EM28 to DS5USH.",
+          "packet": {
+            "snr": 4,
+            "delta_time": 0.5,
+            "frequency_offset": 1034,
+            "frequency": 14.075034,
+            "band": "20m",
+            "message": "DS5USH KG5IC EM28",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:12.011452",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('AE6CH', 'ZR5GAB')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "ZR5GAB AE6CH 73",
+          "translated_message": "AE6CH sends their well wishes to ZR5GAB, concluding the connection.",
+          "packet": {
+            "snr": -15,
+            "delta_time": 0.5,
+            "frequency_offset": 1393,
+            "frequency": 14.075393,
+            "band": "20m",
+            "message": "ZR5GAB AE6CH 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:44.707718",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('KO4O', 'VK5CP')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "VK5CP KO4O EM64",
+          "translated_message": "KO4O sends a grid square location of EM64 to VK5CP.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 1222,
+            "frequency": 14.075222,
+            "band": "20m",
+            "message": "VK5CP KO4O EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.877985",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "VK5CP KO4O EM64",
+          "translated_message": "KO4O sends a grid square location of EM64 to VK5CP.",
+          "packet": {
+            "snr": 0,
+            "delta_time": 0.5,
+            "frequency_offset": 1222,
+            "frequency": 14.075222,
+            "band": "20m",
+            "message": "VK5CP KO4O EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:27.014723",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "VK5CP KO4O EM64",
+          "translated_message": "KO4O sends a grid square location of EM64 to VK5CP.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.5,
+            "frequency_offset": 1222,
+            "frequency": 14.075222,
+            "band": "20m",
+            "message": "VK5CP KO4O EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.994644",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 4,
+          "message": "VK5CP KO4O EM64",
+          "translated_message": "KO4O sends a grid square location of EM64 to VK5CP.",
+          "packet": {
+            "snr": -3,
+            "delta_time": 0.5,
+            "frequency_offset": 1222,
+            "frequency": 14.075222,
+            "band": "20m",
+            "message": "VK5CP KO4O EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:27.048174",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 5,
+          "message": "VK5CP KO4O EM64",
+          "translated_message": "KO4O sends a grid square location of EM64 to VK5CP.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.5,
+            "frequency_offset": 1222,
+            "frequency": 14.075222,
+            "band": "20m",
+            "message": "VK5CP KO4O EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.971164",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 6,
+          "message": "VK5CP KO4O EM64",
+          "translated_message": "KO4O sends a grid square location of EM64 to VK5CP.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.5,
+            "frequency_offset": 1222,
+            "frequency": 14.075222,
+            "band": "20m",
+            "message": "VK5CP KO4O EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.924690",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KS4OT', 'W2MSK')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "W2MSK KS4OT EM83",
+          "translated_message": "KS4OT sends a grid square location of EM83 to W2MSK.",
+          "packet": {
+            "snr": 13,
+            "delta_time": 0.5,
+            "frequency_offset": 424,
+            "frequency": 14.074424,
+            "band": "20m",
+            "message": "W2MSK KS4OT EM83",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.886732",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "W2MSK KS4OT EM83",
+          "translated_message": "KS4OT sends a grid square location of EM83 to W2MSK.",
+          "packet": {
+            "snr": 16,
+            "delta_time": 0.5,
+            "frequency_offset": 423,
+            "frequency": 14.074423,
+            "band": "20m",
+            "message": "W2MSK KS4OT EM83",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.946901",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "W2MSK KS4OT EM83",
+          "translated_message": "KS4OT sends a grid square location of EM83 to W2MSK.",
+          "packet": {
+            "snr": 17,
+            "delta_time": 0.5,
+            "frequency_offset": 424,
+            "frequency": 14.074424,
+            "band": "20m",
+            "message": "W2MSK KS4OT EM83",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.916555",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('BD4UJ', 'VE7GKH')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "BD4UJ VE7GKH -15",
+          "translated_message": "VE7GKH sends a signal report of -15 to BD4UJ.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 182,
+            "frequency": 14.074182,
+            "band": "20m",
+            "message": "BD4UJ VE7GKH -15",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.894577",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "BD4UJ VE7GKH RR73",
+          "translated_message": "VE7GKH sends a Roger Roger to BD4UJ and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": 4,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 181,
+            "frequency": 14.074181,
+            "band": "20m",
+            "message": "BD4UJ VE7GKH RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.917052",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('NO4ON', 'WC2F')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "WC2F NO4ON -11",
+          "translated_message": "NO4ON sends a signal report of -11 to WC2F.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 0.5,
+            "frequency_offset": 1356,
+            "frequency": 14.075356,
+            "band": "20m",
+            "message": "WC2F NO4ON -11",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.910552",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('CO6XX', 'WB5JAN')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "WB5JAN CO6XX -07",
+          "translated_message": "CO6XX sends a signal report of -07 to WB5JAN.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 1.5,
+            "frequency_offset": 1121,
+            "frequency": 14.075121,
+            "band": "20m",
+            "message": "WB5JAN CO6XX -07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.935114",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "WB5JAN CO6XX -07",
+          "translated_message": "CO6XX sends a signal report of -07 to WB5JAN.",
+          "packet": {
+            "snr": -14,
+            "delta_time": 1.5,
+            "frequency_offset": 1121,
+            "frequency": 14.075121,
+            "band": "20m",
+            "message": "WB5JAN CO6XX -07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.969719",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "WB5JAN CO6XX -07",
+          "translated_message": "CO6XX sends a signal report of -07 to WB5JAN.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 1.5,
+            "frequency_offset": 1121,
+            "frequency": 14.075121,
+            "band": "20m",
+            "message": "WB5JAN CO6XX -07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.945686",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('WB8VOM', 'YB7HBD')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "YB7HBD WB8VOM EM79",
+          "translated_message": "WB8VOM sends a grid square location of EM79 to YB7HBD.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.5,
+            "frequency_offset": 1268,
+            "frequency": 14.075268,
+            "band": "20m",
+            "message": "YB7HBD WB8VOM EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.992809",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "YB7HBD WB8VOM EM79",
+          "translated_message": "WB8VOM sends a grid square location of EM79 to YB7HBD.",
+          "packet": {
+            "snr": -1,
+            "delta_time": 0.5,
+            "frequency_offset": 1267,
+            "frequency": 14.075267,
+            "band": "20m",
+            "message": "YB7HBD WB8VOM EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.977596",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KD8OBA', 'KQ4COV')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KD8OBA KQ4COV EM95",
+          "translated_message": "KQ4COV sends a grid square location of EM95 to KD8OBA.",
+          "packet": {
+            "snr": -23,
+            "delta_time": 0.5,
+            "frequency_offset": 144,
+            "frequency": 14.074144,
+            "band": "20m",
+            "message": "KD8OBA KQ4COV EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.999890",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KD8OBA KQ4COV EM95",
+          "translated_message": "KQ4COV sends a grid square location of EM95 to KD8OBA.",
+          "packet": {
+            "snr": -10,
+            "delta_time": 0.5,
+            "frequency_offset": 144,
+            "frequency": 14.074144,
+            "band": "20m",
+            "message": "KD8OBA KQ4COV EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:27.052332",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KD8OBA KQ4COV EM95",
+          "translated_message": "KQ4COV sends a grid square location of EM95 to KD8OBA.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 0.5,
+            "frequency_offset": 144,
+            "frequency": 14.074144,
+            "band": "20m",
+            "message": "KD8OBA KQ4COV EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:57.008680",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 4,
+          "message": "KD8OBA KQ4COV EM95",
+          "translated_message": "KQ4COV sends a grid square location of EM95 to KD8OBA.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 0.5,
+            "frequency_offset": 144,
+            "frequency": 14.074144,
+            "band": "20m",
+            "message": "KD8OBA KQ4COV EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:27.054453",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 5,
+          "message": "KD8OBA KQ4COV EM95",
+          "translated_message": "KQ4COV sends a grid square location of EM95 to KD8OBA.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.5,
+            "frequency_offset": 144,
+            "frequency": 14.074144,
+            "band": "20m",
+            "message": "KD8OBA KQ4COV EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.987477",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 6,
+          "message": "KD8OBA KQ4COV R-11",
+          "translated_message": "KQ4COV says Roger and reports a signal report of -11 to KD8OBA.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 0.5,
+            "frequency_offset": 144,
+            "frequency": 14.074144,
+            "band": "20m",
+            "message": "KD8OBA KQ4COV R-11",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:27.043277",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('AJ8B', 'DL8TV')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "DL8TV AJ8B EM79",
+          "translated_message": "AJ8B sends a grid square location of EM79 to DL8TV.",
+          "packet": {
+            "snr": -3,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "DL8TV AJ8B EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:57.007324",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "DL8TV AJ8B EM79",
+          "translated_message": "AJ8B sends a grid square location of EM79 to DL8TV.",
+          "packet": {
+            "snr": 6,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "DL8TV AJ8B EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:27.030600",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "DL8TV AJ8B EM79",
+          "translated_message": "AJ8B sends a grid square location of EM79 to DL8TV.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "DL8TV AJ8B EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:57.001530",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 4,
+          "message": "DL8TV AJ8B EM79",
+          "translated_message": "AJ8B sends a grid square location of EM79 to DL8TV.",
+          "packet": {
+            "snr": 11,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "DL8TV AJ8B EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.968003",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 5,
+          "message": "DL8TV AJ8B EM79",
+          "translated_message": "AJ8B sends a grid square location of EM79 to DL8TV.",
+          "packet": {
+            "snr": 4,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "DL8TV AJ8B EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.941235",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 6,
+          "message": "DL8TV AJ8B EM79",
+          "translated_message": "AJ8B sends a grid square location of EM79 to DL8TV.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "DL8TV AJ8B EM79",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.984085",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('N7PMS', 'NZ0F')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N7PMS NZ0F R-07",
+          "translated_message": "NZ0F says Roger and reports a signal report of -07 to N7PMS.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 692,
+            "frequency": 14.074692,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:59.712385",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "N7PMS NZ0F R-03",
+          "translated_message": "NZ0F says Roger and reports a signal report of -03 to N7PMS.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 692,
+            "frequency": 14.074692,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:27.124178",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "N7PMS NZ0F R-03",
+          "translated_message": "NZ0F says Roger and reports a signal report of -03 to N7PMS.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 691,
+            "frequency": 14.074691,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:57.015683",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "N7PMS NZ0F R-03",
+          "translated_message": "NZ0F says Roger and reports a signal report of -03 to N7PMS.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 692,
+            "frequency": 14.074692,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:27.005496",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KF5WCP', 'KT4KB')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ KT4KB EM94",
+          "translated_message": "Station KT4KB is calling for any response from grid EM94.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "CQ KT4KB EM94",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.951461",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "KT4KB KF5WCP EM25",
+          "translated_message": "KF5WCP sends a grid square location of EM25 to KT4KB.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 710,
+            "frequency": 14.07471,
+            "band": "20m",
+            "message": "KT4KB KF5WCP EM25",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.935844",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KF5WCP KT4KB -16",
+          "translated_message": "KT4KB sends a signal report of -16 to KF5WCP.",
+          "packet": {
+            "snr": 8,
+            "delta_time": 0.5,
+            "frequency_offset": 830,
+            "frequency": 14.07483,
+            "band": "20m",
+            "message": "KF5WCP KT4KB -16",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.962332",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "KT4KB KF5WCP R-19",
+          "translated_message": "KF5WCP says Roger and reports a signal report of -19 to KT4KB.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 710,
+            "frequency": 14.07471,
+            "band": "20m",
+            "message": "KT4KB KF5WCP R-19",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.909084",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 5,
+          "message": "KF5WCP KT4KB RR73",
+          "translated_message": "KT4KB sends a Roger Roger to KF5WCP and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "KF5WCP KT4KB RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.898584",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        },
+        {
+          "turn": 6,
+          "message": "KT4KB KF5WCP 73",
+          "translated_message": "KF5WCP sends their well wishes to KT4KB, concluding the connection.",
+          "packet": {
+            "snr": 6,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 711,
+            "frequency": 14.074711,
+            "band": "20m",
+            "message": "KT4KB KF5WCP 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.914567",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('K4CL', 'N6DLC')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N6DLC K4CL EM75",
+          "translated_message": "K4CL sends a grid square location of EM75 to N6DLC.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 2.5,
+            "frequency_offset": 1224,
+            "frequency": 14.075224,
+            "band": "20m",
+            "message": "N6DLC K4CL EM75",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:12.027461",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "N6DLC K4CL EM75",
+          "translated_message": "K4CL sends a grid square location of EM75 to N6DLC.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 1.7000000476837158,
+            "frequency_offset": 1223,
+            "frequency": 14.075223,
+            "band": "20m",
+            "message": "N6DLC K4CL EM75",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.928665",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "N6DLC K4CL EM75",
+          "translated_message": "K4CL sends a grid square location of EM75 to N6DLC.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 1224,
+            "frequency": 14.075224,
+            "band": "20m",
+            "message": "N6DLC K4CL EM75",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.949748",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 4,
+          "message": "N6DLC K4CL EM75",
+          "translated_message": "K4CL sends a grid square location of EM75 to N6DLC.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 1.399999976158142,
+            "frequency_offset": 1224,
+            "frequency": 14.075224,
+            "band": "20m",
+            "message": "N6DLC K4CL EM75",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.925699",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 5,
+          "message": "N6DLC K4CL EM75",
+          "translated_message": "K4CL sends a grid square location of EM75 to N6DLC.",
+          "packet": {
+            "snr": -4,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 1224,
+            "frequency": 14.075224,
+            "band": "20m",
+            "message": "N6DLC K4CL EM75",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:11.944272",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('AC9HP', 'K0FTN')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "K0FTN AC9HP EM69",
+          "translated_message": "AC9HP sends a grid square location of EM69 to K0FTN.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.5,
+            "frequency_offset": 1250,
+            "frequency": 14.07525,
+            "band": "20m",
+            "message": "K0FTN AC9HP EM69",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:12.100900",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "K0FTN AC9HP EM69",
+          "translated_message": "AC9HP sends a grid square location of EM69 to K0FTN.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 0.5,
+            "frequency_offset": 1247,
+            "frequency": 14.075247,
+            "band": "20m",
+            "message": "K0FTN AC9HP EM69",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:42.071207",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "K0FTN AC9HP EM69",
+          "translated_message": "AC9HP sends a grid square location of EM69 to K0FTN.",
+          "packet": {
+            "snr": -20,
+            "delta_time": 0.5,
+            "frequency_offset": 1248,
+            "frequency": 14.075248,
+            "band": "20m",
+            "message": "K0FTN AC9HP EM69",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:44.688218",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('N5KKG', 'N5VAN')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ N5VAN DN91",
+          "translated_message": "Station N5VAN is calling for any response from grid DN91.",
+          "packet": {
+            "snr": -21,
+            "delta_time": 1.2999999523162842,
+            "frequency_offset": 818,
+            "frequency": 14.074818,
+            "band": "20m",
+            "message": "CQ N5VAN DN91",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:44.814879",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "N5KKG N5VAN +01",
+          "translated_message": "N5VAN sends a signal report of +01 to N5KKG.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 1.2999999523162842,
+            "frequency_offset": 819,
+            "frequency": 14.074819,
+            "band": "20m",
+            "message": "N5KKG N5VAN +01",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:14.654686",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "N5KKG N5VAN RR73",
+          "translated_message": "N5VAN sends a Roger Roger to N5KKG and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 1.2999999523162842,
+            "frequency_offset": 818,
+            "frequency": 14.074818,
+            "band": "20m",
+            "message": "N5KKG N5VAN RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.962221",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('KF0RQF', 'KK1X')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KK1X KF0RQF EN40",
+          "translated_message": "KF0RQF sends a grid square location of EN40 to KK1X.",
+          "packet": {
+            "snr": 2,
+            "delta_time": 0.5,
+            "frequency_offset": 774,
+            "frequency": 14.074774,
+            "band": "20m",
+            "message": "KK1X KF0RQF EN40",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.924605",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KK1X KF0RQF EN40",
+          "translated_message": "KF0RQF sends a grid square location of EN40 to KK1X.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.5,
+            "frequency_offset": 775,
+            "frequency": 14.074775,
+            "band": "20m",
+            "message": "KK1X KF0RQF EN40",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.909406",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KK1X KF0RQF EN40",
+          "translated_message": "KF0RQF sends a grid square location of EN40 to KK1X.",
+          "packet": {
+            "snr": 8,
+            "delta_time": 0.5,
+            "frequency_offset": 775,
+            "frequency": 14.074775,
+            "band": "20m",
+            "message": "KK1X KF0RQF EN40",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.918459",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KD9YBH', 'NO4ON')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KD9YBH NO4ON -22",
+          "translated_message": "NO4ON sends a signal report of -22 to KD9YBH.",
+          "packet": {
+            "snr": -4,
+            "delta_time": 0.5,
+            "frequency_offset": 1355,
+            "frequency": 14.075355,
+            "band": "20m",
+            "message": "KD9YBH NO4ON -22",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.932346",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "KD9YBH NO4ON -22",
+          "translated_message": "NO4ON sends a signal report of -22 to KD9YBH.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.5,
+            "frequency_offset": 1356,
+            "frequency": 14.075356,
+            "band": "20m",
+            "message": "KD9YBH NO4ON -22",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.884670",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "KD9YBH NO4ON -22",
+          "translated_message": "NO4ON sends a signal report of -22 to KD9YBH.",
+          "packet": {
+            "snr": -19,
+            "delta_time": 0.5,
+            "frequency_offset": 1356,
+            "frequency": 14.075356,
+            "band": "20m",
+            "message": "KD9YBH NO4ON -22",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.980702",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "KD9YBH NO4ON -22",
+          "translated_message": "NO4ON sends a signal report of -22 to KD9YBH.",
+          "packet": {
+            "snr": -18,
+            "delta_time": 0.5,
+            "frequency_offset": 1356,
+            "frequency": 14.075356,
+            "band": "20m",
+            "message": "KD9YBH NO4ON -22",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.964288",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('K5FAN', 'KA4DQJ')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "K5FAN KA4DQJ EM66",
+          "translated_message": "KA4DQJ sends a grid square location of EM66 to K5FAN.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 2.299999952316284,
+            "frequency_offset": 951,
+            "frequency": 14.074951,
+            "band": "20m",
+            "message": "K5FAN KA4DQJ EM66",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.999800",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KA4DQJ K5FAN -12",
+          "translated_message": "K5FAN sends a signal report of -12 to KA4DQJ.",
+          "packet": {
+            "snr": -21,
+            "delta_time": 1.100000023841858,
+            "frequency_offset": 952,
+            "frequency": 14.074952,
+            "band": "20m",
+            "message": "KA4DQJ K5FAN -12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:59.815006",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('W8LYO', 'W8SEE')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ POTA W8SEE EM66",
+          "translated_message": "Parks on the Air participant W8SEE is calling from grid EM66.",
+          "packet": {
+            "snr": 11,
+            "delta_time": -0.4000000059604645,
+            "frequency_offset": 1219,
+            "frequency": 14.075219,
+            "band": "20m",
+            "message": "CQ POTA W8SEE EM66",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.909761",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "W8LYO W8SEE +07",
+          "translated_message": "W8SEE sends a signal report of +07 to W8LYO.",
+          "packet": {
+            "snr": 5,
+            "delta_time": -0.4000000059604645,
+            "frequency_offset": 1219,
+            "frequency": 14.075219,
+            "band": "20m",
+            "message": "W8LYO W8SEE +07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.877745",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "W8LYO W8SEE RR73",
+          "translated_message": "W8SEE sends a Roger Roger to W8LYO and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": 1,
+            "delta_time": -0.4000000059604645,
+            "frequency_offset": 1220,
+            "frequency": 14.07522,
+            "band": "20m",
+            "message": "W8LYO W8SEE RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.936809",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('KJ5IRO', 'VE7GKH')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "KJ5IRO VE7GKH -10",
+          "translated_message": "VE7GKH sends a signal report of -10 to KJ5IRO.",
+          "packet": {
+            "snr": -4,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 181,
+            "frequency": 14.074181,
+            "band": "20m",
+            "message": "KJ5IRO VE7GKH -10",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.891979",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "KJ5IRO VE7GKH RR73",
+          "translated_message": "VE7GKH sends a Roger Roger to KJ5IRO and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 182,
+            "frequency": 14.074182,
+            "band": "20m",
+            "message": "KJ5IRO VE7GKH RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.961765",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('K9JP', 'KO4VYT')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ POTA KO4VYT EL96",
+          "translated_message": "Parks on the Air participant KO4VYT is calling from grid EL96.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.5,
+            "frequency_offset": 482,
+            "frequency": 14.074482,
+            "band": "20m",
+            "message": "CQ POTA KO4VYT EL96",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.922402",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "K9JP KO4VYT -04",
+          "translated_message": "KO4VYT sends a signal report of -04 to K9JP.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 0.5,
+            "frequency_offset": 482,
+            "frequency": 14.074482,
+            "band": "20m",
+            "message": "K9JP KO4VYT -04",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.908104",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "K9JP KO4VYT RR73",
+          "translated_message": "KO4VYT sends a Roger Roger to K9JP and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 482,
+            "frequency": 14.074482,
+            "band": "20m",
+            "message": "K9JP KO4VYT RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.918770",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('K5MGY', 'KD5BS')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ KD5BS EM54",
+          "translated_message": "Station KD5BS is calling for any response from grid EM54.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.5,
+            "frequency_offset": 1317,
+            "frequency": 14.075317,
+            "band": "20m",
+            "message": "CQ KD5BS EM54",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.955053",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "KD5BS K5MGY EM12",
+          "translated_message": "K5MGY sends a grid square location of EM12 to KD5BS.",
+          "packet": {
+            "snr": -10,
+            "delta_time": 0.5,
+            "frequency_offset": 1317,
+            "frequency": 14.075317,
+            "band": "20m",
+            "message": "KD5BS K5MGY EM12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.935051",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KD5BS K5MGY EM12",
+          "translated_message": "K5MGY sends a grid square location of EM12 to KD5BS.",
+          "packet": {
+            "snr": -17,
+            "delta_time": 0.5,
+            "frequency_offset": 1317,
+            "frequency": 14.075317,
+            "band": "20m",
+            "message": "KD5BS K5MGY EM12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.912606",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 4,
+          "message": "KD5BS K5MGY EM12",
+          "translated_message": "K5MGY sends a grid square location of EM12 to KD5BS.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.5,
+            "frequency_offset": 1317,
+            "frequency": 14.075317,
+            "band": "20m",
+            "message": "KD5BS K5MGY EM12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:11.957597",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('K5JJX', 'W5BAA')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "W5BAA K5JJX 73",
+          "translated_message": "K5JJX sends their well wishes to W5BAA, concluding the connection.",
+          "packet": {
+            "snr": -18,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 305,
+            "frequency": 14.074305,
+            "band": "20m",
+            "message": "W5BAA K5JJX 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:14.760928",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('KO4VYT', 'WB7SRC')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KO4VYT WB7SRC DM33",
+          "translated_message": "WB7SRC sends a grid square location of DM33 to KO4VYT.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 933,
+            "frequency": 14.074933,
+            "band": "20m",
+            "message": "KO4VYT WB7SRC DM33",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.930092",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KO4VYT WB7SRC DM33",
+          "translated_message": "WB7SRC sends a grid square location of DM33 to KO4VYT.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 933,
+            "frequency": 14.074933,
+            "band": "20m",
+            "message": "KO4VYT WB7SRC DM33",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.901765",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KO4VYT WB7SRC DM33",
+          "translated_message": "WB7SRC sends a grid square location of DM33 to KO4VYT.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 933,
+            "frequency": 14.074933,
+            "band": "20m",
+            "message": "KO4VYT WB7SRC DM33",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.911767",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('AF4K', 'N5YHF')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N5YHF AF4K FM04",
+          "translated_message": "AF4K sends a grid square location of FM04 to N5YHF.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 409,
+            "frequency": 14.074409,
+            "band": "20m",
+            "message": "N5YHF AF4K FM04",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:27.041258",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('EA7AK', 'OE9LWV')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ OE9LWV JN47",
+          "translated_message": "Station OE9LWV is calling for any response from grid JN47.",
+          "packet": {
+            "snr": -18,
+            "delta_time": 0.5,
+            "frequency_offset": 852,
+            "frequency": 14.074852,
+            "band": "20m",
+            "message": "CQ OE9LWV JN47",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:44.627204",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "OE9LWV EA7AK R+12",
+          "translated_message": "EA7AK says Roger and reports a signal report of +12 to OE9LWV.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 1.600000023841858,
+            "frequency_offset": 851,
+            "frequency": 14.074851,
+            "band": "20m",
+            "message": "OE9LWV EA7AK R+12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:29.671862",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "EA7AK OE9LWV RR73",
+          "translated_message": "OE9LWV sends a Roger Roger to EA7AK and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.5,
+            "frequency_offset": 853,
+            "frequency": 14.074853,
+            "band": "20m",
+            "message": "EA7AK OE9LWV RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.971765",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('KD5BS', 'VE4ZIM')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ KD5BS EM54",
+          "translated_message": "Station KD5BS is calling for any response from grid EM54.",
+          "packet": {
+            "snr": -15,
+            "delta_time": 0.5,
+            "frequency_offset": 1317,
+            "frequency": 14.075317,
+            "band": "20m",
+            "message": "CQ KD5BS EM54",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.987123",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "KD5BS VE4ZIM -20",
+          "translated_message": "VE4ZIM sends a signal report of -20 to KD5BS.",
+          "packet": {
+            "snr": -4,
+            "delta_time": 0.5,
+            "frequency_offset": 973,
+            "frequency": 14.074973,
+            "band": "20m",
+            "message": "KD5BS VE4ZIM -20",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.939560",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "KD5BS VE4ZIM -20",
+          "translated_message": "VE4ZIM sends a signal report of -20 to KD5BS.",
+          "packet": {
+            "snr": -4,
+            "delta_time": 0.5,
+            "frequency_offset": 973,
+            "frequency": 14.074973,
+            "band": "20m",
+            "message": "KD5BS VE4ZIM -20",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:11.964556",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('G4DBW', 'PA3FWZ')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "G4DBW PA3FWZ R-14",
+          "translated_message": "PA3FWZ says Roger and reports a signal report of -14 to G4DBW.",
+          "packet": {
+            "snr": -18,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 1265,
+            "frequency": 14.075265,
+            "band": "20m",
+            "message": "G4DBW PA3FWZ R-14",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:42.024914",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "G4DBW PA3FWZ R-14",
+          "translated_message": "PA3FWZ says Roger and reports a signal report of -14 to G4DBW.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.5,
+            "frequency_offset": 1265,
+            "frequency": 14.075265,
+            "band": "20m",
+            "message": "G4DBW PA3FWZ R-14",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:12.010350",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('PD1BW', 'R8CCI')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "R8CCI PD1BW JO22",
+          "translated_message": "PD1BW sends a grid square location of JO22 to R8CCI.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 1194,
+            "frequency": 14.075194,
+            "band": "20m",
+            "message": "R8CCI PD1BW JO22",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:42.065670",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KT4KB', 'NP4JL')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ KT4KB EM94",
+          "translated_message": "Station KT4KB is calling for any response from grid EM94.",
+          "packet": {
+            "snr": 6,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "CQ KT4KB EM94",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.943678",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "NP4JL KT4KB R-16",
+          "translated_message": "KT4KB says Roger and reports a signal report of -16 to NP4JL.",
+          "packet": {
+            "snr": -1,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "NP4JL KT4KB R-16",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.916112",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "NP4JL KT4KB 73",
+          "translated_message": "KT4KB sends their well wishes to NP4JL, concluding the connection.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "NP4JL KT4KB 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.950837",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('N6DLC', 'VE7GKH')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "N6DLC VE7GKH +03",
+          "translated_message": "VE7GKH sends a signal report of +03 to N6DLC.",
+          "packet": {
+            "snr": -3,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 182,
+            "frequency": 14.074182,
+            "band": "20m",
+            "message": "N6DLC VE7GKH +03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.935106",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "N6DLC VE7GKH RR73",
+          "translated_message": "VE7GKH sends a Roger Roger to N6DLC and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.8999999761581421,
+            "frequency_offset": 182,
+            "frequency": 14.074182,
+            "band": "20m",
+            "message": "N6DLC VE7GKH RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.931149",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('CO6XX', 'WA3RFE')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ POTA CO6XX FL02",
+          "translated_message": "Parks on the Air participant CO6XX is calling from grid FL02.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 1.5,
+            "frequency_offset": 1121,
+            "frequency": 14.075121,
+            "band": "20m",
+            "message": "CQ POTA CO6XX FL02",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:26.998106",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "WA3RFE CO6XX +02",
+          "translated_message": "CO6XX sends a signal report of +02 to WA3RFE.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 1.5,
+            "frequency_offset": 1121,
+            "frequency": 14.075121,
+            "band": "20m",
+            "message": "WA3RFE CO6XX +02",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:56.979550",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('VE2ZXO', 'W4ZGR')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ W4ZGR EL97",
+          "translated_message": "Station W4ZGR is calling for any response from grid EL97.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.0,
+            "frequency_offset": 1280,
+            "frequency": 14.07528,
+            "band": "20m",
+            "message": "CQ W4ZGR EL97",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.918433",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "VE2ZXO W4ZGR -17",
+          "translated_message": "W4ZGR sends a signal report of -17 to VE2ZXO.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.10000000149011612,
+            "frequency_offset": 1280,
+            "frequency": 14.07528,
+            "band": "20m",
+            "message": "VE2ZXO W4ZGR -17",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:57.018697",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "VE2ZXO W4ZGR RR73",
+          "translated_message": "W4ZGR sends a Roger Roger to VE2ZXO and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.10000000149011612,
+            "frequency_offset": 1280,
+            "frequency": 14.07528,
+            "band": "20m",
+            "message": "VE2ZXO W4ZGR RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:26.957536",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('W8SEE', 'WP4LBK')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "WP4LBK W8SEE -08",
+          "translated_message": "W8SEE sends a signal report of -08 to WP4LBK.",
+          "packet": {
+            "snr": -5,
+            "delta_time": -0.4000000059604645,
+            "frequency_offset": 1220,
+            "frequency": 14.07522,
+            "band": "20m",
+            "message": "WP4LBK W8SEE -08",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:57.025074",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KQ4EEA', 'XE2SSB')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "XE2SSB KQ4EEA EL98",
+          "translated_message": "KQ4EEA sends a grid square location of EL98 to XE2SSB.",
+          "packet": {
+            "snr": -19,
+            "delta_time": 0.5,
+            "frequency_offset": 766,
+            "frequency": 14.074766,
+            "band": "20m",
+            "message": "XE2SSB KQ4EEA EL98",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:59.652796",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KO4VYT', 'N5KKG')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N5KKG KO4VYT +05",
+          "translated_message": "KO4VYT sends a signal report of +05 to N5KKG.",
+          "packet": {
+            "snr": -15,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 482,
+            "frequency": 14.074482,
+            "band": "20m",
+            "message": "N5KKG KO4VYT +05",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:11.951454",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('K8GED', 'WB5BI')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ WB5BI EM34",
+          "translated_message": "Station WB5BI is calling for any response from grid EM34.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.5,
+            "frequency_offset": 1213,
+            "frequency": 14.075213,
+            "band": "20m",
+            "message": "CQ WB5BI EM34",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:41.996236",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "K8GED WB5BI +08",
+          "translated_message": "WB5BI sends a signal report of +08 to K8GED.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.5,
+            "frequency_offset": 1213,
+            "frequency": 14.075213,
+            "band": "20m",
+            "message": "K8GED WB5BI +08",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:12.004009",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('OE9LWV', 'YL3IY')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ OE9LWV JN47",
+          "translated_message": "Station OE9LWV is calling for any response from grid JN47.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.5,
+            "frequency_offset": 853,
+            "frequency": 14.074853,
+            "band": "20m",
+            "message": "CQ OE9LWV JN47",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:14.684368",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "YL3IY OE9LWV -02",
+          "translated_message": "OE9LWV sends a signal report of -02 to YL3IY.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 0.5,
+            "frequency_offset": 853,
+            "frequency": 14.074853,
+            "band": "20m",
+            "message": "YL3IY OE9LWV -02",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:12.018572",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('CO6XX', 'W5RKJ')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CO6XX W5RKJ EL29",
+          "translated_message": "W5RKJ sends a grid square location of EL29 to CO6XX.",
+          "packet": {
+            "snr": -23,
+            "delta_time": 1.2000000476837158,
+            "frequency_offset": 621,
+            "frequency": 14.074621,
+            "band": "20m",
+            "message": "CO6XX W5RKJ EL29",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:12.049511",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('JY5CG', 'PA0LDE')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "JY5CG PA0LDE JO22",
+          "translated_message": "PA0LDE sends a grid square location of JO22 to JY5CG.",
+          "packet": {
+            "snr": -18,
+            "delta_time": 0.5,
+            "frequency_offset": 685,
+            "frequency": 14.074685,
+            "band": "20m",
+            "message": "JY5CG PA0LDE JO22",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:27.009589",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('AF4K', 'KK1X')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KK1X AF4K FM04",
+          "translated_message": "AF4K sends a grid square location of FM04 to KK1X.",
+          "packet": {
+            "snr": 0,
+            "delta_time": 0.4000000059604645,
+            "frequency_offset": 410,
+            "frequency": 14.07441,
+            "band": "20m",
+            "message": "KK1X AF4K FM04",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:27.050456",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('K0AUG', 'KK1X')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KK1X K0AUG EN25",
+          "translated_message": "K0AUG sends a grid square location of EN25 to KK1X.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.6000000238418579,
+            "frequency_offset": 433,
+            "frequency": 14.074432999999999,
+            "band": "20m",
+            "message": "KK1X K0AUG EN25",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:27.143268",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('AC3RA', 'W8SEE')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "AC3RA W8SEE -13",
+          "translated_message": "W8SEE sends a signal report of -13 to AC3RA.",
+          "packet": {
+            "snr": -5,
+            "delta_time": -0.4000000059604645,
+            "frequency_offset": 1220,
+            "frequency": 14.07522,
+            "band": "20m",
+            "message": "AC3RA W8SEE -13",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:29.675706",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('EA7AK', 'HA3PT')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "HA3PT EA7AK R-07",
+          "translated_message": "EA7AK says Roger and reports a signal report of -07 to HA3PT.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 1.600000023841858,
+            "frequency_offset": 850,
+            "frequency": 14.07485,
+            "band": "20m",
+            "message": "HA3PT EA7AK R-07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:20:29.757284",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ]
+    }
+  ],
+  "CQS": [
+    {
+      "message": "CQ K4CAE EM94",
+      "translated_message": "Station K4CAE is calling for any response from grid EM94.",
+      "caller": "K4CAE",
+      "packet": {
+        "snr": 7,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 1066,
+        "frequency": 14.075066,
+        "band": "20m",
+        "message": "CQ K4CAE EM94",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:17:41.961790",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ WA5RIP EM66",
+      "translated_message": "Station WA5RIP is calling for any response from grid EM66.",
+      "caller": "WA5RIP",
+      "packet": {
+        "snr": -14,
+        "delta_time": 1.0,
+        "frequency_offset": 315,
+        "frequency": 14.074315,
+        "band": "20m",
+        "message": "CQ WA5RIP EM66",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:17:44.663745",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KB9ELS EM46",
+      "translated_message": "Station KB9ELS is calling for any response from grid EM46.",
+      "caller": "KB9ELS",
+      "packet": {
+        "snr": 7,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 995,
+        "frequency": 14.074995,
+        "band": "20m",
+        "message": "CQ KB9ELS EM46",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:17:56.902529",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KA9FOX EN43",
+      "translated_message": "Station KA9FOX is calling for any response from grid EN43.",
+      "caller": "KA9FOX",
+      "packet": {
+        "snr": -1,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 853,
+        "frequency": 14.074853,
+        "band": "20m",
+        "message": "CQ KA9FOX EN43",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:17:56.943879",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ K4CAE EM94",
+      "translated_message": "Station K4CAE is calling for any response from grid EM94.",
+      "caller": "K4CAE",
+      "packet": {
+        "snr": 10,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 1066,
+        "frequency": 14.075066,
+        "band": "20m",
+        "message": "CQ K4CAE EM94",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:11.916550",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KB9ELS EM46",
+      "translated_message": "Station KB9ELS is calling for any response from grid EM46.",
+      "caller": "KB9ELS",
+      "packet": {
+        "snr": 10,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 995,
+        "frequency": 14.074995,
+        "band": "20m",
+        "message": "CQ KB9ELS EM46",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:26.939364",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KA9FOX EN43",
+      "translated_message": "Station KA9FOX is calling for any response from grid EN43.",
+      "caller": "KA9FOX",
+      "packet": {
+        "snr": 7,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 852,
+        "frequency": 14.074852,
+        "band": "20m",
+        "message": "CQ KA9FOX EN43",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:27.007882",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ W4ZGR EL97",
+      "translated_message": "Station W4ZGR is calling for any response from grid EL97.",
+      "caller": "W4ZGR",
+      "packet": {
+        "snr": -9,
+        "delta_time": 0.10000000149011612,
+        "frequency_offset": 1279,
+        "frequency": 14.075279,
+        "band": "20m",
+        "message": "CQ W4ZGR EL97",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:27.022797",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ K4CAE EM94",
+      "translated_message": "Station K4CAE is calling for any response from grid EM94.",
+      "caller": "K4CAE",
+      "packet": {
+        "snr": 14,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 1066,
+        "frequency": 14.075066,
+        "band": "20m",
+        "message": "CQ K4CAE EM94",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:41.901679",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ W4ZGR EL97",
+      "translated_message": "Station W4ZGR is calling for any response from grid EL97.",
+      "caller": "W4ZGR",
+      "packet": {
+        "snr": -12,
+        "delta_time": 0.10000000149011612,
+        "frequency_offset": 1279,
+        "frequency": 14.075279,
+        "band": "20m",
+        "message": "CQ W4ZGR EL97",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:56.909666",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KB9ELS EM46",
+      "translated_message": "Station KB9ELS is calling for any response from grid EM46.",
+      "caller": "KB9ELS",
+      "packet": {
+        "snr": 12,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 995,
+        "frequency": 14.074995,
+        "band": "20m",
+        "message": "CQ KB9ELS EM46",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:56.927980",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ HA1BF JN86",
+      "translated_message": "Station HA1BF is calling for any response from grid JN86.",
+      "caller": "HA1BF",
+      "packet": {
+        "snr": -18,
+        "delta_time": 0.5,
+        "frequency_offset": 1238,
+        "frequency": 14.075238,
+        "band": "20m",
+        "message": "CQ HA1BF JN86",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:18:59.810559",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ K4CAE EM94",
+      "translated_message": "Station K4CAE is calling for any response from grid EM94.",
+      "caller": "K4CAE",
+      "packet": {
+        "snr": 17,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 1066,
+        "frequency": 14.075066,
+        "band": "20m",
+        "message": "CQ K4CAE EM94",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:11.900893",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ N5VAN DN91",
+      "translated_message": "Station N5VAN is calling for any response from grid DN91.",
+      "caller": "N5VAN",
+      "packet": {
+        "snr": -17,
+        "delta_time": 1.2999999523162842,
+        "frequency_offset": 819,
+        "frequency": 14.074819,
+        "band": "20m",
+        "message": "CQ N5VAN DN91",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:11.957095",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ OE9LWV JN47",
+      "translated_message": "Station OE9LWV is calling for any response from grid JN47.",
+      "caller": "OE9LWV",
+      "packet": {
+        "snr": -21,
+        "delta_time": 0.5,
+        "frequency_offset": 852,
+        "frequency": 14.074852,
+        "band": "20m",
+        "message": "CQ OE9LWV JN47",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:14.648740",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KI5HCX DM61",
+      "translated_message": "Station KI5HCX is calling for any response from grid DM61.",
+      "caller": "KI5HCX",
+      "packet": {
+        "snr": -22,
+        "delta_time": 1.7000000476837158,
+        "frequency_offset": 347,
+        "frequency": 14.074347,
+        "band": "20m",
+        "message": "CQ KI5HCX DM61",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:14.912874",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ W4ZGR EL97",
+      "translated_message": "Station W4ZGR is calling for any response from grid EL97.",
+      "caller": "W4ZGR",
+      "packet": {
+        "snr": -11,
+        "delta_time": 0.10000000149011612,
+        "frequency_offset": 1280,
+        "frequency": 14.07528,
+        "band": "20m",
+        "message": "CQ W4ZGR EL97",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:26.955643",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KB9ELS EM46",
+      "translated_message": "Station KB9ELS is calling for any response from grid EM46.",
+      "caller": "KB9ELS",
+      "packet": {
+        "snr": 13,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 995,
+        "frequency": 14.074995,
+        "band": "20m",
+        "message": "CQ KB9ELS EM46",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:26.974159",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ HA1BF JN86",
+      "translated_message": "Station HA1BF is calling for any response from grid JN86.",
+      "caller": "HA1BF",
+      "packet": {
+        "snr": -16,
+        "delta_time": 0.5,
+        "frequency_offset": 1238,
+        "frequency": 14.075238,
+        "band": "20m",
+        "message": "CQ HA1BF JN86",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:29.690777",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ K4CAE EM94",
+      "translated_message": "Station K4CAE is calling for any response from grid EM94.",
+      "caller": "K4CAE",
+      "packet": {
+        "snr": 12,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 1066,
+        "frequency": 14.075066,
+        "band": "20m",
+        "message": "CQ K4CAE EM94",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:41.904506",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KB9ELS EM46",
+      "translated_message": "Station KB9ELS is calling for any response from grid EM46.",
+      "caller": "KB9ELS",
+      "packet": {
+        "snr": 15,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 995,
+        "frequency": 14.074995,
+        "band": "20m",
+        "message": "CQ KB9ELS EM46",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:56.922591",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KD5BS EM54",
+      "translated_message": "Station KD5BS is calling for any response from grid EM54.",
+      "caller": "KD5BS",
+      "packet": {
+        "snr": -7,
+        "delta_time": 0.5,
+        "frequency_offset": 1317,
+        "frequency": 14.075317,
+        "band": "20m",
+        "message": "CQ KD5BS EM54",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:19:56.947750",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ K4CAE EM94",
+      "translated_message": "Station K4CAE is calling for any response from grid EM94.",
+      "caller": "K4CAE",
+      "packet": {
+        "snr": 11,
+        "delta_time": 0.6000000238418579,
+        "frequency_offset": 1066,
+        "frequency": 14.075066,
+        "band": "20m",
+        "message": "CQ K4CAE EM94",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:20:11.930634",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KI5HCX DM61",
+      "translated_message": "Station KI5HCX is calling for any response from grid DM61.",
+      "caller": "KI5HCX",
+      "packet": {
+        "snr": -18,
+        "delta_time": 1.7000000476837158,
+        "frequency_offset": 347,
+        "frequency": 14.074347,
+        "band": "20m",
+        "message": "CQ KI5HCX DM61",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:20:14.663948",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KB9ELS EM46",
+      "translated_message": "Station KB9ELS is calling for any response from grid EM46.",
+      "caller": "KB9ELS",
+      "packet": {
+        "snr": 11,
+        "delta_time": 0.5,
+        "frequency_offset": 995,
+        "frequency": 14.074995,
+        "band": "20m",
+        "message": "CQ KB9ELS EM46",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:20:26.944637",
+        "packet_type": 2
+      }
+    },
+    {
+      "message": "CQ KD5BS EM54",
+      "translated_message": "Station KD5BS is calling for any response from grid EM54.",
+      "caller": "KD5BS",
+      "packet": {
+        "snr": -10,
+        "delta_time": 0.5,
+        "frequency_offset": 1317,
+        "frequency": 14.075317,
+        "band": "20m",
+        "message": "CQ KD5BS EM54",
+        "schema": 2,
+        "program": "WSJT-X",
+        "time_captured": "2025-08-08 10:20:26.975503",
+        "packet_type": 2
+      }
+    }
+  ],
+  "MISC. COMMS": [
+    {}
+  ]
+}

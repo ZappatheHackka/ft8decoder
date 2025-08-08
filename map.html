@@ -1,0 +1,5648 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e99a91adcf390bdd5e6bd4826c9237e0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e99a91adcf390bdd5e6bd4826c9237e0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e99a91adcf390bdd5e6bd4826c9237e0 = L.map(
+                "map_e99a91adcf390bdd5e6bd4826c9237e0",
+                {
+                    center: [62.25, -182.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e455731d7b6affeb07d31534d91cbc3d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e455731d7b6affeb07d31534d91cbc3d.addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+            var feature_group_f1edc4408c6c1292e8f97f2b576e29d1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_e0ab15f80888082284579dcf85707c0f = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_8367d84c5b285edaab7e0c4533c42e8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b32e624e82ccb1039a3b7faae06a8fa8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d9dd21e1897a8f5a9abf60ad9ab5353 = $(`<div id="html_4d9dd21e1897a8f5a9abf60ad9ab5353" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:17:41.961790</div>`)[0];
+                popup_b32e624e82ccb1039a3b7faae06a8fa8.setContent(html_4d9dd21e1897a8f5a9abf60ad9ab5353);
+            
+        
+
+        marker_e0ab15f80888082284579dcf85707c0f.bindPopup(popup_b32e624e82ccb1039a3b7faae06a8fa8)
+        ;
+
+        
+    
+    
+            marker_e0ab15f80888082284579dcf85707c0f.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e0ab15f80888082284579dcf85707c0f.setIcon(icon_8367d84c5b285edaab7e0c4533c42e8a);
+            
+    
+            var marker_7fa73fb5c42900dd16d2a03e89c8bf64 = L.marker(
+                [36.5, -87.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_8bd6c3154fe78302834fe17a270462c0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d20dd294da8e3b1112b38c7a4f3a2a2c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_62bc7098aa931f6e26a1c4fac4203d23 = $(`<div id="html_62bc7098aa931f6e26a1c4fac4203d23" style="width: 100.0%; height: 100.0%;">CQ WA5RIP EM66, 2025-08-08 10:17:44.663745</div>`)[0];
+                popup_d20dd294da8e3b1112b38c7a4f3a2a2c.setContent(html_62bc7098aa931f6e26a1c4fac4203d23);
+            
+        
+
+        marker_7fa73fb5c42900dd16d2a03e89c8bf64.bindPopup(popup_d20dd294da8e3b1112b38c7a4f3a2a2c)
+        ;
+
+        
+    
+    
+            marker_7fa73fb5c42900dd16d2a03e89c8bf64.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fa73fb5c42900dd16d2a03e89c8bf64.setIcon(icon_8bd6c3154fe78302834fe17a270462c0);
+            
+    
+            var marker_fdcbf7531460695cfaf6071ad289309a = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_d58e6e94d6a83dc91459859535c6ffe7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_131eb9a9a2564d766ecd46009086b27d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_99157c838d851bb186083bb46d483206 = $(`<div id="html_99157c838d851bb186083bb46d483206" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:17:56.902529</div>`)[0];
+                popup_131eb9a9a2564d766ecd46009086b27d.setContent(html_99157c838d851bb186083bb46d483206);
+            
+        
+
+        marker_fdcbf7531460695cfaf6071ad289309a.bindPopup(popup_131eb9a9a2564d766ecd46009086b27d)
+        ;
+
+        
+    
+    
+            marker_fdcbf7531460695cfaf6071ad289309a.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fdcbf7531460695cfaf6071ad289309a.setIcon(icon_d58e6e94d6a83dc91459859535c6ffe7);
+            
+    
+            var marker_a4365c7d6401bcdfe7a06fad656d55c5 = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_8b681cf0e55cb3da919217a94e9e0cac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e35d55369f273bc41817ce4429d4df1f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_057e9c626caeefb83b7e7f3f506e2d57 = $(`<div id="html_057e9c626caeefb83b7e7f3f506e2d57" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:17:56.943879</div>`)[0];
+                popup_e35d55369f273bc41817ce4429d4df1f.setContent(html_057e9c626caeefb83b7e7f3f506e2d57);
+            
+        
+
+        marker_a4365c7d6401bcdfe7a06fad656d55c5.bindPopup(popup_e35d55369f273bc41817ce4429d4df1f)
+        ;
+
+        
+    
+    
+            marker_a4365c7d6401bcdfe7a06fad656d55c5.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a4365c7d6401bcdfe7a06fad656d55c5.setIcon(icon_8b681cf0e55cb3da919217a94e9e0cac);
+            
+    
+            var marker_0882b0d0a3c001f3095ddf26b8d56ad7 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_9584e45bc8882b10b73822be2fddba13 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7404419c9b2717a97ebb35a648412c8f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3f0f6dee7ee7634e51b9dd781a4ffd5 = $(`<div id="html_e3f0f6dee7ee7634e51b9dd781a4ffd5" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:11.916550</div>`)[0];
+                popup_7404419c9b2717a97ebb35a648412c8f.setContent(html_e3f0f6dee7ee7634e51b9dd781a4ffd5);
+            
+        
+
+        marker_0882b0d0a3c001f3095ddf26b8d56ad7.bindPopup(popup_7404419c9b2717a97ebb35a648412c8f)
+        ;
+
+        
+    
+    
+            marker_0882b0d0a3c001f3095ddf26b8d56ad7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0882b0d0a3c001f3095ddf26b8d56ad7.setIcon(icon_9584e45bc8882b10b73822be2fddba13);
+            
+    
+            var marker_e4bc23a1f1e650626c24e95b396ea469 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_c1d703c426bde9e5f49dab081445272b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5464e60206ed3e1df5cd2bf692a5ddd8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00eda1683962aceb99a2df0271a36e2c = $(`<div id="html_00eda1683962aceb99a2df0271a36e2c" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:26.939364</div>`)[0];
+                popup_5464e60206ed3e1df5cd2bf692a5ddd8.setContent(html_00eda1683962aceb99a2df0271a36e2c);
+            
+        
+
+        marker_e4bc23a1f1e650626c24e95b396ea469.bindPopup(popup_5464e60206ed3e1df5cd2bf692a5ddd8)
+        ;
+
+        
+    
+    
+            marker_e4bc23a1f1e650626c24e95b396ea469.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e4bc23a1f1e650626c24e95b396ea469.setIcon(icon_c1d703c426bde9e5f49dab081445272b);
+            
+    
+            var marker_d0755503f21ce9d168a7ed18d5170360 = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_242b9d5ed1eb4cefd301ad2b37c0efbb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c263db1a891e6fb19758c47a435cf49 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ffbcb3a863e1c8dae5ede48888f91e2 = $(`<div id="html_0ffbcb3a863e1c8dae5ede48888f91e2" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:18:27.007882</div>`)[0];
+                popup_6c263db1a891e6fb19758c47a435cf49.setContent(html_0ffbcb3a863e1c8dae5ede48888f91e2);
+            
+        
+
+        marker_d0755503f21ce9d168a7ed18d5170360.bindPopup(popup_6c263db1a891e6fb19758c47a435cf49)
+        ;
+
+        
+    
+    
+            marker_d0755503f21ce9d168a7ed18d5170360.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0755503f21ce9d168a7ed18d5170360.setIcon(icon_242b9d5ed1eb4cefd301ad2b37c0efbb);
+            
+    
+            var marker_e1ab07fbb60423749ed14f07425f8a5e = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_a267eb67d5f0103bdf60541b47c41882 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1190562f4d7fc053ee635c615dcd0808 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31b2447ab0af7c2ad079e6851bbec201 = $(`<div id="html_31b2447ab0af7c2ad079e6851bbec201" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:27.022797</div>`)[0];
+                popup_1190562f4d7fc053ee635c615dcd0808.setContent(html_31b2447ab0af7c2ad079e6851bbec201);
+            
+        
+
+        marker_e1ab07fbb60423749ed14f07425f8a5e.bindPopup(popup_1190562f4d7fc053ee635c615dcd0808)
+        ;
+
+        
+    
+    
+            marker_e1ab07fbb60423749ed14f07425f8a5e.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e1ab07fbb60423749ed14f07425f8a5e.setIcon(icon_a267eb67d5f0103bdf60541b47c41882);
+            
+    
+            var marker_6032479bfd35816d19240652ce62464c = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_64d0b86a05b4e55270880fb628c50203 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6a91769834f3b3e8542687b040bba119 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45ce0cd6ba4e3fdbc321825cfea2218d = $(`<div id="html_45ce0cd6ba4e3fdbc321825cfea2218d" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:41.901679</div>`)[0];
+                popup_6a91769834f3b3e8542687b040bba119.setContent(html_45ce0cd6ba4e3fdbc321825cfea2218d);
+            
+        
+
+        marker_6032479bfd35816d19240652ce62464c.bindPopup(popup_6a91769834f3b3e8542687b040bba119)
+        ;
+
+        
+    
+    
+            marker_6032479bfd35816d19240652ce62464c.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6032479bfd35816d19240652ce62464c.setIcon(icon_64d0b86a05b4e55270880fb628c50203);
+            
+    
+            var marker_3f476dba0ffe03b264108780ec105246 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_a6f76b93fb5eb9a100abaa756847c8d1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf8df649fa33762915d220da7eb04063 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ecbf82b8d9ebf5bd4a733a92611e738f = $(`<div id="html_ecbf82b8d9ebf5bd4a733a92611e738f" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:56.909666</div>`)[0];
+                popup_cf8df649fa33762915d220da7eb04063.setContent(html_ecbf82b8d9ebf5bd4a733a92611e738f);
+            
+        
+
+        marker_3f476dba0ffe03b264108780ec105246.bindPopup(popup_cf8df649fa33762915d220da7eb04063)
+        ;
+
+        
+    
+    
+            marker_3f476dba0ffe03b264108780ec105246.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3f476dba0ffe03b264108780ec105246.setIcon(icon_a6f76b93fb5eb9a100abaa756847c8d1);
+            
+    
+            var marker_cb5353550b049cfbbfb8ea548fd7fff7 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_5e28e0fbe659fba5d3c94aae853fa86a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f147d1555261b355be54f6041fba535f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1aea1bf710a188b7aad2b6e6790bc81b = $(`<div id="html_1aea1bf710a188b7aad2b6e6790bc81b" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:56.927980</div>`)[0];
+                popup_f147d1555261b355be54f6041fba535f.setContent(html_1aea1bf710a188b7aad2b6e6790bc81b);
+            
+        
+
+        marker_cb5353550b049cfbbfb8ea548fd7fff7.bindPopup(popup_f147d1555261b355be54f6041fba535f)
+        ;
+
+        
+    
+    
+            marker_cb5353550b049cfbbfb8ea548fd7fff7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb5353550b049cfbbfb8ea548fd7fff7.setIcon(icon_5e28e0fbe659fba5d3c94aae853fa86a);
+            
+    
+            var marker_d3b6ce19da13444efb43c65462926660 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_a912e4c8e1e6df3353f874a5cb0b0675 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f99691c9bd265d4afbf221c6606af25d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b93b3aaa3afa3aa7b2ee27724008c82 = $(`<div id="html_6b93b3aaa3afa3aa7b2ee27724008c82" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:18:59.810559</div>`)[0];
+                popup_f99691c9bd265d4afbf221c6606af25d.setContent(html_6b93b3aaa3afa3aa7b2ee27724008c82);
+            
+        
+
+        marker_d3b6ce19da13444efb43c65462926660.bindPopup(popup_f99691c9bd265d4afbf221c6606af25d)
+        ;
+
+        
+    
+    
+            marker_d3b6ce19da13444efb43c65462926660.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d3b6ce19da13444efb43c65462926660.setIcon(icon_a912e4c8e1e6df3353f874a5cb0b0675);
+            
+    
+            var marker_f3318164a07817fcb60a9c130fb05126 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_f9702cc0b873a7e6e3a25da083243233 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ee06f74c6448d9387acdb237f3a8e20d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c01d32a7e6b18e434848a397ae3dcd8f = $(`<div id="html_c01d32a7e6b18e434848a397ae3dcd8f" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:11.900893</div>`)[0];
+                popup_ee06f74c6448d9387acdb237f3a8e20d.setContent(html_c01d32a7e6b18e434848a397ae3dcd8f);
+            
+        
+
+        marker_f3318164a07817fcb60a9c130fb05126.bindPopup(popup_ee06f74c6448d9387acdb237f3a8e20d)
+        ;
+
+        
+    
+    
+            marker_f3318164a07817fcb60a9c130fb05126.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f3318164a07817fcb60a9c130fb05126.setIcon(icon_f9702cc0b873a7e6e3a25da083243233);
+            
+    
+            var marker_fcb643136b627d5776fff262d09d1f09 = L.marker(
+                [41.5, -101.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_eab3dc13b12d38d71c81e167bb8f78a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a769556af954c11b298731b31c650818 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eba1fb916495625b37077aef90bcb6c1 = $(`<div id="html_eba1fb916495625b37077aef90bcb6c1" style="width: 100.0%; height: 100.0%;">CQ N5VAN DN91, 2025-08-08 10:19:11.957095</div>`)[0];
+                popup_a769556af954c11b298731b31c650818.setContent(html_eba1fb916495625b37077aef90bcb6c1);
+            
+        
+
+        marker_fcb643136b627d5776fff262d09d1f09.bindPopup(popup_a769556af954c11b298731b31c650818)
+        ;
+
+        
+    
+    
+            marker_fcb643136b627d5776fff262d09d1f09.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fcb643136b627d5776fff262d09d1f09.setIcon(icon_eab3dc13b12d38d71c81e167bb8f78a9);
+            
+    
+            var marker_fc98ae25467378213d16f01b0f2b70b7 = L.marker(
+                [47.5, 9.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_692eb9ca63adab1d12a95333c6471a57 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2afa183a0df807a4206cfa29297e76a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0b2cbe592fd81c223d834a2e6adfbf57 = $(`<div id="html_0b2cbe592fd81c223d834a2e6adfbf57" style="width: 100.0%; height: 100.0%;">CQ OE9LWV JN47, 2025-08-08 10:19:14.648740</div>`)[0];
+                popup_2afa183a0df807a4206cfa29297e76a1.setContent(html_0b2cbe592fd81c223d834a2e6adfbf57);
+            
+        
+
+        marker_fc98ae25467378213d16f01b0f2b70b7.bindPopup(popup_2afa183a0df807a4206cfa29297e76a1)
+        ;
+
+        
+    
+    
+            marker_fc98ae25467378213d16f01b0f2b70b7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc98ae25467378213d16f01b0f2b70b7.setIcon(icon_692eb9ca63adab1d12a95333c6471a57);
+            
+    
+            var marker_a0dec1309909dc39cc926dd2f1fc1805 = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_6e2e26031fe42046fc6abc153f833f4a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_410e1f74e447962dd38c529830161b7b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c1be98eb699c88e564bc59ec749b07a = $(`<div id="html_4c1be98eb699c88e564bc59ec749b07a" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:19:14.912874</div>`)[0];
+                popup_410e1f74e447962dd38c529830161b7b.setContent(html_4c1be98eb699c88e564bc59ec749b07a);
+            
+        
+
+        marker_a0dec1309909dc39cc926dd2f1fc1805.bindPopup(popup_410e1f74e447962dd38c529830161b7b)
+        ;
+
+        
+    
+    
+            marker_a0dec1309909dc39cc926dd2f1fc1805.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a0dec1309909dc39cc926dd2f1fc1805.setIcon(icon_6e2e26031fe42046fc6abc153f833f4a);
+            
+    
+            var marker_1751a370ca8d310eb3832750a5bb097f = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_530a4a55733a27756950724b7b66ffd1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0b919c182e540bfa1b556539c771abe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_677ff4e72df5f68a14923966fa02479f = $(`<div id="html_677ff4e72df5f68a14923966fa02479f" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:19:26.955643</div>`)[0];
+                popup_b0b919c182e540bfa1b556539c771abe.setContent(html_677ff4e72df5f68a14923966fa02479f);
+            
+        
+
+        marker_1751a370ca8d310eb3832750a5bb097f.bindPopup(popup_b0b919c182e540bfa1b556539c771abe)
+        ;
+
+        
+    
+    
+            marker_1751a370ca8d310eb3832750a5bb097f.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1751a370ca8d310eb3832750a5bb097f.setIcon(icon_530a4a55733a27756950724b7b66ffd1);
+            
+    
+            var marker_7706d00e54e609b5ba3af0d851d01678 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_561ffe2aa708bc973b293f3ddfcced73 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c08ee9ba8b44611ac4fb29d2ca4cb357 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c540a5e3311cf2db3872219546595c3 = $(`<div id="html_2c540a5e3311cf2db3872219546595c3" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:26.974159</div>`)[0];
+                popup_c08ee9ba8b44611ac4fb29d2ca4cb357.setContent(html_2c540a5e3311cf2db3872219546595c3);
+            
+        
+
+        marker_7706d00e54e609b5ba3af0d851d01678.bindPopup(popup_c08ee9ba8b44611ac4fb29d2ca4cb357)
+        ;
+
+        
+    
+    
+            marker_7706d00e54e609b5ba3af0d851d01678.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7706d00e54e609b5ba3af0d851d01678.setIcon(icon_561ffe2aa708bc973b293f3ddfcced73);
+            
+    
+            var marker_8081a5440e81e16ceb646bde6a470e77 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_18d64782cf0751037988f4e415ea7323 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2c3d01819e6548533a4d92b67ce9fe90 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c21bd5f8f0ed4bcb2abc3d9e08a6b82 = $(`<div id="html_5c21bd5f8f0ed4bcb2abc3d9e08a6b82" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:19:29.690777</div>`)[0];
+                popup_2c3d01819e6548533a4d92b67ce9fe90.setContent(html_5c21bd5f8f0ed4bcb2abc3d9e08a6b82);
+            
+        
+
+        marker_8081a5440e81e16ceb646bde6a470e77.bindPopup(popup_2c3d01819e6548533a4d92b67ce9fe90)
+        ;
+
+        
+    
+    
+            marker_8081a5440e81e16ceb646bde6a470e77.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8081a5440e81e16ceb646bde6a470e77.setIcon(icon_18d64782cf0751037988f4e415ea7323);
+            
+    
+            var marker_374b28a6b9321922e21112461fc33d1d = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_8cee66c68cf16c69dc3ce0baa7409bf3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_556560f3d1fa720a0caad66b8f0fc4cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b635484bd84d816cb2a8990b0b2e3ae = $(`<div id="html_9b635484bd84d816cb2a8990b0b2e3ae" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:41.904506</div>`)[0];
+                popup_556560f3d1fa720a0caad66b8f0fc4cd.setContent(html_9b635484bd84d816cb2a8990b0b2e3ae);
+            
+        
+
+        marker_374b28a6b9321922e21112461fc33d1d.bindPopup(popup_556560f3d1fa720a0caad66b8f0fc4cd)
+        ;
+
+        
+    
+    
+            marker_374b28a6b9321922e21112461fc33d1d.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_374b28a6b9321922e21112461fc33d1d.setIcon(icon_8cee66c68cf16c69dc3ce0baa7409bf3);
+            
+    
+            var marker_939da1f8aad08a3f03362192ddded4c0 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_222c6dc19960aa93c1fc34887204e651 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_348759d5be83855d13d6f7e67587bfb3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e2851f246567a467f56b631847a14d0 = $(`<div id="html_2e2851f246567a467f56b631847a14d0" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:56.922591</div>`)[0];
+                popup_348759d5be83855d13d6f7e67587bfb3.setContent(html_2e2851f246567a467f56b631847a14d0);
+            
+        
+
+        marker_939da1f8aad08a3f03362192ddded4c0.bindPopup(popup_348759d5be83855d13d6f7e67587bfb3)
+        ;
+
+        
+    
+    
+            marker_939da1f8aad08a3f03362192ddded4c0.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_939da1f8aad08a3f03362192ddded4c0.setIcon(icon_222c6dc19960aa93c1fc34887204e651);
+            
+    
+            var marker_8c488e9a35da44210cef4a9334bd33d1 = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_2f3304c11b62b00b3c871d2c8ea603ed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af66b02355b88bb7dea457afc0893adb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef01c84fe0c8aa34007131ed6afbc444 = $(`<div id="html_ef01c84fe0c8aa34007131ed6afbc444" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:19:56.947750</div>`)[0];
+                popup_af66b02355b88bb7dea457afc0893adb.setContent(html_ef01c84fe0c8aa34007131ed6afbc444);
+            
+        
+
+        marker_8c488e9a35da44210cef4a9334bd33d1.bindPopup(popup_af66b02355b88bb7dea457afc0893adb)
+        ;
+
+        
+    
+    
+            marker_8c488e9a35da44210cef4a9334bd33d1.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c488e9a35da44210cef4a9334bd33d1.setIcon(icon_2f3304c11b62b00b3c871d2c8ea603ed);
+            
+    
+            var marker_3675fdaac04e3c7d0556165482e7a5d0 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_608042a16e23e8eccb0da323f88a9196 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b0f5f72f5cbcd6f3d02341728322c59 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_df546115703fcf46e78dbe38310c18f1 = $(`<div id="html_df546115703fcf46e78dbe38310c18f1" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:20:11.930634</div>`)[0];
+                popup_5b0f5f72f5cbcd6f3d02341728322c59.setContent(html_df546115703fcf46e78dbe38310c18f1);
+            
+        
+
+        marker_3675fdaac04e3c7d0556165482e7a5d0.bindPopup(popup_5b0f5f72f5cbcd6f3d02341728322c59)
+        ;
+
+        
+    
+    
+            marker_3675fdaac04e3c7d0556165482e7a5d0.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3675fdaac04e3c7d0556165482e7a5d0.setIcon(icon_608042a16e23e8eccb0da323f88a9196);
+            
+    
+            var marker_9abe677609d5205719c986206cb6d040 = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_2a2cda55293819211fd8d09029134484 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_17061973b16113a526bda7a7112e53d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f49bb1a140b4eb813f1d3f132770bda = $(`<div id="html_3f49bb1a140b4eb813f1d3f132770bda" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:20:14.663948</div>`)[0];
+                popup_17061973b16113a526bda7a7112e53d6.setContent(html_3f49bb1a140b4eb813f1d3f132770bda);
+            
+        
+
+        marker_9abe677609d5205719c986206cb6d040.bindPopup(popup_17061973b16113a526bda7a7112e53d6)
+        ;
+
+        
+    
+    
+            marker_9abe677609d5205719c986206cb6d040.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9abe677609d5205719c986206cb6d040.setIcon(icon_2a2cda55293819211fd8d09029134484);
+            
+    
+            var marker_3eca082dae3c48240c9d1cb8f6de594c = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_cbb413c04b8ce73810bdb42c561f5851 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a6b77bf73f2ef4394bed870d5a661180 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e4896686a584151569874829fb58db06 = $(`<div id="html_e4896686a584151569874829fb58db06" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:20:26.944637</div>`)[0];
+                popup_a6b77bf73f2ef4394bed870d5a661180.setContent(html_e4896686a584151569874829fb58db06);
+            
+        
+
+        marker_3eca082dae3c48240c9d1cb8f6de594c.bindPopup(popup_a6b77bf73f2ef4394bed870d5a661180)
+        ;
+
+        
+    
+    
+            marker_3eca082dae3c48240c9d1cb8f6de594c.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3eca082dae3c48240c9d1cb8f6de594c.setIcon(icon_cbb413c04b8ce73810bdb42c561f5851);
+            
+    
+            var marker_62d93ba963ebfd8407fb194f51fcc668 = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_1a621d36b476fb58cff20f565ba4de56 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97920c139a6ce0f007774642a3f5db0a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e99973e9593e95da8387aedbd0082a40 = $(`<div id="html_e99973e9593e95da8387aedbd0082a40" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:20:26.975503</div>`)[0];
+                popup_97920c139a6ce0f007774642a3f5db0a.setContent(html_e99973e9593e95da8387aedbd0082a40);
+            
+        
+
+        marker_62d93ba963ebfd8407fb194f51fcc668.bindPopup(popup_97920c139a6ce0f007774642a3f5db0a)
+        ;
+
+        
+    
+    
+            marker_62d93ba963ebfd8407fb194f51fcc668.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_62d93ba963ebfd8407fb194f51fcc668.setIcon(icon_1a621d36b476fb58cff20f565ba4de56);
+            
+    
+            var marker_0a0bd0f303e06ff5338afac8a46562a8 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_50fa4de18986c8bdc6824521c4378368 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d6ba986d487eb5a96519b4144e9fca2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f6ea5c1c33e872650bbd43f2b00e01a = $(`<div id="html_1f6ea5c1c33e872650bbd43f2b00e01a" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:17:41.961790</div>`)[0];
+                popup_8d6ba986d487eb5a96519b4144e9fca2.setContent(html_1f6ea5c1c33e872650bbd43f2b00e01a);
+            
+        
+
+        marker_0a0bd0f303e06ff5338afac8a46562a8.bindPopup(popup_8d6ba986d487eb5a96519b4144e9fca2)
+        ;
+
+        
+    
+    
+            marker_0a0bd0f303e06ff5338afac8a46562a8.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0a0bd0f303e06ff5338afac8a46562a8.setIcon(icon_50fa4de18986c8bdc6824521c4378368);
+            
+    
+            var marker_b2963410d7dcbd3fe2351775e47d2784 = L.marker(
+                [36.5, -87.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_e45b11552e1e81e11aa97528659428e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4317c3d9eec32e8b2e06fadcce69328 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b14a7b60a326d23ebee5b5ddd8cf69c3 = $(`<div id="html_b14a7b60a326d23ebee5b5ddd8cf69c3" style="width: 100.0%; height: 100.0%;">CQ WA5RIP EM66, 2025-08-08 10:17:44.663745</div>`)[0];
+                popup_f4317c3d9eec32e8b2e06fadcce69328.setContent(html_b14a7b60a326d23ebee5b5ddd8cf69c3);
+            
+        
+
+        marker_b2963410d7dcbd3fe2351775e47d2784.bindPopup(popup_f4317c3d9eec32e8b2e06fadcce69328)
+        ;
+
+        
+    
+    
+            marker_b2963410d7dcbd3fe2351775e47d2784.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b2963410d7dcbd3fe2351775e47d2784.setIcon(icon_e45b11552e1e81e11aa97528659428e4);
+            
+    
+            var marker_c5533ace96ca03d22b9d9cb47f0e0959 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_15697586b25df612f4d5110224eb64e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68957760efb6a1b77af0e5148640b067 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b0db36c3e6d90d52fea43a46358f0e2 = $(`<div id="html_9b0db36c3e6d90d52fea43a46358f0e2" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:17:56.902529</div>`)[0];
+                popup_68957760efb6a1b77af0e5148640b067.setContent(html_9b0db36c3e6d90d52fea43a46358f0e2);
+            
+        
+
+        marker_c5533ace96ca03d22b9d9cb47f0e0959.bindPopup(popup_68957760efb6a1b77af0e5148640b067)
+        ;
+
+        
+    
+    
+            marker_c5533ace96ca03d22b9d9cb47f0e0959.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c5533ace96ca03d22b9d9cb47f0e0959.setIcon(icon_15697586b25df612f4d5110224eb64e6);
+            
+    
+            var marker_9af7ce6659085f894c26daf6a0f29972 = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_a5e80d4a144f82d7e8e79f9317051d93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d8107a65436d5db3a4e1800440be8ab4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5140f6283493897b6ab9080b872e686b = $(`<div id="html_5140f6283493897b6ab9080b872e686b" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:17:56.943879</div>`)[0];
+                popup_d8107a65436d5db3a4e1800440be8ab4.setContent(html_5140f6283493897b6ab9080b872e686b);
+            
+        
+
+        marker_9af7ce6659085f894c26daf6a0f29972.bindPopup(popup_d8107a65436d5db3a4e1800440be8ab4)
+        ;
+
+        
+    
+    
+            marker_9af7ce6659085f894c26daf6a0f29972.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9af7ce6659085f894c26daf6a0f29972.setIcon(icon_a5e80d4a144f82d7e8e79f9317051d93);
+            
+    
+            var marker_ab1e162633151fc072f10e7612a1a4a4 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_851354c7b33a383d4766d66c57db8d2e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26a8e93a9926b56636281235353c709c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bca2dd76e558e5f5e39261d76e11bd4a = $(`<div id="html_bca2dd76e558e5f5e39261d76e11bd4a" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:11.916550</div>`)[0];
+                popup_26a8e93a9926b56636281235353c709c.setContent(html_bca2dd76e558e5f5e39261d76e11bd4a);
+            
+        
+
+        marker_ab1e162633151fc072f10e7612a1a4a4.bindPopup(popup_26a8e93a9926b56636281235353c709c)
+        ;
+
+        
+    
+    
+            marker_ab1e162633151fc072f10e7612a1a4a4.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ab1e162633151fc072f10e7612a1a4a4.setIcon(icon_851354c7b33a383d4766d66c57db8d2e);
+            
+    
+            var marker_67f372fee1e1bbe770b3ad4c75b94694 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_70c4a7141247fcce7549d13ebe64aea2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf5bb1e40005b17f743595a8f9bb1d53 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6dc40d2962d33f6dba834418ca83ac88 = $(`<div id="html_6dc40d2962d33f6dba834418ca83ac88" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:26.939364</div>`)[0];
+                popup_bf5bb1e40005b17f743595a8f9bb1d53.setContent(html_6dc40d2962d33f6dba834418ca83ac88);
+            
+        
+
+        marker_67f372fee1e1bbe770b3ad4c75b94694.bindPopup(popup_bf5bb1e40005b17f743595a8f9bb1d53)
+        ;
+
+        
+    
+    
+            marker_67f372fee1e1bbe770b3ad4c75b94694.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_67f372fee1e1bbe770b3ad4c75b94694.setIcon(icon_70c4a7141247fcce7549d13ebe64aea2);
+            
+    
+            var marker_1a6174a63d9f706a0d97b53e5f74779d = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_89d2268e1405572e547d84a0ad8975a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_04ff0cc00c35e9e2fce22ecf6f943f6b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_973d864f4946b476166741a5cf20053b = $(`<div id="html_973d864f4946b476166741a5cf20053b" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:18:27.007882</div>`)[0];
+                popup_04ff0cc00c35e9e2fce22ecf6f943f6b.setContent(html_973d864f4946b476166741a5cf20053b);
+            
+        
+
+        marker_1a6174a63d9f706a0d97b53e5f74779d.bindPopup(popup_04ff0cc00c35e9e2fce22ecf6f943f6b)
+        ;
+
+        
+    
+    
+            marker_1a6174a63d9f706a0d97b53e5f74779d.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1a6174a63d9f706a0d97b53e5f74779d.setIcon(icon_89d2268e1405572e547d84a0ad8975a4);
+            
+    
+            var marker_c4712f4c5bfeb3fa5d2432133d8d9d76 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_c729c3eba7d443e8ba1d28666fa84d9d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c05fd73995bb5c01bacb6d9c2ae22dae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_659777266e29a2b6fa953450e45ae8ce = $(`<div id="html_659777266e29a2b6fa953450e45ae8ce" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:27.022797</div>`)[0];
+                popup_c05fd73995bb5c01bacb6d9c2ae22dae.setContent(html_659777266e29a2b6fa953450e45ae8ce);
+            
+        
+
+        marker_c4712f4c5bfeb3fa5d2432133d8d9d76.bindPopup(popup_c05fd73995bb5c01bacb6d9c2ae22dae)
+        ;
+
+        
+    
+    
+            marker_c4712f4c5bfeb3fa5d2432133d8d9d76.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c4712f4c5bfeb3fa5d2432133d8d9d76.setIcon(icon_c729c3eba7d443e8ba1d28666fa84d9d);
+            
+    
+            var marker_db763d2bc6a1a97fef288f91070eb052 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_9d1d3da3b78e173b140078a240a6e015 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c605555c5e9685830aee2fd2c360823 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70cc9d639fe2e470b38efa8e9666dd35 = $(`<div id="html_70cc9d639fe2e470b38efa8e9666dd35" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:41.901679</div>`)[0];
+                popup_6c605555c5e9685830aee2fd2c360823.setContent(html_70cc9d639fe2e470b38efa8e9666dd35);
+            
+        
+
+        marker_db763d2bc6a1a97fef288f91070eb052.bindPopup(popup_6c605555c5e9685830aee2fd2c360823)
+        ;
+
+        
+    
+    
+            marker_db763d2bc6a1a97fef288f91070eb052.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db763d2bc6a1a97fef288f91070eb052.setIcon(icon_9d1d3da3b78e173b140078a240a6e015);
+            
+    
+            var marker_03a9994ddc098d8a2c8cde9bea8e0860 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_00831741a10e0bcefda7b56426609fe4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1cc08b453b8c1cc4e0e403e1e0709a6b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_50dbf05d02555b12d2f85ab566daf3d2 = $(`<div id="html_50dbf05d02555b12d2f85ab566daf3d2" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:56.909666</div>`)[0];
+                popup_1cc08b453b8c1cc4e0e403e1e0709a6b.setContent(html_50dbf05d02555b12d2f85ab566daf3d2);
+            
+        
+
+        marker_03a9994ddc098d8a2c8cde9bea8e0860.bindPopup(popup_1cc08b453b8c1cc4e0e403e1e0709a6b)
+        ;
+
+        
+    
+    
+            marker_03a9994ddc098d8a2c8cde9bea8e0860.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03a9994ddc098d8a2c8cde9bea8e0860.setIcon(icon_00831741a10e0bcefda7b56426609fe4);
+            
+    
+            var marker_f48c16ec8c4cbe13642414ea14f306ed = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_688527b4929b7b5d4690a21a4816d11d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7fb69f122b6aba0794c45936b8575c5a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6eacd50770c2bd3165a36fe735123f2b = $(`<div id="html_6eacd50770c2bd3165a36fe735123f2b" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:56.927980</div>`)[0];
+                popup_7fb69f122b6aba0794c45936b8575c5a.setContent(html_6eacd50770c2bd3165a36fe735123f2b);
+            
+        
+
+        marker_f48c16ec8c4cbe13642414ea14f306ed.bindPopup(popup_7fb69f122b6aba0794c45936b8575c5a)
+        ;
+
+        
+    
+    
+            marker_f48c16ec8c4cbe13642414ea14f306ed.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f48c16ec8c4cbe13642414ea14f306ed.setIcon(icon_688527b4929b7b5d4690a21a4816d11d);
+            
+    
+            var marker_eb3999ade82619046fe2d6b145b34539 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_047ec3009a40adc2f5c87ca7807bbf46 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acc348fac23ac52861e0ac45b274bcb7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d38536729054456b7eb74694558c650 = $(`<div id="html_6d38536729054456b7eb74694558c650" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:18:59.810559</div>`)[0];
+                popup_acc348fac23ac52861e0ac45b274bcb7.setContent(html_6d38536729054456b7eb74694558c650);
+            
+        
+
+        marker_eb3999ade82619046fe2d6b145b34539.bindPopup(popup_acc348fac23ac52861e0ac45b274bcb7)
+        ;
+
+        
+    
+    
+            marker_eb3999ade82619046fe2d6b145b34539.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb3999ade82619046fe2d6b145b34539.setIcon(icon_047ec3009a40adc2f5c87ca7807bbf46);
+            
+    
+            var marker_46a0176bb331b174fd9285e4981c5b8b = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_c0c5d6b92dd18dadc090bf2878cd9e02 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea4f78c95367588530216b7891f5b096 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_358ffb8f9863e3d42856f66a0b95b475 = $(`<div id="html_358ffb8f9863e3d42856f66a0b95b475" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:11.900893</div>`)[0];
+                popup_ea4f78c95367588530216b7891f5b096.setContent(html_358ffb8f9863e3d42856f66a0b95b475);
+            
+        
+
+        marker_46a0176bb331b174fd9285e4981c5b8b.bindPopup(popup_ea4f78c95367588530216b7891f5b096)
+        ;
+
+        
+    
+    
+            marker_46a0176bb331b174fd9285e4981c5b8b.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_46a0176bb331b174fd9285e4981c5b8b.setIcon(icon_c0c5d6b92dd18dadc090bf2878cd9e02);
+            
+    
+            var marker_ac7b658c8fa4cf0be2c8aa89c5995f82 = L.marker(
+                [41.5, -101.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_ec62be1e93d60c0fb548e220e22847e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3f7f2dbfa0a26f76ac30ad9fb03d2ad5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b2c7ee9958a202d2ec6586b2110fed8 = $(`<div id="html_1b2c7ee9958a202d2ec6586b2110fed8" style="width: 100.0%; height: 100.0%;">CQ N5VAN DN91, 2025-08-08 10:19:11.957095</div>`)[0];
+                popup_3f7f2dbfa0a26f76ac30ad9fb03d2ad5.setContent(html_1b2c7ee9958a202d2ec6586b2110fed8);
+            
+        
+
+        marker_ac7b658c8fa4cf0be2c8aa89c5995f82.bindPopup(popup_3f7f2dbfa0a26f76ac30ad9fb03d2ad5)
+        ;
+
+        
+    
+    
+            marker_ac7b658c8fa4cf0be2c8aa89c5995f82.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ac7b658c8fa4cf0be2c8aa89c5995f82.setIcon(icon_ec62be1e93d60c0fb548e220e22847e4);
+            
+    
+            var marker_de5901132e8f7a6c28a732ced433998b = L.marker(
+                [47.5, 9.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_590ab26d829f5b43ae4b28051b2c2dc0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51e664ecf1cbf04368e0b695a88f2db3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6bedefadfafc67f692f3bd3ba0100943 = $(`<div id="html_6bedefadfafc67f692f3bd3ba0100943" style="width: 100.0%; height: 100.0%;">CQ OE9LWV JN47, 2025-08-08 10:19:14.648740</div>`)[0];
+                popup_51e664ecf1cbf04368e0b695a88f2db3.setContent(html_6bedefadfafc67f692f3bd3ba0100943);
+            
+        
+
+        marker_de5901132e8f7a6c28a732ced433998b.bindPopup(popup_51e664ecf1cbf04368e0b695a88f2db3)
+        ;
+
+        
+    
+    
+            marker_de5901132e8f7a6c28a732ced433998b.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_de5901132e8f7a6c28a732ced433998b.setIcon(icon_590ab26d829f5b43ae4b28051b2c2dc0);
+            
+    
+            var marker_5c1dd88f9709f8dce03ee7e4c1d8529d = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_99eac3a7838bf3c73dff6176b917c27e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_60f97063eeb769ac130e8ca2d204a34d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3976e435ad14d39b47775f358275e0bf = $(`<div id="html_3976e435ad14d39b47775f358275e0bf" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:19:14.912874</div>`)[0];
+                popup_60f97063eeb769ac130e8ca2d204a34d.setContent(html_3976e435ad14d39b47775f358275e0bf);
+            
+        
+
+        marker_5c1dd88f9709f8dce03ee7e4c1d8529d.bindPopup(popup_60f97063eeb769ac130e8ca2d204a34d)
+        ;
+
+        
+    
+    
+            marker_5c1dd88f9709f8dce03ee7e4c1d8529d.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c1dd88f9709f8dce03ee7e4c1d8529d.setIcon(icon_99eac3a7838bf3c73dff6176b917c27e);
+            
+    
+            var marker_5c3fe656ecd2be592b83c98522917b1b = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_438d5c4533498682a4c92bbfd9a37199 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aa453f6ba49afaa148c2e8680cf072a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_27e1b1e9b7f98f16ceb026e32655b8d4 = $(`<div id="html_27e1b1e9b7f98f16ceb026e32655b8d4" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:19:26.955643</div>`)[0];
+                popup_aa453f6ba49afaa148c2e8680cf072a9.setContent(html_27e1b1e9b7f98f16ceb026e32655b8d4);
+            
+        
+
+        marker_5c3fe656ecd2be592b83c98522917b1b.bindPopup(popup_aa453f6ba49afaa148c2e8680cf072a9)
+        ;
+
+        
+    
+    
+            marker_5c3fe656ecd2be592b83c98522917b1b.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c3fe656ecd2be592b83c98522917b1b.setIcon(icon_438d5c4533498682a4c92bbfd9a37199);
+            
+    
+            var marker_95999e0629058b1d52376726a919683b = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_0161479efabd6b3fba5539e358b77d9b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_565b839ac67ceecbc549bce42e62d366 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00482779875c3c0a1d548f76369bb0fa = $(`<div id="html_00482779875c3c0a1d548f76369bb0fa" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:26.974159</div>`)[0];
+                popup_565b839ac67ceecbc549bce42e62d366.setContent(html_00482779875c3c0a1d548f76369bb0fa);
+            
+        
+
+        marker_95999e0629058b1d52376726a919683b.bindPopup(popup_565b839ac67ceecbc549bce42e62d366)
+        ;
+
+        
+    
+    
+            marker_95999e0629058b1d52376726a919683b.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_95999e0629058b1d52376726a919683b.setIcon(icon_0161479efabd6b3fba5539e358b77d9b);
+            
+    
+            var marker_8d53950f5aef96c681cd3c1740e6b0f5 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_7d10b6287eaf4b03904c7801070b715c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4a4a029fa76a74c4a29ccdcbd2eaed7a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5164d45653b04c05beea82f133b1893f = $(`<div id="html_5164d45653b04c05beea82f133b1893f" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:19:29.690777</div>`)[0];
+                popup_4a4a029fa76a74c4a29ccdcbd2eaed7a.setContent(html_5164d45653b04c05beea82f133b1893f);
+            
+        
+
+        marker_8d53950f5aef96c681cd3c1740e6b0f5.bindPopup(popup_4a4a029fa76a74c4a29ccdcbd2eaed7a)
+        ;
+
+        
+    
+    
+            marker_8d53950f5aef96c681cd3c1740e6b0f5.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8d53950f5aef96c681cd3c1740e6b0f5.setIcon(icon_7d10b6287eaf4b03904c7801070b715c);
+            
+    
+            var marker_b8f95b31c181327858b572dc1297c487 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_e1a33c18ce30d9de9fc72ca1ea93e0a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0473c5bd4fcb8a6eeb79d37f21fbc358 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4942fb41143cf9e11b1e3ec33d8465af = $(`<div id="html_4942fb41143cf9e11b1e3ec33d8465af" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:41.904506</div>`)[0];
+                popup_0473c5bd4fcb8a6eeb79d37f21fbc358.setContent(html_4942fb41143cf9e11b1e3ec33d8465af);
+            
+        
+
+        marker_b8f95b31c181327858b572dc1297c487.bindPopup(popup_0473c5bd4fcb8a6eeb79d37f21fbc358)
+        ;
+
+        
+    
+    
+            marker_b8f95b31c181327858b572dc1297c487.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b8f95b31c181327858b572dc1297c487.setIcon(icon_e1a33c18ce30d9de9fc72ca1ea93e0a3);
+            
+    
+            var marker_01864cfe3d64eae00959adaab8251cfe = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_21f8f79ba97773e8b4a21c23243f8f8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78aa801f50bbf977fd36aaf8c7a4f02b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8ba007d261584e6c90ea28496aa70e8 = $(`<div id="html_a8ba007d261584e6c90ea28496aa70e8" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:56.922591</div>`)[0];
+                popup_78aa801f50bbf977fd36aaf8c7a4f02b.setContent(html_a8ba007d261584e6c90ea28496aa70e8);
+            
+        
+
+        marker_01864cfe3d64eae00959adaab8251cfe.bindPopup(popup_78aa801f50bbf977fd36aaf8c7a4f02b)
+        ;
+
+        
+    
+    
+            marker_01864cfe3d64eae00959adaab8251cfe.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_01864cfe3d64eae00959adaab8251cfe.setIcon(icon_21f8f79ba97773e8b4a21c23243f8f8d);
+            
+    
+            var marker_f59a856de7d82480ad4438fe12ada5df = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_1c38bbdac8ec03231e68c1e0eb1e3828 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d216a16fefccb0ddceffbf7b7550cba2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e4b5d8d5f0248a368b70df4dd2968b4 = $(`<div id="html_0e4b5d8d5f0248a368b70df4dd2968b4" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:19:56.947750</div>`)[0];
+                popup_d216a16fefccb0ddceffbf7b7550cba2.setContent(html_0e4b5d8d5f0248a368b70df4dd2968b4);
+            
+        
+
+        marker_f59a856de7d82480ad4438fe12ada5df.bindPopup(popup_d216a16fefccb0ddceffbf7b7550cba2)
+        ;
+
+        
+    
+    
+            marker_f59a856de7d82480ad4438fe12ada5df.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f59a856de7d82480ad4438fe12ada5df.setIcon(icon_1c38bbdac8ec03231e68c1e0eb1e3828);
+            
+    
+            var marker_da97bd7a8800b02d8dbf54c3b0b839d3 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_77b87f0a9e52ad0fad98b3f7e7f87fb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1ac0a3cafa6952a5d89d25734081d228 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c7aaa41c95ccee493f88bc10d2d5498a = $(`<div id="html_c7aaa41c95ccee493f88bc10d2d5498a" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:20:11.930634</div>`)[0];
+                popup_1ac0a3cafa6952a5d89d25734081d228.setContent(html_c7aaa41c95ccee493f88bc10d2d5498a);
+            
+        
+
+        marker_da97bd7a8800b02d8dbf54c3b0b839d3.bindPopup(popup_1ac0a3cafa6952a5d89d25734081d228)
+        ;
+
+        
+    
+    
+            marker_da97bd7a8800b02d8dbf54c3b0b839d3.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da97bd7a8800b02d8dbf54c3b0b839d3.setIcon(icon_77b87f0a9e52ad0fad98b3f7e7f87fb4);
+            
+    
+            var marker_62f4b40cdbcfcb93e80bf5c43c3cb398 = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_2a8d953badb0a56ece254cafac826302 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dc69d21a4a149c85dc247735f76c8c3b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1920b2d21460513a6a04ebd759fd9758 = $(`<div id="html_1920b2d21460513a6a04ebd759fd9758" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:20:14.663948</div>`)[0];
+                popup_dc69d21a4a149c85dc247735f76c8c3b.setContent(html_1920b2d21460513a6a04ebd759fd9758);
+            
+        
+
+        marker_62f4b40cdbcfcb93e80bf5c43c3cb398.bindPopup(popup_dc69d21a4a149c85dc247735f76c8c3b)
+        ;
+
+        
+    
+    
+            marker_62f4b40cdbcfcb93e80bf5c43c3cb398.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_62f4b40cdbcfcb93e80bf5c43c3cb398.setIcon(icon_2a8d953badb0a56ece254cafac826302);
+            
+    
+            var marker_42aecc33bf82d970b0551d0a36db57ab = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_c1bca8c03972a82c4a4f4a1f2dcad13d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6771fea6c6979027644e9975c6e2442d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a4e39f37b82e44ea4678e6cacabcf35 = $(`<div id="html_4a4e39f37b82e44ea4678e6cacabcf35" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:20:26.944637</div>`)[0];
+                popup_6771fea6c6979027644e9975c6e2442d.setContent(html_4a4e39f37b82e44ea4678e6cacabcf35);
+            
+        
+
+        marker_42aecc33bf82d970b0551d0a36db57ab.bindPopup(popup_6771fea6c6979027644e9975c6e2442d)
+        ;
+
+        
+    
+    
+            marker_42aecc33bf82d970b0551d0a36db57ab.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_42aecc33bf82d970b0551d0a36db57ab.setIcon(icon_c1bca8c03972a82c4a4f4a1f2dcad13d);
+            
+    
+            var marker_d13893b1ef803b0d00911c1322a790b1 = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_3a8ad8e7736fdb75c1cce32bea6c870c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d40c968bd25300bb768e1b20e6df002a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_345653c937123610bcf0eb9b0558536d = $(`<div id="html_345653c937123610bcf0eb9b0558536d" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:20:26.975503</div>`)[0];
+                popup_d40c968bd25300bb768e1b20e6df002a.setContent(html_345653c937123610bcf0eb9b0558536d);
+            
+        
+
+        marker_d13893b1ef803b0d00911c1322a790b1.bindPopup(popup_d40c968bd25300bb768e1b20e6df002a)
+        ;
+
+        
+    
+    
+            marker_d13893b1ef803b0d00911c1322a790b1.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d13893b1ef803b0d00911c1322a790b1.setIcon(icon_3a8ad8e7736fdb75c1cce32bea6c870c);
+            
+    
+            var marker_695e8163dc61c5f9cf84d0454b249e3d = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_6975baa8cb483b9d5dbae395d814ee84 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3aa66494290827671901b5dbb87e8535 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_941af12d4ff12f88d279552c56f13a18 = $(`<div id="html_941af12d4ff12f88d279552c56f13a18" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:17:41.961790</div>`)[0];
+                popup_3aa66494290827671901b5dbb87e8535.setContent(html_941af12d4ff12f88d279552c56f13a18);
+            
+        
+
+        marker_695e8163dc61c5f9cf84d0454b249e3d.bindPopup(popup_3aa66494290827671901b5dbb87e8535)
+        ;
+
+        
+    
+    
+            marker_695e8163dc61c5f9cf84d0454b249e3d.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_695e8163dc61c5f9cf84d0454b249e3d.setIcon(icon_6975baa8cb483b9d5dbae395d814ee84);
+            
+    
+            var marker_7d24c388794f47afe0a3a209a90ff4d1 = L.marker(
+                [36.5, -87.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_87372af3239d04124b54124b00722370 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8f303a233292d28221d9981d5dfb0717 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83ed677c553ad9ef71f21e63fe79b459 = $(`<div id="html_83ed677c553ad9ef71f21e63fe79b459" style="width: 100.0%; height: 100.0%;">CQ WA5RIP EM66, 2025-08-08 10:17:44.663745</div>`)[0];
+                popup_8f303a233292d28221d9981d5dfb0717.setContent(html_83ed677c553ad9ef71f21e63fe79b459);
+            
+        
+
+        marker_7d24c388794f47afe0a3a209a90ff4d1.bindPopup(popup_8f303a233292d28221d9981d5dfb0717)
+        ;
+
+        
+    
+    
+            marker_7d24c388794f47afe0a3a209a90ff4d1.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d24c388794f47afe0a3a209a90ff4d1.setIcon(icon_87372af3239d04124b54124b00722370);
+            
+    
+            var marker_2aa0aa6745095ce0144311610f8bb61e = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_5983efc177d91dab7153c47c87fae2fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a590fc3a366ce7b957a6b5ce42b3f0d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3dbdae43ea7d14adfb7a8660d727fdb4 = $(`<div id="html_3dbdae43ea7d14adfb7a8660d727fdb4" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:17:56.902529</div>`)[0];
+                popup_a590fc3a366ce7b957a6b5ce42b3f0d8.setContent(html_3dbdae43ea7d14adfb7a8660d727fdb4);
+            
+        
+
+        marker_2aa0aa6745095ce0144311610f8bb61e.bindPopup(popup_a590fc3a366ce7b957a6b5ce42b3f0d8)
+        ;
+
+        
+    
+    
+            marker_2aa0aa6745095ce0144311610f8bb61e.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2aa0aa6745095ce0144311610f8bb61e.setIcon(icon_5983efc177d91dab7153c47c87fae2fc);
+            
+    
+            var marker_33df7f14eb19d1d766d331bc6d45ddd3 = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_78bc5ab589af01e189528c9112290e49 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ee0e004311bdce887cd4cc42db550da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_27095fec615913b143bb09489868cdd4 = $(`<div id="html_27095fec615913b143bb09489868cdd4" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:17:56.943879</div>`)[0];
+                popup_2ee0e004311bdce887cd4cc42db550da.setContent(html_27095fec615913b143bb09489868cdd4);
+            
+        
+
+        marker_33df7f14eb19d1d766d331bc6d45ddd3.bindPopup(popup_2ee0e004311bdce887cd4cc42db550da)
+        ;
+
+        
+    
+    
+            marker_33df7f14eb19d1d766d331bc6d45ddd3.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33df7f14eb19d1d766d331bc6d45ddd3.setIcon(icon_78bc5ab589af01e189528c9112290e49);
+            
+    
+            var marker_1c016b03628bcc3c69720da321d5c590 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_7250f5428b30e49dccb68250fbeb3c0c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55e8f45dc94176e490aa9458c7fe1faa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6f823c3837df043334bbb8c586bdf66 = $(`<div id="html_b6f823c3837df043334bbb8c586bdf66" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:11.916550</div>`)[0];
+                popup_55e8f45dc94176e490aa9458c7fe1faa.setContent(html_b6f823c3837df043334bbb8c586bdf66);
+            
+        
+
+        marker_1c016b03628bcc3c69720da321d5c590.bindPopup(popup_55e8f45dc94176e490aa9458c7fe1faa)
+        ;
+
+        
+    
+    
+            marker_1c016b03628bcc3c69720da321d5c590.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1c016b03628bcc3c69720da321d5c590.setIcon(icon_7250f5428b30e49dccb68250fbeb3c0c);
+            
+    
+            var marker_e923e42e46c8d1460ed8841c60cb0cc9 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_0cc3f65872d6178b3fd77f1618799c86 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5971cdb44f5f348a466c116667686b22 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71dedd906f2ada9375b8c4072851d856 = $(`<div id="html_71dedd906f2ada9375b8c4072851d856" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:26.939364</div>`)[0];
+                popup_5971cdb44f5f348a466c116667686b22.setContent(html_71dedd906f2ada9375b8c4072851d856);
+            
+        
+
+        marker_e923e42e46c8d1460ed8841c60cb0cc9.bindPopup(popup_5971cdb44f5f348a466c116667686b22)
+        ;
+
+        
+    
+    
+            marker_e923e42e46c8d1460ed8841c60cb0cc9.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e923e42e46c8d1460ed8841c60cb0cc9.setIcon(icon_0cc3f65872d6178b3fd77f1618799c86);
+            
+    
+            var marker_6d09d3d7afecb8752e0526d8e3e049f7 = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_487c91386334e0e7540f8d1abbd563b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33192eb246f2586b8111ab42f457ffc9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b643135064df3d02eae678cf58e6945c = $(`<div id="html_b643135064df3d02eae678cf58e6945c" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:18:27.007882</div>`)[0];
+                popup_33192eb246f2586b8111ab42f457ffc9.setContent(html_b643135064df3d02eae678cf58e6945c);
+            
+        
+
+        marker_6d09d3d7afecb8752e0526d8e3e049f7.bindPopup(popup_33192eb246f2586b8111ab42f457ffc9)
+        ;
+
+        
+    
+    
+            marker_6d09d3d7afecb8752e0526d8e3e049f7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6d09d3d7afecb8752e0526d8e3e049f7.setIcon(icon_487c91386334e0e7540f8d1abbd563b6);
+            
+    
+            var marker_e07ea1a6060f25dd79b6d2f809378052 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_25dc3f94541d57d6b06ee775fd2eae6b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_742b333d1ad061782c83510547fcebe4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fbbff40f8418fc43bf687dacbefb27d2 = $(`<div id="html_fbbff40f8418fc43bf687dacbefb27d2" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:27.022797</div>`)[0];
+                popup_742b333d1ad061782c83510547fcebe4.setContent(html_fbbff40f8418fc43bf687dacbefb27d2);
+            
+        
+
+        marker_e07ea1a6060f25dd79b6d2f809378052.bindPopup(popup_742b333d1ad061782c83510547fcebe4)
+        ;
+
+        
+    
+    
+            marker_e07ea1a6060f25dd79b6d2f809378052.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e07ea1a6060f25dd79b6d2f809378052.setIcon(icon_25dc3f94541d57d6b06ee775fd2eae6b);
+            
+    
+            var marker_4ae247840fa81fc28ab5d285c94f16af = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_1af0a27648c78a2b4cfe17f3c6d79d53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eb0e957cba880ec46ca745f6824036dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38f1b6e5b7677ec698b38978ccfd73ad = $(`<div id="html_38f1b6e5b7677ec698b38978ccfd73ad" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:41.901679</div>`)[0];
+                popup_eb0e957cba880ec46ca745f6824036dd.setContent(html_38f1b6e5b7677ec698b38978ccfd73ad);
+            
+        
+
+        marker_4ae247840fa81fc28ab5d285c94f16af.bindPopup(popup_eb0e957cba880ec46ca745f6824036dd)
+        ;
+
+        
+    
+    
+            marker_4ae247840fa81fc28ab5d285c94f16af.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ae247840fa81fc28ab5d285c94f16af.setIcon(icon_1af0a27648c78a2b4cfe17f3c6d79d53);
+            
+    
+            var marker_5a13f6c4c5b94240b1f89c9bd528e5a8 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_3aaa91a56e03333261f0341708fbcd94 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd03f567482dae6af812792421934200 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a86ab04a1b4f11f2a4c8113198e39d15 = $(`<div id="html_a86ab04a1b4f11f2a4c8113198e39d15" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:56.909666</div>`)[0];
+                popup_bd03f567482dae6af812792421934200.setContent(html_a86ab04a1b4f11f2a4c8113198e39d15);
+            
+        
+
+        marker_5a13f6c4c5b94240b1f89c9bd528e5a8.bindPopup(popup_bd03f567482dae6af812792421934200)
+        ;
+
+        
+    
+    
+            marker_5a13f6c4c5b94240b1f89c9bd528e5a8.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a13f6c4c5b94240b1f89c9bd528e5a8.setIcon(icon_3aaa91a56e03333261f0341708fbcd94);
+            
+    
+            var marker_a81aac8edf9e2121471172813ae76714 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_fd48da24e218db0af8dab3d7ed8178f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf3443069f031098271fabb8c55e1c5f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6ea52295b313e77e039b0949e442042 = $(`<div id="html_d6ea52295b313e77e039b0949e442042" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:56.927980</div>`)[0];
+                popup_bf3443069f031098271fabb8c55e1c5f.setContent(html_d6ea52295b313e77e039b0949e442042);
+            
+        
+
+        marker_a81aac8edf9e2121471172813ae76714.bindPopup(popup_bf3443069f031098271fabb8c55e1c5f)
+        ;
+
+        
+    
+    
+            marker_a81aac8edf9e2121471172813ae76714.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a81aac8edf9e2121471172813ae76714.setIcon(icon_fd48da24e218db0af8dab3d7ed8178f0);
+            
+    
+            var marker_96d3c3c306945e87973cd341e74980d7 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_1b43a63d63a806f3400fbc48a187b21b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c45fd46eee7cdd28afe8f09f16e8396 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_44956cf4fea8fc26beb7c8b6a74eb4f5 = $(`<div id="html_44956cf4fea8fc26beb7c8b6a74eb4f5" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:18:59.810559</div>`)[0];
+                popup_9c45fd46eee7cdd28afe8f09f16e8396.setContent(html_44956cf4fea8fc26beb7c8b6a74eb4f5);
+            
+        
+
+        marker_96d3c3c306945e87973cd341e74980d7.bindPopup(popup_9c45fd46eee7cdd28afe8f09f16e8396)
+        ;
+
+        
+    
+    
+            marker_96d3c3c306945e87973cd341e74980d7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_96d3c3c306945e87973cd341e74980d7.setIcon(icon_1b43a63d63a806f3400fbc48a187b21b);
+            
+    
+            var marker_12207651f33adf0c7a64b68a1ffb6bbf = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_482b893ed589642b634136973af97f8c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_287c9c43e951db24f0646ee147cacdac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c28a3245ce29858c1e6587a6d324a664 = $(`<div id="html_c28a3245ce29858c1e6587a6d324a664" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:11.900893</div>`)[0];
+                popup_287c9c43e951db24f0646ee147cacdac.setContent(html_c28a3245ce29858c1e6587a6d324a664);
+            
+        
+
+        marker_12207651f33adf0c7a64b68a1ffb6bbf.bindPopup(popup_287c9c43e951db24f0646ee147cacdac)
+        ;
+
+        
+    
+    
+            marker_12207651f33adf0c7a64b68a1ffb6bbf.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12207651f33adf0c7a64b68a1ffb6bbf.setIcon(icon_482b893ed589642b634136973af97f8c);
+            
+    
+            var marker_73551d40e080f3b7a0f979a76e0e722e = L.marker(
+                [41.5, -101.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_11af554b39bbaf737b557ab333073106 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4f220dabacbf1fe8ff40eb3421b8f18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c65003aa97a590dd5045cfb34b94cc39 = $(`<div id="html_c65003aa97a590dd5045cfb34b94cc39" style="width: 100.0%; height: 100.0%;">CQ N5VAN DN91, 2025-08-08 10:19:11.957095</div>`)[0];
+                popup_f4f220dabacbf1fe8ff40eb3421b8f18.setContent(html_c65003aa97a590dd5045cfb34b94cc39);
+            
+        
+
+        marker_73551d40e080f3b7a0f979a76e0e722e.bindPopup(popup_f4f220dabacbf1fe8ff40eb3421b8f18)
+        ;
+
+        
+    
+    
+            marker_73551d40e080f3b7a0f979a76e0e722e.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_73551d40e080f3b7a0f979a76e0e722e.setIcon(icon_11af554b39bbaf737b557ab333073106);
+            
+    
+            var marker_85bfa532b26546ae72953d5b4d71e0df = L.marker(
+                [47.5, 9.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_b90841980a213c52c58938bfa2f9ed28 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3690c3a6bda97969ccded629535ab82 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64e242f11fd1f3a4c48ca61002862332 = $(`<div id="html_64e242f11fd1f3a4c48ca61002862332" style="width: 100.0%; height: 100.0%;">CQ OE9LWV JN47, 2025-08-08 10:19:14.648740</div>`)[0];
+                popup_a3690c3a6bda97969ccded629535ab82.setContent(html_64e242f11fd1f3a4c48ca61002862332);
+            
+        
+
+        marker_85bfa532b26546ae72953d5b4d71e0df.bindPopup(popup_a3690c3a6bda97969ccded629535ab82)
+        ;
+
+        
+    
+    
+            marker_85bfa532b26546ae72953d5b4d71e0df.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_85bfa532b26546ae72953d5b4d71e0df.setIcon(icon_b90841980a213c52c58938bfa2f9ed28);
+            
+    
+            var marker_a13def32cf381939ddf8cfc773b98491 = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_73b7a64d49137cd75e6ebef2d0e8c532 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c7b5c57d448f114a4fc3938f7fe1bc0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_87dae400ea954dd1aa2b9f6e482ddab6 = $(`<div id="html_87dae400ea954dd1aa2b9f6e482ddab6" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:19:14.912874</div>`)[0];
+                popup_4c7b5c57d448f114a4fc3938f7fe1bc0.setContent(html_87dae400ea954dd1aa2b9f6e482ddab6);
+            
+        
+
+        marker_a13def32cf381939ddf8cfc773b98491.bindPopup(popup_4c7b5c57d448f114a4fc3938f7fe1bc0)
+        ;
+
+        
+    
+    
+            marker_a13def32cf381939ddf8cfc773b98491.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a13def32cf381939ddf8cfc773b98491.setIcon(icon_73b7a64d49137cd75e6ebef2d0e8c532);
+            
+    
+            var marker_adfe871cefb5ef7b5bb15ada289745a3 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_ece17e66ad2604fb3f6220b51a619eec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aea8b77f04a340d0f7371d2d4e00092b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_68074260efb1eea11d1b7b1ac2a8f00a = $(`<div id="html_68074260efb1eea11d1b7b1ac2a8f00a" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:19:26.955643</div>`)[0];
+                popup_aea8b77f04a340d0f7371d2d4e00092b.setContent(html_68074260efb1eea11d1b7b1ac2a8f00a);
+            
+        
+
+        marker_adfe871cefb5ef7b5bb15ada289745a3.bindPopup(popup_aea8b77f04a340d0f7371d2d4e00092b)
+        ;
+
+        
+    
+    
+            marker_adfe871cefb5ef7b5bb15ada289745a3.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_adfe871cefb5ef7b5bb15ada289745a3.setIcon(icon_ece17e66ad2604fb3f6220b51a619eec);
+            
+    
+            var marker_5083cc6b6ca7f76840f568be52b05bb7 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_b9acd6d1790877b96556a7d71cc2370d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_796db8b2db848002fd1723ff745ef173 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6426bf6e9a80284d1c77bfaa5a6c6b3 = $(`<div id="html_b6426bf6e9a80284d1c77bfaa5a6c6b3" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:26.974159</div>`)[0];
+                popup_796db8b2db848002fd1723ff745ef173.setContent(html_b6426bf6e9a80284d1c77bfaa5a6c6b3);
+            
+        
+
+        marker_5083cc6b6ca7f76840f568be52b05bb7.bindPopup(popup_796db8b2db848002fd1723ff745ef173)
+        ;
+
+        
+    
+    
+            marker_5083cc6b6ca7f76840f568be52b05bb7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5083cc6b6ca7f76840f568be52b05bb7.setIcon(icon_b9acd6d1790877b96556a7d71cc2370d);
+            
+    
+            var marker_637da129c883764ca7f13617ac11bf31 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_e8b57090fdd7ad7f53ada07fad606709 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_69d50c0e4b77466933fc26020290bcc1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_14130108a768b9466470de93c2491760 = $(`<div id="html_14130108a768b9466470de93c2491760" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:19:29.690777</div>`)[0];
+                popup_69d50c0e4b77466933fc26020290bcc1.setContent(html_14130108a768b9466470de93c2491760);
+            
+        
+
+        marker_637da129c883764ca7f13617ac11bf31.bindPopup(popup_69d50c0e4b77466933fc26020290bcc1)
+        ;
+
+        
+    
+    
+            marker_637da129c883764ca7f13617ac11bf31.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_637da129c883764ca7f13617ac11bf31.setIcon(icon_e8b57090fdd7ad7f53ada07fad606709);
+            
+    
+            var marker_542d0a8600aee0b9689d5c84ce9e58bb = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_ff8deefe7070e349ef1383c76e3aa528 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2c3a36afdfd54dae75805d63d00ca700 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_980376a8fb01435b4e16d299849182dd = $(`<div id="html_980376a8fb01435b4e16d299849182dd" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:41.904506</div>`)[0];
+                popup_2c3a36afdfd54dae75805d63d00ca700.setContent(html_980376a8fb01435b4e16d299849182dd);
+            
+        
+
+        marker_542d0a8600aee0b9689d5c84ce9e58bb.bindPopup(popup_2c3a36afdfd54dae75805d63d00ca700)
+        ;
+
+        
+    
+    
+            marker_542d0a8600aee0b9689d5c84ce9e58bb.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_542d0a8600aee0b9689d5c84ce9e58bb.setIcon(icon_ff8deefe7070e349ef1383c76e3aa528);
+            
+    
+            var marker_8efca1624a76c13bdbe65894af1b2967 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_372a42b957a1b0bc84a0344331fab6ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e50d259a99da7e90d1aa2383d332daf6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_43f54946905f679aea957ebd2435f1c5 = $(`<div id="html_43f54946905f679aea957ebd2435f1c5" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:56.922591</div>`)[0];
+                popup_e50d259a99da7e90d1aa2383d332daf6.setContent(html_43f54946905f679aea957ebd2435f1c5);
+            
+        
+
+        marker_8efca1624a76c13bdbe65894af1b2967.bindPopup(popup_e50d259a99da7e90d1aa2383d332daf6)
+        ;
+
+        
+    
+    
+            marker_8efca1624a76c13bdbe65894af1b2967.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8efca1624a76c13bdbe65894af1b2967.setIcon(icon_372a42b957a1b0bc84a0344331fab6ef);
+            
+    
+            var marker_ab810fb8a187ab09f45a65cba151fe83 = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_700e67589b68d5e6493f26d932efa46c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_465195f55323891993ea626c627338d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7b0e8b91a571df15b1d7846864f94f9b = $(`<div id="html_7b0e8b91a571df15b1d7846864f94f9b" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:19:56.947750</div>`)[0];
+                popup_465195f55323891993ea626c627338d3.setContent(html_7b0e8b91a571df15b1d7846864f94f9b);
+            
+        
+
+        marker_ab810fb8a187ab09f45a65cba151fe83.bindPopup(popup_465195f55323891993ea626c627338d3)
+        ;
+
+        
+    
+    
+            marker_ab810fb8a187ab09f45a65cba151fe83.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ab810fb8a187ab09f45a65cba151fe83.setIcon(icon_700e67589b68d5e6493f26d932efa46c);
+            
+    
+            var marker_8f4a265ef8c16971fef89a49c1c69722 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_f2582be797cad2a6199b5e98280eca2a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c5eea645a4b2b3cb371070a851207d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fea9ad0749b091b102fa5409e0dcb5ea = $(`<div id="html_fea9ad0749b091b102fa5409e0dcb5ea" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:20:11.930634</div>`)[0];
+                popup_6c5eea645a4b2b3cb371070a851207d4.setContent(html_fea9ad0749b091b102fa5409e0dcb5ea);
+            
+        
+
+        marker_8f4a265ef8c16971fef89a49c1c69722.bindPopup(popup_6c5eea645a4b2b3cb371070a851207d4)
+        ;
+
+        
+    
+    
+            marker_8f4a265ef8c16971fef89a49c1c69722.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f4a265ef8c16971fef89a49c1c69722.setIcon(icon_f2582be797cad2a6199b5e98280eca2a);
+            
+    
+            var marker_1d940e068c0598bf89bd85414dab766c = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_940fb0e3a445c44fee4b0b6bc72442e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3899487bfdda3e84d239b8eb4b48c420 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_629463778c91963c6a1ff24456fd6b33 = $(`<div id="html_629463778c91963c6a1ff24456fd6b33" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:20:14.663948</div>`)[0];
+                popup_3899487bfdda3e84d239b8eb4b48c420.setContent(html_629463778c91963c6a1ff24456fd6b33);
+            
+        
+
+        marker_1d940e068c0598bf89bd85414dab766c.bindPopup(popup_3899487bfdda3e84d239b8eb4b48c420)
+        ;
+
+        
+    
+    
+            marker_1d940e068c0598bf89bd85414dab766c.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1d940e068c0598bf89bd85414dab766c.setIcon(icon_940fb0e3a445c44fee4b0b6bc72442e4);
+            
+    
+            var marker_06273ef87ad3a7db233944563d589850 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_4dede5b119681727946042e0e8e46b78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aac0668366f30b3d389387728fe16246 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d04796d4090ba50609928fec32ebc5f = $(`<div id="html_9d04796d4090ba50609928fec32ebc5f" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:20:26.944637</div>`)[0];
+                popup_aac0668366f30b3d389387728fe16246.setContent(html_9d04796d4090ba50609928fec32ebc5f);
+            
+        
+
+        marker_06273ef87ad3a7db233944563d589850.bindPopup(popup_aac0668366f30b3d389387728fe16246)
+        ;
+
+        
+    
+    
+            marker_06273ef87ad3a7db233944563d589850.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_06273ef87ad3a7db233944563d589850.setIcon(icon_4dede5b119681727946042e0e8e46b78);
+            
+    
+            var marker_f50dccc82a7e9a1dade9c96c751cbcb6 = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_72f108f62af2adfba241cb0e08cf1b12 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67dabc6102739cdace034ee23e0e80f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5434b2018f2f0a4790f6db17ad63103e = $(`<div id="html_5434b2018f2f0a4790f6db17ad63103e" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:20:26.975503</div>`)[0];
+                popup_67dabc6102739cdace034ee23e0e80f3.setContent(html_5434b2018f2f0a4790f6db17ad63103e);
+            
+        
+
+        marker_f50dccc82a7e9a1dade9c96c751cbcb6.bindPopup(popup_67dabc6102739cdace034ee23e0e80f3)
+        ;
+
+        
+    
+    
+            marker_f50dccc82a7e9a1dade9c96c751cbcb6.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f50dccc82a7e9a1dade9c96c751cbcb6.setIcon(icon_72f108f62af2adfba241cb0e08cf1b12);
+            
+    
+            var marker_347455bdd0e3c12549e46d7261ff6c6c = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_0f09f63fb450ee2f3555efd263b0adfa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a7a57444d4eae7121cae03bd5dd67cc2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_144c060ebbfd1451ecd335b305058d5f = $(`<div id="html_144c060ebbfd1451ecd335b305058d5f" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:17:41.961790</div>`)[0];
+                popup_a7a57444d4eae7121cae03bd5dd67cc2.setContent(html_144c060ebbfd1451ecd335b305058d5f);
+            
+        
+
+        marker_347455bdd0e3c12549e46d7261ff6c6c.bindPopup(popup_a7a57444d4eae7121cae03bd5dd67cc2)
+        ;
+
+        
+    
+    
+            marker_347455bdd0e3c12549e46d7261ff6c6c.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_347455bdd0e3c12549e46d7261ff6c6c.setIcon(icon_0f09f63fb450ee2f3555efd263b0adfa);
+            
+    
+            var marker_326483a84893bf88ffb6e9e605b6e4e0 = L.marker(
+                [36.5, -87.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_6f1a032f1e9b75f503be3a32d9bb04d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d0653fabf06858b04928acea5a599c97 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83270f78ec37dd4fe1c69e1b5eb51fbb = $(`<div id="html_83270f78ec37dd4fe1c69e1b5eb51fbb" style="width: 100.0%; height: 100.0%;">CQ WA5RIP EM66, 2025-08-08 10:17:44.663745</div>`)[0];
+                popup_d0653fabf06858b04928acea5a599c97.setContent(html_83270f78ec37dd4fe1c69e1b5eb51fbb);
+            
+        
+
+        marker_326483a84893bf88ffb6e9e605b6e4e0.bindPopup(popup_d0653fabf06858b04928acea5a599c97)
+        ;
+
+        
+    
+    
+            marker_326483a84893bf88ffb6e9e605b6e4e0.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_326483a84893bf88ffb6e9e605b6e4e0.setIcon(icon_6f1a032f1e9b75f503be3a32d9bb04d9);
+            
+    
+            var marker_0a25011f8debbf43b595e9f42a46c123 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_a60f134f4952f673868a57483dff155b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4df85e096daa1840bcde2772868b7b08 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8005579f0b7ce6ec73033d877e2ee98e = $(`<div id="html_8005579f0b7ce6ec73033d877e2ee98e" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:17:56.902529</div>`)[0];
+                popup_4df85e096daa1840bcde2772868b7b08.setContent(html_8005579f0b7ce6ec73033d877e2ee98e);
+            
+        
+
+        marker_0a25011f8debbf43b595e9f42a46c123.bindPopup(popup_4df85e096daa1840bcde2772868b7b08)
+        ;
+
+        
+    
+    
+            marker_0a25011f8debbf43b595e9f42a46c123.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0a25011f8debbf43b595e9f42a46c123.setIcon(icon_a60f134f4952f673868a57483dff155b);
+            
+    
+            var marker_e1aeb622a059ec19927394f15252bf60 = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_f4290220284c573de5925332efe5bf24 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_15b52df3028a8ad757645198d1a55519 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b29b96cf82bbe23d6d7fb7c645dba34 = $(`<div id="html_1b29b96cf82bbe23d6d7fb7c645dba34" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:17:56.943879</div>`)[0];
+                popup_15b52df3028a8ad757645198d1a55519.setContent(html_1b29b96cf82bbe23d6d7fb7c645dba34);
+            
+        
+
+        marker_e1aeb622a059ec19927394f15252bf60.bindPopup(popup_15b52df3028a8ad757645198d1a55519)
+        ;
+
+        
+    
+    
+            marker_e1aeb622a059ec19927394f15252bf60.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e1aeb622a059ec19927394f15252bf60.setIcon(icon_f4290220284c573de5925332efe5bf24);
+            
+    
+            var marker_6af9a197369f82fefcae54598ce06edc = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_9ab7b1cfdd399f8f29c5163e17bd1371 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4567803dff875e59b6098e5eabb897d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3663fe55134124dbb37750ab9de3f56 = $(`<div id="html_e3663fe55134124dbb37750ab9de3f56" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:11.916550</div>`)[0];
+                popup_4567803dff875e59b6098e5eabb897d3.setContent(html_e3663fe55134124dbb37750ab9de3f56);
+            
+        
+
+        marker_6af9a197369f82fefcae54598ce06edc.bindPopup(popup_4567803dff875e59b6098e5eabb897d3)
+        ;
+
+        
+    
+    
+            marker_6af9a197369f82fefcae54598ce06edc.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6af9a197369f82fefcae54598ce06edc.setIcon(icon_9ab7b1cfdd399f8f29c5163e17bd1371);
+            
+    
+            var marker_25061f2f3d2075f3649f3a12430bf9e1 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_89ea1215f9787b66206f3a236ddef88d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3a00605dc02c3ef5310deb39163da45b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d7c39d7cc905bf77031316b58dcf7c7 = $(`<div id="html_0d7c39d7cc905bf77031316b58dcf7c7" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:26.939364</div>`)[0];
+                popup_3a00605dc02c3ef5310deb39163da45b.setContent(html_0d7c39d7cc905bf77031316b58dcf7c7);
+            
+        
+
+        marker_25061f2f3d2075f3649f3a12430bf9e1.bindPopup(popup_3a00605dc02c3ef5310deb39163da45b)
+        ;
+
+        
+    
+    
+            marker_25061f2f3d2075f3649f3a12430bf9e1.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_25061f2f3d2075f3649f3a12430bf9e1.setIcon(icon_89ea1215f9787b66206f3a236ddef88d);
+            
+    
+            var marker_21772214ef357599eb6722bea7edbfbc = L.marker(
+                [43.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_0ea81f9c6204043726ac5ca799f0face = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e97c54854c99d3a042e7cd5ccaa87ef3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_579c15f8932524844900c4825d244fec = $(`<div id="html_579c15f8932524844900c4825d244fec" style="width: 100.0%; height: 100.0%;">CQ KA9FOX EN43, 2025-08-08 10:18:27.007882</div>`)[0];
+                popup_e97c54854c99d3a042e7cd5ccaa87ef3.setContent(html_579c15f8932524844900c4825d244fec);
+            
+        
+
+        marker_21772214ef357599eb6722bea7edbfbc.bindPopup(popup_e97c54854c99d3a042e7cd5ccaa87ef3)
+        ;
+
+        
+    
+    
+            marker_21772214ef357599eb6722bea7edbfbc.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_21772214ef357599eb6722bea7edbfbc.setIcon(icon_0ea81f9c6204043726ac5ca799f0face);
+            
+    
+            var marker_cb558eb3899aa3a6bd1f9fb74227e1bd = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_8b91d5835fa92c4017589ae25f973f3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5fd0b45668838dd9db7b028a1583bc6a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1008e7523ec62198927b8ee6f7f1e8ba = $(`<div id="html_1008e7523ec62198927b8ee6f7f1e8ba" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:27.022797</div>`)[0];
+                popup_5fd0b45668838dd9db7b028a1583bc6a.setContent(html_1008e7523ec62198927b8ee6f7f1e8ba);
+            
+        
+
+        marker_cb558eb3899aa3a6bd1f9fb74227e1bd.bindPopup(popup_5fd0b45668838dd9db7b028a1583bc6a)
+        ;
+
+        
+    
+    
+            marker_cb558eb3899aa3a6bd1f9fb74227e1bd.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb558eb3899aa3a6bd1f9fb74227e1bd.setIcon(icon_8b91d5835fa92c4017589ae25f973f3e);
+            
+    
+            var marker_e0009b123f8a20ee004a4f75c255656e = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_32c51b6f5f753f866c098a8824b8fe45 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55cabe9417f09d02ca51135c28c35f92 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8886b52e2a2eda3d8e1cacb29510ec39 = $(`<div id="html_8886b52e2a2eda3d8e1cacb29510ec39" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:18:41.901679</div>`)[0];
+                popup_55cabe9417f09d02ca51135c28c35f92.setContent(html_8886b52e2a2eda3d8e1cacb29510ec39);
+            
+        
+
+        marker_e0009b123f8a20ee004a4f75c255656e.bindPopup(popup_55cabe9417f09d02ca51135c28c35f92)
+        ;
+
+        
+    
+    
+            marker_e0009b123f8a20ee004a4f75c255656e.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e0009b123f8a20ee004a4f75c255656e.setIcon(icon_32c51b6f5f753f866c098a8824b8fe45);
+            
+    
+            var marker_8f6ce335263f4a24a05efbeb7f74ef67 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_1289345bb45bcb9c6d81f9545fb854c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_10b2d7db68440ec89ae01368f9c2e02d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f9446fe6ef63eda091b82877ce0f76e = $(`<div id="html_2f9446fe6ef63eda091b82877ce0f76e" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:18:56.909666</div>`)[0];
+                popup_10b2d7db68440ec89ae01368f9c2e02d.setContent(html_2f9446fe6ef63eda091b82877ce0f76e);
+            
+        
+
+        marker_8f6ce335263f4a24a05efbeb7f74ef67.bindPopup(popup_10b2d7db68440ec89ae01368f9c2e02d)
+        ;
+
+        
+    
+    
+            marker_8f6ce335263f4a24a05efbeb7f74ef67.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f6ce335263f4a24a05efbeb7f74ef67.setIcon(icon_1289345bb45bcb9c6d81f9545fb854c5);
+            
+    
+            var marker_d20607c630e001a6e3447f241e722b06 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_d3067b6a26898467592f9c952dfa2f48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_48b591ff4004d51bdceb8576edbd4444 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f0c4f4cffb524c4ed09da8a86f5792c = $(`<div id="html_4f0c4f4cffb524c4ed09da8a86f5792c" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:18:56.927980</div>`)[0];
+                popup_48b591ff4004d51bdceb8576edbd4444.setContent(html_4f0c4f4cffb524c4ed09da8a86f5792c);
+            
+        
+
+        marker_d20607c630e001a6e3447f241e722b06.bindPopup(popup_48b591ff4004d51bdceb8576edbd4444)
+        ;
+
+        
+    
+    
+            marker_d20607c630e001a6e3447f241e722b06.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d20607c630e001a6e3447f241e722b06.setIcon(icon_d3067b6a26898467592f9c952dfa2f48);
+            
+    
+            var marker_5e1eabf6ce17ff63be516ca80b420517 = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_a11e1917d9272effa5ed3ea6e6282e6a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05fb354a98d75482429d5017d0616b37 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8668c43b4b1702de6a94c04e1e22c4c = $(`<div id="html_c8668c43b4b1702de6a94c04e1e22c4c" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:18:59.810559</div>`)[0];
+                popup_05fb354a98d75482429d5017d0616b37.setContent(html_c8668c43b4b1702de6a94c04e1e22c4c);
+            
+        
+
+        marker_5e1eabf6ce17ff63be516ca80b420517.bindPopup(popup_05fb354a98d75482429d5017d0616b37)
+        ;
+
+        
+    
+    
+            marker_5e1eabf6ce17ff63be516ca80b420517.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5e1eabf6ce17ff63be516ca80b420517.setIcon(icon_a11e1917d9272effa5ed3ea6e6282e6a);
+            
+    
+            var marker_68c3405106779f02d0f0e0a475679277 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_ebbbb2a0767f0209aec551caa4dbf867 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bb0e26c77b352fe5f29f8df5b87813ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_664875f95fa30e5ff550c0b12c308db0 = $(`<div id="html_664875f95fa30e5ff550c0b12c308db0" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:11.900893</div>`)[0];
+                popup_bb0e26c77b352fe5f29f8df5b87813ab.setContent(html_664875f95fa30e5ff550c0b12c308db0);
+            
+        
+
+        marker_68c3405106779f02d0f0e0a475679277.bindPopup(popup_bb0e26c77b352fe5f29f8df5b87813ab)
+        ;
+
+        
+    
+    
+            marker_68c3405106779f02d0f0e0a475679277.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68c3405106779f02d0f0e0a475679277.setIcon(icon_ebbbb2a0767f0209aec551caa4dbf867);
+            
+    
+            var marker_c9e9d60e136abb3a15f8c85d5d5ab77a = L.marker(
+                [41.5, -101.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_2a270e812af379b641c141bec0a8815e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_07ec3aa102cdb645a3b690154a6ba6b2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3be81ea7fae5b88aea2662595bbc2b6 = $(`<div id="html_e3be81ea7fae5b88aea2662595bbc2b6" style="width: 100.0%; height: 100.0%;">CQ N5VAN DN91, 2025-08-08 10:19:11.957095</div>`)[0];
+                popup_07ec3aa102cdb645a3b690154a6ba6b2.setContent(html_e3be81ea7fae5b88aea2662595bbc2b6);
+            
+        
+
+        marker_c9e9d60e136abb3a15f8c85d5d5ab77a.bindPopup(popup_07ec3aa102cdb645a3b690154a6ba6b2)
+        ;
+
+        
+    
+    
+            marker_c9e9d60e136abb3a15f8c85d5d5ab77a.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c9e9d60e136abb3a15f8c85d5d5ab77a.setIcon(icon_2a270e812af379b641c141bec0a8815e);
+            
+    
+            var marker_1c1dc76ab3cea9331bfdfd8d71c56aeb = L.marker(
+                [47.5, 9.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_2fcab7211734fddeec0d126ba941e901 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25f0e833f3755da2665c1b79ccc47486 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47f83caba03c98f6a625cf44cd41ea1c = $(`<div id="html_47f83caba03c98f6a625cf44cd41ea1c" style="width: 100.0%; height: 100.0%;">CQ OE9LWV JN47, 2025-08-08 10:19:14.648740</div>`)[0];
+                popup_25f0e833f3755da2665c1b79ccc47486.setContent(html_47f83caba03c98f6a625cf44cd41ea1c);
+            
+        
+
+        marker_1c1dc76ab3cea9331bfdfd8d71c56aeb.bindPopup(popup_25f0e833f3755da2665c1b79ccc47486)
+        ;
+
+        
+    
+    
+            marker_1c1dc76ab3cea9331bfdfd8d71c56aeb.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1c1dc76ab3cea9331bfdfd8d71c56aeb.setIcon(icon_2fcab7211734fddeec0d126ba941e901);
+            
+    
+            var marker_574c7d583a07a0dbee6e7f2d3f16a11c = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_172dbf4abef21ac0e15e41d533ff266a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_98c4be911f99a542593d01af263eecb4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5faa3f50e30ddfc12fc309e7a48685df = $(`<div id="html_5faa3f50e30ddfc12fc309e7a48685df" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:19:14.912874</div>`)[0];
+                popup_98c4be911f99a542593d01af263eecb4.setContent(html_5faa3f50e30ddfc12fc309e7a48685df);
+            
+        
+
+        marker_574c7d583a07a0dbee6e7f2d3f16a11c.bindPopup(popup_98c4be911f99a542593d01af263eecb4)
+        ;
+
+        
+    
+    
+            marker_574c7d583a07a0dbee6e7f2d3f16a11c.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_574c7d583a07a0dbee6e7f2d3f16a11c.setIcon(icon_172dbf4abef21ac0e15e41d533ff266a);
+            
+    
+            var marker_cd0dd98014bdbe323ded739dc5a52372 = L.marker(
+                [27.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_5a2c82644664be6077ccabf22afcb80b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1f84f513d03e9f28bf56141c10d56f69 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_92bb9584cb0130331901939e0f5cbfd7 = $(`<div id="html_92bb9584cb0130331901939e0f5cbfd7" style="width: 100.0%; height: 100.0%;">CQ W4ZGR EL97, 2025-08-08 10:19:26.955643</div>`)[0];
+                popup_1f84f513d03e9f28bf56141c10d56f69.setContent(html_92bb9584cb0130331901939e0f5cbfd7);
+            
+        
+
+        marker_cd0dd98014bdbe323ded739dc5a52372.bindPopup(popup_1f84f513d03e9f28bf56141c10d56f69)
+        ;
+
+        
+    
+    
+            marker_cd0dd98014bdbe323ded739dc5a52372.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cd0dd98014bdbe323ded739dc5a52372.setIcon(icon_5a2c82644664be6077ccabf22afcb80b);
+            
+    
+            var marker_5291ba6e1256f343f59c61b01324207f = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_53ebf29cc7c4637c183274864808cae3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c8575a88de05f2ebf001bf7e56c141c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0281394692b2f2bae06870dcb6ff076c = $(`<div id="html_0281394692b2f2bae06870dcb6ff076c" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:26.974159</div>`)[0];
+                popup_c8575a88de05f2ebf001bf7e56c141c0.setContent(html_0281394692b2f2bae06870dcb6ff076c);
+            
+        
+
+        marker_5291ba6e1256f343f59c61b01324207f.bindPopup(popup_c8575a88de05f2ebf001bf7e56c141c0)
+        ;
+
+        
+    
+    
+            marker_5291ba6e1256f343f59c61b01324207f.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5291ba6e1256f343f59c61b01324207f.setIcon(icon_53ebf29cc7c4637c183274864808cae3);
+            
+    
+            var marker_57e2cc57a89e41609edf53b6dc71848f = L.marker(
+                [46.5, 17.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_fa856aebdb9549ec08072cd9f853109f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4674225d14a73fb42ad804e33fa1ff12 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3bb74ba06f9b4fdbafe6e151be99bfd0 = $(`<div id="html_3bb74ba06f9b4fdbafe6e151be99bfd0" style="width: 100.0%; height: 100.0%;">CQ HA1BF JN86, 2025-08-08 10:19:29.690777</div>`)[0];
+                popup_4674225d14a73fb42ad804e33fa1ff12.setContent(html_3bb74ba06f9b4fdbafe6e151be99bfd0);
+            
+        
+
+        marker_57e2cc57a89e41609edf53b6dc71848f.bindPopup(popup_4674225d14a73fb42ad804e33fa1ff12)
+        ;
+
+        
+    
+    
+            marker_57e2cc57a89e41609edf53b6dc71848f.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_57e2cc57a89e41609edf53b6dc71848f.setIcon(icon_fa856aebdb9549ec08072cd9f853109f);
+            
+    
+            var marker_fa772e14faa0e51d8b33abd7b92de80b = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_1f1a09bc57d6a44f54b712867a4c7c1e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e5064acacee74c3f50182cdc7c5b5d1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d02f9c010dc1f4830247b527c1f2ee60 = $(`<div id="html_d02f9c010dc1f4830247b527c1f2ee60" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:19:41.904506</div>`)[0];
+                popup_9e5064acacee74c3f50182cdc7c5b5d1.setContent(html_d02f9c010dc1f4830247b527c1f2ee60);
+            
+        
+
+        marker_fa772e14faa0e51d8b33abd7b92de80b.bindPopup(popup_9e5064acacee74c3f50182cdc7c5b5d1)
+        ;
+
+        
+    
+    
+            marker_fa772e14faa0e51d8b33abd7b92de80b.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fa772e14faa0e51d8b33abd7b92de80b.setIcon(icon_1f1a09bc57d6a44f54b712867a4c7c1e);
+            
+    
+            var marker_6de2c8f7c994c7abe51ae85bc7ac1a84 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_48ddb21203e560cf866a834f11763be6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f22bd89f7b476ca4298231bf81490c60 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66812668b164eae4e9658a420ebcfa34 = $(`<div id="html_66812668b164eae4e9658a420ebcfa34" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:19:56.922591</div>`)[0];
+                popup_f22bd89f7b476ca4298231bf81490c60.setContent(html_66812668b164eae4e9658a420ebcfa34);
+            
+        
+
+        marker_6de2c8f7c994c7abe51ae85bc7ac1a84.bindPopup(popup_f22bd89f7b476ca4298231bf81490c60)
+        ;
+
+        
+    
+    
+            marker_6de2c8f7c994c7abe51ae85bc7ac1a84.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6de2c8f7c994c7abe51ae85bc7ac1a84.setIcon(icon_48ddb21203e560cf866a834f11763be6);
+            
+    
+            var marker_3957ec885f7f73b587212ebbbc009050 = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_80ea02223812131751b688a0407f4e21 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b55da190b40c53b880be7619b42e614 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f5802875eccd4defb42e0ccfa700d372 = $(`<div id="html_f5802875eccd4defb42e0ccfa700d372" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:19:56.947750</div>`)[0];
+                popup_1b55da190b40c53b880be7619b42e614.setContent(html_f5802875eccd4defb42e0ccfa700d372);
+            
+        
+
+        marker_3957ec885f7f73b587212ebbbc009050.bindPopup(popup_1b55da190b40c53b880be7619b42e614)
+        ;
+
+        
+    
+    
+            marker_3957ec885f7f73b587212ebbbc009050.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3957ec885f7f73b587212ebbbc009050.setIcon(icon_80ea02223812131751b688a0407f4e21);
+            
+    
+            var marker_ba549d7770afa23d91df64c406b501d3 = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_99b91592c01491c2b3807ef7f7d4e0df = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_234d584d04a95f4d2c93c183563321fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_53890f4f6298d5c5efdad8e8c8571018 = $(`<div id="html_53890f4f6298d5c5efdad8e8c8571018" style="width: 100.0%; height: 100.0%;">CQ K4CAE EM94, 2025-08-08 10:20:11.930634</div>`)[0];
+                popup_234d584d04a95f4d2c93c183563321fe.setContent(html_53890f4f6298d5c5efdad8e8c8571018);
+            
+        
+
+        marker_ba549d7770afa23d91df64c406b501d3.bindPopup(popup_234d584d04a95f4d2c93c183563321fe)
+        ;
+
+        
+    
+    
+            marker_ba549d7770afa23d91df64c406b501d3.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ba549d7770afa23d91df64c406b501d3.setIcon(icon_99b91592c01491c2b3807ef7f7d4e0df);
+            
+    
+            var marker_05d503736a15b5057b576b0d6948213f = L.marker(
+                [31.5, -107.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_3f8f1df9f45638de96861140026f1ba0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eff1ca03848b4fa8b8e5f9b3ce7e78d5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f0c58681c54709ffc4403829f7be045 = $(`<div id="html_5f0c58681c54709ffc4403829f7be045" style="width: 100.0%; height: 100.0%;">CQ KI5HCX DM61, 2025-08-08 10:20:14.663948</div>`)[0];
+                popup_eff1ca03848b4fa8b8e5f9b3ce7e78d5.setContent(html_5f0c58681c54709ffc4403829f7be045);
+            
+        
+
+        marker_05d503736a15b5057b576b0d6948213f.bindPopup(popup_eff1ca03848b4fa8b8e5f9b3ce7e78d5)
+        ;
+
+        
+    
+    
+            marker_05d503736a15b5057b576b0d6948213f.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_05d503736a15b5057b576b0d6948213f.setIcon(icon_3f8f1df9f45638de96861140026f1ba0);
+            
+    
+            var marker_561e35cd5c84eefbbbfb07274b3074a7 = L.marker(
+                [36.5, -91.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_24ef51ccf54c96bcdd29fd7c683a6332 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_43148b9153e5e3a9eb729149b9339ec3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e0a2d0a3ac86af1ba624a5fe2bf8ca45 = $(`<div id="html_e0a2d0a3ac86af1ba624a5fe2bf8ca45" style="width: 100.0%; height: 100.0%;">CQ KB9ELS EM46, 2025-08-08 10:20:26.944637</div>`)[0];
+                popup_43148b9153e5e3a9eb729149b9339ec3.setContent(html_e0a2d0a3ac86af1ba624a5fe2bf8ca45);
+            
+        
+
+        marker_561e35cd5c84eefbbbfb07274b3074a7.bindPopup(popup_43148b9153e5e3a9eb729149b9339ec3)
+        ;
+
+        
+    
+    
+            marker_561e35cd5c84eefbbbfb07274b3074a7.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_561e35cd5c84eefbbbfb07274b3074a7.setIcon(icon_24ef51ccf54c96bcdd29fd7c683a6332);
+            
+    
+            var marker_123d0694c83ed9b89790310d7e6c2a6c = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f1edc4408c6c1292e8f97f2b576e29d1);
+        
+    
+            var icon_5483e0f91f663b6db8bdcb9a21971a5d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70b658008fb49efa855f067f08d4749c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81733941ebbd82c2df16e975652ba6bb = $(`<div id="html_81733941ebbd82c2df16e975652ba6bb" style="width: 100.0%; height: 100.0%;">CQ KD5BS EM54, 2025-08-08 10:20:26.975503</div>`)[0];
+                popup_70b658008fb49efa855f067f08d4749c.setContent(html_81733941ebbd82c2df16e975652ba6bb);
+            
+        
+
+        marker_123d0694c83ed9b89790310d7e6c2a6c.bindPopup(popup_70b658008fb49efa855f067f08d4749c)
+        ;
+
+        
+    
+    
+            marker_123d0694c83ed9b89790310d7e6c2a6c.bindTooltip(
+                `<div>
+                     Unanswered CQ call
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_123d0694c83ed9b89790310d7e6c2a6c.setIcon(icon_5483e0f91f663b6db8bdcb9a21971a5d);
+            
+    
+            feature_group_f1edc4408c6c1292e8f97f2b576e29d1.addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+            var feature_group_f070a29eeb381726ae91f8ff2c69787c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4f843ca3b2268bf0916615c33094b12f = L.marker(
+                [35.5, -95.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_7a2ec7e3b9afb20c316614ca13478f15 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09c42891a2e7533788f49497f7875123 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f7d8eb33901c26c46828da6642b0eaf = $(`<div id="html_5f7d8eb33901c26c46828da6642b0eaf" style="width: 100.0%; height: 100.0%;">KF5WCP</div>`)[0];
+                popup_09c42891a2e7533788f49497f7875123.setContent(html_5f7d8eb33901c26c46828da6642b0eaf);
+            
+        
+
+        marker_4f843ca3b2268bf0916615c33094b12f.bindPopup(popup_09c42891a2e7533788f49497f7875123)
+        ;
+
+        
+    
+    
+            marker_4f843ca3b2268bf0916615c33094b12f.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4f843ca3b2268bf0916615c33094b12f.setIcon(icon_7a2ec7e3b9afb20c316614ca13478f15);
+            
+    
+            var marker_62b3c79e0836514565bf1d07ee5384ef = L.marker(
+                [34.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_9e5d17aad4a26f6e081c7ab00a0b2ca5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68b04783deaf3d0597efbcb69ac4f865 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee7aa29174074181f8d78cb7ed9bdadf = $(`<div id="html_ee7aa29174074181f8d78cb7ed9bdadf" style="width: 100.0%; height: 100.0%;">KT4KB</div>`)[0];
+                popup_68b04783deaf3d0597efbcb69ac4f865.setContent(html_ee7aa29174074181f8d78cb7ed9bdadf);
+            
+        
+
+        marker_62b3c79e0836514565bf1d07ee5384ef.bindPopup(popup_68b04783deaf3d0597efbcb69ac4f865)
+        ;
+
+        
+    
+    
+            marker_62b3c79e0836514565bf1d07ee5384ef.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_62b3c79e0836514565bf1d07ee5384ef.setIcon(icon_9e5d17aad4a26f6e081c7ab00a0b2ca5);
+            
+    
+            var marker_b6b3e26b965194b414c1596642feef46 = L.marker(
+                [32.5, -97.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_73d3a2c55050d16d0d566dada05aa90f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b5e07e29b420a6744ee03862e5cfd91d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9edbf5bcecb0d05d58e7d6b7d4f5fb57 = $(`<div id="html_9edbf5bcecb0d05d58e7d6b7d4f5fb57" style="width: 100.0%; height: 100.0%;">K5MGY</div>`)[0];
+                popup_b5e07e29b420a6744ee03862e5cfd91d.setContent(html_9edbf5bcecb0d05d58e7d6b7d4f5fb57);
+            
+        
+
+        marker_b6b3e26b965194b414c1596642feef46.bindPopup(popup_b5e07e29b420a6744ee03862e5cfd91d)
+        ;
+
+        
+    
+    
+            marker_b6b3e26b965194b414c1596642feef46.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b6b3e26b965194b414c1596642feef46.setIcon(icon_73d3a2c55050d16d0d566dada05aa90f);
+            
+    
+            var marker_6d9d2dc7fb014e8c63ef7b2eb9ae568d = L.marker(
+                [34.5, -89.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_57b5da7032ca466b2bded28ac28a5082 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a519c075d6cae8aa286ceaf0de7d309a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_abfe8526b649c6c7b8e3999803733bad = $(`<div id="html_abfe8526b649c6c7b8e3999803733bad" style="width: 100.0%; height: 100.0%;">KD5BS</div>`)[0];
+                popup_a519c075d6cae8aa286ceaf0de7d309a.setContent(html_abfe8526b649c6c7b8e3999803733bad);
+            
+        
+
+        marker_6d9d2dc7fb014e8c63ef7b2eb9ae568d.bindPopup(popup_a519c075d6cae8aa286ceaf0de7d309a)
+        ;
+
+        
+    
+    
+            marker_6d9d2dc7fb014e8c63ef7b2eb9ae568d.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6d9d2dc7fb014e8c63ef7b2eb9ae568d.setIcon(icon_57b5da7032ca466b2bded28ac28a5082);
+            
+    
+            var marker_f4f8d57fb66baacf1e9f5b850851dea6 = L.marker(
+                [26.5, -81.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_fb32503c8a3d385d38564365b7517f79 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_801539955431921943ba652ffd9bc73d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2cd98b73592e7a405aba0de98358f1f3 = $(`<div id="html_2cd98b73592e7a405aba0de98358f1f3" style="width: 100.0%; height: 100.0%;">KO4VYT</div>`)[0];
+                popup_801539955431921943ba652ffd9bc73d.setContent(html_2cd98b73592e7a405aba0de98358f1f3);
+            
+        
+
+        marker_f4f8d57fb66baacf1e9f5b850851dea6.bindPopup(popup_801539955431921943ba652ffd9bc73d)
+        ;
+
+        
+    
+    
+            marker_f4f8d57fb66baacf1e9f5b850851dea6.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f4f8d57fb66baacf1e9f5b850851dea6.setIcon(icon_fb32503c8a3d385d38564365b7517f79);
+            
+    
+            var marker_11fe7ea90b716c7355555f0e84946ef1 = L.marker(
+                [33.5, -113.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_d875404729dbb29ea29ac8b55bf5d6e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05b9cd2275e74e9b29f379c3c778b54d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e6bf3eb453ab101bc73135e08112147 = $(`<div id="html_4e6bf3eb453ab101bc73135e08112147" style="width: 100.0%; height: 100.0%;">WB7SRC</div>`)[0];
+                popup_05b9cd2275e74e9b29f379c3c778b54d.setContent(html_4e6bf3eb453ab101bc73135e08112147);
+            
+        
+
+        marker_11fe7ea90b716c7355555f0e84946ef1.bindPopup(popup_05b9cd2275e74e9b29f379c3c778b54d)
+        ;
+
+        
+    
+    
+            marker_11fe7ea90b716c7355555f0e84946ef1.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_11fe7ea90b716c7355555f0e84946ef1.setIcon(icon_d875404729dbb29ea29ac8b55bf5d6e0);
+            
+    
+            var marker_4bc0c0e506c175d3e55f5af6b7ac8a4e = L.marker(
+                [22.5, -79.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_40da47d95547d3c7e1f9daa346346c9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_341c33e00d921af90411ed0438920a32 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_474d543a1e5f97d677381629f23624a6 = $(`<div id="html_474d543a1e5f97d677381629f23624a6" style="width: 100.0%; height: 100.0%;">CO6XX</div>`)[0];
+                popup_341c33e00d921af90411ed0438920a32.setContent(html_474d543a1e5f97d677381629f23624a6);
+            
+        
+
+        marker_4bc0c0e506c175d3e55f5af6b7ac8a4e.bindPopup(popup_341c33e00d921af90411ed0438920a32)
+        ;
+
+        
+    
+    
+            marker_4bc0c0e506c175d3e55f5af6b7ac8a4e.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4bc0c0e506c175d3e55f5af6b7ac8a4e.setIcon(icon_40da47d95547d3c7e1f9daa346346c9a);
+            
+    
+            var marker_2de0c105a5521c7807c43be5ead5a8c1 = L.marker(
+                [29.5, -95.0],
+                {
+}
+            ).addTo(feature_group_f070a29eeb381726ae91f8ff2c69787c);
+        
+    
+            var icon_3efe132bbcb64aa8d0c9b1594b7ff40b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "radio",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_42ab753047e6eb87ddad69af8b799a74 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5261f410ba0422ecfe37bc5baffb5dd3 = $(`<div id="html_5261f410ba0422ecfe37bc5baffb5dd3" style="width: 100.0%; height: 100.0%;">W5RKJ</div>`)[0];
+                popup_42ab753047e6eb87ddad69af8b799a74.setContent(html_5261f410ba0422ecfe37bc5baffb5dd3);
+            
+        
+
+        marker_2de0c105a5521c7807c43be5ead5a8c1.bindPopup(popup_42ab753047e6eb87ddad69af8b799a74)
+        ;
+
+        
+    
+    
+            marker_2de0c105a5521c7807c43be5ead5a8c1.bindTooltip(
+                `<div>
+                     QSO Participant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2de0c105a5521c7807c43be5ead5a8c1.setIcon(icon_3efe132bbcb64aa8d0c9b1594b7ff40b);
+            
+    
+            feature_group_f070a29eeb381726ae91f8ff2c69787c.addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+            var poly_line_dc528b9b3bfc9caecbc42eb1b186f210 = L.polyline(
+                [[35.5, -95.0], [34.5, -81.0]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.55, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+        var popup_28e70cc88bbf3544f767814631d8ae16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ad2fa07f98d8b9aaf716caf2dc953bf = $(`<div id="html_0ad2fa07f98d8b9aaf716caf2dc953bf" style="width: 100.0%; height: 100.0%;">Contact began at ('2025-08-08 10:18:11.935844',).</div>`)[0];
+                popup_28e70cc88bbf3544f767814631d8ae16.setContent(html_0ad2fa07f98d8b9aaf716caf2dc953bf);
+            
+        
+
+        poly_line_dc528b9b3bfc9caecbc42eb1b186f210.bindPopup(popup_28e70cc88bbf3544f767814631d8ae16)
+        ;
+
+        
+    
+    
+            poly_line_dc528b9b3bfc9caecbc42eb1b186f210.bindTooltip(
+                `<div>
+                     QSO between KF5WCP and KT4KB
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1e796e4a9e5e5ff5047e5ef0e235de2e = L.polyline(
+                [[32.5, -97.0], [34.5, -89.0]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.55, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+        var popup_ecf6eff96850a78a35458ab776067cca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a53db31db555963467f77738212468f3 = $(`<div id="html_a53db31db555963467f77738212468f3" style="width: 100.0%; height: 100.0%;">Contact began at ('2025-08-08 10:19:11.935051',).</div>`)[0];
+                popup_ecf6eff96850a78a35458ab776067cca.setContent(html_a53db31db555963467f77738212468f3);
+            
+        
+
+        poly_line_1e796e4a9e5e5ff5047e5ef0e235de2e.bindPopup(popup_ecf6eff96850a78a35458ab776067cca)
+        ;
+
+        
+    
+    
+            poly_line_1e796e4a9e5e5ff5047e5ef0e235de2e.bindTooltip(
+                `<div>
+                     QSO between K5MGY and KD5BS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_9492db36af1f108a9979d0991cb8ee24 = L.polyline(
+                [[26.5, -81.0], [33.5, -113.0]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.55, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+        var popup_10ce5cade3b26adec034269752ff2592 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0603ba9504aa0db78959be99edf6a1c7 = $(`<div id="html_0603ba9504aa0db78959be99edf6a1c7" style="width: 100.0%; height: 100.0%;">Contact began at ('2025-08-08 10:19:56.901765',).</div>`)[0];
+                popup_10ce5cade3b26adec034269752ff2592.setContent(html_0603ba9504aa0db78959be99edf6a1c7);
+            
+        
+
+        poly_line_9492db36af1f108a9979d0991cb8ee24.bindPopup(popup_10ce5cade3b26adec034269752ff2592)
+        ;
+
+        
+    
+    
+            poly_line_9492db36af1f108a9979d0991cb8ee24.bindTooltip(
+                `<div>
+                     QSO between KO4VYT and WB7SRC
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f55742618f3f6956850e84d31591d87e = L.polyline(
+                [[22.5, -79.0], [29.5, -95.0]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.55, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+        
+    
+        var popup_4e1136fc7bc4e492d2e1a4a0b8108588 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f214c8bfd573aacc3465c05a4351bdf2 = $(`<div id="html_f214c8bfd573aacc3465c05a4351bdf2" style="width: 100.0%; height: 100.0%;">Contact began at ('2025-08-08 10:20:12.049511',).</div>`)[0];
+                popup_4e1136fc7bc4e492d2e1a4a0b8108588.setContent(html_f214c8bfd573aacc3465c05a4351bdf2);
+            
+        
+
+        poly_line_f55742618f3f6956850e84d31591d87e.bindPopup(popup_4e1136fc7bc4e492d2e1a4a0b8108588)
+        ;
+
+        
+    
+    
+            poly_line_f55742618f3f6956850e84d31591d87e.bindTooltip(
+                `<div>
+                     QSO between CO6XX and W5RKJ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_8c44d534c5bc512d3857e397c5daee23_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_e455731d7b6affeb07d31534d91cbc3d,
+                },
+                overlays :  {
+                    "CQs" : feature_group_f1edc4408c6c1292e8f97f2b576e29d1,
+                    "QSOs" : feature_group_f070a29eeb381726ae91f8ff2c69787c,
+                },
+            };
+            let layer_control_8c44d534c5bc512d3857e397c5daee23 = L.control.layers(
+                layer_control_8c44d534c5bc512d3857e397c5daee23_layers.base_layers,
+                layer_control_8c44d534c5bc512d3857e397c5daee23_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_e99a91adcf390bdd5e6bd4826c9237e0);
+
+        
+</script>
+</html>
