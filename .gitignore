@@ -5,6 +5,7 @@ env/
 *.iws
 .idea/
 .env
+db_init
 db_init/l_amat/
 db_init/ft8.db
 classes.py
@@ -12,3 +13,5 @@ classes.py
 /tests/data.txt
 /tests/tests.py
 main.py
+ft8_misc.json
+ft8_comms.json
