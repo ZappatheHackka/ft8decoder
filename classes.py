@@ -14,7 +14,9 @@ from dataclasses import dataclass, asdict
 class Packet:
     snr: int #
     delta_time: float
-    frequency: int
+    frequency_offset: int
+    frequency: float
+    band: str
     message: str
     schema: int
     program: str
@@ -219,14 +221,23 @@ class MessageProcessor:
         if len(signal) > 2:  # > 2 to return False for 73s
             if signal != "RR73" and signal != "RRR":
                 if 'RR' in signal:
-                    if int(signal[2:]) or signal[2:] == '00':
-                        return True
+                    try:
+                        if int(signal[2:]) or signal[2:] == '00':
+                            return True
+                    except ValueError:
+                        return False
                 elif 'R' in signal:
-                    if int(signal[2:]) or signal[2:] == '00':
-                        return True
+                    try:
+                        if int(signal[2:]) or signal[2:] == '00':
+                            return True
+                    except ValueError:
+                        return False
                 else:
-                    if int(signal[1:]) or signal[1:] == '00':
-                        return True
+                    try:
+                        if int(signal[1:]) or signal[1:] == '00':
+                            return True
+                    except ValueError:
+                        return False
                 return False
             return False
         return False
@@ -280,8 +291,12 @@ class MessageProcessor:
             print("Updated convo_dict with 73 reply.")
 
     def is_grid_square(self, message):
-        code = str(message[-1])
-        if len(code)  == 4:
+        code = str(message[-1]).strip()
+        print(code)
+        if code == "RR73":
+            return False
+
+        if len(code) == 4:
             if code[0].isalpha() and code[0].isupper():
                 if code[1].isalpha() and code[1].isupper():
                     if code[2].isnumeric():
@@ -347,17 +362,8 @@ class MessageProcessor:
 
 # ---------------------DATA EXPORTING--------------------------
     def comms_to_json(self):
-        pass
-
-    def cqs_to_json(self):
-        pass
-
-    def misc_to_json(self):
-        pass
-
-    def to_json(self):  #TODO make this export ALL data (cq turns, misc_comms) not just convo turns-make methods for each and one overall method
-        with open("ft8_data.json", "w") as json_file:
-            json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
+        with open("ft8_comms.json", "w") as json_file:
+            json_dict = {"COMMS": [{}]}
 
             for k, v in self.convo_dict.items():
                 key_str = str(k)
@@ -375,6 +381,70 @@ class MessageProcessor:
                         while len(json_dict[k]) <= i + 1:
                             json_dict[k].append({})
                         json_dict[k][i + 1]["packet"] = asdict(field)
+
+            json_file.write(json.dumps(json_dict, indent=2))
+
+    def cqs_to_json(self):
+        with open("ft8_cqs.json", "w") as json_file:
+            json_dict = {"CQS": []}
+            for i, cq in enumerate(self.cqs):
+                while len(json_dict["CQS"]) <= i:
+                    json_dict["CQS"].append({})
+
+                if isinstance(cq, CQ):
+                    json_dict["CQS"][i] = asdict(cq)
+                else:
+                    json_dict["CQS"][i] = cq
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+
+            json_file.write(json.dumps(json_dict, indent=2))
+
+    def misc_to_json(self):
+        with open("ft8_misc.json", "w") as json_file:
+            json_dict = {"MISC": []}
+
+            for k, v in self.misc_comms.items():
+                key_str = str(k)
+                json_dict["MISC. COMMS"][0][key_str] = []
+
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict["MISC. COMMS"][0][key_str].append(asdict(item))
+                    else:
+                        json_dict["MISC. COMMS"][0][key_str].append(item)
+
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+            json_file.write(json.dumps(json_dict, indent=2))
+
+    def to_json(self, filename: str):
+        if filename.endswith(".json"):
+            out_filename = filename
+        else:
+            out_filename = f"{filename}.json"
+
+        with open(out_filename, "w") as json_file:
+            json_dict = {"COMMS": [{}], "CQS": [], "MISC. COMMS": [{}]}
+
+            for k, v in self.convo_dict.items():
+                key_str = str(k)
+                json_dict["COMMS"][0][key_str] = []
+
+                for item in v:
+                    if isinstance(item, MessageTurn):
+                        json_dict["COMMS"][0][key_str].append(asdict(item))
+                    else:
+                        json_dict["COMMS"][0][key_str].append(item)
 
             for i, cq in enumerate(self.cqs):
                 while len(json_dict["CQS"]) <= i:
@@ -395,14 +465,46 @@ class MessageProcessor:
                     else:
                         json_dict["MISC. COMMS"][0][key_str].append(item)
 
+            for k, v in json_dict.items():
+                for i, field in enumerate(v):
+                    if isinstance(field, Packet):
+                        while len(json_dict[k]) <= i + 1:
+                            json_dict[k].append({})
+                        json_dict[k][i + 1]["packet"] = asdict(field)
+
             data = json.dumps(json_dict, indent=2)
             json_file.write(data)
 
 # ---------------------DATA GRABBING---------------------------
 
 class WsjtxParser:
-    def __init__(self):
+    def __init__(self, dial_frequency: float):
         self.packet_queue = queue.Queue()
+        self.dial_frequency = dial_frequency
+
+    def frequency_handle(self, fq_offset: float):
+        offset_mhz = fq_offset / 1_000_000
+        frequency = self.dial_frequency + offset_mhz
+        return frequency
+
+    def determine_band(self, frequency: float):
+        band_center_freqs = {
+            "160m": 1.840,
+            "80m": 3.573,
+            "40m": 7.074,
+            "30m": 10.136,
+            "20m": 14.074,
+            "17m": 18.100,
+            "15m": 21.074,
+            "12m": 24.915,
+            "10m": 28.074,
+            "6m": 50.313,
+            "2m": 144.174
+        }
+        for band, freq in band_center_freqs.items():
+            if abs(freq - frequency) < 0.015:
+                return band
+        return "Unknown"
 
     def start_listening(self, host, port, processor: MessageProcessor):
         print(f"Listening on {host}:{port}...")
@@ -441,10 +543,12 @@ class WsjtxParser:
                 snr = struct.unpack(">i", data[27:31])[0]
                 time_delta = struct.unpack(">d", data[31:39])[0]
                 fq_offset = struct.unpack('>i', data[39:43])[0]
+                frequency = self.frequency_handle(fq_offset)
                 msg = data[52:-2]
                 decoded_msg = msg.decode('utf-8')
                 parsed_packet = Packet(packet_type=message_type, schema=schema, program=program, snr=snr,
-                                                   delta_time=time_delta, frequency=fq_offset, message=decoded_msg)
+                        delta_time=time_delta, frequency_offset=fq_offset, frequency=frequency,
+                        band=self.determine_band(frequency),message=decoded_msg)
                 print(parsed_packet.message)
                 self.packet_queue.put(parsed_packet)
             case 1:  # Status packets

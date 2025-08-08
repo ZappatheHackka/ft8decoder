@@ -46,10 +46,10 @@ def test_handle_signal_report():
                     f"sends a signal report of {test_message_list[2]} to {test_message_list[0]}.", packet=test_data_packet, type="Signal Report"),]
 
     processor = MessageProcessor()
-    processor.convo_dict[(test_callsigns[0], test_callsigns[1])] = []
+    processor.qso_dict[(test_callsigns[0], test_callsigns[1])] = []
     processor.handle_signal_report(callsigns=test_callsigns, message=test_message_list, packet=test_data_packet)
 
-    assert processor.convo_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
+    assert processor.qso_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
 
 def test_handle_ack_reply():
     test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ RR73',
@@ -58,7 +58,7 @@ def test_handle_ack_reply():
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
 
     processor = MessageProcessor()
-    processor.convo_dict[(test_callsigns[0], test_callsigns[1])] = [{"completed": False}]
+    processor.qso_dict[(test_callsigns[0], test_callsigns[1])] = [{"completed": False}]
 
     expected_result = [{"completed": True} , MessageTurn(turn=1, message='W1AW K9XYZ RR73', translated_message=f"{test_message_list[1]} "
                         f"sends a Roger Roger to {test_message_list[0]} and says goodbye, concluding the connection.",
@@ -66,7 +66,7 @@ def test_handle_ack_reply():
 
     processor.handle_ack_reply(callsigns=test_callsigns, message=test_message_list, packet=test_data_packet)
 
-    assert processor.convo_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
+    assert processor.qso_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
 
 def test_handle_grid_square():
     test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ EN87',
@@ -75,7 +75,7 @@ def test_handle_grid_square():
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
 
     processor = MessageProcessor()
-    processor.convo_dict[(test_callsigns[0], test_callsigns[1])] = []
+    processor.qso_dict[(test_callsigns[0], test_callsigns[1])] = []
 
     expected_result = [MessageTurn(turn=0, message='W1AW K9XYZ EN87', translated_message=f"{test_message_list[1]} "
                         f"sends a grid square location of {test_message_list[-1]} to {test_message_list[0]}.",
@@ -83,7 +83,7 @@ def test_handle_grid_square():
 
     processor.handle_grid_square(packet=test_data_packet, message=test_message_list, callsigns=test_callsigns)
 
-    assert processor.convo_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
+    assert processor.qso_dict[(test_callsigns[0], test_callsigns[1])] == expected_result
 
 def test_handle_cq():
     test_data_packet = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='CQ K9XYZ EN87',
@@ -122,18 +122,18 @@ def test_message_sort():
                         packet=test_data_packet1, type="Grid Square Report")]
 
     processor = MessageProcessor()
-    processor.convo_dict[(test_callsigns1[0], test_callsigns1[1])] = []
+    processor.qso_dict[(test_callsigns1[0], test_callsigns1[1])] = []
 
     processor.sort_message(packet=test_data_packet1, callsigns=test_callsigns1, new_convo=False)
 
-    assert processor.convo_dict[(test_callsigns1[0], test_callsigns1[1])] == expected_result1
+    assert processor.qso_dict[(test_callsigns1[0], test_callsigns1[1])] == expected_result1
 
     test_data_packet2 = Packet(snr=-20, delta_time=0.5, frequency_offset=950, message='W1AW K9XYZ -10',
                               program='WSJT-X', schema=2, packet_type=2, band="20m", frequency=14.07495)
     test_message_list2 = ['W1AW', 'K9XYZ', '-10']
     test_callsigns2 = sorted(['W1AW', 'K9XYZ'])
 
-    processor.convo_dict[(test_callsigns2[0], test_callsigns2[1])] = []
+    processor.qso_dict[(test_callsigns2[0], test_callsigns2[1])] = []
 
     processor.sort_message(packet=test_data_packet2, callsigns=test_callsigns2, new_convo=False)
 
@@ -141,7 +141,7 @@ def test_message_sort():
                         f"sends a signal report of {test_message_list2[2]} to {test_message_list2[0]}.",
                         packet=test_data_packet2, type="Signal Report")]
 
-    assert processor.convo_dict[(test_callsigns2[0], test_callsigns2[1])] == expected_result2
+    assert processor.qso_dict[(test_callsigns2[0], test_callsigns2[1])] == expected_result2
 
 def test_square_resolve():
     test_data = ['DN50', 'FK68', 'KN22', 'CN89', 'EM62', 'EN58']

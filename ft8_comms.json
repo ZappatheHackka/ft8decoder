@@ -1,0 +1,701 @@
+{
+  "COMMS": [
+    {
+      "('KH7EH', 'KN6OX')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KH7EH KN6OX CM98",
+          "translated_message": "KN6OX sends a grid square location of CM98 to KH7EH.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.5,
+            "frequency": 1112,
+            "message": "KH7EH KN6OX CM98",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KH7EH KN6OX CM98",
+          "translated_message": "KN6OX sends a grid square location of CM98 to KH7EH.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.4000000059604645,
+            "frequency": 1112,
+            "message": "KH7EH KN6OX CM98",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KH7EH KN6OX CM98",
+          "translated_message": "KN6OX sends a grid square location of CM98 to KH7EH.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 0.5,
+            "frequency": 1113,
+            "message": "KH7EH KN6OX CM98",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KO4SPC', 'KQ4ZUA')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KO4SPC KQ4ZUA EM95",
+          "translated_message": "KQ4ZUA sends a grid square location of EM95 to KO4SPC.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.5,
+            "frequency": 1323,
+            "message": "KO4SPC KQ4ZUA EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KO4SPC KQ4ZUA EM95",
+          "translated_message": "KQ4ZUA sends a grid square location of EM95 to KO4SPC.",
+          "packet": {
+            "snr": -17,
+            "delta_time": 0.5,
+            "frequency": 1323,
+            "message": "KO4SPC KQ4ZUA EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('NQ0E', 'W0KVA')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "NQ0E W0KVA DN70",
+          "translated_message": "W0KVA sends a grid square location of DN70 to NQ0E.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.5,
+            "frequency": 773,
+            "message": "NQ0E W0KVA DN70",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('G4IIY', 'K1SDB')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "K1SDB G4IIY -12",
+          "translated_message": "G4IIY sends signal report of -12 to K1SDB.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.5,
+            "frequency": 1007,
+            "message": "K1SDB G4IIY -12",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "K1SDB G4IIY RR73",
+          "translated_message": "G4IIY sends a Roger Roger to K1SDB and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 0.5,
+            "frequency": 1006,
+            "message": "K1SDB G4IIY RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        },
+        {
+          "turn": 3,
+          "message": "K1SDB G4IIY RR73",
+          "translated_message": "G4IIY sends a Roger Roger to K1SDB and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.5,
+            "frequency": 1007,
+            "message": "K1SDB G4IIY RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('N0OTS', 'WW6WWW')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "N0OTS WW6WWW RR73",
+          "translated_message": "WW6WWW sends a Roger Roger to N0OTS and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.6000000238418579,
+            "frequency": 565,
+            "message": "N0OTS WW6WWW RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('K4MKX', 'KO4QLA')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "K4MKX KO4QLA EM93",
+          "translated_message": "KO4QLA sends a grid square location of EM93 to K4MKX.",
+          "packet": {
+            "snr": -6,
+            "delta_time": -0.20000000298023224,
+            "frequency": 930,
+            "message": "K4MKX KO4QLA EM93",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "K4MKX KO4QLA EM93",
+          "translated_message": "KO4QLA sends a grid square location of EM93 to K4MKX.",
+          "packet": {
+            "snr": -9,
+            "delta_time": -0.20000000298023224,
+            "frequency": 930,
+            "message": "K4MKX KO4QLA EM93",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "K4MKX KO4QLA EM93",
+          "translated_message": "KO4QLA sends a grid square location of EM93 to K4MKX.",
+          "packet": {
+            "snr": -14,
+            "delta_time": -0.20000000298023224,
+            "frequency": 931,
+            "message": "K4MKX KO4QLA EM93",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('N0PF', 'N6JWN')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N6JWN N0PF EM78",
+          "translated_message": "N0PF sends a grid square location of EM78 to N6JWN.",
+          "packet": {
+            "snr": -3,
+            "delta_time": 0.5,
+            "frequency": 1339,
+            "message": "N6JWN N0PF EM78",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "N6JWN N0PF EM78",
+          "translated_message": "N0PF sends a grid square location of EM78 to N6JWN.",
+          "packet": {
+            "snr": -3,
+            "delta_time": 0.5,
+            "frequency": 1340,
+            "message": "N6JWN N0PF EM78",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "N6JWN N0PF EM78",
+          "translated_message": "N0PF sends a grid square location of EM78 to N6JWN.",
+          "packet": {
+            "snr": -6,
+            "delta_time": 0.5,
+            "frequency": 1340,
+            "message": "N6JWN N0PF EM78",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KC8ZKS', 'N5KXI')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "KC8ZKS N5KXI 73",
+          "translated_message": "N5KXI sends their well wishes to KC8ZKS, concluding the connection.",
+          "packet": {
+            "snr": -9,
+            "delta_time": 1.2999999523162842,
+            "frequency": 1115,
+            "message": "KC8ZKS N5KXI 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+      "('9K2YD', 'RK6ADN')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "RK6ADN 9K2YD RR73",
+          "translated_message": "9K2YD sends a Roger Roger to RK6ADN and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": -14,
+            "delta_time": 0.5,
+            "frequency": 919,
+            "message": "RK6ADN 9K2YD RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        }
+      ],
+      "('N0PAT', 'W1MJC')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ POTA N0PAT EM18",
+          "translated_message": "Parks on the Air participant N0PAT is calling from grid EM18.",
+          "packet": {
+            "snr": -20,
+            "delta_time": 0.800000011920929,
+            "frequency": 473,
+            "message": "CQ POTA N0PAT EM18",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "N0PAT W1MJC EN72",
+          "translated_message": "W1MJC sends a grid square location of EN72 to N0PAT.",
+          "packet": {
+            "snr": -20,
+            "delta_time": 0.6000000238418579,
+            "frequency": 826,
+            "message": "N0PAT W1MJC EN72",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "N0PAT W1MJC EN72",
+          "translated_message": "W1MJC sends a grid square location of EN72 to N0PAT.",
+          "packet": {
+            "snr": -21,
+            "delta_time": 0.6000000238418579,
+            "frequency": 827,
+            "message": "N0PAT W1MJC EN72",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('F1PBZ', 'LZ1BT')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "LZ1BT F1PBZ -01",
+          "translated_message": "F1PBZ sends signal report of -01 to LZ1BT.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 0.6000000238418579,
+            "frequency": 525,
+            "message": "LZ1BT F1PBZ -01",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "LZ1BT F1PBZ -01",
+          "translated_message": "F1PBZ sends signal report of -01 to LZ1BT.",
+          "packet": {
+            "snr": -21,
+            "delta_time": 0.6000000238418579,
+            "frequency": 526,
+            "message": "LZ1BT F1PBZ -01",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KD9IXA', 'KJ5CYH')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KJ5CYH KD9IXA EN62",
+          "translated_message": "KD9IXA sends a grid square location of EN62 to KJ5CYH.",
+          "packet": {
+            "snr": 12,
+            "delta_time": 0.6000000238418579,
+            "frequency": 371,
+            "message": "KJ5CYH KD9IXA EN62",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KJ5CYH KD9IXA EN62",
+          "translated_message": "KD9IXA sends a grid square location of EN62 to KJ5CYH.",
+          "packet": {
+            "snr": 12,
+            "delta_time": 0.6000000238418579,
+            "frequency": 371,
+            "message": "KJ5CYH KD9IXA EN62",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('SP5CJQ', 'T30TTT')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "T30TTT SP5CJQ KO02",
+          "translated_message": "SP5CJQ sends a grid square location of KO02 to T30TTT.",
+          "packet": {
+            "snr": -19,
+            "delta_time": 0.6000000238418579,
+            "frequency": 571,
+            "message": "T30TTT SP5CJQ KO02",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KQ4CRY', 'N0PAT')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N0PAT KQ4CRY EM64",
+          "translated_message": "KQ4CRY sends a grid square location of EM64 to N0PAT.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 1.0,
+            "frequency": 1317,
+            "message": "N0PAT KQ4CRY EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "N0PAT KQ4CRY EM64",
+          "translated_message": "KQ4CRY sends a grid square location of EM64 to N0PAT.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 1.0,
+            "frequency": 1317,
+            "message": "N0PAT KQ4CRY EM64",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KD9SYZ', 'KS1WK')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KS1WK KD9SYZ EN70",
+          "translated_message": "KD9SYZ sends a grid square location of EN70 to KS1WK.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 0.4000000059604645,
+            "frequency": 1114,
+            "message": "KS1WK KD9SYZ EN70",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 2,
+          "message": "KS1WK KD9SYZ R-13",
+          "translated_message": "KD9SYZ says Roger and reports a signal report of -13 to KS1WK.",
+          "packet": {
+            "snr": 8,
+            "delta_time": 0.4000000059604645,
+            "frequency": 1114,
+            "message": "KS1WK KD9SYZ R-13",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('9K2YD', 'IU0TPA')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "IU0TPA 9K2YD -10",
+          "translated_message": "9K2YD sends signal report of -10 to IU0TPA.",
+          "packet": {
+            "snr": -17,
+            "delta_time": 0.5,
+            "frequency": 919,
+            "message": "IU0TPA 9K2YD -10",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('N0PAT', 'N7CQ')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N0PAT N7CQ EN46",
+          "translated_message": "N7CQ sends a grid square location of EN46 to N0PAT.",
+          "packet": {
+            "snr": -11,
+            "delta_time": 0.6000000238418579,
+            "frequency": 1094,
+            "message": "N0PAT N7CQ EN46",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('<K1ZN/VY2>', 'HA3HZ')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "HA3HZ <K1ZN/VY2> -07",
+          "translated_message": "<K1ZN/VY2> sends signal report of -07 to HA3HZ.",
+          "packet": {
+            "snr": 4,
+            "delta_time": 0.699999988079071,
+            "frequency": 919,
+            "message": "HA3HZ <K1ZN/VY2> -07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KQ4ZUA', 'NP3DM')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "NP3DM KQ4ZUA EM95",
+          "translated_message": "KQ4ZUA sends a grid square location of EM95 to NP3DM.",
+          "packet": {
+            "snr": -12,
+            "delta_time": 0.5,
+            "frequency": 1324,
+            "message": "NP3DM KQ4ZUA EM95",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KB9ZM', 'N7LD')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ N7LD DM26",
+          "translated_message": "Station N7LD is calling for any response from grid DM26.",
+          "packet": {
+            "snr": -13,
+            "delta_time": 0.699999988079071,
+            "frequency": 953,
+            "message": "CQ N7LD DM26",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "N7LD KB9ZM EM57",
+          "translated_message": "KB9ZM sends a grid square location of EM57 to N7LD.",
+          "packet": {
+            "snr": -8,
+            "delta_time": 0.5,
+            "frequency": 953,
+            "message": "N7LD KB9ZM EM57",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('AA5HH', 'KD5SYI')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "KD5SYI AA5HH EM21",
+          "translated_message": "AA5HH sends a grid square location of EM21 to KD5SYI.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.699999988079071,
+            "frequency": 1039,
+            "message": "KD5SYI AA5HH EM21",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        }
+      ],
+      "('KO4LEM', 'N0OTS')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "CQ KO4LEM EM74",
+          "translated_message": "Station KO4LEM is calling for any response from grid EM74.",
+          "packet": {
+            "snr": -5,
+            "delta_time": -0.30000001192092896,
+            "frequency": 1281,
+            "message": "CQ KO4LEM EM74",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "N0OTS KO4LEM +05",
+          "translated_message": "KO4LEM sends signal report of +05 to N0OTS.",
+          "packet": {
+            "snr": -17,
+            "delta_time": -0.20000000298023224,
+            "frequency": 1281,
+            "message": "N0OTS KO4LEM +05",
+            "schema": 2,
+            "program": "WSJT-X",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ]
+    }
+  ]
+}

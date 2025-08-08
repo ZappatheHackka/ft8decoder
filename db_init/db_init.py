@@ -8,9 +8,6 @@ if __name__ == '__main__':
 
     # cursor.execute("CREATE TABLE callsigns(callsign, entity_type,license_id, "
     #                "name, address, city, state, zip, sgin, frn)")
-    #
-    # print(cursor.fetchall())
-    # cursor.execute("DROP TABLE callsigns")
 
   # Populate callsigns table with EN.dat:
   #   with open('l_amat/EN.dat', 'r') as am:

@@ -1,7 +1,7 @@
 # ft8decoder
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ZappatheHackka/ft8translator)
+[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ZappatheHackka/ft8decoder)
 
-`ft8translator` is a Python-based tool for decoding, translating, and organizing FT8 digital radio communications in real-time. It listens for UDP packets broadcast by WSJT-X, parses the cryptic messages into human-readable text, sorts them into distinct conversations (QSOs), and provides options to export the captured data into structured JSON files or visualize them on a world map.
+`ft8decoder` is a Python-based tool for decoding, translating, and organizing FT8 digital radio communications in real-time. It listens for UDP packets broadcast by WSJT-X, parses the cryptic messages into human-readable text, sorts them into distinct conversations (QSOs), and provides options to export the captured data into structured JSON files or visualize them on a world map.
 
 This tool is perfect for amateur radio enthusiasts who want to log, understand, and analyze FT8 communications happening on the bands.
 
@@ -31,8 +31,8 @@ Ensure you have Python 3.8+ and a running instance of WSJT-X.
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/ZappatheHackka/ft8translator.git
-    cd ft8translator
+    git clone https://github.com/ZappatheHackka/ft8decoder.git
+    cd ft8decoder
     ```
 
 2.  **Install the required dependencies:**

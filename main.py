@@ -1,18 +1,26 @@
-from classes import WsjtxParser, MessageProcessor
+from ft8decoder import WsjtxParser, MessageProcessor
 import time
 
+# Get HOST and PORT from WSJT-X settings
 HOST = '127.0.0.1'
 PORT = 2237
 
-parser = WsjtxParser()
-processor = MessageProcessor()
-parser.start_listening(HOST, PORT, processor)
-processor.order(seconds=3)
+# Initialize parser with your desired dial frequency,
+parser = WsjtxParser(dial_frequency=14.074000)
 
-time.sleep(80)
+# Initialize processor
+processor = MessageProcessor()
+
+# Pass the HOST, PORT, and processor into the parser and begin listening
+parser.start_listening(HOST, PORT, processor)
+
+# Start the processor
+processor.start()
+
+# Sleep for however long you want to compile data for
+time.sleep(180)
+
+# Access the parsed and processed data
 print("All captured packets:", processor.master_data)
-# processor.to_json()
-processor.comms_to_json()
-processor.cqs_to_json()
-processor.misc_to_json()
-exit()
+processor.to_map('map', all_cqs=True)
+processor.to_json(filename="all_comms")
