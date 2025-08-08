@@ -1,4 +1,4 @@
-# ft8translator
+# ft8decoder
 [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ZappatheHackka/ft8translator)
 
 `ft8translator` is a Python-based tool for decoding, translating, and organizing FT8 digital radio communications in real-time. It listens for UDP packets broadcast by WSJT-X, parses the cryptic messages into human-readable text, sorts them into distinct conversations (QSOs), and provides options to export the captured data into structured JSON files or visualize them on a world map.
