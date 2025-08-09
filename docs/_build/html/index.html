@@ -1,0 +1,1668 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+        <title>ft8decoder 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">ft8decoder 0.1.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  
+  <span class="sidebar-brand-text">ft8decoder 0.1.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="welcome-to-ft8decoder-s-documentation">
+<h1>Welcome to ft8decoder’s documentation!<a class="headerlink" href="#welcome-to-ft8decoder-s-documentation" title="Link to this heading">¶</a></h1>
+</section>
+<section id="module-ft8decoder.core">
+<span id="core-classes"></span><h1>Core Classes<a class="headerlink" href="#module-ft8decoder.core" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ft8decoder.core.CQ">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ft8decoder.core.</span></span><span class="sig-name descname"><span class="pre">CQ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/core.html#CQ"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.core.CQ" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a CQ (calling any station) message in amateur radio.</p>
+<p>CQ messages are general calls broadcast to invite any station to respond,
+typically used to initiate new contacts or conversations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.CQ.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#ft8decoder.core.CQ.message" title="Link to this definition">¶</a></dt>
+<dd><p>Original CQ message content</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.CQ.translated_message">
+<span class="sig-name descname"><span class="pre">translated_message</span></span><a class="headerlink" href="#ft8decoder.core.CQ.translated_message" title="Link to this definition">¶</a></dt>
+<dd><p>Human-readable interpretation of the CQ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.CQ.caller">
+<span class="sig-name descname"><span class="pre">caller</span></span><a class="headerlink" href="#ft8decoder.core.CQ.caller" title="Link to this definition">¶</a></dt>
+<dd><p>Call sign of the station making the CQ call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.CQ.packet">
+<span class="sig-name descname"><span class="pre">packet</span></span><a class="headerlink" href="#ft8decoder.core.CQ.packet" title="Link to this definition">¶</a></dt>
+<dd><p>Packet object containing the raw signal data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet">ft8decoder.core.Packet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">caller</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">packet</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></em><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">translated_message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ft8decoder.core.MessageTurn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ft8decoder.core.</span></span><span class="sig-name descname"><span class="pre">MessageTurn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">turn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/core.html#MessageTurn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.core.MessageTurn" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a single turn in a radio communication exchange.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.MessageTurn.turn">
+<span class="sig-name descname"><span class="pre">turn</span></span><a class="headerlink" href="#ft8decoder.core.MessageTurn.turn" title="Link to this definition">¶</a></dt>
+<dd><p>Sequential turn number in the conversation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.MessageTurn.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#ft8decoder.core.MessageTurn.message" title="Link to this definition">¶</a></dt>
+<dd><p>Original raw message content</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.MessageTurn.translated_message">
+<span class="sig-name descname"><span class="pre">translated_message</span></span><a class="headerlink" href="#ft8decoder.core.MessageTurn.translated_message" title="Link to this definition">¶</a></dt>
+<dd><p>Human-readable or decoded version of the message</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.MessageTurn.packet">
+<span class="sig-name descname"><span class="pre">packet</span></span><a class="headerlink" href="#ft8decoder.core.MessageTurn.packet" title="Link to this definition">¶</a></dt>
+<dd><p>Associated Packet object or string identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet">ft8decoder.core.Packet</a> | str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.MessageTurn.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#ft8decoder.core.MessageTurn.type" title="Link to this definition">¶</a></dt>
+<dd><p>Type of message turn (e.g., “CQ”, “response”, “73”)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">packet</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">translated_message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">turn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id8" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ft8decoder.core.</span></span><span class="sig-name descname"><span class="pre">Packet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_captured</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/core.html#Packet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.core.Packet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a WSJT-X UDP packet containing signal and metadata information for each captured FT8 message.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.snr">
+<span class="sig-name descname"><span class="pre">snr</span></span><a class="headerlink" href="#ft8decoder.core.Packet.snr" title="Link to this definition">¶</a></dt>
+<dd><p>Signal-to-noise ratio in decibels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.delta_time">
+<span class="sig-name descname"><span class="pre">delta_time</span></span><a class="headerlink" href="#ft8decoder.core.Packet.delta_time" title="Link to this definition">¶</a></dt>
+<dd><p>Time offset from expected timing in seconds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.frequency_offset">
+<span class="sig-name descname"><span class="pre">frequency_offset</span></span><a class="headerlink" href="#ft8decoder.core.Packet.frequency_offset" title="Link to this definition">¶</a></dt>
+<dd><p>Frequency offset from expected frequency in Hz</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.frequency">
+<span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#ft8decoder.core.Packet.frequency" title="Link to this definition">¶</a></dt>
+<dd><p>Actual received frequency in Hz or MHz</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.band">
+<span class="sig-name descname"><span class="pre">band</span></span><a class="headerlink" href="#ft8decoder.core.Packet.band" title="Link to this definition">¶</a></dt>
+<dd><p>Radio frequency band (e.g., “20m”, “40m”, “2m”)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#ft8decoder.core.Packet.message" title="Link to this definition">¶</a></dt>
+<dd><p>Raw message content from the packet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.schema">
+<span class="sig-name descname"><span class="pre">schema</span></span><a class="headerlink" href="#ft8decoder.core.Packet.schema" title="Link to this definition">¶</a></dt>
+<dd><p>Schema version or protocol identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.program">
+<span class="sig-name descname"><span class="pre">program</span></span><a class="headerlink" href="#ft8decoder.core.Packet.program" title="Link to this definition">¶</a></dt>
+<dd><p>Software/program that captured or processed the packet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.time_captured">
+<span class="sig-name descname"><span class="pre">time_captured</span></span><a class="headerlink" href="#ft8decoder.core.Packet.time_captured" title="Link to this definition">¶</a></dt>
+<dd><p>Timestamp when the packet was received (ISO format string)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.core.Packet.packet_type">
+<span class="sig-name descname"><span class="pre">packet_type</span></span><a class="headerlink" href="#ft8decoder.core.Packet.packet_type" title="Link to this definition">¶</a></dt>
+<dd><p>Numeric identifier for the type of packet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">band</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id9" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">delta_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id10" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">frequency</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id11" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">frequency_offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id12" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id13" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">packet_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id14" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">program</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id15" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">schema</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id16" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">snr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id17" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">time_captured</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id18" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ft8decoder.parser">
+<span id="parser-module"></span><h1>Parser Module<a class="headerlink" href="#module-ft8decoder.parser" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ft8decoder.parser.</span></span><span class="sig-name descname"><span class="pre">WsjtxParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dial_frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A UDP packet parser for WSJT-X FT8 messages.</p>
+<p>This class listens for UDP packets from WSJT-X software, parses the binary
+packet data to extract FT8 message information, and queues the parsed packets
+for processing by a MessageProcessor.</p>
+<p>The parser handles WSJT-X’s binary protocol format and converts frequency
+offsets to absolute frequencies while determining the amateur radio band
+based on the calculated frequency.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.logger" title="Link to this definition">¶</a></dt>
+<dd><p>Logger instance for this class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logging.Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.packet_queue">
+<span class="sig-name descname"><span class="pre">packet_queue</span></span><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.packet_queue" title="Link to this definition">¶</a></dt>
+<dd><p>Thread-safe queue for storing parsed packets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>queue.Queue</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.dial_frequency">
+<span class="sig-name descname"><span class="pre">dial_frequency</span></span><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.dial_frequency" title="Link to this definition">¶</a></dt>
+<dd><p>Base dial frequency in MHz from WSJT-X</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">WsjtxParser</span><span class="p">(</span><span class="n">dial_frequency</span><span class="o">=</span><span class="mf">14.074</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">MessageProcessor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">start_listening</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">2237</span><span class="p">,</span> <span class="n">processor</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.determine_band">
+<span class="sig-name descname"><span class="pre">determine_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser.determine_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.determine_band" title="Link to this definition">¶</a></dt>
+<dd><p>Determine amateur radio band from frequency.</p>
+<p>Maps the calculated frequency to the appropriate amateur radio band
+designation based on common FT8 frequencies. Uses a tolerance of
+±15 kHz to account for frequency variations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frequency</strong> (<em>float</em>) – Frequency in MHz to classify.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Band designation (e.g., “20m”, “40m”, “80m”) or “Unknown”</dt><dd><p>if frequency doesn’t match any known FT8 band.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">WsjtxParser</span><span class="p">(</span><span class="mf">14.074</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">band</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">determine_band</span><span class="p">(</span><span class="mf">14.076</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>  <span class="c1"># &quot;20m&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.frequency_handle">
+<span class="sig-name descname"><span class="pre">frequency_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fq_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser.frequency_handle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.frequency_handle" title="Link to this definition">¶</a></dt>
+<dd><p>Convert WSJT-X frequency offset to absolute frequency.</p>
+<p>WSJT-X sends frequency offsets in Hz relative to the dial frequency.
+This method converts the offset to MHz and adds it to the dial frequency
+to get the absolute transmission frequency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fq_offset</strong> (<em>float</em>) – Frequency offset in Hz from WSJT-X packet data.
+Typically ranges from 0 to 3000 Hz for FT8.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Absolute frequency in MHz. Returns dial_frequency if offset</dt><dd><p>is invalid.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">WsjtxParser</span><span class="p">(</span><span class="mf">14.074</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">freq</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">frequency_handle</span><span class="p">(</span><span class="mf">1500.0</span><span class="p">)</span>  <span class="c1"># 1500 Hz offset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>  <span class="c1"># 14.0755 MHz</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.listen">
+<span class="sig-name descname"><span class="pre">listen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.processor.MessageProcessor" title="ft8decoder.processor.MessageProcessor"><span class="pre">MessageProcessor</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser.listen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.listen" title="Link to this definition">¶</a></dt>
+<dd><p>Main UDP listening loop.</p>
+<p>Creates a UDP socket, binds to the specified host/port, and continuously
+listens for WSJT-X packets. Packets are parsed and valid ones are added
+to the processing queue. Also starts a background thread to move packets
+from the queue to the processor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> (<em>str</em>) – IP address to bind the UDP socket to.</p></li>
+<li><p><strong>port</strong> (<em>int</em>) – UDP port number to bind to.</p></li>
+<li><p><strong>processor</strong> (<a class="reference internal" href="#ft8decoder.processor.MessageProcessor" title="ft8decoder.processor.MessageProcessor"><em>MessageProcessor</em></a>) – Processor to handle parsed packets.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method runs in an infinite loop until a network error occurs.
+Uses a 1-second timeout on socket operations to prevent blocking.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.parse_packets">
+<span class="sig-name descname"><span class="pre">parse_packets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser.parse_packets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.parse_packets" title="Link to this definition">¶</a></dt>
+<dd><p>Parse binary WSJT-X packet data into structured Packet objects.</p>
+<p>Decodes the binary UDP packet format used by WSJT-X to extract message
+information including SNR, frequency offset, timestamp delta, and the
+decoded message text. Currently handles message packets (type 2) and
+ignores status packets (type 1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>bytes</em>) – Raw UDP packet data from WSJT-X, minimum 12 bytes.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>The WSJT-X packet format includes:</dt><dd><ul class="simple">
+<li><p>Header: Magic number, schema version, packet type</p></li>
+<li><p>Message data: SNR, time delta, frequency offset, message text</p></li>
+</ul>
+</dd>
+<dt>Example packet structure for type 2 (message):</dt><dd><p>[0:4]   Magic number
+[4:8]   Schema version
+[8:12]  Message type (2 for decoded messages)
+[27:31] SNR in dB
+[31:39] Time delta in seconds
+[39:43] Frequency offset in Hz
+[52:-2] UTF-8 encoded message text</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.start_grabbing">
+<span class="sig-name descname"><span class="pre">start_grabbing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.processor.MessageProcessor" title="ft8decoder.processor.MessageProcessor"><span class="pre">MessageProcessor</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser.start_grabbing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.start_grabbing" title="Link to this definition">¶</a></dt>
+<dd><p>Background thread to transfer packets from queue to processor.</p>
+<p>Continuously monitors the packet queue and transfers parsed packets
+to the MessageProcessor’s data store. Runs in an infinite loop with
+a 1-second timeout to prevent blocking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>processor</strong> (<a class="reference internal" href="#ft8decoder.processor.MessageProcessor" title="ft8decoder.processor.MessageProcessor"><em>MessageProcessor</em></a>) – Processor instance to receive packets.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method runs in a separate thread and handles queue.Empty
+exceptions gracefully to avoid blocking when no packets are available.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.parser.WsjtxParser.start_listening">
+<span class="sig-name descname"><span class="pre">start_listening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.processor.MessageProcessor" title="ft8decoder.processor.MessageProcessor"><span class="pre">MessageProcessor</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/parser.html#WsjtxParser.start_listening"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.parser.WsjtxParser.start_listening" title="Link to this definition">¶</a></dt>
+<dd><p>Start the UDP listening process with user confirmation.</p>
+<p>Prompts the user to confirm before starting packet capture, then
+launches the UDP listener in a separate thread. This is the main
+entry point for beginning FT8 packet capture.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> (<em>str</em>) – IP address to bind to, typically ‘127.0.0.1’ for localhost.</p></li>
+<li><p><strong>port</strong> (<em>int</em>) – UDP port number, typically 2237 for WSJT-X.</p></li>
+<li><p><strong>processor</strong> (<a class="reference internal" href="#ft8decoder.processor.MessageProcessor" title="ft8decoder.processor.MessageProcessor"><em>MessageProcessor</em></a>) – Processor instance to handle parsed packets.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">WsjtxParser</span><span class="p">(</span><span class="mf">14.074</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">MessageProcessor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">start_listening</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">2237</span><span class="p">,</span> <span class="n">processor</span><span class="p">)</span>
+<span class="go">Ready to listen on 127.0.0.1:2237...</span>
+<span class="go">Begin packet parsing? (Y/n)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ft8decoder.processor">
+<span id="processor-module"></span><h1>Processor Module<a class="headerlink" href="#module-ft8decoder.processor" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ft8decoder.processor.</span></span><span class="sig-name descname"><span class="pre">MessageProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Processes and categorizes FT8 messages into QSOs, CQs, and miscellaneous communications.</p>
+<p>This class takes parsed FT8 packets and intelligently categorizes them based on
+message content and structure. It tracks complete QSO (contact) sequences,
+identifies CQ calls, handles grid square exchanges, and provides data export
+and mapping functionality.</p>
+<p>The processor understands FT8 protocol semantics including:
+- CQ calls (general and targeted)
+- Two-way QSO establishment and completion
+- Signal reports and grid square exchanges
+- Various acknowledgment and sign-off messages</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.logger" title="Link to this definition">¶</a></dt>
+<dd><p>Logger for this class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logging.Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.cqs">
+<span class="sig-name descname"><span class="pre">cqs</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.cqs" title="Link to this definition">¶</a></dt>
+<dd><p>List of unmatched CQ calls</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.qso_coords">
+<span class="sig-name descname"><span class="pre">qso_coords</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.qso_coords" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinates for completed QSOs with grid squares</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.cq_coords">
+<span class="sig-name descname"><span class="pre">cq_coords</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.cq_coords" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinates for CQ calls with grid squares</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.grid_square_cache">
+<span class="sig-name descname"><span class="pre">grid_square_cache</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.grid_square_cache" title="Link to this definition">¶</a></dt>
+<dd><p>Cache mapping callsigns to their grid squares</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.data_motherload">
+<span class="sig-name descname"><span class="pre">data_motherload</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.data_motherload" title="Link to this definition">¶</a></dt>
+<dd><p>Raw packet buffer from parser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.misc_comms">
+<span class="sig-name descname"><span class="pre">misc_comms</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.misc_comms" title="Link to this definition">¶</a></dt>
+<dd><p>Miscellaneous communications that don’t fit QSO pattern</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.qso_dict">
+<span class="sig-name descname"><span class="pre">qso_dict</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.qso_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Complete QSO conversations indexed by sorted callsign pairs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.translation_templates">
+<span class="sig-name descname"><span class="pre">translation_templates</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.translation_templates" title="Link to this definition">¶</a></dt>
+<dd><p>Templates for translating special CQ types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.master_data">
+<span class="sig-name descname"><span class="pre">master_data</span></span><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.master_data" title="Link to this definition">¶</a></dt>
+<dd><p>Combined view of all processed data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">MessageProcessor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Process packets every 5 seconds</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After some time...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;ft8_data&quot;</span><span class="p">)</span>  <span class="c1"># Export all data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">to_map</span><span class="p">(</span><span class="s2">&quot;ft8_map&quot;</span><span class="p">)</span>   <span class="c1"># Create world map</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.add_cq">
+<span class="sig-name descname"><span class="pre">add_cq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callsigns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.add_cq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.add_cq" title="Link to this definition">¶</a></dt>
+<dd><p>Link CQ calls to newly started QSOs.</p>
+<p>When a new QSO begins, this method searches for any matching CQ call
+from one of the participants and incorporates it as the first turn
+of the conversation. This provides complete context for how the
+contact was initiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>callsigns</strong> (<em>list</em>) – Sorted pair of callsigns starting a new QSO.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Process:</dt><dd><ol class="arabic simple">
+<li><p>Search through unmatched CQ calls</p></li>
+<li><p>Find CQ from either callsign in the new QSO</p></li>
+<li><p>Convert CQ to MessageTurn and insert as turn 1</p></li>
+<li><p>Remove CQ from unmatched list</p></li>
+</ol>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Previous CQ: &quot;CQ W1ABC FN42&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># New QSO starts: &quot;W1ABC K2DEF&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_cq</span><span class="p">([</span><span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;W1ABC&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># CQ becomes turn 1 of the W1ABC/K2DEF conversation</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.comms_to_json">
+<span class="sig-name descname"><span class="pre">comms_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.comms_to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.comms_to_json" title="Link to this definition">¶</a></dt>
+<dd><p>Export QSO conversation data to JSON file.</p>
+<p>Serializes all completed and in-progress QSO conversations to a JSON
+file for analysis, archival, or import into other applications. Each
+QSO is indexed by the sorted callsign pair and contains all message
+turns with metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Output filename, .json extension added if missing.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>IOError</strong> – If file cannot be written due to permissions or disk space.</p></li>
+<li><p><strong>OSError</strong> – If filename/path is invalid.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>JSON Structure:</dt><dd><dl>
+<dt>{</dt><dd><dl>
+<dt>“COMMS”: [{</dt><dd><dl class="simple">
+<dt>“(‘CALL1’, ‘CALL2’)”: [</dt><dd><p>{“completed”: false},
+{MessageTurn data…},
+{MessageTurn data…}</p>
+</dd>
+</dl>
+<p>]</p>
+</dd>
+</dl>
+<p>}]</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">comms_to_json</span><span class="p">(</span><span class="s2">&quot;my_qsos&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates my_qsos.json with all QSO data</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.cqs_to_json">
+<span class="sig-name descname"><span class="pre">cqs_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.cqs_to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.cqs_to_json" title="Link to this definition">¶</a></dt>
+<dd><p>Export unanswered CQ calls to JSON file.</p>
+<p>Saves all CQ calls that have not yet been matched to QSO conversations.
+Useful for analyzing calling patterns, popular frequencies, and
+propagation conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Output filename, .json extension added if missing.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>IOError</strong> – If file cannot be written.</p></li>
+<li><p><strong>OSError</strong> – If filename/path is invalid.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>JSON Structure:</dt><dd><dl>
+<dt>{</dt><dd><dl class="simple">
+<dt>“CQS”: [</dt><dd><p>{CQ object data…},
+{CQ object data…}</p>
+</dd>
+</dl>
+<p>]</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">cqs_to_json</span><span class="p">(</span><span class="s2">&quot;unanswered_cqs&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates unanswered_cqs.json with CQ data</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.gather_coords">
+<span class="sig-name descname"><span class="pre">gather_coords</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.gather_coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.gather_coords" title="Link to this definition">¶</a></dt>
+<dd><p>Collect and resolve geographic coordinates for QSOs and CQ calls.</p>
+<p>Processes the grid square cache to convert Maidenhead locators into
+latitude/longitude coordinates for mapping purposes. Creates coordinate
+tuples for both QSOs (with connection lines, as long as both participants have sent their grid squares)
+and CQ calls (as individual points).</p>
+<dl class="simple">
+<dt>Coordinate Resolution Process:</dt><dd><ol class="arabic simple">
+<li><p>Check QSO participants for cached grid squares</p></li>
+<li><p>Resolve grid squares to lat/lon coordinates</p></li>
+<li><p>Create QSO coordinate tuples with both endpoints</p></li>
+<li><p>Process CQ calls similarly for standalone points</p></li>
+</ol>
+</dd>
+<dt>Populates:</dt><dd><p>self.qso_coords: List of QSO coordinate tuples
+self.cq_coords: List of CQ coordinate tuples</p>
+</dd>
+<dt>QSO Coordinate Format:</dt><dd><p>((callsign1, lat1, lon1), (callsign2, lat2, lon2), (timestamp,))</p>
+</dd>
+<dt>CQ Coordinate Format:</dt><dd><p>(message, timestamp, latitude, longitude)</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">gather_coords</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">qso_coords</span><span class="p">)</span><span class="si">}</span><span class="s2"> QSOs with coordinates&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">cq_coords</span><span class="p">)</span><span class="si">}</span><span class="s2"> CQs with coordinates&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.handle_ack_reply">
+<span class="sig-name descname"><span class="pre">handle_ack_reply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callsigns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.handle_ack_reply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.handle_ack_reply" title="Link to this definition">¶</a></dt>
+<dd><p>Process acknowledgment and sign-off messages in QSOs.</p>
+<p>Handles the final stages of FT8 QSOs where stations confirm receipt
+of information and formally conclude the contact. Different acknowledgment
+types have specific meanings and some mark the QSO as completed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callsigns</strong> (<em>list</em>) – Sorted pair of callsigns involved in the QSO.</p></li>
+<li><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the acknowledgment.</p></li>
+<li><p><strong>message</strong> (<em>list</em>) – Message words, with acknowledgment code as last element.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Acknowledgment Processing:</dt><dd><ul class="simple">
+<li><p>“RRR”: Simple confirmation, QSO implied complete</p></li>
+<li><p>“RR73”: Confirmation + goodbye, marks QSO as completed</p></li>
+<li><p>“73”: Goodbye message, marks QSO as completed</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Message: [&quot;W1ABC&quot;, &quot;K2DEF&quot;, &quot;RR73&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handle_ack_reply</span><span class="p">([</span><span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;W1ABC&quot;</span><span class="p">],</span> <span class="n">packet</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Marks QSO as completed and adds final turn</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.handle_cq">
+<span class="sig-name descname"><span class="pre">handle_cq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.handle_cq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.handle_cq" title="Link to this definition">¶</a></dt>
+<dd><p>Process CQ (calling any station) messages.</p>
+<p>CQ calls are the foundation of amateur radio contacts, indicating that
+a station is available for communication. This method handles various
+CQ formats from simple general calls to complex targeted calls with
+event indicators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the CQ message.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>CQ Message Formats:</dt><dd><ul class="simple">
+<li><p>2 words: “CQ CALLSIGN” (general call)</p></li>
+<li><p>3 words: “CQ CALLSIGN GRID” (call with location)</p></li>
+<li><p>4 words: “CQ EVENT CALLSIGN GRID” (targeted/special event call)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">handle_cq</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>  <span class="c1"># packet.message = &quot;CQ W1ABC FN42&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates: &quot;Station W1ABC is calling for any response from grid FN42.&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.handle_grid_square">
+<span class="sig-name descname"><span class="pre">handle_grid_square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callsigns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.handle_grid_square"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.handle_grid_square" title="Link to this definition">¶</a></dt>
+<dd><p>Process grid square location exchanges in QSOs.</p>
+<p>Grid square exchanges are a standard part of FT8 QSOs, allowing
+operators to share their geographic locations. The grid square is
+cached for later use in mapping and coordinate resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callsigns</strong> (<em>list</em>) – Sorted pair of callsigns involved in the QSO.</p></li>
+<li><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the grid square.</p></li>
+<li><p><strong>message</strong> (<em>list</em>) – Message words, with grid square as the last element.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Message: [&quot;W1ABC&quot;, &quot;K2DEF&quot;, &quot;FN42&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handle_grid_square</span><span class="p">([</span><span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;W1ABC&quot;</span><span class="p">],</span> <span class="n">packet</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates: &quot;K2DEF sends a grid square location of FN42 to W1ABC.&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.handle_longer_msg">
+<span class="sig-name descname"><span class="pre">handle_longer_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.handle_longer_msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.handle_longer_msg" title="Link to this definition">¶</a></dt>
+<dd><p>Process messages with more than three words.</p>
+<p>Handles specialized CQ calls that include specific targets or event
+indicators. These four-word messages typically follow the format:
+“CQ EVENT CALLSIGN GRID” where EVENT specifies the type of activity
+or geographic target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the multi-word message.</p></li>
+<li><p><strong>message</strong> (<em>list</em>) – List of words from the message (4+ words expected).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Expected Format:</dt><dd><p>message[0]: “CQ” (already verified by caller)
+message[1]: Event/target code (e.g., “DX”, “POTA”, “TEST”, “NA”)
+message[2]: Calling station’s callsign
+message[3]: Calling station’s grid square</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">handle_longer_msg</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;CQ&quot;</span><span class="p">,</span> <span class="s2">&quot;POTA&quot;</span><span class="p">,</span> <span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;FN42&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates: &quot;Parks on the Air participant W1ABC is calling from grid FN42.&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.handle_short_msg">
+<span class="sig-name descname"><span class="pre">handle_short_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.handle_short_msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.handle_short_msg" title="Link to this definition">¶</a></dt>
+<dd><p>Process two-word FT8 messages.</p>
+<p>Handles various two-word message types including grid square announcements,
+sign-offs, acknowledgments, and QRP (low power) indicators. These messages
+are typically not part of structured QSOs but provide important information
+or conclude conversations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the two-word message.</p></li>
+<li><p><strong>message</strong> (<em>list</em>) – List of two words from the message.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Message Types:</dt><dd><ul class="simple">
+<li><p>Grid announcements: “CALLSIGN GRID” (e.g., “W1ABC FN42”)</p></li>
+<li><p>Sign-offs: “CALLSIGN 73” (goodbye message)</p></li>
+<li><p>Roger + sign-off: “CALLSIGN RR73” (acknowledgment + goodbye)</p></li>
+<li><p>QRP indicators: “CALLSIGN/QRP CALLSIGN” (low power operations)</p></li>
+<li><p>Simple pings: “CALLSIGN1 CALLSIGN2” (basic contact attempt)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">handle_short_msg</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;FN42&quot;</span><span class="p">])</span>  <span class="c1"># Grid announcement</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handle_short_msg</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;73&quot;</span><span class="p">])</span>    <span class="c1"># Sign-off</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handle_short_msg</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;W1ABC/QRP&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">])</span>  <span class="c1"># QRP ping</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.handle_signal_report">
+<span class="sig-name descname"><span class="pre">handle_signal_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callsigns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.handle_signal_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.handle_signal_report" title="Link to this definition">¶</a></dt>
+<dd><p>Process FT8 signal report exchanges.</p>
+<p>Signal reports are a critical part of FT8 QSOs, indicating how well
+each station is receiving the other. This method creates a MessageTurn
+object with appropriate human-readable translation and adds it to the
+ongoing QSO conversation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callsigns</strong> (<em>list</em>) – Sorted pair of callsigns involved in the QSO.</p></li>
+<li><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the signal report.</p></li>
+<li><p><strong>message</strong> (<em>list</em>) – Message words, with signal report as the last element.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Signal Report Translation:</dt><dd><ul class="simple">
+<li><p>Reports with ‘R’ prefix indicate acknowledgment of previous report</p></li>
+<li><p>Numeric value represents signal-to-noise ratio in dB</p></li>
+<li><p>Positive values indicate strong signals, negative indicate weak</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Message: [&quot;W1ABC&quot;, &quot;K2DEF&quot;, &quot;R-08&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handle_signal_report</span><span class="p">([</span><span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;W1ABC&quot;</span><span class="p">],</span> <span class="n">packet</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates: &quot;K2DEF says Roger and reports a signal report of -08 to W1ABC.&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.is_ack_reply">
+<span class="sig-name descname"><span class="pre">is_ack_reply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.is_ack_reply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.is_ack_reply" title="Link to this definition">¶</a></dt>
+<dd><p>Determine if a message is an acknowledgment or sign-off.</p>
+<p>FT8 conversations typically end with acknowledgment codes that confirm
+receipt of information and/or indicate the QSO is complete.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>list</em>) – List of words from the FT8 message.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the message ends with a recognized acknowledgment code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Acknowledgment Types:</dt><dd><ul class="simple">
+<li><p>“RRR”: Roger Roger Roger (confirmation received)</p></li>
+<li><p>“RR73”: Roger Roger + 73 (confirmation + goodbye)</p></li>
+<li><p>“73”: Best wishes/goodbye (QSO completion)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_ack_reply</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;RRR&quot;</span><span class="p">])</span>   <span class="c1"># True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_ack_reply</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;RR73&quot;</span><span class="p">])</span>  <span class="c1"># True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_ack_reply</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;FN42&quot;</span><span class="p">])</span>  <span class="c1"># False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.is_grid_square">
+<span class="sig-name descname"><span class="pre">is_grid_square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.is_grid_square"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.is_grid_square" title="Link to this definition">¶</a></dt>
+<dd><p>Determine if a message contains a Maidenhead grid square locator.</p>
+<p>Maidenhead grid squares are a coordinate system used by amateur radio
+operators to specify geographic location. They follow the format of
+two uppercase letters followed by two digits (e.g., FN42, IO91).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>list</em>) – List of words from the FT8 message.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the last word is a valid 4-character grid square.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Grid Square Format:</dt><dd><ul class="simple">
+<li><p>Character 1: Uppercase letter (A-R, longitude field)</p></li>
+<li><p>Character 2: Uppercase letter (A-R, latitude field)</p></li>
+<li><p>Character 3: Digit (0-9, longitude square)</p></li>
+<li><p>Character 4: Digit (0-9, latitude square)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_grid_square</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;FN42&quot;</span><span class="p">])</span>  <span class="c1"># True (valid grid)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_grid_square</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;fn42&quot;</span><span class="p">])</span>  <span class="c1"># False (lowercase)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_grid_square</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;FN4&quot;</span><span class="p">])</span>   <span class="c1"># False (too short)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.is_signal_report">
+<span class="sig-name descname"><span class="pre">is_signal_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.is_signal_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.is_signal_report" title="Link to this definition">¶</a></dt>
+<dd><p>Determine if a message contains an FT8 signal report.</p>
+<p>FT8 signal reports are numeric values (typically -24 to +50 dB) that
+indicate signal strength and decoding quality. They may be prefixed
+with ‘R’ (received/roger) or ‘RR’ (roger roger) to indicate acknowledgment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>list</em>) – List of words from the FT8 message.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the last word appears to be a signal report.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Signal Report Formats:</dt><dd><ul class="simple">
+<li><p>Simple: “+05”, “-15”, “00” (raw SNR values)</p></li>
+<li><p>Roger: “R+05”, “R-15” (acknowledging receipt)</p></li>
+<li><p>Roger Roger: “RR+05”, “RR-15” (confirming exchange)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_signal_report</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;-15&quot;</span><span class="p">])</span>  <span class="c1"># True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_signal_report</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;R+05&quot;</span><span class="p">])</span>  <span class="c1"># True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_signal_report</span><span class="p">([</span><span class="s2">&quot;W1ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;K2DEF&quot;</span><span class="p">,</span> <span class="s2">&quot;73&quot;</span><span class="p">])</span>    <span class="c1"># False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.misc_to_json">
+<span class="sig-name descname"><span class="pre">misc_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.misc_to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.misc_to_json" title="Link to this definition">¶</a></dt>
+<dd><p>Export miscellaneous communications to JSON file.</p>
+<p>Saves communications that don’t fit the standard QSO pattern, including
+grid announcements, standalone sign-offs, and unrecognized message formats.
+Useful for debugging message parsing and analyzing non-standard activity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Output filename, .json extension added if missing.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>IOError</strong> – If file cannot be written.</p></li>
+<li><p><strong>OSError</strong> – If filename/path is invalid.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">misc_to_json</span><span class="p">(</span><span class="s2">&quot;misc_messages&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates misc_messages.json</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.organize_messages">
+<span class="sig-name descname"><span class="pre">organize_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.organize_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.organize_messages" title="Link to this definition">¶</a></dt>
+<dd><p>Main message processing loop that categorizes FT8 messages.</p>
+<p>This method runs continuously in a background thread, processing
+accumulated packets at regular intervals. It handles the complete
+FT8 message classification workflow:</p>
+<ol class="arabic simple">
+<li><p>Copies and clears the packet buffer</p></li>
+<li><p>Parses each message to identify type (CQ, QSO, misc)</p></li>
+<li><p>Routes messages to appropriate handlers</p></li>
+<li><p>Tracks QSO progression and completion</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seconds</strong> (<em>int</em>) – Sleep interval between processing cycles.</p>
+</dd>
+</dl>
+<dl>
+<dt>Message Classification Logic:</dt><dd><ul class="simple">
+<li><p>CQ messages: Start with “CQ” keyword</p></li>
+<li><p>Two-word messages: Grid squares, sign-offs, acknowledgments</p></li>
+<li><p>Three-word messages: Standard QSO exchanges (callsign pairs + data)</p></li>
+<li><p>Four+ word messages: Special CQs with targets/events</p></li>
+</ul>
+</dd>
+<dt>Example message flows:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># CQ sequence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;CQ W1ABC FN42&quot;</span> <span class="o">-&gt;</span> <span class="n">handle_cq</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;W1ABC K2DEF&quot;</span> <span class="o">-&gt;</span> <span class="n">new</span> <span class="n">QSO</span> <span class="n">started</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;K2DEF W1ABC -15&quot;</span> <span class="o">-&gt;</span> <span class="n">signal</span> <span class="n">report</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;W1ABC K2DEF FN42&quot;</span> <span class="o">-&gt;</span> <span class="n">grid</span> <span class="n">square</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;K2DEF W1ABC RRR&quot;</span> <span class="o">-&gt;</span> <span class="n">acknowledgment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;W1ABC K2DEF 73&quot;</span> <span class="o">-&gt;</span> <span class="n">QSO</span> <span class="n">completed</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.resolve_grid_square">
+<span class="sig-name descname"><span class="pre">resolve_grid_square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid_square</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.resolve_grid_square"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.resolve_grid_square" title="Link to this definition">¶</a></dt>
+<dd><p>Convert Maidenhead grid square to latitude/longitude coordinates.</p>
+<p>Uses the maidenhead library to convert 4-character grid squares into
+decimal degree coordinates for mapping and distance calculations.
+Returns a dictionary with coordinate information and a Google Maps link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>grid_square</strong> (<em>str</em>) – 4-character Maidenhead grid square (e.g., “FN42”).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Dictionary containing grid square, coordinates, and map URL.</dt><dd><p>Returns None if conversion fails.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+<dl>
+<dt>Return Format:</dt><dd><dl class="simple">
+<dt>{</dt><dd><p>“Grid Square”: “FN42”,
+“Latitude”: “42.5”,
+“Longitude”: “-71.5”,
+“Map URL”: “<a class="reference external" href="https://www.google.com/maps?q=42.5,-71.5">https://www.google.com/maps?q=42.5,-71.5</a>”</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">resolve_grid_square</span><span class="p">(</span><span class="s2">&quot;FN42&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Location: </span><span class="si">{</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Location: 42.5, -71.5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.sort_message">
+<span class="sig-name descname"><span class="pre">sort_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><span class="pre">Packet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">callsigns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_convo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.sort_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.sort_message" title="Link to this definition">¶</a></dt>
+<dd><p>Route QSO messages to appropriate handlers based on content.</p>
+<p>This method analyzes three-word FT8 messages (typically callsign pairs
+plus additional data) and routes them to specialized handlers based on
+the message type. For new conversations, it also searches for and
+incorporates any matching CQ call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>packet</strong> (<a class="reference internal" href="#ft8decoder.core.Packet" title="ft8decoder.core.Packet"><em>Packet</em></a>) – The packet containing the message to process.</p></li>
+<li><p><strong>callsigns</strong> (<em>list</em>) – Sorted list of two callsigns from the message.</p></li>
+<li><p><strong>new_convo</strong> (<em>bool</em>) – True if this is the first message in a QSO.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Message Types Handled:</dt><dd><ul class="simple">
+<li><p>Acknowledgments: RRR, RR73, 73 (conversation enders)</p></li>
+<li><p>Grid squares: 4-character locator codes (e.g., FN42, IO91)</p></li>
+<li><p>Signal reports: Numeric SNR values with optional R/RR prefix</p></li>
+<li><p>Unknown: Added to misc_comms for manual review</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># New QSO starting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sort_message</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;K2DEF&#39;</span><span class="p">,</span> <span class="s1">&#39;W1ABC&#39;</span><span class="p">],</span> <span class="n">new_convo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Continues existing QSO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sort_message</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;K2DEF&#39;</span><span class="p">,</span> <span class="s1">&#39;W1ABC&#39;</span><span class="p">],</span> <span class="n">new_convo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.start" title="Link to this definition">¶</a></dt>
+<dd><p>Start the message processing thread.</p>
+<p>Launches a background thread that periodically processes accumulated
+packets from the data buffer. The thread runs continuously, processing
+packets at the specified interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seconds</strong> (<em>int</em><em>, </em><em>optional</em>) – Interval between processing cycles in seconds.
+Defaults to 5. Shorter intervals provide more
+real-time processing but use more CPU.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">MessageProcessor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Process every 3 seconds</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.to_json" title="Link to this definition">¶</a></dt>
+<dd><p>Export all captured FT8 data to a comprehensive JSON file.</p>
+<p>Creates a complete export containing QSO conversations, unanswered CQ calls,
+and miscellaneous communications in a single file. This is the most
+comprehensive export option for complete session analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Output filename, .json extension added if missing.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>IOError</strong> – If file cannot be written due to permissions or disk space.</p></li>
+<li><p><strong>OSError</strong> – If filename/path is invalid.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>JSON Structure:</dt><dd><dl class="simple">
+<dt>{</dt><dd><p>“COMMS”: [{QSO conversations…}],
+“CQS”: [{CQ calls…}],
+“MISC. COMMS”: [{miscellaneous messages…}]</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;complete_session&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates complete_session.json with all data types</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ft8decoder.processor.MessageProcessor.to_map">
+<span class="sig-name descname"><span class="pre">to_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_cqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/processor.html#MessageProcessor.to_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.processor.MessageProcessor.to_map" title="Link to this definition">¶</a></dt>
+<dd><p>Generate an interactive world map of FT8 activity.</p>
+<p>Creates a Folium-based HTML map showing QSO connections as lines between
+stations and CQ calls as individual markers. The map is automatically
+centered based on QSO activity and includes interactive layers for
+different data types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Output filename for the HTML map (without .html extension).</p></li>
+<li><p><strong>all_cqs</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, show all CQ calls. If False, only
+show CQs from stations that have not participated in a QSO.
+Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If map generation fails due to coordinate resolution errors
+    or file writing issues.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Map Features:</dt><dd><ul class="simple">
+<li><p>QSO participants: Green radio icons with callsign popups</p></li>
+<li><p>QSO connections: Blue lines connecting stations with QSO details</p></li>
+<li><p>CQ calls: Red radio icons for unanswered calls</p></li>
+<li><p>Layer control: Toggle between QSOs and CQs</p></li>
+<li><p>Auto-centering: Map centers on mean QSO coordinates</p></li>
+</ul>
+</dd>
+<dt>Map Centering Logic:</dt><dd><ul class="simple">
+<li><p>If 3+ QSOs with coordinates: Centers on mean lat/lon of all participants</p></li>
+<li><p>If &lt;3 QSOs: Uses default world view (0,0) coordinates</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">to_map</span><span class="p">(</span><span class="s2">&quot;activity_map&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates activity_map.html with all QSOs and CQs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">to_map</span><span class="p">(</span><span class="s2">&quot;qso_only&quot;</span><span class="p">,</span> <span class="n">all_cqs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates qso_only.html showing only successful contacts</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ft8decoder.cli">
+<span id="cli-module"></span><h1>CLI Module<a class="headerlink" href="#module-ft8decoder.cli" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ft8decoder.cli.main">
+<span class="sig-prename descclassname"><span class="pre">ft8decoder.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ft8decoder/cli.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ft8decoder.cli.main" title="Link to this definition">¶</a></dt>
+<dd><p>Main entry point for the FT8 Decoder command-line interface.</p>
+<p>Provides a comprehensive CLI for capturing, processing, and exporting FT8
+messages from WSJT-X. Supports real-time packet capture with configurable
+processing intervals and multiple export formats including JSON data files
+and interactive world maps.</p>
+<dl class="simple">
+<dt>Command Structure:</dt><dd><p>ft8decoder listen [options]</p>
+</dd>
+<dt>Key Features:</dt><dd><ul class="simple">
+<li><p>Real-time FT8 packet capture from WSJT-X UDP stream</p></li>
+<li><p>Intelligent message classification (QSOs, CQs, misc communications)</p></li>
+<li><p>Multiple export formats (JSON, interactive maps)</p></li>
+<li><p>Configurable processing intervals and capture duration</p></li>
+<li><p>Automatic band detection and frequency calculation</p></li>
+</ul>
+</dd>
+<dt>Example Usage:</dt><dd><p>$ python main.py listen –dial 14.074 –duration 300 –export-all session1
+$ python main.py listen –port 2237 –interval 10 –to-map activity_map
+$ python main.py listen –host 192.168.1.100 –export-comms qsos_only</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Christopher Cottone
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

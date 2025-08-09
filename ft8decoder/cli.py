@@ -3,6 +3,29 @@ from ft8decoder import *
 import time
 
 def main():
+    """
+        Main entry point for the FT8 Decoder command-line interface.
+
+        Provides a comprehensive CLI for capturing, processing, and exporting FT8
+        messages from WSJT-X. Supports real-time packet capture with configurable
+        processing intervals and multiple export formats including JSON data files
+        and interactive world maps.
+
+        Command Structure:
+            ft8decoder listen [options]
+
+        Key Features:
+            - Real-time FT8 packet capture from WSJT-X UDP stream
+            - Intelligent message classification (QSOs, CQs, misc communications)
+            - Multiple export formats (JSON, interactive maps)
+            - Configurable processing intervals and capture duration
+            - Automatic band detection and frequency calculation
+
+        Example Usage:
+            $ python main.py listen --dial 14.074 --duration 300 --export-all session1
+            $ python main.py listen --port 2237 --interval 10 --to-map activity_map
+            $ python main.py listen --host 192.168.1.100 --export-comms qsos_only
+    """
     parser = argparse.ArgumentParser(
         prog="FT8Decoder",
         description="CLI tool for parsing and decoding FT8 messages from WSJT-X packets."
