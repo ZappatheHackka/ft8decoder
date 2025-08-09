@@ -1,5 +1,6 @@
 # ft8decoder
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ZappatheHackka/ft8decoder)
+
+[//]: # ([![Ask DeepWiki]&#40;https://devin.ai/assets/askdeepwiki.png&#41;]&#40;https://deepwiki.com/ZappatheHackka/ft8decoder&#41;)
 
 `ft8decoder` is a Python-based tool for decoding, translating, and organizing FT8 digital radio communications in real-time. It listens for UDP packets broadcast by WSJT-X, parses the cryptic messages into human-readable text, sorts them into distinct conversations (QSOs), and provides options to export the captured data into structured JSON files or visualize them on a world map.
 
@@ -45,11 +46,44 @@ Ensure you have Python 3.8+ and a running instance of WSJT-X.
 3.  **Configure WSJT-X:**
     In WSJT-X, go to `File` > `Settings` > `Reporting`. Ensure the "UDP Server" is enabled and set to `127.0.0.1:2237`, which are the defaults for this tool.
 
-## Usage
+### Python API Usage
 
-The application is run from the command line. The primary command is `ft8decoder listen`.
+You can use the core classes directly in your Python code in the following manner:
 
-### Basic Usage
+```python
+from ft8decoder import WsjtxParser, MessageProcessor
+import time
+
+# Get HOST and PORT from WSJT-X settings
+HOST = '127.0.0.1'
+PORT = 2237
+
+# Initialize parser with your desired dial frequency
+parser = WsjtxParser(dial_frequency=14.074000)
+
+# Initialize processor
+processor = MessageProcessor()
+
+# Pass the HOST, PORT, and processor into the parser and begin listening
+parser.start_listening(HOST, PORT, processor)
+
+# Start the processor
+processor.start()
+
+# Sleep for however long you want to compile data for
+time.sleep(180)
+
+# Access the parsed and processed data
+print("All captured packets:", processor.master_data)
+processor.to_map('map1', all_cqs=True)
+processor.to_json(filename="ft8_data")
+```
+
+## CLI Usage
+
+The application also includes an easy command-line interface. The primary command is `ft8decoder listen`.
+
+### Basic CLI Usage
 
 To start listening to packets, run the following command. It will listen for 2 minutes (120 seconds) and then print the captured data.
 
@@ -69,6 +103,7 @@ You can customize the behavior with the following arguments:
 -   `--export-all <filename>`: Export all captured data (QSOs, CQs, Misc.) to a specified JSON file.
 -   `--export-comms <filename>`: Export only conversation data to a JSON file.
 -   `--export-cqs <filename>`: Export only unanswered CQ calls to a JSON file.
+-   `--export-misc <filename>`: Export only miscellaneous messages.
 -   `--to-map <filename>`: Generate an interactive HTML map visualizing the QSOs and CQs.
 
 ### Example
