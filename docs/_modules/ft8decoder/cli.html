@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ft8decoder.cli &#8212; ft8decoder 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ft8decoder.cli</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ft8decoder</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../index.html#ft8decoder.cli.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Main entry point for the FT8 Decoder command-line interface.</span>
+
+<span class="sd">        Provides a comprehensive CLI for capturing, processing, and exporting FT8</span>
+<span class="sd">        messages from WSJT-X. Supports real-time packet capture with configurable</span>
+<span class="sd">        processing intervals and multiple export formats including JSON data files</span>
+<span class="sd">        and interactive world maps.</span>
+
+<span class="sd">        Command Structure:</span>
+<span class="sd">            ft8decoder listen [options]</span>
+
+<span class="sd">        Key Features:</span>
+<span class="sd">            - Real-time FT8 packet capture from WSJT-X UDP stream</span>
+<span class="sd">            - Intelligent message classification (QSOs, CQs, misc communications)</span>
+<span class="sd">            - Multiple export formats (JSON, interactive maps)</span>
+<span class="sd">            - Configurable processing intervals and capture duration</span>
+<span class="sd">            - Automatic band detection and frequency calculation</span>
+
+<span class="sd">        Example Usage:</span>
+<span class="sd">            $ python main.py listen --dial 14.074 --duration 300 --export-all session1</span>
+<span class="sd">            $ python main.py listen --port 2237 --interval 10 --to-map activity_map</span>
+<span class="sd">            $ python main.py listen --host 192.168.1.100 --export-comms qsos_only</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;FT8Decoder&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;CLI tool for parsing and decoding FT8 messages from WSJT-X packets.&quot;</span>
+    <span class="p">)</span>
+    <span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s2">&quot;command&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Available commands&quot;</span><span class="p">)</span>
+
+    <span class="n">listen_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;listen&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Listen and process FT8 packets&quot;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Host to bind to.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2237</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Port to bind to.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--dial&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">14.074000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;WSJT-X dial frequency.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--interval&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Interval in seconds between.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--duration&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Listening duration before data exporting.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--export-all&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Export all captured FT8 data to a json file.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--export-comms&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Export only FT8 convo data to a json file.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--export-cqs&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Export only unanswered CQ data to a json file.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--export-misc&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Export only miscellaneous data to a json file.&#39;</span><span class="p">)</span>
+    <span class="n">listen_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--to-map&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Create a dynamic world map that plots all QSOs and CQs with grid squares.&#39;</span><span class="p">)</span>
+
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;listen&quot;</span><span class="p">:</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">WsjtxParser</span><span class="p">(</span><span class="n">dial_frequency</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">dial</span><span class="p">)</span>
+        <span class="n">processor</span> <span class="o">=</span> <span class="n">MessageProcessor</span><span class="p">()</span>
+
+        <span class="n">parser</span><span class="o">.</span><span class="n">start_listening</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">)</span>
+        <span class="n">processor</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Listened for </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds.</span><span class="se">\n</span><span class="s2">All captured packets:</span><span class="se">\n</span><span class="si">{</span><span class="n">processor</span><span class="o">.</span><span class="n">master_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">export_all</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exporting all FT8 data to </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">export_all</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">processor</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">export_all</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">export_comms</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exporting all FT8 conversation data to </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">export_comms</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">processor</span><span class="o">.</span><span class="n">comms_to_json</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">export_comms</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">export_cqs</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exporting all unanswered FT8 CQ data to </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">export_cqs</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">processor</span><span class="o">.</span><span class="n">cqs_to_json</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">export_cqs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">export_misc</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exporting all miscellaneous data to </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">export_misc</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">processor</span><span class="o">.</span><span class="n">misc_to_json</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">export_misc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">to_map</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating dynamic world map titled </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">to_map</span><span class="si">}</span><span class="s2">.html.&quot;</span><span class="p">)</span>
+            <span class="n">processor</span><span class="o">.</span><span class="n">to_map</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">to_map</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">ft8decoder</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Christopher Cottone.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
