@@ -120,7 +120,6 @@ After running, you will find `my_log.json` and `activity_map.html` in your direc
 
 ## JSON Data
 ```json
-],
       "('N7PMS', 'NZ0F')": [
         {
           "completed": false
@@ -316,10 +315,10 @@ Full JSON file [HERE](all_comms.json)
 
 ## Folium Map
 
-[Sample QSO Map Data](/docs/images/map1.png)
+![Sample QSO Map Data](/docs/images/map1.png)
 
 
-[Sample CQ Map Data](/docs/images/map2.png)
+![Sample CQ Map Data](/docs/images/map2.png)
 
 
 ## Project Structure
