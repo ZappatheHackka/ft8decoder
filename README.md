@@ -1,4 +1,5 @@
 # ft8decoder
+
  [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ZappatheHackka/ft8decoder)
 
 `ft8decoder` is a Python-based tool for decoding, translating, and organizing FT8 digital radio communications in real-time. It listens for UDP packets broadcast by WSJT-X, parses the cryptic messages into human-readable text, sorts them into distinct conversations (QSOs), and provides options to export the captured data into structured JSON files or visualize them on a world map.
@@ -114,6 +115,212 @@ ft8decoder listen --duration 300 --export-all my_log.json --to-map activity_map
 ```
 
 After running, you will find `my_log.json` and `activity_map.html` in your directory.
+
+### Sample Output
+
+## JSON Data
+```json
+],
+      "('N7PMS', 'NZ0F')": [
+        {
+          "completed": false
+        },
+        {
+          "turn": 1,
+          "message": "N7PMS NZ0F R-07",
+          "translated_message": "NZ0F says Roger and reports a signal report of -07 to N7PMS.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 692,
+            "frequency": 14.074692,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-07",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:59.712385",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 2,
+          "message": "N7PMS NZ0F R-03",
+          "translated_message": "NZ0F says Roger and reports a signal report of -03 to N7PMS.",
+          "packet": {
+            "snr": -22,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 692,
+            "frequency": 14.074692,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:27.124178",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 3,
+          "message": "N7PMS NZ0F R-03",
+          "translated_message": "NZ0F says Roger and reports a signal report of -03 to N7PMS.",
+          "packet": {
+            "snr": -24,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 691,
+            "frequency": 14.074691,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:57.015683",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "N7PMS NZ0F R-03",
+          "translated_message": "NZ0F says Roger and reports a signal report of -03 to N7PMS.",
+          "packet": {
+            "snr": -16,
+            "delta_time": 0.699999988079071,
+            "frequency_offset": 692,
+            "frequency": 14.074692,
+            "band": "20m",
+            "message": "N7PMS NZ0F R-03",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:27.005496",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        }
+      ],
+      "('KF5WCP', 'KT4KB')": [
+        {
+          "completed": true
+        },
+        {
+          "turn": 1,
+          "message": "CQ KT4KB EM94",
+          "translated_message": "Station KT4KB is calling for any response from grid EM94.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "CQ KT4KB EM94",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:17:56.951461",
+            "packet_type": 2
+          },
+          "type": "CQ Call."
+        },
+        {
+          "turn": 2,
+          "message": "KT4KB KF5WCP EM25",
+          "translated_message": "KF5WCP sends a grid square location of EM25 to KT4KB.",
+          "packet": {
+            "snr": -5,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 710,
+            "frequency": 14.07471,
+            "band": "20m",
+            "message": "KT4KB KF5WCP EM25",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:11.935844",
+            "packet_type": 2
+          },
+          "type": "Grid Square Report"
+        },
+        {
+          "turn": 3,
+          "message": "KF5WCP KT4KB -16",
+          "translated_message": "KT4KB sends a signal report of -16 to KF5WCP.",
+          "packet": {
+            "snr": 8,
+            "delta_time": 0.5,
+            "frequency_offset": 830,
+            "frequency": 14.07483,
+            "band": "20m",
+            "message": "KF5WCP KT4KB -16",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:26.962332",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 4,
+          "message": "KT4KB KF5WCP R-19",
+          "translated_message": "KF5WCP says Roger and reports a signal report of -19 to KT4KB.",
+          "packet": {
+            "snr": 1,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 710,
+            "frequency": 14.07471,
+            "band": "20m",
+            "message": "KT4KB KF5WCP R-19",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:41.909084",
+            "packet_type": 2
+          },
+          "type": "Signal Report"
+        },
+        {
+          "turn": 5,
+          "message": "KF5WCP KT4KB RR73",
+          "translated_message": "KT4KB sends a Roger Roger to KF5WCP and says goodbye, concluding the connection.",
+          "packet": {
+            "snr": 3,
+            "delta_time": 0.5,
+            "frequency_offset": 831,
+            "frequency": 14.074831,
+            "band": "20m",
+            "message": "KF5WCP KT4KB RR73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:18:56.898584",
+            "packet_type": 2
+          },
+          "type": "RR & Goodbye"
+        },
+        {
+          "turn": 6,
+          "message": "KT4KB KF5WCP 73",
+          "translated_message": "KF5WCP sends their well wishes to KT4KB, concluding the connection.",
+          "packet": {
+            "snr": 6,
+            "delta_time": 0.30000001192092896,
+            "frequency_offset": 711,
+            "frequency": 14.074711,
+            "band": "20m",
+            "message": "KT4KB KF5WCP 73",
+            "schema": 2,
+            "program": "WSJT-X",
+            "time_captured": "2025-08-08 10:19:11.914567",
+            "packet_type": 2
+          },
+          "type": "Goodbye"
+        }
+      ],
+```
+Full JSON file [HERE](all_comms.json)
+
+## Folium Map
+
+[Sample QSO Map Data](/docs/images/map1.png)
+
+
+[Sample CQ Map Data](/docs/images/map2.png)
+
 
 ## Project Structure
 

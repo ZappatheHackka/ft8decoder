@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ft8decoder",
-    version="0.1.2",
+    version="0.1.5",
     description="An FT8 message logger that tracks, translates, and organizes CQs, QSOs, and Misc. messages from live WSJT-X packets.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
