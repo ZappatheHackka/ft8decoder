@@ -33,5 +33,6 @@ language = 'en'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'furo'
+html_baseurl = '/ft8decoder/'  # Your repo name
 html_static_path = ['_static']
 

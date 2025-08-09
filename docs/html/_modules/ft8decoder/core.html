@@ -1,14 +1,15 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="./">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
-        <link rel="canonical" href="/ft8decoder/py-modindex.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+        <link rel="canonical" href="/ft8decoder/_modules/ft8decoder/core.html" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 --><title>Python Module Index - ft8decoder 0.1.0 documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+        <title>ft8decoder.core - ft8decoder 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=30c0293a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
@@ -165,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">ft8decoder 0.1.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ft8decoder 0.1.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -186,11 +187,11 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   <span class="sidebar-brand-text">ft8decoder 0.1.0 documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
@@ -229,51 +230,83 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-f"><strong>f</strong></a></div>
-</section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-f">
-    <td></td><td><strong>f</strong></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-    <td>
-        <code class="xref">ft8decoder</code></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="index.html#module-ft8decoder.cli"><code class="xref">ft8decoder.cli</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="index.html#module-ft8decoder.core"><code class="xref">ft8decoder.core</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="index.html#module-ft8decoder.parser"><code class="xref">ft8decoder.parser</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="index.html#module-ft8decoder.processor"><code class="xref">ft8decoder.processor</code></a></td><td>
-    <em></em></td>
-  </tr>
-</table>
+          <h1>Source code for ft8decoder.core</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
+<div class="viewcode-block" id="Packet">
+<a class="viewcode-back" href="../../index.html#ft8decoder.core.Packet">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Packet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a WSJT-X UDP packet containing signal and metadata information for each captured FT8 message.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        snr: Signal-to-noise ratio in decibels</span>
+<span class="sd">        delta_time: Time offset from expected timing in seconds</span>
+<span class="sd">        frequency_offset: Frequency offset from expected frequency in Hz</span>
+<span class="sd">        frequency: Actual received frequency in Hz or MHz</span>
+<span class="sd">        band: Radio frequency band (e.g., &quot;20m&quot;, &quot;40m&quot;, &quot;2m&quot;)</span>
+<span class="sd">        message: Raw message content from the packet</span>
+<span class="sd">        schema: Schema version or protocol identifier</span>
+<span class="sd">        program: Software/program that captured or processed the packet</span>
+<span class="sd">        time_captured: Timestamp when the packet was received (ISO format string)</span>
+<span class="sd">        packet_type: Numeric identifier for the type of packet</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">snr</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">delta_time</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">frequency_offset</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">frequency</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">band</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">schema</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">program</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">time_captured</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">packet_type</span><span class="p">:</span> <span class="nb">int</span></div>
+
+
+<div class="viewcode-block" id="MessageTurn">
+<a class="viewcode-back" href="../../index.html#ft8decoder.core.MessageTurn">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MessageTurn</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Represents a single turn in a radio communication exchange.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            turn: Sequential turn number in the conversation</span>
+<span class="sd">            message: Original raw message content</span>
+<span class="sd">            translated_message: Human-readable or decoded version of the message</span>
+<span class="sd">            packet: Associated Packet object or string identifier</span>
+<span class="sd">            type: Type of message turn (e.g., &quot;CQ&quot;, &quot;response&quot;, &quot;73&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">turn</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">translated_message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">packet</span><span class="p">:</span> <span class="n">Packet</span> <span class="o">|</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+<div class="viewcode-block" id="CQ">
+<a class="viewcode-back" href="../../index.html#ft8decoder.core.CQ">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CQ</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a CQ (calling any station) message in amateur radio.</span>
+
+<span class="sd">    CQ messages are general calls broadcast to invite any station to respond,</span>
+<span class="sd">    typically used to initiate new contacts or conversations.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        message: Original CQ message content</span>
+<span class="sd">        translated_message: Human-readable interpretation of the CQ</span>
+<span class="sd">        caller: Call sign of the station making the CQ call</span>
+<span class="sd">        packet: Packet object containing the raw signal data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">translated_message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">caller</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">packet</span><span class="p">:</span> <span class="n">Packet</span></div>
+
+</pre></div>
         </article>
       </div>
       <footer>
@@ -305,9 +338,9 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=01f34227"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+</div><script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>
