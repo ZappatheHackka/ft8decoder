@@ -5,7 +5,7 @@ setup(
     version="0.1.0",
     description="An FT8 message logger that tracks, translates, and organizes CQs, QSOs, and Misc. messages from live WSJT-X packets.",
     long_description=open("README.md").read(),
-    url="https://github.com/ZappatheHackka/ft8translator",
+    url="https://github.com/ZappatheHackka/ft8decoder",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",

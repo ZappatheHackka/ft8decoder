@@ -22,5 +22,5 @@ time.sleep(180)
 
 # Access the parsed and processed data
 print("All captured packets:", processor.master_data)
-processor.to_map('map', all_cqs=True)
-processor.to_json(filename="all_comms")
+processor.to_map('map1', all_cqs=True)
+processor.to_json(filename="ft8_data")
