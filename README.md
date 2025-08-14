@@ -30,18 +30,23 @@ The application is built around two core components:
 
 Ensure you have Python 3.8+ and a running instance of WSJT-X.
 
-1.  **Clone the repository:**
+1.  **Install from PyPI (recommended):**
+    ```bash
+    pip install ft8decoder
+    ```
+    This will install the package and its dependencies (`maidenhead` and `folium`).
+
+2.  **Install from source:**
     ```bash
     git clone https://github.com/ZappatheHackka/ft8decoder.git
     cd ft8decoder
-    ```
-
-2.  **Install the required dependencies:**
-    The project uses `setuptools` for packaging. Install it directly using pip:
-    ```bash
     pip install .
     ```
-    This will also install the necessary libraries, `maidenhead` and `folium`.
+    For development, install Poetry and run:
+    ```bash
+    pip install poetry
+    poetry install
+    ```
 
 3.  **Configure WSJT-X:**
     In WSJT-X, go to `File` > `Settings` > `Reporting`. Ensure the "UDP Server" is enabled and set to `127.0.0.1:2237`, which are the defaults for this tool.
