@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "ft8decoder"
+version = "0.1.7"
+description = "An FT8 message logger that tracks, translates, and organizes CQs, QSOs, and Misc. messages from live WSJT-X packets."
+readme = "README.md"
+license = "MIT"
+authors = ["Christopher Cottone <chriscottone1@gmail.com>"]
+packages = [{ include = "ft8decoder" }]
+
+homepage = "https://github.com/ZappatheHackka/ft8decoder"
+repository = "https://github.com/ZappatheHackka/ft8decoder"
+documentation = "https://zappathehackka.github.io/ft8decoder/"
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Topic :: Communications :: Ham Radio",
+  "Topic :: Scientific/Engineering",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+maidenhead = "*"
+folium = "*"
+
+[tool.poetry.scripts]
+ft8decoder = "ft8decoder.cli:main"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 100
+lint.select = ["E", "F", "I", "UP"]
+lint.ignore = []
+target-version = "py38"
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+known-first-party = ["ft8decoder"]

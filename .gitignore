@@ -1,17 +1,40 @@
+# -----------------------
+# Virtual environment folders
+# -----------------------
 .venv/
 env/
 .env
+
+# -----------------------
+# IDE / editor settings
+# -----------------------
+.idea/
 *.iml
 *.iws
-.idea/
-.env
-db_init
-db_init/l_amat/
-db_init/ft8.db
-classes.py
+
+# -----------------------
+# Build artifacts
+# -----------------------
 /ft8decoder.egg-info
-/tests/data.txt
-/tests/tests.py
-main.py
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+build/
+dist/
+
+# -----------------------
+# Database / generated data
+# -----------------------
+db_init/
+*.db
 ft8_misc.json
 ft8_comms.json
+
+# -----------------------
+# Local scripts & test data (not for distribution)
+# -----------------------
+classes.py
+main.py
+/tests/data.txt
+/tests/tests.py
