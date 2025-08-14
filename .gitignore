@@ -17,6 +17,7 @@ env/
 # -----------------------
 /ft8decoder.egg-info
 __pycache__/
+ft8decoder/__pycache__/
 *.pyc
 *.pyo
 *.pyd
