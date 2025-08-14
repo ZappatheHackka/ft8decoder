@@ -234,14 +234,14 @@ After running, you will find `my_log.json` and `activity_map.html` in your direc
         }
       ],
 ```
-Full JSON file [HERE](all_comms.json)
+Full JSON file [HERE](https://github.com/ZappatheHackka/ft8decoder/blob/master/all_comms.json)
 
 ## Folium Map
 
-![Sample QSO Map Data](/docs/images/map1.png)
+[Sample QSO Map Data](https://github.com/ZappatheHackka/ft8decoder/blob/master/docs/images/map1.png)
 
 
-![Sample CQ Map Data](/docs/images/map2.png)
+[Sample CQ Map Data](https://github.com/ZappatheHackka/ft8decoder/blob/master/docs/images/map2.png)
 
 
 ## Project Structure

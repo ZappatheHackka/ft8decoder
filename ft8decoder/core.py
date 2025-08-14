@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Packet:
     """
-    Represents a WSJT-X UDP packet containing signal and metadata information for each captured FT8 message.
+    Represents a WSJT-X UDP packet containing signal and metadata information for each
+    captured FT8 message.
 
     Attributes:
         snr: Signal-to-noise ratio in decibels
@@ -17,6 +19,7 @@ class Packet:
         time_captured: Timestamp when the packet was received (ISO format string)
         packet_type: Numeric identifier for the type of packet
     """
+
     snr: int
     delta_time: float
     frequency_offset: int
@@ -28,23 +31,26 @@ class Packet:
     time_captured: str
     packet_type: int
 
+
 @dataclass
 class MessageTurn:
     """
-        Represents a single turn in a radio communication exchange.
+    Represents a single turn in a radio communication exchange.
 
-        Attributes:
-            turn: Sequential turn number in the conversation
-            message: Original raw message content
-            translated_message: Human-readable or decoded version of the message
-            packet: Associated Packet object or string identifier
-            type: Type of message turn (e.g., "CQ", "response", "73")
+    Attributes:
+        turn: Sequential turn number in the conversation
+        message: Original raw message content
+        translated_message: Human-readable or decoded version of the message
+        packet: Associated Packet object or string identifier
+        type: Type of message turn (e.g., "CQ", "response", "73")
     """
+
     turn: int
     message: str
     translated_message: str
     packet: Packet | str
     type: str
+
 
 @dataclass
 class CQ:
@@ -60,6 +66,7 @@ class CQ:
         caller: Call sign of the station making the CQ call
         packet: Packet object containing the raw signal data
     """
+
     message: str
     translated_message: str
     caller: str

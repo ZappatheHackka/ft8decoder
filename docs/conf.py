@@ -8,7 +8,6 @@
 import os
 import sys
 
-
 project = 'ft8decoder'
 copyright = '2025, Christopher Cottone'
 author = 'Christopher Cottone'
@@ -17,11 +16,7 @@ release = '0.1.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon'
-    ]
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon']
 
 sys.path.insert(0, os.path.abspath('../'))
 templates_path = ['_templates']
@@ -35,4 +30,3 @@ language = 'en'
 html_theme = 'furo'
 html_baseurl = '/ft8decoder/'  # Your repo name
 html_static_path = ['_static']
-
