@@ -52,6 +52,7 @@ def test_handle_signal_report():
         program='WSJT-X',
         schema=2,
         packet_type=2,
+        time_captured="2025-08-08 10:17:41.935022"
     )
     test_message_list = ['W1AW', 'K9XYZ', '-10']
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
@@ -87,6 +88,7 @@ def test_handle_ack_reply():
         packet_type=2,
         band='20m',
         frequency=14.07495,
+        time_captured="2025-08-08 10:17:41.935022"
     )
     test_message_list = ['W1AW', 'K9XYZ', 'RR73']
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
@@ -125,6 +127,7 @@ def test_handle_grid_square():
         packet_type=2,
         frequency=14.07495,
         band='20m',
+        time_captured="2025-08-08 10:17:41.935022"
     )
     test_message_list = ['W1AW', 'K9XYZ', 'EN87']
     test_callsigns = sorted(['W1AW', 'K9XYZ'])
@@ -161,6 +164,7 @@ def test_handle_cq():
         packet_type=2,
         band='20m',
         frequency=14.07495,
+        time_captured="2025-08-08 10:17:41.935022"
     )
 
     expected_result = [
@@ -188,6 +192,7 @@ def test_handle_longer_message():
         packet_type=2,
         frequency=14.07495,
         band='20m',
+        time_captured="2025-08-08 10:17:41.935022"
     )
     test_message = ['CQ', 'POTA', 'N0PAT', 'EM18']
     expected_result = [
@@ -219,6 +224,7 @@ def test_message_sort():
         packet_type=2,
         frequency=14.07495,
         band='20m',
+        time_captured="2025-08-08 10:17:41.935022"
     )
     test_callsigns1 = sorted(['W1AW', 'K9XYZ'])
     test_message_list = ['W1AW', 'K9XYZ', 'EN87']
@@ -250,6 +256,7 @@ def test_message_sort():
         packet_type=2,
         band='20m',
         frequency=14.07495,
+        time_captured="2025-08-08 10:17:41.935022"
     )
     test_message_list2 = ['W1AW', 'K9XYZ', '-10']
     test_callsigns2 = sorted(['W1AW', 'K9XYZ'])

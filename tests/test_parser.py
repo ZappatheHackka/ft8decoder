@@ -1,9 +1,14 @@
 from ft8decoder.parser import WsjtxParser
+from datetime import datetime
 
 # Raw byte parsing tests
 
 
-def test_packet_parsing_cq():
+def test_packet_parsing_cq(monkeypatch):
+    fake_time = datetime(2024, 1, 15, 12, 30, 45)
+
+    monkeypatch.setattr('ft8decoder.parser.datetime.now', lambda: str(fake_time))
+
     raw_bytes = (b'\xad\xbc\xcb\xda\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x06WSJT-X'
                  b'\x01\x04\x05\r\x80\x00\x00\x00\x03?\xc9\x99\x99\xa0\x00\x00\x00\x00\x00'
                  b'\x03\x9e\x00\x00\x00\x01~\x00\x00\x00\x0cCQ NU1D EN61\x00\x00')
@@ -19,9 +24,13 @@ def test_packet_parsing_cq():
     assert packet.frequency_offset == 926
     assert packet.frequency == 14.074926
     assert packet.band == '20m'
+    assert packet.time_captured == str(fake_time)
 
+def test_packet_parsing_grid(monkeypatch):
+    fake_time = datetime(2024, 1, 15, 12, 30, 45)
 
-def test_packet_parsing_grid():
+    monkeypatch.setattr('ft8decoder.parser.datetime.now', lambda: str(fake_time))
+
     raw_bytes = (b'\xad\xbc\xcb\xda\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x06WSJT-X'
                  b'\x01\x04\x14cH\xff\xff\xff\xf0?\xe0\x00\x00\x00\x00\x00\x00\x00\x00\x03%'
                  b'\x00\x00\x00\x01~\x00\x00\x00\x11BG5JGG PA8DC JO21\x00\x00')
@@ -37,9 +46,15 @@ def test_packet_parsing_grid():
     assert packet.frequency_offset == 805
     assert packet.frequency == 14.074805
     assert packet.band == '20m'
+    assert packet.time_captured == str(fake_time)
 
 
-def test_packet_parsing_RR73():
+
+def test_packet_parsing_RR73(monkeypatch):
+    fake_time = datetime(2024, 1, 15, 12, 30, 45)
+
+    monkeypatch.setattr('ft8decoder.parser.datetime.now', lambda: str(fake_time))
+
     raw_bytes = (b'\xad\xbc\xcb\xda\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x06WSJT-X'
                  b'\x01\x04\x14cH\xff\xff\xff\xec?\xe0\x00\x00\x00\x00\x00\x00\x00\x00\x03'
                  b'\xb6\x00\x00\x00\x01~\x00\x00\x00\x11S56GS PA0NKK RR73\x00\x00')
@@ -55,3 +70,4 @@ def test_packet_parsing_RR73():
     assert packet.frequency_offset == 950
     assert packet.frequency == 14.07495
     assert packet.band == '20m'
+    assert packet.time_captured == str(fake_time)
