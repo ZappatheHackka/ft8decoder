@@ -45,7 +45,7 @@ class MessageProcessor:
         >>> processor.to_map('ft8_map')  # Create world map
     """
 
-    def __init__(self, log_level=logging.INFO):
+    def __init__(self, log_level=logging.INFO, live_translate=True):
         """
         Initialize the FT8 message processor.
 
@@ -55,9 +55,11 @@ class MessageProcessor:
 
         Args:
             log_level (int, optional): Python logging level. Defaults to logging.INFO.
+            live_translate (bool, optional): Shows translated messages in real time.
+            Defaults to True.
 
         Example:
-            >>> processor = MessageProcessor(log_level=logging.DEBUG)
+            >>> processor = MessageProcessor(log_level=logging.DEBUG, live_translate=True)
         """
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(log_level)
@@ -68,6 +70,7 @@ class MessageProcessor:
             handler.setFormatter(formatter)
             self.logger.addHandler(handler)
 
+        self.live_translate = live_translate
         self.cqs = []
         self.qso_coords = []
         self.cq_coords = []
@@ -224,7 +227,6 @@ class MessageProcessor:
             >>> sort_message(packet, ['K2DEF', 'W1ABC'], new_convo=False)
         """
         if new_convo:
-            # TODO Reorder checking order, place CQ updater in first func [DONE]
             self.add_cq(callsigns=callsigns)
         message = packet.message.split()
         if self.is_ack_reply(message):
@@ -271,6 +273,8 @@ class MessageProcessor:
                 packet=packet,
                 type='Grid Square announcement.',
             )
+            if self.live_translate is True:
+                self.logger.info(f'{message[0]} announces their position at {second_part}.')
             keys = sorted(message)
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
@@ -287,6 +291,8 @@ class MessageProcessor:
                 type='73 sign off.',
             )
             keys = sorted(message)
+            if self.live_translate is True:
+                self.logger.info(f'{message[0]} says goodbye.')
 
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
@@ -303,6 +309,8 @@ class MessageProcessor:
                 type='RR73',
             )
             keys = sorted(message)
+            if self.live_translate is True:
+                self.logger.info(f'{message[0]} says Roger Roger and signs off.')
             if (keys[0], keys[1]) in self.misc_comms:
                 self.misc_comms[(keys[0], keys[1])].append(convo_turn)
                 self.logger.debug('Updated misc_comms list with message!')
@@ -321,6 +329,9 @@ class MessageProcessor:
                         packet=packet,
                         type='Two Callsigns',
                     )
+                    if self.live_translate is True:
+                        self.logger.info(f'{message[1]} pings low power {message[0]}.')
+
                     self.qso_dict[(keys[0], keys[1])].append(convo_turn)
                     self.logger.debug('Updated qso_dict with message!')
                 else:
@@ -331,6 +342,9 @@ class MessageProcessor:
                         packet=packet,
                         type='Two Callsigns',
                     )
+                    if self.live_translate is True:
+                        self.logger.info(f'{message[1]} pings low power {message[0]}.')
+
                     self.qso_dict[(keys[0], keys[1])] = [{'completed': False}, convo_turn]
                     self.logger.debug('Updated qso_dict with message!')
             else:
@@ -343,6 +357,9 @@ class MessageProcessor:
                         packet=packet,
                         type='Two Callsigns',
                     )
+                    if self.live_translate is True:
+                        self.logger.info(f'{message[1]} pings {message[0]} at low power.')
+
                     self.qso_dict[(keys[0], keys[1])].append(convo_turn)
                     self.logger.debug('Updated qso_dict with message!')
                 else:
@@ -353,6 +370,8 @@ class MessageProcessor:
                         packet=packet,
                         type='Two Callsigns',
                     )
+                    if self.live_translate is True:
+                        self.logger.info(f'{message[1]} pings {message[0]} at low power.')
                     self.qso_dict[(keys[0], keys[1])] = [{'completed': False}, convo_turn]
                     self.logger.debug('Updated qso_dict with message!')
         else:
@@ -365,6 +384,8 @@ class MessageProcessor:
                     packet=packet,
                     type='Two Callsigns.',
                 )
+                if self.live_translate is True:
+                    self.logger.info(f'{message[1]} pings {message[0]}.')
                 self.qso_dict[(keys[0], keys[1])].append(convo_turn)
                 self.logger.debug('Updated qso_dict with message!')
             else:
@@ -375,6 +396,8 @@ class MessageProcessor:
                     packet=packet,
                     type='Two Callsigns.',
                 )
+                if self.live_translate is True:
+                    self.logger.info(f'{message[1]} pings {message[0]}.')
                 self.qso_dict[(keys[0], keys[1])] = [{'completed': False}, convo_turn]
                 self.logger.debug('Updated qso_dict with message!')
 
@@ -412,6 +435,9 @@ class MessageProcessor:
                 caller=callsign,
                 packet=packet,
             )
+            if self.live_translate is True:
+                self.logger.info(translated_message)
+
             if (callsign, grid) not in self.grid_square_cache:
                 self.grid_square_cache[callsign] = grid
             self.cqs.append(convo_turn)
@@ -512,6 +538,9 @@ class MessageProcessor:
             packet=packet,
             type=m_type,
         )
+        if self.live_translate is True:
+            self.logger.info(translated_message)
+
         self.qso_dict[(callsigns[0], callsigns[1])].append(turn_obj)
         self.logger.debug('Updated qso_dict with signal report.')
 
@@ -577,6 +606,9 @@ class MessageProcessor:
                 packet=packet,
                 type='RRR',
             )
+            if self.live_translate is True:
+                self.logger.info(translated_message)
+
             self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             self.qso_dict[(callsigns[0], callsigns[1])][0]['completed'] = True
             self.logger.debug('Updated qso_dict with RRR reply.')
@@ -592,6 +624,9 @@ class MessageProcessor:
                 packet=packet,
                 type='RR & Goodbye',
             )
+            if self.live_translate is True:
+                self.logger.info(translated_message)
+
             self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             self.qso_dict[(callsigns[0], callsigns[1])][0]['completed'] = True
             self.logger.debug('Updated qso_dict with RR73 reply.')
@@ -606,6 +641,9 @@ class MessageProcessor:
                 packet=packet,
                 type='Goodbye',
             )
+            if self.live_translate is True:
+                self.logger.info(translated_message)
+
             self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
             self.qso_dict[(callsigns[0], callsigns[1])][0]['completed'] = True
             self.logger.debug('Updated qso_dict with 73 reply.')
@@ -685,6 +723,9 @@ class MessageProcessor:
             packet=packet,
             type='Grid Square Report',
         )
+        if self.live_translate is True:
+            self.logger.info(translated_message)
+
         self.qso_dict[(callsigns[0], callsigns[1])].append(convo_turn)
         self.logger.debug('Updated qso_dict with grid square report.')
 
@@ -721,6 +762,9 @@ class MessageProcessor:
             cq = CQ(
                 packet=packet, message=packet.message, caller=caller, translated_message=translated
             )
+            if self.live_translate is True:
+                self.logger.info(translated)
+
             self.cqs.append(cq)
             self.logger.debug('Updated qso_dict with CQ.')
         elif len(split_message) == 2:
@@ -729,6 +773,8 @@ class MessageProcessor:
             cq = CQ(
                 packet=packet, message=packet.message, caller=caller, translated_message=translated
             )
+            if self.live_translate is True:
+                self.logger.info(translated)
             self.cqs.append(cq)
             self.logger.debug('Updated qso_dict with CQ.')
         else:
@@ -738,6 +784,9 @@ class MessageProcessor:
                 caller=packet.message,
                 translated_message='Unconfigured',
             )
+            if self.live_translate is True:
+                self.logger.info("Unconfigured.")
+
             self.cqs.append(cq)
             self.logger.debug('Updated qso_dict with CQ.')
 
@@ -776,6 +825,9 @@ class MessageProcessor:
                         packet=this_cq.packet,
                         type='CQ Call.',
                     )
+                    if self.live_translate is True:
+                        self.logger.info(this_cq.translated_message)
+
                     self.qso_dict[(callsigns[0], callsigns[1])].insert(1, cq_turn)
                     self.cqs.remove(cq)
                     self.logger.debug('Updated qso_dict with initial CQ call.')

@@ -29,13 +29,9 @@ dist/
 # -----------------------
 db_init/
 *.db
-ft8_misc.json
-ft8_comms.json
 
 # -----------------------
 # Local scripts & test data (not for distribution)
 # -----------------------
 classes.py
 main.py
-/tests/data.txt
-/tests/tests.py
