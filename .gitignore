@@ -31,7 +31,7 @@ db_init/
 *.db
 
 # -----------------------
-# Local scripts & test data (not for distribution)
+# Local scripts & test data
 # -----------------------
 classes.py
 main.py
