@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ft8decoder"
-version = "0.2.0"
+version = "1.0.0"
 description = "An FT8 message logger that tracks, translates, and organizes CQs, QSOs, and Misc. messages from live WSJT-X packets."
 readme = "README.md"
 license = "MIT"
